@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 11:13:45 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/11/24 13:24:39 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/29 14:21:08 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/29 14:21:09 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
-# include <stdio.h> // delete
+void				*ft_memalloc(size_t size)
+{
+	unsigned char	*ptr;
 
-int 	ft_printf(const char * restrict format, ...);
-
-#endif
+	if (!(ptr = malloc(size)))
+		return (NULL);
+	ft_bzero(ptr, size);
+	return (ptr);
+}

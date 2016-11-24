@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 11:13:45 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/11/24 13:24:39 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/29 14:14:59 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/29 14:15:00 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
-# include <stdio.h> // delete
+void	ft_putnbr(int n)
+{
+	unsigned int	nb;
 
-int 	ft_printf(const char * restrict format, ...);
-
-#endif
+	nb = (n < 0 ? n * -1 : n);
+	if (n < 0)
+		ft_putchar('-');
+	if (nb > 9)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+		ft_putchar(nb + '0');
+}

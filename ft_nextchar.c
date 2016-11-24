@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_nextchar.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 11:13:45 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/11/24 13:24:39 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/30 14:40:12 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/30 14:40:15 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
-# include <stdio.h> // delete
-
-int 	ft_printf(const char * restrict format, ...);
-
-#endif
+char	ft_nextchar(char c)
+{
+	if (c > 122 || c < 65)
+		return (48);
+	if (c >= 65 && c < 122)
+		return (c + 1);
+	if (c == 122)
+		return (65);
+	return (48);
+}

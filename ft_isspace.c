@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 11:13:45 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/11/24 13:24:39 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/27 16:10:20 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/27 16:10:22 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
-# include <stdio.h> // delete
-
-int 	ft_printf(const char * restrict format, ...);
-
-#endif
+int		ft_isspace(int c)
+{
+	if (c == '\t' || c == '\n' || c == '\v')
+		return (1);
+	if (c == '\f' || c == '\r' || c == ' ')
+		return (1);
+	else
+		return (0);
+}

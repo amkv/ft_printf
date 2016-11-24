@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_skipspace.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 11:13:45 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/11/24 13:24:39 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/30 16:40:35 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/30 16:40:37 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
-# include <stdio.h> // delete
+char	*ft_skipspace_beg(char *s)
+{
+	unsigned int	len;
 
-int 	ft_printf(const char * restrict format, ...);
-
-#endif
+	if (s)
+	{
+		len = ft_strlen(s);
+		if (len == 0)
+			return (s);
+		while (*s != '\0' && (*s == ' ' || *s == '\n' || *s == '\t'))
+			s++;
+		return (s);
+	}
+	else
+		return (NULL);
+}

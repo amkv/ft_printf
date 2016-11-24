@@ -1,22 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 11:13:45 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/11/24 13:24:39 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/30 15:56:43 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/30 15:56:45 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
-# include <stdio.h> // delete
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*str;
+	char	*ptr;
 
-int 	ft_printf(const char * restrict format, ...);
-
-#endif
+	if (s1 && s2)
+	{
+		str = (char*)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+		if (str)
+		{
+			ptr = str;
+			while (*s1)
+				*ptr++ = *s1++;
+			while (*s2)
+				*ptr++ = *s2++;
+			*ptr = '\0';
+			return (str);
+		}
+		else
+			return (NULL);
+	}
+	else
+		return (NULL);
+}

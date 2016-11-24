@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 11:13:45 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/11/24 13:24:39 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/28 10:42:12 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/28 10:42:14 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
-# include <stdio.h> // delete
+void		*ft_memmove(void *dst, const void *src, size_t len)
+{
+	void	*dstptr;
 
-int 	ft_printf(const char * restrict format, ...);
-
-#endif
+	dstptr = dst;
+	if (dst > src)
+		while (len > 0)
+		{
+			len--;
+			*((unsigned char *)(dst + len)) = *((unsigned char *)(src + len));
+		}
+	else if (dst < src)
+		while (len > 0)
+		{
+			len--;
+			*((unsigned char *)dst) = *((unsigned char *)src);
+			dst++;
+			src++;
+		}
+	return (dstptr);
+}

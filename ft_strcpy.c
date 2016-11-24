@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 11:13:45 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/11/24 13:24:39 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/22 14:41:02 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/22 14:41:03 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
-# include <stdio.h> // delete
+char				*ft_strcpy(char *dst, const char *src)
+{
+	unsigned int	i;
 
-int 	ft_printf(const char * restrict format, ...);
-
-#endif
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
+}

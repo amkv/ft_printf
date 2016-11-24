@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 11:13:45 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/11/24 13:24:39 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/30 16:13:26 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/30 16:13:27 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
-# include <stdio.h> // delete
+char				*ft_strtrim(char const *s)
+{
+	char			*copy;
+	char			*beg;
+	char			*end;
 
-int 	ft_printf(const char * restrict format, ...);
-
-#endif
+	if (s)
+	{
+		beg = ft_skipspace_beg((char*)s);
+		end = ft_skipspace_end((char*)beg);
+		if (!(copy = (char*)malloc(sizeof(char) * (ft_ptrlen(beg, end) + 1))))
+			return (NULL);
+		ft_strncpy(copy, beg, ft_ptrlen(beg, end));
+		copy[ft_ptrlen(beg, end)] = '\0';
+		return (copy);
+	}
+	else
+		return (NULL);
+}

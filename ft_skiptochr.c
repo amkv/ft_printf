@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_skiptochr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 11:13:45 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/11/24 13:24:39 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/10/03 20:33:43 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/10/03 20:34:12 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
-# include <stdio.h> // delete
-
-int 	ft_printf(const char * restrict format, ...);
-
-#endif
+char	*ft_skiptochr(char *s, char c)
+{
+	if (s)
+	{
+		while (*s)
+		{
+			if (*s == c)
+				return (s - 1);
+			s++;
+		}
+		return (s - 1);
+	}
+	else
+		return (NULL);
+}

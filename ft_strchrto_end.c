@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strchrto_end.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 11:13:45 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/11/24 13:24:39 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/10/03 19:27:23 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/10/03 19:27:24 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
-# include <stdio.h> // delete
+char	*ft_strchrto_end(char *s, char c)
+{
+	char	*copy;
+	char	*temp;
 
-int 	ft_printf(const char * restrict format, ...);
-
-#endif
+	if (*s)
+	{
+		copy = (char*)malloc(sizeof(char) * ((ft_strlen(s) + 2)));
+		ft_strcpy(copy, s);
+		temp = copy;
+		while (*temp)
+			temp++;
+		*temp = c;
+		temp = temp + 1;
+		*temp = '\0';
+		return (copy);
+	}
+	else
+		return (NULL);
+}

@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 11:13:45 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/11/24 13:24:39 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/30 15:37:51 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/30 15:37:53 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
-# include <stdio.h> // delete
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
+{
+	char	*str;
+	char	*ptr;
 
-int 	ft_printf(const char * restrict format, ...);
-
-#endif
+	if (s)
+	{
+		str = (char*)malloc(sizeof(char) * (len + 1));
+		if (str)
+		{
+			ptr = str;
+			while (len-- > 0 && *s != '\0')
+				*ptr++ = s[start++];
+			*ptr = '\0';
+			return (str);
+		}
+		else
+			return (NULL);
+	}
+	return (NULL);
+}

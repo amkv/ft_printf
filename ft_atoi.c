@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 11:13:45 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/11/24 13:24:39 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/26 18:07:21 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/10/06 10:34:54 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
-# include <stdio.h> // delete
+int		ft_atoi(const char *str)
+{
+	int		result;
+	int		sign;
 
-int 	ft_printf(const char * restrict format, ...);
-
-#endif
+	sign = 1;
+	result = 0;
+	while (ft_isspace(*str))
+		str++;
+	if (*str == '-')
+		sign = -1;
+	if (*str == '+' || *str == '-')
+		str++;
+	while (ft_isdigit(*str))
+	{
+		result = 10 * result + (*str - '0');
+		str++;
+	}
+	return (result * sign);
+}

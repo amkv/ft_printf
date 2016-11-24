@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_ptrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 11:13:45 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/11/24 13:24:39 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/30 19:48:40 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/30 19:48:42 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
-# include <stdio.h> // delete
+size_t		ft_ptrlen(char *beg, char *end)
+{
+	size_t		len;
 
-int 	ft_printf(const char * restrict format, ...);
-
-#endif
+	if (beg && end)
+	{
+		len = 0;
+		while (beg++ != end)
+			len++;
+		return (len + 1);
+	}
+	else
+		return (1);
+}

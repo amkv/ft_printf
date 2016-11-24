@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 11:13:45 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/11/24 13:24:39 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/28 13:39:01 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/28 13:39:03 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
-# include <stdio.h> // delete
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	const unsigned char *s1ptr;
+	const unsigned char *s2ptr;
 
-int 	ft_printf(const char * restrict format, ...);
-
-#endif
+	s1ptr = s1;
+	s2ptr = s2;
+	if (n == 0)
+		return (0);
+	while (n > 1 && *s1ptr == *s2ptr)
+	{
+		s1ptr++;
+		s2ptr++;
+		n--;
+	}
+	return (*s1ptr - *s2ptr);
+}

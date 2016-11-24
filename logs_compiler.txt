@@ -1,0 +1,245 @@
+Thu Nov 24 14:04:14 PST 2016	logs file created
+Thu Nov 24 14:04:14 PST 2016	you have read about how to use this script
+Thu Nov 24 14:04:29 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:04:29 PST 2016	starting...
+Thu Nov 24 14:05:38 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:05:38 PST 2016	starting...
+Thu Nov 24 14:05:38 PST 2016	a.out executable deleted
+Thu Nov 24 14:05:38 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.clibftprintf.a -o a.out
+clang: error: no such file or directory: 'temp/main.clibftprintf.a'
+clang: error: no input files
+Thu Nov 24 14:05:38 PST 2016	error compiling
+Thu Nov 24 14:06:01 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:06:01 PST 2016	starting...
+Thu Nov 24 14:06:01 PST 2016	a.out does not exist
+Thu Nov 24 14:06:01 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.clibftprintf.a -o a.out
+clang: error: no such file or directory: 'temp/main.clibftprintf.a'
+clang: error: no input files
+Thu Nov 24 14:06:01 PST 2016	error compiling
+Thu Nov 24 14:06:04 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:06:04 PST 2016	starting...
+Thu Nov 24 14:06:20 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:06:20 PST 2016	starting...
+Thu Nov 24 14:06:20 PST 2016	a.out does not exist
+Thu Nov 24 14:06:20 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.clibftprintf.a -o a.out
+clang: error: no such file or directory: 'temp/main.clibftprintf.a'
+clang: error: no input files
+Thu Nov 24 14:06:20 PST 2016	error compiling
+Thu Nov 24 14:06:23 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:06:23 PST 2016	starting...
+Thu Nov 24 14:06:31 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:06:31 PST 2016	starting...
+Thu Nov 24 14:06:31 PST 2016	a.out does not exist
+Thu Nov 24 14:06:31 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+clang: error: no such file or directory: 'libftprintf.a'
+Thu Nov 24 14:06:31 PST 2016	error compiling
+Thu Nov 24 14:06:47 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:06:47 PST 2016	starting...
+Thu Nov 24 14:06:47 PST 2016	a.out does not exist
+Thu Nov 24 14:06:47 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+Thu Nov 24 14:06:47 PST 2016	a.out successfully compiled
+Thu Nov 24 14:06:47 PST 2016	running a.out with 1 preset argument: this is my string
+
+test
+Thu Nov 24 14:06:58 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:06:58 PST 2016	starting...
+Thu Nov 24 14:07:15 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:07:15 PST 2016	starting...
+Thu Nov 24 14:07:15 PST 2016	a.out executable deleted
+Thu Nov 24 14:07:15 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+Thu Nov 24 14:07:15 PST 2016	a.out successfully compiled
+Thu Nov 24 14:07:15 PST 2016	running a.out with empty preset argument
+
+test
+Thu Nov 24 14:12:38 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:12:38 PST 2016	starting...
+Thu Nov 24 14:12:38 PST 2016	a.out executable deleted
+Thu Nov 24 14:12:38 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+Thu Nov 24 14:12:38 PST 2016	a.out successfully compiled
+Thu Nov 24 14:12:38 PST 2016	running a.out with empty preset argument
+
+test
+Thu Nov 24 14:20:54 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:20:54 PST 2016	starting...
+Thu Nov 24 14:20:54 PST 2016	a.out executable deleted
+Thu Nov 24 14:20:54 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+Thu Nov 24 14:20:54 PST 2016	a.out successfully compiled
+Thu Nov 24 14:20:54 PST 2016	running a.out with empty preset argument
+
+putstr: test
+- - - - - - - - - - -
+printf: test3
+Thu Nov 24 14:21:02 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:21:02 PST 2016	starting...
+Thu Nov 24 14:21:02 PST 2016	a.out executable deleted
+Thu Nov 24 14:21:02 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+Thu Nov 24 14:21:02 PST 2016	a.out successfully compiled
+Thu Nov 24 14:21:02 PST 2016	running a.out with empty preset argument
+
+putstr: test
+- - - - - - - - - - -
+- - - - - - - - - - -
+printf: test3
+Thu Nov 24 14:24:12 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:24:12 PST 2016	starting...
+Thu Nov 24 14:24:12 PST 2016	a.out executable deleted
+Thu Nov 24 14:24:12 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+Thu Nov 24 14:24:12 PST 2016	a.out successfully compiled
+Thu Nov 24 14:24:12 PST 2016	running a.out with empty preset argument
+
+putstr: test
+printf: test2
+- - - - - - - - - - -
+Thu Nov 24 14:24:15 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:24:15 PST 2016	starting...
+Thu Nov 24 14:24:15 PST 2016	a.out executable deleted
+Thu Nov 24 14:24:15 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+Thu Nov 24 14:24:15 PST 2016	a.out successfully compiled
+Thu Nov 24 14:24:15 PST 2016	running a.out with empty preset argument
+
+putstr: test
+printf: test2
+- - - - - - - - - - -
+Thu Nov 24 14:24:16 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:24:16 PST 2016	starting...
+Thu Nov 24 14:24:16 PST 2016	a.out executable deleted
+Thu Nov 24 14:24:16 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+Thu Nov 24 14:24:16 PST 2016	a.out successfully compiled
+Thu Nov 24 14:24:16 PST 2016	running a.out with empty preset argument
+
+putstr: test
+printf: test2
+- - - - - - - - - - -
+Thu Nov 24 14:25:01 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:25:01 PST 2016	starting...
+Thu Nov 24 14:25:01 PST 2016	a.out executable deleted
+Thu Nov 24 14:25:01 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+Thu Nov 24 14:25:01 PST 2016	a.out successfully compiled
+Thu Nov 24 14:25:01 PST 2016	running a.out with empty preset argument
+
+putstr: test
+printf: test2
+- - - - - - - - - - -
+Thu Nov 24 14:25:02 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:25:02 PST 2016	starting...
+Thu Nov 24 14:25:02 PST 2016	a.out executable deleted
+Thu Nov 24 14:25:02 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+Thu Nov 24 14:25:02 PST 2016	a.out successfully compiled
+Thu Nov 24 14:25:02 PST 2016	running a.out with empty preset argument
+
+putstr: test
+printf: test2
+- - - - - - - - - - -
+Thu Nov 24 14:25:03 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:25:03 PST 2016	starting...
+Thu Nov 24 14:25:03 PST 2016	a.out executable deleted
+Thu Nov 24 14:25:03 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+Thu Nov 24 14:25:03 PST 2016	a.out successfully compiled
+Thu Nov 24 14:25:03 PST 2016	running a.out with empty preset argument
+
+putstr: test
+printf: test2
+- - - - - - - - - - -
+Thu Nov 24 14:25:04 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:25:04 PST 2016	starting...
+Thu Nov 24 14:25:04 PST 2016	a.out executable deleted
+Thu Nov 24 14:25:04 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+Thu Nov 24 14:25:04 PST 2016	a.out successfully compiled
+Thu Nov 24 14:25:04 PST 2016	running a.out with empty preset argument
+
+putstr: test
+printf: test2
+- - - - - - - - - - -
+Thu Nov 24 14:25:04 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:25:04 PST 2016	starting...
+Thu Nov 24 14:25:04 PST 2016	a.out executable deleted
+Thu Nov 24 14:25:04 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+Thu Nov 24 14:25:04 PST 2016	a.out successfully compiled
+Thu Nov 24 14:25:04 PST 2016	running a.out with empty preset argument
+
+putstr: test
+printf: test2
+- - - - - - - - - - -
+Thu Nov 24 14:25:10 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:25:10 PST 2016	starting...
+Thu Nov 24 14:25:10 PST 2016	a.out executable deleted
+Thu Nov 24 14:25:10 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+Thu Nov 24 14:25:10 PST 2016	a.out successfully compiled
+Thu Nov 24 14:25:10 PST 2016	running a.out with empty preset argument
+
+putstr: test
+printf: test2
+- - - - - - - - - - -
+Thu Nov 24 14:25:16 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:25:16 PST 2016	starting...
+Thu Nov 24 14:25:16 PST 2016	a.out executable deleted
+Thu Nov 24 14:25:16 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+Thu Nov 24 14:25:16 PST 2016	a.out successfully compiled
+Thu Nov 24 14:25:16 PST 2016	running a.out with empty preset argument
+
+putstr: test
+printf: test2
+- - - - - - - - - - -
+Thu Nov 24 14:25:17 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:25:17 PST 2016	starting...
+Thu Nov 24 14:25:17 PST 2016	a.out executable deleted
+Thu Nov 24 14:25:17 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+Thu Nov 24 14:25:17 PST 2016	a.out successfully compiled
+Thu Nov 24 14:25:17 PST 2016	running a.out with empty preset argument
+
+putstr: test
+printf: test2
+- - - - - - - - - - -
+Thu Nov 24 14:25:45 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:25:45 PST 2016	starting...
+Thu Nov 24 14:25:45 PST 2016	a.out executable deleted
+Thu Nov 24 14:25:45 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+Thu Nov 24 14:25:45 PST 2016	a.out successfully compiled
+Thu Nov 24 14:25:45 PST 2016	running a.out with empty preset argument
+
+putstr: test
+printf: test2
+- - - - - - - - - - -
+Thu Nov 24 14:26:22 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:26:22 PST 2016	starting...
+Thu Nov 24 14:26:22 PST 2016	a.out executable deleted
+Thu Nov 24 14:26:22 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+Thu Nov 24 14:26:22 PST 2016	a.out successfully compiled
+Thu Nov 24 14:26:22 PST 2016	running a.out with empty preset argument
+
+putstr: test
+printf: test2
+- - - - - - - - - - -
+Thu Nov 24 14:33:36 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:33:36 PST 2016	starting...
+Thu Nov 24 14:33:36 PST 2016	a.out executable deleted
+Thu Nov 24 14:33:36 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+Thu Nov 24 14:33:36 PST 2016	a.out successfully compiled
+Thu Nov 24 14:33:36 PST 2016	running a.out with empty preset argument
+
+putstr: test
+printf: test2
+- - - - - - - - - - -
+Thu Nov 24 14:38:16 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:38:16 PST 2016	starting...
+Thu Nov 24 14:38:16 PST 2016	a.out executable deleted
+Thu Nov 24 14:38:16 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+clang: error: no such file or directory: 'libftprintf.a'
+Thu Nov 24 14:38:16 PST 2016	error compiling
+Thu Nov 24 14:38:19 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:38:19 PST 2016	starting...
+Thu Nov 24 14:38:19 PST 2016	a.out does not exist
+Thu Nov 24 14:38:19 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+clang: error: no such file or directory: 'libftprintf.a'
+Thu Nov 24 14:38:19 PST 2016	error compiling
+Thu Nov 24 14:38:30 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Nov 24 14:38:30 PST 2016	starting...
+Thu Nov 24 14:38:30 PST 2016	a.out does not exist
+Thu Nov 24 14:38:30 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a -o a.out
+Thu Nov 24 14:38:30 PST 2016	a.out successfully compiled
+Thu Nov 24 14:38:30 PST 2016	running a.out with empty preset argument
+
+putstr: test
+printf: test2
+- - - - - - - - - - -
+string test3

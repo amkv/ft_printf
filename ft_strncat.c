@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 11:13:45 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/11/24 13:24:39 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/26 14:16:38 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/26 14:16:39 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
-# include <stdio.h> // delete
+char	*ft_strncat(char *s1, const char *s2, size_t n)
+{
+	char	*temp;
 
-int 	ft_printf(const char * restrict format, ...);
-
-#endif
+	temp = s1;
+	while (*s1 != '\0')
+		s1++;
+	while (*s2 != '\0' && n-- > 0)
+		*s1++ = *s2++;
+	*s1 = '\0';
+	return (temp);
+}

@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 11:13:45 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/11/24 13:24:39 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/29 17:51:03 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/29 17:51:04 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
-# include <stdio.h> // delete
+char		*ft_strmap(char const *s, char (*f)(char))
+{
+	char	*str;
+	char	*ptr;
 
-int 	ft_printf(const char * restrict format, ...);
-
-#endif
+	if (s)
+	{
+		str = (char*)malloc(sizeof(char) * (ft_strlen(s) + 1));
+		if (str)
+		{
+			ptr = str;
+			while (*s)
+				*ptr++ = f(*s++);
+			*ptr = '\0';
+			return (str);
+		}
+	}
+	return (NULL);
+}

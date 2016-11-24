@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 11:13:45 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/11/24 13:24:39 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/29 18:03:24 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/29 18:03:25 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
-# include <stdio.h> // delete
+int	ft_strequ(char const *s1, char const *s2)
+{
+	int	i;
 
-int 	ft_printf(const char * restrict format, ...);
-
-#endif
+	i = 0;
+	if (!s1 && !s2)
+		return (1);
+	if (!s1 || !s2)
+		return (0);
+	while (s1[i] != '\0' && s2[i] != '\0')
+	{
+		if (s1[i] != s2[i])
+			return (0);
+		i++;
+	}
+	if (s1[i] != s2[i])
+		return (0);
+	return (1);
+}

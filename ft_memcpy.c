@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 11:13:45 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/11/24 13:24:39 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/28 10:26:12 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/28 10:26:14 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
-# include <stdio.h> // delete
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	unsigned char	*ptr;
 
-int 	ft_printf(const char * restrict format, ...);
-
-#endif
+	ptr = dst;
+	while (n--)
+		*(unsigned char*)dst++ = *(unsigned char const*)src++;
+	return (ptr);
+}
