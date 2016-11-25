@@ -8,5 +8,6 @@ set(SOURCE_FILES
 		ft_printf.c
 		ft_putstr.c
 		ft_putchar.c
+		ft_putnbr.c
 		)
 add_executable(ft_printf ${SOURCE_FILES})

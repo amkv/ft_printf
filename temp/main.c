@@ -30,12 +30,12 @@ int			main(void)
 	d = 42;
 	c = 'K';
 
-	ft_putstr("putstr: test\n");
-	printf("printf: test2\n");
+//	ft_putstr("putstr: test\n");
+//	printf("printf: test2\n");
 	printf("- - - - - - - - - - -\n");
-	ft_printf("%s", s);
-	ft_printf("%c", c);
-	ft_printf("%d", d);
+	ft_printf("qq%%%s qwerty %d %cL", s, d, c);
+	printf("\n");
+	printf("qq%%%s qwerty %d %c", s, d, c);
 	return (0);
 }
 

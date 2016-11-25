@@ -15,30 +15,27 @@
 int 	ft_printf(const char * restrict format, ...)
 {
 	va_list ap;
-	va_list ap2;
-	int 	d;
-	char	c;
-	char 	*s;
 
 	va_start(ap, format);
-	va_copy(ap2, ap);
-
-	while (*format)
+	printf("%s\n", format);
+	while (*format != '\0')
 	{
-		switch(*format++)
-		{
-			case 's':
-				s = va_arg(ap, char *);
-				printf("string %s\n", s);
-				break;
-			case 'd':
-				d = va_arg(ap, int);
-				printf("int %d\n", d);
-				break;
-			case 'c':
-				c = va_arg(ap, int);
-				printf("char %c\n", c);
-		}
+		while((*format != '%') && *format != '\0')
+			ft_putchar(*format++);
+		if (*format == '\0')
+			break;
+		if (*format == '%')
+			format++;
+		if (*format == '%')
+			ft_putchar('%');
+		if (*format == 's')
+			ft_putstr(va_arg(ap, char *));
+		else if (*format == 'd')
+			ft_putnbr(va_arg(ap, int));
+		else if (*format == 'c')
+			ft_putchar(va_arg(ap, int));
+		format++;
 	}
+	va_end(ap);
 	return (1);
 }
