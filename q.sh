@@ -10,6 +10,7 @@ NAME=a.out
 # add new CFILES="main.c second.c" or add new line CFILES+="third.c"
 CFILES="temp/main.c"
 CFILES+=" libftprintf.a"
+CFILES+=" ft_printf.c"
 
 # Preset argument
 # ARG=file.txt or ARG="this is my test string"
