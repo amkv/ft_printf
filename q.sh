@@ -11,6 +11,7 @@ NAME=a.out
 CFILES="temp/main.c"
 CFILES+=" libftprintf.a"
 CFILES+=" ft_printf.c"
+CFILES+=" ft_printf/ft_is_helper.c"
 
 # Preset argument
 # ARG=file.txt or ARG="this is my test string"

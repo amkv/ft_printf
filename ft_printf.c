@@ -13,56 +13,14 @@
 #include "libftprintf.h"
 
 
-int 		ft_numlen(int num)
-{
-	int 	len;
-
-	len = 0;
-	if (num < 0)
-	{
-		len++;
-		num = -num;
-	}
-	while (num != 0)
-	{
-		num /= 10;
-		len++;
-	}
-	return (len);
-}
-
-
-static int ft_is_command(char c)
-{
-	if (c == )
-
-}
-
-static int ft_parser(const char *format, t_list **list)
-{
-	int 	arg;
-
-	arg = 0;
-	while (*format)
-	{
-		
-		format++;
-	}
-	return (arg);
-}
-
-static void ft_get_argument(t_list *list)
-{
-
-}
 
 int 				ft_printf(const char * restrict format, ...)
 {
-	va_list ap;
+//	va_list ap;
 	int counter;
 	t_list *list;
-	t_list *arg;
-	char *str;
+//	t_list *arg;
+//	char *str;
 
 	counter = 0;
 	if (*format == '\0')

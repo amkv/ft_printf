@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_printf_helpers.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/24 16:42:30 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/09/24 16:42:31 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/11/25 20:03:01 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/11/25 20:03:34 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libftprintf.h"
 
-char	*ft_strstr(const char *big, const char *little)
+int 		ft_numlen(int num)
 {
-	char const	*bigbox;
-	char const	*littlebox;
+	int 	len;
 
-	littlebox = little;
-	while (*big != '\0')
+	len = 0;
+	if (num < 0)
 	{
-		bigbox = big;
-		while (*little != '\0' && *big == *little)
-		{
-			++big;
-			++little;
-		}
-		if (*little == '\0')
-			return ((char *)bigbox);
-		big = bigbox + 1;
-		little = littlebox;
+		len++;
+		num = -num;
 	}
-	return (*little == '\0' ? (char *)big : NULL);
+	while (num != 0)
+	{
+		num /= 10;
+		len++;
+	}
+	return (len);
 }

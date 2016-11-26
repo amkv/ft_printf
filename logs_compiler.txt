@@ -690,3 +690,17 @@ temp/main.c:85:30: error: data argument not used by format string [-Werror,-Wfor
                        ~~~~~~~~~~~  ^
 1 error generated.
 Fri Nov 25 15:41:20 PST 2016	error compiling
+Fri Nov 25 19:56:37 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Fri Nov 25 19:56:37 PST 2016	starting...
+Fri Nov 25 19:57:15 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Fri Nov 25 19:57:15 PST 2016	starting...
+Fri Nov 25 19:57:15 PST 2016	a.out does not exist
+Fri Nov 25 19:57:15 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_is_helper.c -o a.out
+ft_printf.c:83:10: error: unused variable 'new' [-Werror,-Wunused-variable]
+        t_list  *new;
+                 ^
+ft_printf.c:80:51: error: unused parameter 'list' [-Werror,-Wunused-parameter]
+static int ft_parser(const char *format, t_list **list)
+                                                  ^
+2 errors generated.
+Fri Nov 25 19:57:15 PST 2016	error compiling
