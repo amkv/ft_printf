@@ -704,3 +704,259 @@ static int ft_parser(const char *format, t_list **list)
                                                   ^
 2 errors generated.
 Fri Nov 25 19:57:15 PST 2016	error compiling
+Mon Nov 28 10:38:28 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Mon Nov 28 10:38:28 PST 2016	starting...
+Mon Nov 28 10:38:28 PST 2016	a.out does not exist
+Mon Nov 28 10:38:28 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c -o a.out
+Mon Nov 28 10:38:28 PST 2016	a.out successfully compiled
+Mon Nov 28 10:38:28 PST 2016	running a.out with empty preset argument
+
+
+teststring1secondhellothird
+m: 0
+o: 27
+- - - - - - - - - 
+Mon Nov 28 10:40:46 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Mon Nov 28 10:40:46 PST 2016	starting...
+Mon Nov 28 10:40:46 PST 2016	a.out executable deleted
+Mon Nov 28 10:40:46 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c -o a.out
+Mon Nov 28 10:40:46 PST 2016	a.out successfully compiled
+Mon Nov 28 10:40:46 PST 2016	running a.out with empty preset argument
+
+
+teststring1secondhellothird
+m: 0
+o: 27
+- - - - - - - - - 
+Mon Nov 28 11:04:47 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Mon Nov 28 11:04:47 PST 2016	starting...
+Mon Nov 28 11:04:47 PST 2016	a.out executable deleted
+Mon Nov 28 11:04:47 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c -o a.out
+Mon Nov 28 11:04:47 PST 2016	a.out successfully compiled
+Mon Nov 28 11:04:47 PST 2016	running a.out with empty preset argument
+
+
+teststring1secondhellothird
+m: 0
+o: 27
+- - - - - - - - - 
+Wed Nov 30 11:23:51 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Wed Nov 30 11:23:51 PST 2016	starting...
+Wed Nov 30 11:23:51 PST 2016	a.out executable deleted
+Wed Nov 30 11:23:51 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c -o a.out
+Wed Nov 30 11:23:51 PST 2016	a.out successfully compiled
+Wed Nov 30 11:23:51 PST 2016	running a.out with empty preset argument
+
+
+
+m: 0
+o: 0
+- - - - - - - - - 
+Wed Nov 30 11:38:49 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Wed Nov 30 11:38:49 PST 2016	starting...
+Wed Nov 30 11:38:49 PST 2016	a.out executable deleted
+Wed Nov 30 11:38:49 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c -o a.out
+Wed Nov 30 11:38:49 PST 2016	a.out successfully compiled
+Wed Nov 30 11:38:49 PST 2016	running a.out with empty preset argument
+
+
+
+m: 0
+o: 0
+- - - - - - - - - 
+Wed Nov 30 11:38:58 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Wed Nov 30 11:38:58 PST 2016	starting...
+Wed Nov 30 11:38:58 PST 2016	a.out executable deleted
+Wed Nov 30 11:38:58 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c -o a.out
+Wed Nov 30 11:38:58 PST 2016	a.out successfully compiled
+Wed Nov 30 11:38:58 PST 2016	running a.out with empty preset argument
+
+
+
+m: 0
+o: 0
+- - - - - - - - - 
+Wed Nov 30 11:39:58 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Wed Nov 30 11:39:58 PST 2016	starting...
+Wed Nov 30 11:39:58 PST 2016	a.out executable deleted
+Wed Nov 30 11:39:58 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c -o a.out
+Wed Nov 30 11:39:58 PST 2016	a.out successfully compiled
+Wed Nov 30 11:39:58 PST 2016	running a.out with empty preset argument
+
+1
+
+m: 0
+o: 0
+- - - - - - - - - 
+Wed Nov 30 11:40:59 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Wed Nov 30 11:40:59 PST 2016	starting...
+Wed Nov 30 11:40:59 PST 2016	a.out executable deleted
+Wed Nov 30 11:40:59 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c -o a.out
+Wed Nov 30 11:40:59 PST 2016	a.out successfully compiled
+Wed Nov 30 11:40:59 PST 2016	running a.out with empty preset argument
+
+t
+shello%s
+4t
+shello%s
+
+
+m: 0
+o: 0
+- - - - - - - - - 
+Wed Nov 30 11:43:27 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Wed Nov 30 11:43:27 PST 2016	starting...
+Wed Nov 30 11:43:27 PST 2016	a.out executable deleted
+Wed Nov 30 11:43:27 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c -o a.out
+Wed Nov 30 11:43:27 PST 2016	a.out successfully compiled
+Wed Nov 30 11:43:27 PST 2016	running a.out with empty preset argument
+
+t
+shello%s
+3t
+shello%s
+
+
+m: 0
+o: 0
+- - - - - - - - - 
+Wed Nov 30 11:43:51 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Wed Nov 30 11:43:51 PST 2016	starting...
+Wed Nov 30 11:43:51 PST 2016	a.out executable deleted
+Wed Nov 30 11:43:51 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c -o a.out
+Wed Nov 30 11:43:51 PST 2016	a.out successfully compiled
+Wed Nov 30 11:43:51 PST 2016	running a.out with empty preset argument
+
+t
+shello%s
+a: 3t
+shello%s
+
+
+m: 0
+o: 0
+- - - - - - - - - 
+Wed Nov 30 11:44:11 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Wed Nov 30 11:44:11 PST 2016	starting...
+Wed Nov 30 11:44:11 PST 2016	a.out executable deleted
+Wed Nov 30 11:44:11 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c -o a.out
+Wed Nov 30 11:44:11 PST 2016	a.out successfully compiled
+Wed Nov 30 11:44:11 PST 2016	running a.out with empty preset argument
+
+t
+shello%s
+a: 3
+t
+shello%s
+
+
+m: 0
+o: 0
+- - - - - - - - - 
+Wed Nov 30 11:44:40 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Wed Nov 30 11:44:40 PST 2016	starting...
+Wed Nov 30 11:44:40 PST 2016	a.out executable deleted
+Wed Nov 30 11:44:40 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c -o a.out
+Wed Nov 30 11:44:40 PST 2016	a.out successfully compiled
+Wed Nov 30 11:44:40 PST 2016	running a.out with empty preset argument
+
+a: 3
+t
+shello%s
+
+
+m: 0
+o: 0
+- - - - - - - - - 
+Wed Nov 30 11:48:43 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Wed Nov 30 11:48:43 PST 2016	starting...
+Wed Nov 30 11:48:43 PST 2016	a.out executable deleted
+Wed Nov 30 11:48:43 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c -o a.out
+Wed Nov 30 11:48:43 PST 2016	a.out successfully compiled
+Wed Nov 30 11:48:43 PST 2016	running a.out with empty preset argument
+
+Wed Nov 30 12:00:07 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Wed Nov 30 12:00:07 PST 2016	starting...
+Wed Nov 30 12:00:07 PST 2016	a.out executable deleted
+Wed Nov 30 12:00:07 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c -o a.out
+Wed Nov 30 12:00:07 PST 2016	a.out successfully compiled
+Wed Nov 30 12:00:07 PST 2016	running a.out with empty preset argument
+
+Thu Dec  1 11:06:11 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Dec  1 11:06:11 PST 2016	starting...
+Thu Dec  1 11:06:11 PST 2016	a.out executable deleted
+Thu Dec  1 11:06:11 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c -o a.out
+Thu Dec  1 11:06:11 PST 2016	a.out successfully compiled
+Thu Dec  1 11:06:11 PST 2016	running a.out with empty preset argument
+
+Thu Dec  1 11:06:29 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Dec  1 11:06:29 PST 2016	starting...
+Thu Dec  1 11:06:29 PST 2016	a.out executable deleted
+Thu Dec  1 11:06:29 PST 2016	gcc -Wall -Wextra -Werror   temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c -o a.out
+Thu Dec  1 11:06:29 PST 2016	a.out successfully compiled
+Thu Dec  1 11:06:29 PST 2016	running a.out with empty preset argument
+
+a: 16
+t
+test%d%shello%s
+
+
+m: 0
+o: 0
+- - - - - - - - - 
+Thu Dec  1 11:06:54 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Dec  1 11:06:54 PST 2016	starting...
+Thu Dec  1 11:06:54 PST 2016	a.out executable deleted
+Thu Dec  1 11:06:54 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c -o a.out
+Thu Dec  1 11:06:54 PST 2016	a.out successfully compiled
+Thu Dec  1 11:06:54 PST 2016	running a.out with empty preset argument
+
+Thu Dec  1 11:43:34 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Dec  1 11:43:34 PST 2016	starting...
+Thu Dec  1 11:43:34 PST 2016	a.out executable deleted
+Thu Dec  1 11:43:34 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c -o a.out
+Undefined symbols for architecture x86_64:
+  "_ft_strnncpy", referenced from:
+      _ft_parser in ft_printf_parser-3ca124.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+Thu Dec  1 11:43:34 PST 2016	error compiling
+Thu Dec  1 11:43:40 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Dec  1 11:43:40 PST 2016	starting...
+Thu Dec  1 11:43:40 PST 2016	you have read about how to use this script
+Thu Dec  1 11:43:45 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Dec  1 11:43:45 PST 2016	starting...
+Thu Dec  1 11:44:15 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Dec  1 11:44:15 PST 2016	starting...
+Thu Dec  1 11:44:15 PST 2016	a.out does not exist
+Thu Dec  1 11:44:15 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c ft_printf/ft_strnncpy.c -o a.out
+Thu Dec  1 11:44:15 PST 2016	a.out successfully compiled
+Thu Dec  1 11:44:15 PST 2016	running a.out with empty preset argument
+
+Thu Dec  1 14:37:50 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Dec  1 14:37:50 PST 2016	starting...
+Thu Dec  1 14:37:50 PST 2016	a.out executable deleted
+Thu Dec  1 14:37:50 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c ft_printf/ft_strnncpy.c -o a.out
+Undefined symbols for architecture x86_64:
+  "_ft_memnncpy", referenced from:
+      _ft_parser in ft_printf_parser-ef6369.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+Thu Dec  1 14:37:50 PST 2016	error compiling
+Thu Dec  1 14:38:06 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Dec  1 14:38:06 PST 2016	starting...
+Thu Dec  1 14:38:25 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Dec  1 14:38:25 PST 2016	starting...
+Thu Dec  1 14:38:25 PST 2016	a.out does not exist
+Thu Dec  1 14:38:25 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c ft_printf/ft_strnncpy.c ft_printf/ft_memnncpy.c -o a.out
+Thu Dec  1 14:38:25 PST 2016	a.out successfully compiled
+Thu Dec  1 14:38:25 PST 2016	running a.out with empty preset argument
+
+a: 4
+%
+test
+
+-----------------
+m: 0
+o: 0
+- - - - - - - - - 

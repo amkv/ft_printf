@@ -6,7 +6,7 @@
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 14:51:29 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/11/23 13:05:00 by akalmyko         ###   ########.fr       */
+/*   Updated: 2016/11/30 12:01:42 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,60 +35,14 @@ int			main(void)
 	int 	mr = 0;
 	int 	or = 0;
 
-//	mr = ft_printf("");
-//	printf("\n");
-//	or =    printf("");
-//	ft_p(mr, or);
-//
-//	mr = ft_printf("a");
-//	printf("\n");
-//	or =    printf("a");
-//	ft_p(mr, or);
-//
-//	mr = ft_printf("1");
-//	printf("\n");
-//	or =    printf("2");
-//	ft_p(mr, or);
-//
-//	mr = ft_printf("a1");
-//	printf("\n");
-//	or =    printf("a1");
-//	ft_p(mr, or);
-//
-//	mr = ft_printf("1a");
-//	printf("\n");
-//	or =    printf("1a");
-//	ft_p(mr, or);
-//
-//	mr = ft_printf(" ");
-//	printf("\n");
-//	or =    printf(" ");
-//	ft_p(mr, or);
-//
-//	mr = ft_printf("\tt");
-//	printf("\n");
-//	or =    printf("\tt");
-//	ft_p(mr, or);
-//
-//	mr = ft_printf("number%d", 5);
-//	printf("\n");
-//	or =    printf("number%d", 5);
-//	ft_p(mr, or);
-//
-//	mr = ft_printf("number/%d", 6);
-//	printf("\n");
-//	or =    printf("number/%d", 6);
-//	ft_p(mr, or);
-
-	mr = ft_printf("number\%%d", 7);
-//	printf("\n");
-//	or =    printf("number\%%d", 7);
-//	ft_p(mr, or);
-
-	mr = ft_printf("teststring%d%shello%s", 1, "second", "third");
-	printf("\n");
-	or =    printf("teststring%d%shello%s", 1, "second", "third");
+//	mr = ft_printf("test%d%shello%s", 1, "second", "third");
+	mr = ft_printf("this%is%the%test");
+	printf("\n-----------------");
+//	or =    printf("test%d%shello%s", 1, "second", "third");
+//	or = printf("%");
 	ft_p(mr, or);
+
+
 
 	return (0);
 }
