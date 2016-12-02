@@ -18,18 +18,18 @@ int 				ft_printf(const char * restrict format, ...)
 {
 //	va_list ap;
 	int counter;
-	int	argument;
+	int	arguments;
 	t_com *list;
 //	t_list *arg;
 //	char *str;
 
 	counter = 0;
-	argument = 0;
+	arguments = 0;
 	list = NULL;
 	if (*format == '\0')
 		return (counter);
-	argument = ft_parser(format, &list);
-	printf("a: %d\n", argument);
+	arguments = ft_parser(format, &list);
+	printf("a: %d\n", arguments);
 //	va_start(ap, format);
 //	while ((arg = ft_get_arg(&list)) != NULL) {
 //		str = arg->data;
@@ -40,7 +40,7 @@ int 				ft_printf(const char * restrict format, ...)
 //			counter += ft_processing(str, va_arg(ap, void *));
 //	}
 //	va_end(ap);
-	ft_tcom_revert(list);
 	ft_tcom_print(list);
+	ft_tcom_free(list);
 	return (counter);
 }

@@ -13,6 +13,7 @@ CFILES+=" libftprintf.a"
 CFILES+=" ft_printf.c"
 CFILES+=" ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c"
 CFILES+=" ft_printf/ft_printf_lists.c ft_printf/ft_strnncpy.c ft_printf/ft_memnncpy.c"
+CFILES+=" ft_strnew.c ft_bzero.c"
 # Preset argument
 # ARG=file.txt or ARG="this is my test string"
 ARG=

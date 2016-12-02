@@ -37,7 +37,7 @@ t_com			*ft_tcom_new(char type, char *command);
 void			ft_tcom_add(t_com **beg, t_com *next);
 void			ft_tcom_free(t_com *list);
 void			ft_tcom_print(t_com *list); // fot tests only
-t_com			*ft_tcom_revert(t_com *list);
+void			*ft_tcom_revert(t_com **list);
 
 char			*ft_strnncpy(char *dst, const char *src, size_t start, size_t len);
 void			*ft_memnncpy(void *dst, const void *src, size_t start, size_t n);

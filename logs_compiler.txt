@@ -960,3 +960,105 @@ test
 m: 0
 o: 0
 - - - - - - - - - 
+Thu Dec  1 15:03:16 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Dec  1 15:03:16 PST 2016	starting...
+Thu Dec  1 15:03:16 PST 2016	a.out executable deleted
+Thu Dec  1 15:03:16 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c ft_printf/ft_strnncpy.c ft_printf/ft_memnncpy.c -o a.out
+Thu Dec  1 15:03:16 PST 2016	a.out successfully compiled
+Thu Dec  1 15:03:16 PST 2016	running a.out with empty preset argument
+
+a: 4
+.
+odin
+%
+dva
+%
+tri
+%
+chetire
+Thu Dec  1 15:59:51 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Dec  1 15:59:51 PST 2016	starting...
+Thu Dec  1 15:59:51 PST 2016	a.out executable deleted
+Thu Dec  1 15:59:51 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c ft_printf/ft_strnncpy.c ft_printf/ft_memnncpy.c -o a.out
+Thu Dec  1 15:59:51 PST 2016	a.out successfully compiled
+Thu Dec  1 15:59:51 PST 2016	running a.out with empty preset argument
+
+a: 4
+.
+odin
+%
+dva
+%
+tri
+%
+chetire
+
+-----------------
+m: 0
+o: 0
+- - - - - - - - - 
+Thu Dec  1 16:52:57 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Dec  1 16:52:57 PST 2016	starting...
+Thu Dec  1 16:52:57 PST 2016	a.out executable deleted
+Thu Dec  1 16:52:57 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c ft_printf/ft_strnncpy.c ft_printf/ft_memnncpy.c -o a.out
+Thu Dec  1 16:52:57 PST 2016	a.out successfully compiled
+Thu Dec  1 16:52:57 PST 2016	running a.out with empty preset argument
+
+a: 4
+.
+odin
+%
+dva
+%
+tri
+%
+chetire
+
+-----------------
+m: 0
+o: 0
+- - - - - - - - - 
+Thu Dec  1 17:04:01 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Dec  1 17:04:01 PST 2016	starting...
+Thu Dec  1 17:04:29 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Dec  1 17:04:29 PST 2016	starting...
+Thu Dec  1 17:04:29 PST 2016	a.out executable deleted
+Thu Dec  1 17:04:29 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c ft_printf/ft_strnncpy.c ft_printf/ft_memnncpy.c ft_strnew.c ft_bzero.c -o a.out
+Thu Dec  1 17:04:29 PST 2016	a.out successfully compiled
+Thu Dec  1 17:04:29 PST 2016	running a.out with empty preset argument
+
+a: 4
+.
+odin
+%
+dva
+%
+tri
+%
+chetire
+
+-----------------
+m: 0
+o: 0
+- - - - - - - - - 
+Thu Dec  1 17:08:56 PST 2016	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Thu Dec  1 17:08:56 PST 2016	starting...
+Thu Dec  1 17:08:56 PST 2016	a.out executable deleted
+Thu Dec  1 17:08:56 PST 2016	gcc -Wall -Wextra -Werror -I. -fsanitize=address  temp/main.c libftprintf.a ft_printf.c ft_printf/ft_printf_is.c ft_printf/ft_printf_helpers.c ft_printf/ft_printf_parser.c ft_printf/ft_printf_lists.c ft_printf/ft_strnncpy.c ft_printf/ft_memnncpy.c ft_strnew.c ft_bzero.c -o a.out
+Thu Dec  1 17:08:56 PST 2016	a.out successfully compiled
+Thu Dec  1 17:08:56 PST 2016	running a.out with empty preset argument
+
+a: 4
+.
+odin
+%
+dva
+%
+tri
+%
+chetire
+
+-----------------
+m: 0
+o: 0
+- - - - - - - - - 

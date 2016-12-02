@@ -15,6 +15,8 @@ set(SOURCE_FILES
 		ft_memcpy.c
 		ft_strncpy.c
 		ft_strdup.c
+		ft_strnew.c
+		ft_bzero.c
 
 		ft_printf.c
 		ft_printf/ft_printf_is.c

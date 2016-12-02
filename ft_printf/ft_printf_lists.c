@@ -19,7 +19,8 @@ t_com		*ft_tcom_new(char type, char *command)
 	if (!(new = (t_com*)malloc(sizeof(t_com) * 1)))
 		return (NULL);
 	new->type = type;
-	new->command = ft_strdup(command);
+//	new->command = ft_strdup(command);
+	new->command = command;
 	new->len = -1;
 	new->next = NULL;
 	return (new);
@@ -34,7 +35,7 @@ void		ft_tcom_add(t_com **beg, t_com *next)
 	}
 }
 
-t_com		*ft_tcom_revert(t_com *list)
+void		*ft_tcom_revert(t_com **list)
 {
 	t_com 	*tmp;
 	t_com	*revers;
@@ -42,7 +43,7 @@ t_com		*ft_tcom_revert(t_com *list)
 	int 	yesno;
 
 	yesno = 0;
-	tmp = list;
+	tmp = *list;
 	save = NULL;
 	while (tmp)
 	{
@@ -54,6 +55,7 @@ t_com		*ft_tcom_revert(t_com *list)
 		save = tmp;
 		tmp = revers;
 	}
+	*list = save;
 	return (save);
 }
 
