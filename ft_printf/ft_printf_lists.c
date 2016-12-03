@@ -19,7 +19,6 @@ t_com		*ft_tcom_new(char type, char *command)
 	if (!(new = (t_com*)malloc(sizeof(t_com) * 1)))
 		return (NULL);
 	new->type = type;
-//	new->command = ft_strdup(command);
 	new->command = command;
 	new->len = ft_strlen(command);
 	new->next = NULL;

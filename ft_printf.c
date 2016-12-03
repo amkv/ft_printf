@@ -18,69 +18,81 @@ static size_t 	ft_processing(t_com **com, void *something)
 	char 		*s;
 //	char 		c;
 //	int 		d;
-	t_com		*copy;
-	size_t 		ccounter;
-
-	copy = *com;
-	ccounter = 0;
-	if (copy->type == 's')
+	size_t 		counter;
+	;
+	counter = 0;
+	if (something == NULL)
+		return (0);
+	if ((*com)->type == 's')
 	{
 		s = (char*)something;
 		write(1, &s, ft_strlen(s));
+		counter = (*com)->len;
 	}
-	return (ccounter);
+	return (counter);
 }
 
 static size_t	ft_switcher(t_com **list, void *something)
 {
 	t_com		*copy;
-	size_t 		ccounter;
+	size_t 		characters;
 
 	copy = *list;
-	ccounter = 0;
+	characters = 0;
 	if ((copy->type) != '%')
 	{
-		ft_printf("%s", copy->command);
-		ccounter = copy->len;
+		ft_putstr(copy->command);
+		characters = copy->len;
 	}
 	else
-		ccounter = ft_processing(*&list, something);
-	return (ccounter);
+	{
+		characters = ft_processing(*&list, something);
+		if (characters == 0)
+			return (0);
+	}
+	return (characters);
 }
 
-static size_t	ft_printf_print(va_list **ap, const char *format, t_com **commands)
+static size_t	ft_printf_printf(va_list ap, t_com **commands, size_t argc)
 {
-	size_t 		counter;
+	size_t 		characters;
+	size_t 		arguments;
 
-	counter = 0;
-
-	va_start(*ap, format);
+	characters = 0;
+	arguments = 0;
+	argc = 0; // что-нибудь с этим сделать
 	while (*commands != NULL)
 	{
-		counter = ft_switcher(*&commands, va_arg(*ap, void *));
-		counter += counter;
-		commands = *commands->next;
+		printf("\nloop: %zu\n", arguments);
+		characters = ft_switcher(*&commands, va_arg(ap, void *));
+//		if (characters == 0)
+//			return (characters);
+		characters += characters;
+		*commands = (*commands)->next;
+		arguments++;
 	}
-	va_end(ap);
-
-	return (counter);
+	return (characters);
 }
 
 int 			ft_printf(const char * restrict format, ...)
 {
 	va_list		ap;
 	t_com		*commands;
-	size_t 		arg;
-	size_t		counter;
+	t_com		*copy;
+	size_t 		argc;
+	size_t		characters;
 
-	arg = 0;
 	commands = NULL;
+	characters = 0;
 	if (*format == '\0')
-		return ((int)counter);
-	arg = (int)ft_parser(format, &commands); printf("a: %zu\n", arg);
-	counter = ft_printf_print(&ap, format, &commands);
+		return (0);
+	va_start(ap, format);
+	ft_parser(format, &commands, &argc);
+	copy = commands;
+//	printf("a: %zu\n", argc);
 //	ft_tcom_print(commands);
-	ft_tcom_free(commands);
-	return ((int)counter);
+	characters = ft_printf_printf(ap, &commands, argc);
+	ft_tcom_free(copy);
+	va_end(ap);
+	return ((int)characters);
 }
-

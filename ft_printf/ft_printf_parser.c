@@ -26,7 +26,7 @@ static void	ft_tcom_list(t_com **list, size_t counter, char *holder)
 		ft_tcom_add(*&list, ft_tcom_new(sign, holder));
 }
 
-static void	ft_checker(char **str, size_t *yn, size_t *len, size_t *beg)
+static void	ft_checker(char **str, size_t *beg, size_t *yn, size_t *len)
 {
 	*yn = 0;
 	*len = 0;
@@ -47,25 +47,26 @@ static void	ft_checker(char **str, size_t *yn, size_t *len, size_t *beg)
 		(*beg)++;
 }
 
-size_t		ft_parser(const char *format, t_com **list)
+void		ft_parser(const char *format, t_com **list, size_t *argc)
 {
-	size_t	tab[4];
 	char	*copy;
 	char	*holder;
+	size_t	beg;
+	size_t	yn;
+	size_t	len;
 
-	tab[0] = 0;
-	tab[1] = 0;
+	*argc = 0;
+	beg = 0;
 	copy = (char*)format;
 	while (*copy != '\0')
 	{
-		ft_checker(&copy, &tab[2], &tab[3], &tab[1]);
-		if (*copy == '\0' && tab[3] == 0)
-			return (tab[0]);
-		ft_memnncpy((holder = ft_strnew(tab[3] + 1)), format, tab[1], tab[3]);
-		tab[1] += tab[3];
-		ft_tcom_list(*&list, tab[2], holder);
-		tab[0]++;
+		ft_checker(&copy, &beg, &yn, &len);
+		if (*copy == '\0' && len == 0)
+			return ;
+		ft_memnncpy((holder = ft_strnew(len + 1)), format, beg, len);
+		beg += len;
+		ft_tcom_list(*&list, yn, holder);
+		(*argc)++;
 	}
 	ft_tcom_revert(*&list);
-	return (tab[0]);
 }

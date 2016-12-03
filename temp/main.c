@@ -25,25 +25,26 @@
 
 #include "../libftprintf.h"
 
-static void	ft_p(int mr, int or)
-{
-		printf("\nm: %d\no: %d\n- - - - - - - - - \n", mr, or);
-}
+//static void	ft_p(int mr, int or)
+//{
+//		printf("\nm: %d\no: %d\n- - - - - - - - - \n", mr, or);
+//}
 
 int			main(void)
 {
-	int 	mr = 0;
-	int 	or = 0;
+//	int 	mr = 0;
+//	int 	or = 0;
+	int 	len;
 
 //	mr = ft_printf("test%d%shello%s", 1, "second", "third");
-	mr = ft_printf("%test%BIG");
-	printf("\n-----------------");
+//	mr = ft_printf("test%BIG");
+//	printf("\n-----------------");
 //	or =    printf("test%d%shello%s", 1, "second", "third");
 //	or = printf("%");
-	ft_p(mr, or);
+//	ft_p(mr, or);
 
-
-
+	len = ft_printf("test%BIG");
+	printf("\nlen: %d", len);
 	return (0);
 }
 
