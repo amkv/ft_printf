@@ -36,7 +36,7 @@ int			main(void)
 	int 	or = 0;
 
 //	mr = ft_printf("test%d%shello%s", 1, "second", "third");
-	mr = ft_printf("odin%dva%tri%chetire");
+	mr = ft_printf("%test%BIG");
 	printf("\n-----------------");
 //	or =    printf("test%d%shello%s", 1, "second", "third");
 //	or = printf("%");

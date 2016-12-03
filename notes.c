@@ -338,3 +338,45 @@ int ft_parser(const char *format, t_com **list)
 //}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//int			ft_parser(const char *format, t_com **list)
+//{
+//	int		arg;
+//	size_t	len;
+//	size_t	beg;
+//	size_t	yn;
+//	char	*copy;
+//	char	*holder;
+//
+//
+//	arg = 0;
+//	beg = 0;
+//	copy = (char*)format;
+//	while (*copy != '\0')
+//	{
+//		holder = NULL;
+//		ft_checker(&copy, &yn, &len, &beg);
+//		if (*copy == '\0' && len == 0)
+//			return (arg);
+//		ft_memnncpy((holder = ft_strnew(len + 1)), format, beg, len);
+//		beg += len;
+//		ft_tcom_list(*&list, yn, holder);
+//		arg++;
+//	}
+//	ft_tcom_revert(*&list);
+//	return (arg);
+//}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+		str = arg->data;
+		if (ft_check_command(*str) == 0) {
+			counter = counter + (int) ft_strlen(str);
+			ft_putstr(str);
+		} else
+			counter += ft_processing(str, va_arg(ap, void *));
+*/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+

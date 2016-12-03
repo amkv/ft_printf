@@ -21,7 +21,7 @@ typedef struct	s_com
 {
 	char			type;
 	char			*command;
-	int 			len;
+	size_t			len;
 	struct s_com	*next;
 }				t_com;
 
@@ -32,7 +32,7 @@ int				ft_is_width(char c);
 int				ft_is_precision(char c);
 int				ft_is_length(char c);
 int				ft_is_type(char c);
-int				ft_parser(const char *format, t_com **list);
+size_t			ft_parser(const char *format, t_com **list);
 t_com			*ft_tcom_new(char type, char *command);
 void			ft_tcom_add(t_com **beg, t_com *next);
 void			ft_tcom_free(t_com *list);

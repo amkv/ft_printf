@@ -21,7 +21,7 @@ t_com		*ft_tcom_new(char type, char *command)
 	new->type = type;
 //	new->command = ft_strdup(command);
 	new->command = command;
-	new->len = -1;
+	new->len = ft_strlen(command);
 	new->next = NULL;
 	return (new);
 }

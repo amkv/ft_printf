@@ -13,34 +13,74 @@
 #include "libftprintf.h"
 
 
-
-int 				ft_printf(const char * restrict format, ...)
+static size_t 	ft_processing(t_com **com, void *something)
 {
-//	va_list ap;
-	int counter;
-	int	arguments;
-	t_com *list;
-//	t_list *arg;
-//	char *str;
+	char 		*s;
+//	char 		c;
+//	int 		d;
+	t_com		*copy;
+	size_t 		ccounter;
+
+	copy = *com;
+	ccounter = 0;
+	if (copy->type == 's')
+	{
+		s = (char*)something;
+		write(1, &s, ft_strlen(s));
+	}
+	return (ccounter);
+}
+
+static size_t	ft_switcher(t_com **list, void *something)
+{
+	t_com		*copy;
+	size_t 		ccounter;
+
+	copy = *list;
+	ccounter = 0;
+	if ((copy->type) != '%')
+	{
+		ft_printf("%s", copy->command);
+		ccounter = copy->len;
+	}
+	else
+		ccounter = ft_processing(*&list, something);
+	return (ccounter);
+}
+
+static size_t	ft_printf_print(va_list **ap, const char *format, t_com **commands)
+{
+	size_t 		counter;
 
 	counter = 0;
-	arguments = 0;
-	list = NULL;
-	if (*format == '\0')
-		return (counter);
-	arguments = ft_parser(format, &list);
-	printf("a: %d\n", arguments);
-//	va_start(ap, format);
-//	while ((arg = ft_get_arg(&list)) != NULL) {
-//		str = arg->data;
-//		if (ft_check_command(*str) == 0) {
-//			counter = counter + (int) ft_strlen(str);
-//			ft_putstr(str);
-//		} else
-//			counter += ft_processing(str, va_arg(ap, void *));
-//	}
-//	va_end(ap);
-	ft_tcom_print(list);
-	ft_tcom_free(list);
+
+	va_start(*ap, format);
+	while (*commands != NULL)
+	{
+		counter = ft_switcher(*&commands, va_arg(*ap, void *));
+		counter += counter;
+		commands = *commands->next;
+	}
+	va_end(ap);
+
 	return (counter);
 }
+
+int 			ft_printf(const char * restrict format, ...)
+{
+	va_list		ap;
+	t_com		*commands;
+	size_t 		arg;
+	size_t		counter;
+
+	arg = 0;
+	commands = NULL;
+	if (*format == '\0')
+		return ((int)counter);
+	arg = (int)ft_parser(format, &commands); printf("a: %zu\n", arg);
+	counter = ft_printf_print(&ap, format, &commands);
+//	ft_tcom_print(commands);
+	ft_tcom_free(commands);
+	return ((int)counter);
+}
+
