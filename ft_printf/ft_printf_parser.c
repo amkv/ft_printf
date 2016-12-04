@@ -12,6 +12,30 @@
 
 #include "../libftprintf.h"
 
+
+//static void	ft_resizer()
+//{
+//	if (len == 1)
+//		комманда = первой букве
+//	if (len == 2)
+//		проверить обе буквы по правилу
+//	if (len == 3)
+//		проверить три буквы
+//}
+
+//static int ft_proverka(char c)
+//{
+//	char *str;
+//
+//	str = "diufFeEgGxXoscpaAn";
+//	while (*str)
+//	{
+//		if (*str == c)
+//			return (1);
+//	}
+//	return (0);
+//}
+
 static void	ft_tcom_list(t_com **list, size_t counter, char *holder)
 {
 	char	sign;
@@ -47,7 +71,7 @@ static void	ft_checker(char **str, size_t *beg, size_t *yn, size_t *len)
 		(*beg)++;
 }
 
-void		ft_parser(const char *format, t_com **list, size_t *argc)
+void		ft_parser(const char *format, t_com **com, size_t *argc)
 {
 	char	*copy;
 	char	*holder;
@@ -56,6 +80,7 @@ void		ft_parser(const char *format, t_com **list, size_t *argc)
 	size_t	len;
 
 	*argc = 0;
+	*com = NULL;
 	beg = 0;
 	copy = (char*)format;
 	while (*copy != '\0')
@@ -65,8 +90,7 @@ void		ft_parser(const char *format, t_com **list, size_t *argc)
 			return ;
 		ft_memnncpy((holder = ft_strnew(len + 1)), format, beg, len);
 		beg += len;
-		ft_tcom_list(*&list, yn, holder);
+		ft_tcom_list(*&com, yn, holder);
 		(*argc)++;
 	}
-	ft_tcom_revert(*&list);
 }

@@ -17,6 +17,9 @@ set(SOURCE_FILES
 		ft_strdup.c
 		ft_strnew.c
 		ft_bzero.c
+		ft_toupper.c
+		ft_itoa.c
+		ft_strjoin.c
 
 		ft_printf.c
 		ft_printf/ft_printf_is.c
@@ -25,6 +28,8 @@ set(SOURCE_FILES
 		ft_printf/ft_printf_lists.c
 		ft_printf/ft_strnncpy.c
 		ft_printf/ft_memnncpy.c
+		ft_printf/ft_printf_switch.c
+		ft_printf/ft_printf_do.c
 
 #		ft_atoi_base.c
 		)

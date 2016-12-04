@@ -6,7 +6,7 @@
 #    By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/22 14:50:24 by akalmyko          #+#    #+#              #
-#    Updated: 2016/11/25 19:56:04 by akalmyko         ###   ########.fr        #
+#    Updated: 2016/12/03 21:08:22 by akalmyko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,15 +31,22 @@ CFILES += ft_strmap.c  ft_strmapi.c  ft_strncat.c  ft_strncmp.c  ft_strncpy.c
 CFILES += ft_strnequ.c  ft_strnew.c  ft_strnstr.c  ft_strrchr.c  ft_strsplit.c
 CFILES += ft_strstr.c  ft_strsub.c  ft_strtrim.c  ft_tolower.c  ft_toupper.c
 CFILES += ft_get_next_line.c
-
 CFILES += ft_printf.c
+
+FTCFILES += ft_printf/ft_memnncpy.c ft_printf/ft_printf_helpers.c 
+FTCFILES += ft_printf/ft_printf_is.c ft_printf/ft_printf_lists.c 
+FTCFILES += ft_printf/ft_printf_parser.c ft_printf/ft_strnncpy.c
+FTCFILES += ftprintf/ft_printf_switch.c ft_printf/ft_printf_do.c
+
 OFILES = $(CFILES:.c=.o)
+OFILES += ft_memnncpy.o ft_printf_helpers.o ft_printf_is.o ft_printf_lists.o
+OFILES += ft_printf_parser.o ft_strnncpy.o ft_printf_switch.o ft_printf_do.o
 
 all: $(NAME)
 
 $(NAME):
 	@echo compiling...
-	@$(CC) $(FLAGS) $(CFILES) 
+	@$(CC) $(FLAGS) $(CFILES) $(FTCFILES)
 	@ar rc $(NAME) $(OFILES)
 	@ranlib $(NAME)
 	@echo $(NAME) created

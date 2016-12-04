@@ -43,7 +43,8 @@ int			main(void)
 //	or = printf("%");
 //	ft_p(mr, or);
 
-	len = ft_printf("test%BIG");
+//	len = ft_printf("test%d%c", 10, '#');
+	len = ft_printf("%s%s%d%c", "test", "desk", 10, '!');
 	printf("\nlen: %d", len);
 	return (0);
 }

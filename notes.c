@@ -380,3 +380,26 @@ int ft_parser(const char *format, t_com **list)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//static size_t	ft_switcher(t_com **list, void *something)
+//{
+//	t_com		*copy;
+//	size_t 		characters;
+//
+//	copy = *list;
+//	characters = 0;
+//	if ((copy->type) != '%')
+//	{
+//		ft_putstr(copy->command);
+//		characters = copy->len;
+//	}
+//	else
+//	{
+//		characters = ft_handler(*&list, something);
+//		if (characters == 0)
+//			return (0);
+//	}
+//	return (characters);
+//}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+

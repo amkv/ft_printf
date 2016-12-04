@@ -18,9 +18,19 @@ t_com		*ft_tcom_new(char type, char *command)
 
 	if (!(new = (t_com*)malloc(sizeof(t_com) * 1)))
 		return (NULL);
+	if (type == '%')
+	{
+		new->command = command;
+		new->scroll = NULL;
+		new->len = 0;
+	}
+	else
+	{
+		new->command = NULL;
+		new->scroll = command;
+		new->len = ft_strlen(command);
+	}
 	new->type = type;
-	new->command = command;
-	new->len = ft_strlen(command);
 	new->next = NULL;
 	return (new);
 }
@@ -34,7 +44,7 @@ void		ft_tcom_add(t_com **beg, t_com *next)
 	}
 }
 
-void		*ft_tcom_revert(t_com **list)
+t_com		*ft_tcom_revert(t_com **list)
 {
 	t_com 	*tmp;
 	t_com	*revers;
@@ -68,6 +78,7 @@ void		ft_tcom_free(t_com *list)
 	{
 		next = tmp->next;
 		free(tmp->command);
+		free(tmp->scroll);
 		free(tmp);
 		tmp = next;
 	}
@@ -82,6 +93,7 @@ void		ft_tcom_print(t_com *list)
 	{
 		printf("%c\n", tmp->type);
 		printf("%s\n", tmp->command);
+		printf("%s\n", tmp->scroll);
 		tmp = tmp->next;
 	}
 }
