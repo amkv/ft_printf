@@ -12,6 +12,64 @@
 
 #include "../libftprintf.h"
 
+/*
+static void	ft_switch3(char c, union u_type *type, va_list ap, t_com **com)
+{
+	if (c == 's')
+		ft_resize_string(type->s = va_arg(ap, char*), *&com);
+	if (c == 'S')
+		ft_test(type->s = va_arg(ap, char*), *&com);
+	if (c == 'c')
+		ft_char_bla((type)->c = va_arg(ap, int), *&com);
+	if (c == 'd')
+		ft_int_bla((type)->d = va_arg(ap, int), *&com);
+	if (c == 'i')
+		ft_int_bla((type)->d = va_arg(ap, int), *&com);
+	if (c == 'u')
+		ft_int_bla((type)->d = va_arg(ap, int), *&com);
+	if (c == 's')
+		ft_resize_string(type->s = va_arg(ap, char*), *&com);
+	if (c == 'S')
+		ft_test(type->s = va_arg(ap, char*), *&com);
+	if (c == 'c')
+		ft_char_bla((type)->c = va_arg(ap, int), *&com);
+	if (c == 'd')
+		ft_int_bla((type)->d = va_arg(ap, int), *&com);
+	if (c == 'i')
+		ft_int_bla((type)->d = va_arg(ap, int), *&com);
+	if (c == 'i')
+		ft_int_bla((type)->d = va_arg(ap, int), *&com);
+}
+
+static void	ft_switch2(char c, union u_type *type, va_list ap, t_com **com)
+{
+	if (c == 's')
+		ft_resize_string(type->s = va_arg(ap, char*), *&com);
+	if (c == 'S')
+		ft_test(type->s = va_arg(ap, char*), *&com);
+	if (c == 'c')
+		ft_char_bla((type)->c = va_arg(ap, int), *&com);
+	if (c == 'd')
+		ft_int_bla((type)->d = va_arg(ap, int), *&com);
+	if (c == 'i')
+		ft_int_bla((type)->d = va_arg(ap, int), *&com);
+	if (c == 'u')
+		ft_int_bla((type)->d = va_arg(ap, int), *&com);
+	if (c == 's')
+		ft_resize_string(type->s = va_arg(ap, char*), *&com);
+	if (c == 'S')
+		ft_test(type->s = va_arg(ap, char*), *&com);
+	if (c == 'c')
+		ft_char_bla((type)->c = va_arg(ap, int), *&com);
+	if (c == 'd')
+		ft_int_bla((type)->d = va_arg(ap, int), *&com);
+	if (c == 'i')
+		ft_int_bla((type)->d = va_arg(ap, int), *&com);
+	else
+		ft_switch3(c, *&type, ap, *&com);
+}
+*/
+
 void		ft_switch(char c, union u_type *type, va_list ap, t_com **com)
 {
 	if (c == 's')
@@ -22,4 +80,10 @@ void		ft_switch(char c, union u_type *type, va_list ap, t_com **com)
 		ft_char_bla((type)->c = va_arg(ap, int), *&com);
 	if (c == 'd')
 		ft_int_bla((type)->d = va_arg(ap, int), *&com);
+	if (c == 'i')
+		ft_int_bla((type)->d = va_arg(ap, int), *&com);
+	if (c == 'u')
+		ft_int_bla((type)->d = va_arg(ap, int), *&com);
+//	if (c == 'p')
+//		ft_print_pointer((type)->p = va_arg(ap, void *), *&com);
 }

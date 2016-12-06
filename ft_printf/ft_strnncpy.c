@@ -14,7 +14,7 @@
 
 char		*ft_strnncpy(char *dst, const char *src, size_t start, size_t len)
 {
-	size_t 	i;
+	size_t	i;
 
 	i = 0;
 	while (i < start && *src != '\0')

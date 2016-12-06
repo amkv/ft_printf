@@ -22,15 +22,18 @@ t_com		*ft_tcom_new(char type, char *command)
 	{
 		new->command = command;
 		new->scroll = NULL;
+		new->size = 0;
 		new->len = 0;
 	}
 	else
 	{
 		new->command = NULL;
 		new->scroll = command;
+		new->size = sizeof(command);
 		new->len = ft_strlen(command);
 	}
 	new->type = type;
+	new->size = 0;
 	new->next = NULL;
 	return (new);
 }
@@ -46,10 +49,10 @@ void		ft_tcom_add(t_com **beg, t_com *next)
 
 t_com		*ft_tcom_revert(t_com **list)
 {
-	t_com 	*tmp;
+	t_com	*tmp;
 	t_com	*revers;
 	t_com	*save;
-	int 	yesno;
+	int		yesno;
 
 	yesno = 0;
 	tmp = *list;
@@ -77,8 +80,13 @@ void		ft_tcom_free(t_com *list)
 	while (tmp)
 	{
 		next = tmp->next;
-		free(tmp->command);
-		free(tmp->scroll);
+		if (tmp->type == '%')
+		{
+			free(tmp->command);
+			free(tmp->scroll);
+		}
+		else
+			free(tmp->scroll);
 		free(tmp);
 		tmp = next;
 	}

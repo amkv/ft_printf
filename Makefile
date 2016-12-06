@@ -6,7 +6,7 @@
 #    By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/22 14:50:24 by akalmyko          #+#    #+#              #
-#    Updated: 2016/12/03 21:08:22 by akalmyko         ###   ########.fr        #
+#    Updated: 2016/12/03 23:10:27 by akalmyko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ NAME = libftprintf.a
 CC = gcc
 FLAGS = -Wall -Wextra -Werror -c
 RM = /bin/rm -rfv
+LIB = libft/
+
 CFILES = ft_atoi.c  ft_bzero.c  ft_isalnum.c  ft_isalpha.c  ft_isascii.c
 CFILES += ft_isdigit.c  ft_isprint.c  ft_isspace.c  ft_itoa.c  ft_lstadd.c
 CFILES += ft_lstdel.c  ft_lstdelone.c  ft_lstiter.c  ft_lstmap.c  ft_lstnew.c
@@ -36,7 +38,7 @@ CFILES += ft_printf.c
 FTCFILES += ft_printf/ft_memnncpy.c ft_printf/ft_printf_helpers.c 
 FTCFILES += ft_printf/ft_printf_is.c ft_printf/ft_printf_lists.c 
 FTCFILES += ft_printf/ft_printf_parser.c ft_printf/ft_strnncpy.c
-FTCFILES += ftprintf/ft_printf_switch.c ft_printf/ft_printf_do.c
+FTCFILES += ft_printf/ft_printf_switch.c ft_printf/ft_printf_do.c
 
 OFILES = $(CFILES:.c=.o)
 OFILES += ft_memnncpy.o ft_printf_helpers.o ft_printf_is.o ft_printf_lists.o

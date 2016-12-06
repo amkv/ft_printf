@@ -12,9 +12,9 @@
 
 #include "../libftprintf.h"
 
-int 		ft_numlen(int num)
+int			ft_numlen(int num)
 {
-	int 	len;
+	int		len;
 
 	len = 0;
 	if (num < 0)

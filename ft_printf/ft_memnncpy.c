@@ -14,7 +14,7 @@
 
 void		*ft_memnncpy(void *dst, const void *src, size_t start, size_t n)
 {
-	size_t 	i;
+	size_t	i;
 
 	i = 0;
 	while (i < start && *(unsigned char*)src != '\0')

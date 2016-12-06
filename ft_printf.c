@@ -12,10 +12,10 @@
 
 #include "libftprintf.h"
 
-static size_t 	ft_handler(t_com **com, va_list ap)
+static size_t	ft_handler(t_com **com, va_list ap)
 {
 	char			*command;
-	char 			z;
+	char			z;
 	union u_type	type;
 
 	command = (*com)->command;
@@ -25,12 +25,12 @@ static size_t 	ft_handler(t_com **com, va_list ap)
 	return ((*com)->len);
 }
 
-int 			ft_printf(const char * restrict format, ...)
+int				ft_printf(const char *restrict format, ...)
 {
 	va_list		ap;
 	t_com		*com;
 	t_com		*dupl;
-	size_t 		argc;
+	size_t		argc;
 	size_t		characters;
 
 	if (*format == '\0')
@@ -45,7 +45,7 @@ int 			ft_printf(const char * restrict format, ...)
 	{
 		if (com->type == '%')
 			ft_handler(&com, ap);
-		ft_putstr(com->command);
+		ft_putstr(com->scroll);
 		characters += com->len;
 		com = com->next;
 	}

@@ -15,18 +15,32 @@
 
 # include "libft.h"
 # include <stdarg.h>
-# include <stdio.h> // delete
+# include <stdio.h>
+# define PLEN 10
+
+/*
+** # include <stdio.h> // delete
+** void			ft_tcom_print(t_com *list); // fot tests only
+*/
 
 typedef struct	s_com
 {
 	char			type;
+	char			param[PLEN];
+	char			flag[PLEN];
+	char			width[PLEN];
+	char			precision[PLEN];
+	char			length[PLEN];
+
 	char			*command;
-	char 			*scroll;
+	char			*scroll;
+	void			*ptr;
+	size_t			size;
 	size_t			len;
 	struct s_com	*next;
 }				t_com;
 
-union				u_type
+union			u_type
 {
 	char			c;
 	unsigned char	ac;
@@ -41,6 +55,7 @@ union				u_type
 	double			db;
 	long double		ldb;
 	char			*s;
+	void			*p;
 	size_t			zu;
 };
 
@@ -55,9 +70,10 @@ void			ft_parser(const char *format, t_com **list, size_t *argc);
 t_com			*ft_tcom_new(char type, char *command);
 void			ft_tcom_add(t_com **beg, t_com *next);
 void			ft_tcom_free(t_com *list);
-void			ft_tcom_print(t_com *list); // fot tests only
+void			ft_tcom_print(t_com *list);
 t_com			*ft_tcom_revert(t_com **list);
 void			ft_switch(char c, union u_type *type, va_list ap, t_com **com);
+//void			ft_print_pointer(void *ptr, t_com **com);
 
 char			*ft_strnncpy(char *dst, const char *src, size_t beg, size_t n);
 void			*ft_memnncpy(void *dst, const void *src, size_t beg, size_t n);
@@ -65,12 +81,13 @@ void			*ft_memnncpy(void *dst, const void *src, size_t beg, size_t n);
 /*
 ** DOs
 */
-void 			ft_test(char *str, t_com **com);
+void			ft_test(char *str, t_com **com);
 void			ft_resize_string(char *str, t_com **com);
 void			ft_char_bla(char c, t_com **com);
 void			ft_int_bla(int d, t_com **com);
 
-
-//int		ft_atoi_base(char *str, char *base);
+/*
+** int		ft_atoi_base(char *str, char *base);
+*/
 
 #endif
