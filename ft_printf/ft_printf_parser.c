@@ -12,36 +12,11 @@
 
 #include "../libftprintf.h"
 
-/*
-**		static void	ft_resizer()
-**		{
-**			if (len == 1)
-**				комманда = первой букве
-**			if (len == 2)
-**				проверить обе буквы по правилу
-**			if (len == 3)
-**				проверить три буквы
-**		}
-**
-**		static int ft_proverka(char c)
-**		{
-**			char *str;
-**
-**			str = "diufFeEgGxXoscpaAn";
-**			while (*str)
-**			{
-**				if (*str == c)
-**					return (1);
-**			}
-**			return (0);
-**		}
-*/
-
-static void	ft_tcom_list(t_com **list, size_t counter, char *holder)
+static void	ft_tcom_list(t_com **list, size_t yn, char *holder)
 {
 	char	sign;
 
-	if (counter > 0)
+	if (yn > 0)
 		sign = '%';
 	else
 		sign = '.';
@@ -72,27 +47,62 @@ static void	ft_get_arg(char **str, size_t *beg, size_t *yn, size_t *len)
 		(*beg)++;
 }
 
-static void	ft_second_check(char **holder, size_t yn)
+//static void	ft_get_arg(char **str, size_t *beg, size_t *yn, size_t *len)
+//{
+//	char 	*copy;
+//
+//
+//	*yn = 0;
+//	*len = 0;
+//	if (**str == '%')
+//	{
+//		(*yn)++;
+//		(*str)++;
+//	}
+//	copy = *str;
+//	if (**str == '%')
+//		(*len) = 1;
+//	else
+//		while (*copy != '\0')
+//		{
+//			if (*copy == '%'  && *(copy + 1) == '%')
+//				copy++;
+//			if (*copy == '%'  && *(copy + 1) != '%' && *(copy + 1) != '\0')
+//				break;
+//			(*len)++;
+//			copy++;
+//		}
+//	if (*yn > 0)
+//		(*beg)++;
+//	*str = copy;
+//}
+
+static void	ft_second_check(t_com **com, char **holder, size_t *yn)
 {
 	char	*copy;
-	size_t	len;
+	char 	*new;
+	char 	*hold;
+	int 	number;
 
-	if (yn == 0)
+	if (*yn == 0)
 		return ;
 	copy = *holder;
-	len = ft_strlen(copy);
-	if (len == 1)
+	if (*copy == '%')
+		*yn = 0;
+	if (ft_strlen(copy) == 1)
 		return ;
-	if (len == 2)
-		printf("s:%zu", len);
+	number = ft_atoi(copy);
+	printf("%d", number);
+	if (ft_is_type(*copy) == 1)
+	{
+		ft_memcpy((hold = ft_strnew(2)), copy, 1);
+		ft_tcom_list(*&com, *yn, hold);
+	}
+	new = ft_strdup(++copy);
+	free(*holder);
+	*holder = new;
+	*yn = 0;
 }
-
-/*
-**	while (*copy)
-**	{
-**		copy++;
-**	}
-*/
 
 void		ft_parser(const char *format, t_com **com, size_t *argc)
 {
@@ -113,7 +123,7 @@ void		ft_parser(const char *format, t_com **com, size_t *argc)
 			return ;
 		ft_memnncpy((holder = ft_strnew(len + 1)), format, beg, len);
 		beg += len;
-		ft_second_check(&holder, yn);
+		ft_second_check(*&com, &holder, &yn);
 		ft_tcom_list(*&com, yn, holder);
 		(*argc)++;
 	}

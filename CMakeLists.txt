@@ -20,6 +20,8 @@ set(SOURCE_FILES
 		ft_toupper.c
 		ft_itoa.c
 		ft_strjoin.c
+		ft_atoi.c
+		ft_isspace.c
 
 		ft_printf.c
 		ft_printf/ft_printf_is.c

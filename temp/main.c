@@ -29,10 +29,15 @@ int				main(void)
 {
 	int			mr;
 	int			or;
+	char 		*str;
 
-	mr = ft_printf("billy%s%d%c", "henry", 2, '!');
+	str = "test";
+
+	mr = 0;
+	or = 0;
+	mr = ft_printf("%p", str);
 	printf("\n");
-	or = printf("billy%s%d%c", "henry", 2, '!');
+	or = printf("%p", str);
 	ft_p(mr, or);
 	return (0);
 }

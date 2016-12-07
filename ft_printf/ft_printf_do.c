@@ -12,16 +12,20 @@
 
 #include "../libftprintf.h"
 
-//void		ft_print_pointer(void *ptr, t_com **com)
-//{
-//	char 	*str;
-//
-//	str = ft_strdup(&ptr);
-//
-//	(*com)->scroll = str;
-//}
+void		ft_do_p(void *ptr, t_com **com)
+{
+	char 	*str;
+	size_t 	pointer;
+	size_t 	len;
 
-void		ft_test(char *str, t_com **com)
+	pointer = (size_t)&ptr;
+	len = (size_t)ft_numlen(pointer);
+	str = (ft_strnew(len));
+	str = ft_itoa((int)pointer);
+	(*com)->scroll = str;
+}
+
+void		ft_do_S(char *str, t_com **com)
 {
 	char	*temp;
 	char	*result;
@@ -43,13 +47,7 @@ void		ft_test(char *str, t_com **com)
 	(*com)->len = ft_strlen(result);
 }
 
-void		ft_resize_string(char *str, t_com **com)
-{
-	(*com)->scroll = ft_strdup(str);
-	(*com)->len = ft_strlen(str);
-}
-
-void		ft_char_bla(char c, t_com **com)
+void		ft_do_c(char c, t_com **com)
 {
 	(*com)->scroll = ft_strnew(2);
 	*(*com)->scroll = c;
@@ -57,8 +55,14 @@ void		ft_char_bla(char c, t_com **com)
 	(*com)->len = 1;
 }
 
-void		ft_int_bla(int d, t_com **com)
+void		ft_do_d(int d, t_com **com)
 {
 	(*com)->scroll = ft_itoa(d);
 	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void		ft_resize_string(char *str, t_com **com)
+{
+	(*com)->scroll = ft_strdup(str);
+	(*com)->len = ft_strlen(str);
 }
