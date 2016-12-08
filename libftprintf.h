@@ -62,13 +62,13 @@ union			u_type
 
 int				ft_printf(const char *restrict format, ...);
 
-char 			*ft_is_parameter(char **holder);
+char 			*ft_pat_parameter(char **holder);
 int				ft_is_flag(char c);
-char			*ft_is_width(char **holder);
+char			*ft_pat_width(char **holder);
 int				ft_is_precision(char c);
 int				ft_is_length(char c);
 int				ft_is_modifier(char c);
-char 			*ft_is_string(char **holder);
+char 			*ft_pat_string(char **holder);
 
 void			ft_parser(const char *format, t_com **list, size_t *argc);
 t_com			*ft_tcom_new(char type, char *command);
@@ -86,6 +86,7 @@ char			*ft_strnncpy(char *dst, const char *src, size_t beg, size_t n);
 void			*ft_memnncpy(void *dst, const void *src, size_t beg, size_t n);
 long int		ft_numlen(long int num);
 char			*ft_itoa_base(long int value, long int base);
+char 			*ft_strdel_begn(char *str, size_t n);
 
 /*
 ** DOs
@@ -104,5 +105,8 @@ void			ft_do_p(void *ptr, t_com **com);
 */
 
 void	ft_second_check(t_com **com, char **holder, size_t *yn);
+
+
+void		ft_nothing(void);
 
 #endif

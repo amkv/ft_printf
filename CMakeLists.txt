@@ -6,7 +6,6 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -fsanitize=address -Wall -Werror -Wextra"
 #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -fsanitize=address")
 
 set(SOURCE_FILES
-		temp/main.c
 		ft_putstr.c
 		ft_putchar.c
 		ft_putnbr.c
@@ -23,6 +22,7 @@ set(SOURCE_FILES
 		ft_atoi.c
 		ft_isspace.c
 
+		temp/main.c
 		ft_printf.c
 		ft_printf/ft_printf_is.c
 		ft_printf/ft_printf_helpers.c
@@ -33,7 +33,8 @@ set(SOURCE_FILES
 		ft_printf/ft_printf_switch.c
 		ft_printf/ft_printf_do.c
 		ft_printf/ft_itoa_base.c
-
-#		ft_atoi_base.c
+		ft_printf/ft_numlen.c
+		ft_printf/ft_strdel_begn.c
+		ft_printf/ft_printf_patterns.c
 		)
 add_executable(ft_printf ${SOURCE_FILES})

@@ -12,24 +12,6 @@
 
 #include "../libftprintf.h"
 
-char 	*ft_is_parameter(char **holder)
-{
-	char	*copy;
-	int 	len;
-
-	copy = *holder;
-	len = 0;
-	while (ft_isdigit(*copy) == 1)
-	{
-		copy++;
-		len++;
-	}
-	if (len > 0 && *copy == '$')
-		return (NULL);
-	return (NULL);
-}
-
-
 int		ft_is_flag(char c)
 {
 	if (c == '-' || c == '+' || c == ' ' || c == 'o' || c == '#')
@@ -37,23 +19,11 @@ int		ft_is_flag(char c)
 	return (0);
 }
 
-char		*ft_is_width(char **holder)
+int 	ft_is_width(char c)
 {
-	char 	*copy;
-
-	copy = *holder;
-
-	if (**holder == '*')
-		return (NULL);
-
-//	if (c == '*' || ft_isdigit(c) == 1)
-//		return (1);
-	return (NULL);
-}
-
-char 		*ft_is_string(char **holder)
-{
-	return (*holder);
+	if (c == '*')
+		return (1);
+	return (0);
 }
 
 int		ft_is_precision(char c)

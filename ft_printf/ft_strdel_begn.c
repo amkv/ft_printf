@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_helpers.c                                :+:      :+:    :+:   */
+/*   ft_strdel_begn.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/25 20:03:01 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/11/25 20:03:34 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/12/08 14:56:36 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/12/08 14:56:38 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-void		ft_nothing(void)
+char 				*ft_strdel_begn(char *str, size_t n)
 {
-	return ;
+	char 			*result;
+	size_t 			len;
+
+	len = ft_strlen(str);
+	result = ft_strnew(len - n + 1);
+	ft_memnncpy(result, str, n, (len - n));
+	free(str);
+	return (result);
 }

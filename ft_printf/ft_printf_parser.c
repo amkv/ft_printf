@@ -47,39 +47,10 @@ static void	ft_get_arg(char **str, size_t *beg, size_t *yn, size_t *len)
 		(*beg)++;
 }
 
-//static void	ft_get_arg(char **str, size_t *beg, size_t *yn, size_t *len)
-//{
-//	char 	*copy;
-//
-//
-//	*yn = 0;
-//	*len = 0;
-//	if (**str == '%')
-//	{
-//		(*yn)++;
-//		(*str)++;
-//	}
-//	copy = *str;
-//	if (**str == '%')
-//		(*len) = 1;
-//	else
-//		while (*copy != '\0')
-//		{
-//			if (*copy == '%'  && *(copy + 1) == '%')
-//				copy++;
-//			if (*copy == '%'  && *(copy + 1) != '%' && *(copy + 1) != '\0')
-//				break;
-//			(*len)++;
-//			copy++;
-//		}
-//	if (*yn > 0)
-//		(*beg)++;
-//	*str = copy;
-//}
-
 void	ft_second_check(t_com **com, char **holder, size_t *yn)
 {
 	char	*copy;
+	char 	*tmp;
 
 	if (*yn == 0)
 		return ;
@@ -89,13 +60,21 @@ void	ft_second_check(t_com **com, char **holder, size_t *yn)
 	if (ft_strlen(copy) == 1)
 		return ;
 //	(*com)->param = NULL;
-//	(*com)->param = ft_is_parameter(*&holder);
+//	(*com)->param = ft_pat_parameter(*&holder);
 //	(*com)->flag = ft_is_flags(*&holder);
-	(*com)->width = ft_is_width(*&holder);
+	(*com)->width = ft_pat_width(*&holder);
 //	(*com)->precision = ft_is_precision(*&holder);
 //	(*com)->length =  ft_is_lenght(*&holder);
 //	(*com)->modifier = ft_is_modifier(*&holder);
-	(*com)->scroll = ft_is_string(*&holder);
+
+
+	tmp = ft_pat_string(*&holder);
+//	if (tmp != NULL)
+//		ft_tcom_list(*&com, *yn, *holder);
+//	else
+//		(*com)->scroll = tmp;
+
+	(*com)->scroll = tmp;
 }
 
 //static void	ft_second_check(t_com **com, char **holder, size_t *yn)
@@ -143,9 +122,6 @@ void		ft_parser(const char *format, t_com **com, size_t *argc)
 		beg += len;
 		ft_tcom_list(*&com, yn, holder);
 		ft_second_check(*&com, &holder, &yn);
-
-//		ft_second_check(*&com, &holder, &yn);
-//		ft_tcom_list(*&com, yn, holder);
 		(*argc)++;
 	}
 }

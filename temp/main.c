@@ -39,5 +39,6 @@ int				main(void)
 	or = printf("%3d", 10);
 	printf("\n");
 	ft_p(mr, or);
+
 	return (0);
 }
