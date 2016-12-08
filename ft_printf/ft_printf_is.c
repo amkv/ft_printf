@@ -37,11 +37,23 @@ int		ft_is_flag(char c)
 	return (0);
 }
 
-int		ft_is_width(char c)
+char		*ft_is_width(char **holder)
 {
-	if (c == '*' || ft_isdigit(c) == 1)
-		return (1);
-	return (0);
+	char 	*copy;
+
+	copy = *holder;
+
+	if (**holder == '*')
+		return (NULL);
+
+//	if (c == '*' || ft_isdigit(c) == 1)
+//		return (1);
+	return (NULL);
+}
+
+char 		*ft_is_string(char **holder)
+{
+	return (*holder);
 }
 
 int		ft_is_precision(char c)
@@ -58,7 +70,7 @@ int		ft_is_length(char c)
 	return (0);
 }
 
-int		ft_is_type(char c)
+int		ft_is_modifier(char c)
 {
 	if (c == 'd' || c == 'i' || c == 'u' || c == 'f' || c == 'F' || c == 'e'
 		|| c == 'E' || c == 'g' || c == 'G' || c == 'x' || c == 'X'

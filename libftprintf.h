@@ -24,20 +24,20 @@
 
 typedef struct	s_com
 {
+	char			*scroll;
+	size_t			size;
+	size_t			len;
+	char			type;
+	void			*ptr;
+
 	char			*param;
 	char			*flag;
 	char			*width;
 	char			*precision;
 	char			*length;
-	char			type;
+	char 			*modifier;
 
-	char			*command;
-	char			*scroll;
 
-	void			*ptr;
-
-	size_t			size;
-	size_t			len;
 	struct s_com	*next;
 }				t_com;
 
@@ -64,10 +64,11 @@ int				ft_printf(const char *restrict format, ...);
 
 char 			*ft_is_parameter(char **holder);
 int				ft_is_flag(char c);
-int				ft_is_width(char c);
+char			*ft_is_width(char **holder);
 int				ft_is_precision(char c);
 int				ft_is_length(char c);
-int				ft_is_type(char c);
+int				ft_is_modifier(char c);
+char 			*ft_is_string(char **holder);
 
 void			ft_parser(const char *format, t_com **list, size_t *argc);
 t_com			*ft_tcom_new(char type, char *command);

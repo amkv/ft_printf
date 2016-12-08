@@ -34,9 +34,9 @@ int				main(void)
 	str = "test";
 	mr = 0;
 	or = 0;
-	mr = ft_printf("%10s", str);
+	mr = ft_printf("%3d", 10);
 	printf("\n");
-	or = printf("%10s", str);
+	or = printf("%3d", 10);
 	printf("\n");
 	ft_p(mr, or);
 	return (0);

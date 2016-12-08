@@ -14,12 +14,13 @@
 
 static size_t	ft_handler(t_com **com, va_list ap)
 {
-	char			*command;
+//	char			*command;
 	char			z;
 	union u_type	type;
 
-	command = (*com)->command;
-	z = *command;
+//	command = (*com)->command;
+//	z = *command;
+	z = (*com)->type;
 	ft_switch(z, &type, ap, *&com);
 //	ft_do_something(z, &type);
 	return ((*com)->len);
