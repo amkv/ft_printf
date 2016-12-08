@@ -6,7 +6,7 @@
 #    By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/22 14:50:24 by akalmyko          #+#    #+#              #
-#    Updated: 2016/12/06 15:47:05 by akalmyko         ###   ########.fr        #
+#    Updated: 2016/12/07 15:54:45 by akalmyko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,10 +39,12 @@ FTCFILES += ft_printf/ft_memnncpy.c ft_printf/ft_printf_helpers.c
 FTCFILES += ft_printf/ft_printf_is.c ft_printf/ft_printf_lists.c 
 FTCFILES += ft_printf/ft_printf_parser.c ft_printf/ft_strnncpy.c
 FTCFILES += ft_printf/ft_printf_switch.c ft_printf/ft_printf_do.c
+FTCFILES += ft_printf/ft_itoa_base.c
 
 OFILES = $(CFILES:.c=.o)
 OFILES += ft_memnncpy.o ft_printf_helpers.o ft_printf_is.o ft_printf_lists.o
 OFILES += ft_printf_parser.o ft_strnncpy.o ft_printf_switch.o ft_printf_do.o
+OFILES += ft_itoa_base.o
 
 all: $(NAME)
 

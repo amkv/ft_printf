@@ -14,15 +14,47 @@
 
 void		ft_do_p(void *ptr, t_com **com)
 {
-	char 	*str;
-	size_t 	pointer;
-	size_t 	len;
+	char 			*str;
+	char 			*result;
+	long int		pointer;
 
-	pointer = (size_t)&ptr;
-	len = (size_t)ft_numlen(pointer);
-	str = (ft_strnew(len));
-	str = ft_itoa((int)pointer);
-	(*com)->scroll = str;
+	pointer = (long int)*&ptr;
+	str = ft_itoa_base(pointer, 16);
+	result = ft_strjoin("0x", str);
+	free(str);
+	(*com)->scroll = result;
+	(*com)->len = ft_strlen(result);
+}
+
+void		ft_do_x(int num, t_com **com)
+{
+	char 	*result;
+//	unsigned int	revers;
+//	unsigned int	number;
+//
+//	if (num >= 0)
+//		number = (unsigned int)num;
+//	else
+//	{
+//		revers = 4294967295;
+//		num = -(num);
+//		number = revers - num;
+//
+//	}
+	result = ft_itoa_base(num, 16);
+	(*com)->scroll = result;
+	(*com)->len = ft_strlen(result);
+}
+
+void		ft_do_X(int num, t_com **com)
+{
+	char 	*result;
+
+//	if (num < 0)
+//		num = -(num);
+	result = ft_itoa_base(num, 16);
+	ft_do_S(result, *&com);
+	free(result);
 }
 
 void		ft_do_S(char *str, t_com **com)
@@ -61,7 +93,7 @@ void		ft_do_d(int d, t_com **com)
 	(*com)->len = ft_strlen((*com)->scroll);
 }
 
-void		ft_resize_string(char *str, t_com **com)
+void		ft_do_s(char *str, t_com **com)
 {
 	(*com)->scroll = ft_strdup(str);
 	(*com)->len = ft_strlen(str);

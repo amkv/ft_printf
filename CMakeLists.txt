@@ -32,6 +32,7 @@ set(SOURCE_FILES
 		ft_printf/ft_memnncpy.c
 		ft_printf/ft_printf_switch.c
 		ft_printf/ft_printf_do.c
+		ft_printf/ft_itoa_base.c
 
 #		ft_atoi_base.c
 		)

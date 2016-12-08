@@ -12,6 +12,24 @@
 
 #include "../libftprintf.h"
 
+char 	*ft_is_parameter(char **holder)
+{
+	char	*copy;
+	int 	len;
+
+	copy = *holder;
+	len = 0;
+	while (ft_isdigit(*copy) == 1)
+	{
+		copy++;
+		len++;
+	}
+	if (len > 0 && *copy == '$')
+		return (NULL);
+	return (NULL);
+}
+
+
 int		ft_is_flag(char c)
 {
 	if (c == '-' || c == '+' || c == ' ' || c == 'o' || c == '#')

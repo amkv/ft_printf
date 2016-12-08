@@ -56,7 +56,7 @@ static void	ft_switch2(char c, union u_type *type, va_list ap, t_com **com)
 	if (c == 'u')
 		ft_int_bla((type)->d = va_arg(ap, int), *&com);
 	if (c == 's')
-		ft_resize_string(type->s = va_arg(ap, char*), *&com);
+		ft_do_s(type->s = va_arg(ap, char*), *&com);
 	if (c == 'S')
 		ft_do_S(type->s = va_arg(ap, char*), *&com);
 	if (c == 'c')
@@ -73,7 +73,7 @@ static void	ft_switch2(char c, union u_type *type, va_list ap, t_com **com)
 void		ft_switch(char c, union u_type *type, va_list ap, t_com **com)
 {
 	if (c == 's')
-		ft_resize_string(type->s = va_arg(ap, char*), *&com);
+		ft_do_s(type->s = va_arg(ap, char*), *&com);
 	if (c == 'S')
 		ft_do_S(type->s = va_arg(ap, char*), *&com);
 	if (c == 'c')
@@ -86,4 +86,8 @@ void		ft_switch(char c, union u_type *type, va_list ap, t_com **com)
 		ft_do_d((type)->d = va_arg(ap, int), *&com);
 	if (c == 'p')
 		ft_do_p((type)->p = va_arg(ap, void *), *&com);
+	if (c == 'x')
+		ft_do_x((type)->d = va_arg(ap, int), *&com);
+	if (c == 'X')
+		ft_do_X((type)->d = va_arg(ap, int), *&com);
 }

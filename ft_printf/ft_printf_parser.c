@@ -77,12 +77,11 @@ static void	ft_get_arg(char **str, size_t *beg, size_t *yn, size_t *len)
 //	*str = copy;
 //}
 
-static void	ft_second_check(t_com **com, char **holder, size_t *yn)
+void	ft_second_check(t_com **com, char **holder, size_t *yn)
 {
 	char	*copy;
-	char 	*new;
-	char 	*hold;
-	int 	number;
+//	char 	*new;
+//	char 	*hold;
 
 	if (*yn == 0)
 		return ;
@@ -91,18 +90,52 @@ static void	ft_second_check(t_com **com, char **holder, size_t *yn)
 		*yn = 0;
 	if (ft_strlen(copy) == 1)
 		return ;
-	number = ft_atoi(copy);
-	printf("%d", number);
-	if (ft_is_type(*copy) == 1)
-	{
-		ft_memcpy((hold = ft_strnew(2)), copy, 1);
-		ft_tcom_list(*&com, *yn, hold);
-	}
-	new = ft_strdup(++copy);
-	free(*holder);
-	*holder = new;
-	*yn = 0;
+
+	(*com)->param = NULL;
+//	(*com)->param = ft_is_parameter(*&holder);
+//	tab[1] = ft_is_flags(*&com, *&holder);
+//	tab[2] = ft_is_width(*&com, *&holder);
+//	tab[3] = ft_is_precision(*&com, *&holder);
+//	tab[4] = ft_is_lenght(*&com, *&holder);
+//	tab[5] = ft_is_type(*&com, *&holder);
+//	tab[6] = ft_is_string(*&com, *&holder);
+
+
+
+//	if (ft_is_type(*copy) == 1)
+//	{
+//		ft_memcpy((hold = ft_strnew(2)), copy, 1);
+//		ft_tcom_list(*&com, *yn, hold);
+//	}
+//	new = ft_strdup(++copy);
+//	free(*holder);
+//	*holder = new;
+//	*yn = 0;
 }
+
+//static void	ft_second_check(t_com **com, char **holder, size_t *yn)
+//{
+//	char	*copy;
+//	char 	*new;
+//	char 	*hold;
+//
+//	if (*yn == 0)
+//		return ;
+//	copy = *holder;
+//	if (*copy == '%')
+//		*yn = 0;
+//	if (ft_strlen(copy) == 1)
+//		return ;
+//	if (ft_is_type(*copy) == 1)
+//	{
+//		ft_memcpy((hold = ft_strnew(2)), copy, 1);
+//		ft_tcom_list(*&com, *yn, hold);
+//	}
+//	new = ft_strdup(++copy);
+//	free(*holder);
+//	*holder = new;
+//	*yn = 0;
+//}
 
 void		ft_parser(const char *format, t_com **com, size_t *argc)
 {
@@ -123,8 +156,13 @@ void		ft_parser(const char *format, t_com **com, size_t *argc)
 			return ;
 		ft_memnncpy((holder = ft_strnew(len + 1)), format, beg, len);
 		beg += len;
-		ft_second_check(*&com, &holder, &yn);
 		ft_tcom_list(*&com, yn, holder);
+//		ft_second_check(*&com, &holder, &yn);
+
+//		ft_second_check(*&com, &holder, &yn);
+//		ft_tcom_list(*&com, yn, holder);
 		(*argc)++;
 	}
 }
+
+

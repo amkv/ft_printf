@@ -12,18 +12,18 @@
 
 #include "../libftprintf.h"
 
-static void	ft_tcom_null_terminating(t_com **com, int i)
-{
-	while (i < PLEN)
-	{
-		(*com)->param[i] = 0;
-		(*com)->flag[i] = 0;
-		(*com)->width[i] = 0;
-		(*com)->precision[i] = 0;
-		(*com)->length[i] = 0;
-		i++;
-	}
-}
+//static void	ft_tcom_null_terminating(t_com **com, int i)
+//{
+//	while (i < PLEN)
+//	{
+//		(*com)->param[i] = 0;
+//		(*com)->flag[i] = 0;
+//		(*com)->width[i] = 0;
+//		(*com)->precision[i] = 0;
+//		(*com)->length[i] = 0;
+//		i++;
+//	}
+//}
 
 t_com		*ft_tcom_new(char type, char *command)
 {
@@ -48,7 +48,7 @@ t_com		*ft_tcom_new(char type, char *command)
 	new->type = type;
 	new->size = 0;
 	new->next = NULL;
-	ft_tcom_null_terminating(&new, 0);
+//	ft_tcom_null_terminating(&new, 0);
 	return (new);
 }
 

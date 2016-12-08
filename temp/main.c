@@ -32,12 +32,12 @@ int				main(void)
 	char 		*str;
 
 	str = "test";
-
 	mr = 0;
 	or = 0;
-	mr = ft_printf("%p", str);
+	mr = ft_printf("%10s", str);
 	printf("\n");
-	or = printf("%p", str);
+	or = printf("%10s", str);
+	printf("\n");
 	ft_p(mr, or);
 	return (0);
 }
