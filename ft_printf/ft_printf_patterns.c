@@ -15,7 +15,9 @@
 char 	*ft_pat_parameter(char **holder)
 {
 	char	*copy;
-	int 	len;
+	size_t 	len;
+	char 	*result;
+	char 	*temp;
 
 	copy = *holder;
 	len = 0;
@@ -25,7 +27,15 @@ char 	*ft_pat_parameter(char **holder)
 		len++;
 	}
 	if (len > 0 && *copy == '$')
-		return (NULL);
+	{
+		result = ft_strnew(len + 1);
+		ft_memcpy(result, *holder, len);
+		temp = ft_strdel_begn(*holder, len + 1);
+//		free(*holder);
+		*holder = NULL;
+		*holder = temp;
+		return (result);
+	}
 	return (NULL);
 }
 
@@ -33,6 +43,7 @@ char		*ft_pat_width(char **holder)
 {
 	char 	*copy;
 	char 	*result;
+	char 	*temp;
 	size_t 	len;
 
 	copy = *holder;
@@ -49,9 +60,10 @@ char		*ft_pat_width(char **holder)
 		result = ft_strnew(len + 1);
 		ft_memcpy(result, *holder, len);
 	}
-	*holder = ft_strdel_begn(*holder, len);
-//	**holder = '\0';
-//	free(*holder);
+	temp = ft_strdel_begn(*holder, len);
+	free(*holder);
+	*holder = NULL;
+	*holder = temp;
 	return (result);
 }
 

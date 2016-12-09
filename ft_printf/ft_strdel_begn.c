@@ -17,10 +17,13 @@ char 				*ft_strdel_begn(char *str, size_t n)
 	char 			*result;
 	size_t 			len;
 
-	result = NULL;
+	if (!str)
+		return (NULL);
 	len = ft_strlen(str);
-	result = ft_strnew(len - n + 1);
+	if (n > len)
+		return (NULL);
+	if (!(result = ft_strnew(len - n + 2)))
+		return (NULL);
 	ft_memnncpy(result, str, n, (len - n));
-	free(str);
 	return (result);
 }

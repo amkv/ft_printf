@@ -86,7 +86,7 @@ void		ft_tcom_free(t_com *list)
 		free(tmp->width);
 		free(tmp->precision);
 		free(tmp->length);
-//		free(tmp->modifier);
+		free(tmp->modifier);
 
 		free(tmp);
 		tmp = next;
@@ -100,9 +100,17 @@ void		ft_tcom_print(t_com *list)
 	tmp = list;
 	while (tmp)
 	{
-		printf("%c\n", tmp->type);
-		printf("%s\n", tmp->modifier);
-		printf("%s\n", tmp->scroll);
+		printf("scroll:   %s\n", tmp->scroll);
+		printf("size:     %zu\n", tmp->size);
+		printf("len:      %zu\n", tmp->len);
+		printf("type:     %c\n", tmp->type);
+		printf("param:    %s\n", tmp->param);
+		printf("flag:     %s\n", tmp->flag);
+		printf("width:    %s\n", tmp->width);
+		printf("precision:%s\n", tmp->precision);
+		printf("length:   %s\n", tmp->length);
+		printf("modifier: %s\n\n", tmp->modifier);
+
 		tmp = tmp->next;
 	}
 }

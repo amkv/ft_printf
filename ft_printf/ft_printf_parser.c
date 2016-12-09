@@ -47,26 +47,32 @@ static void	ft_get_arg(char **str, size_t *beg, size_t *yn, size_t *len)
 		(*beg)++;
 }
 
-void	ft_second_check(t_com **com, char **holder, size_t *yn)
+void	ft_check_patterns(t_com **com, size_t *yn)
 {
-	char	*copy;
-//	char 	*tmp;
+	char 	*holder;
 
+	holder = (*com)->scroll;
 	if (*yn == 0)
 		return ;
-	copy = *holder;
-	if (*copy == '%')
+	if (*holder == '%')
 		*yn = 0;
-	if (ft_strlen(copy) == 1)
+	if (ft_strlen(holder) == 1 && ft_is_modifier(*holder) == 1)
+	{
+		(*com)->modifier = ft_strdup(holder);
+		free((*com)->scroll);
+		(*com)->scroll = NULL;
+//		(*com)->scroll = ft_strnew(1);
 		return ;
-//	(*com)->param = NULL;
-//	(*com)->param = ft_pat_parameter(*&holder);
-//	(*com)->flag = ft_is_flags(*&holder);
-	(*com)->width = ft_pat_width(*&holder);
-//	(*com)->width = ft_pat_width(&(*com)->scroll);
-//	(*com)->precision = ft_is_precision(*&holder);
-//	(*com)->length =  ft_is_lenght(*&holder);
-	(*com)->modifier = ft_pat_modifier(*&holder);
+	}
+	(*com)->param = ft_pat_parameter(&holder);
+//	(*com)->flag = ft_is_flags(&holder);
+//	(*com)->width = ft_pat_width(&holder);
+	(*com)->width = ft_pat_width(&(*com)->scroll);
+//	(*com)->precision = ft_is_precision(&holder);
+//	(*com)->length =  ft_is_lenght(&holder);
+	(*com)->modifier = ft_pat_modifier(&holder);
+//	free((*com)->scroll);
+//	(*com)->scroll = NULL;
 
 
 //	tmp = ft_pat_string(*&holder);
@@ -74,11 +80,12 @@ void	ft_second_check(t_com **com, char **holder, size_t *yn)
 //		ft_tcom_list(*&com, *yn, *holder);
 //	else
 //		(*com)->scroll = tmp;
-
-	(*com)->scroll = *holder;
+//	*holder = ft_strdup(*holder);
+//	free(copy);
+//	(*com)->scroll = *holder;
 }
 
-//static void	ft_second_check(t_com **com, char **holder, size_t *yn)
+//static void	ft_check_patterns(t_com **com, char **holder, size_t *yn)
 //{
 //	char	*copy;
 //	char 	*new;
@@ -122,9 +129,7 @@ void		ft_parser(const char *format, t_com **com, size_t *argc)
 		ft_memnncpy((holder = ft_strnew(len + 1)), format, beg, len);
 		beg += len;
 		ft_tcom_list(*&com, yn, holder);
-		ft_second_check(*&com, &holder, &yn);
+		ft_check_patterns(*&com, &yn);
 		(*argc)++;
 	}
 }
-
-

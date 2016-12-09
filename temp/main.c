@@ -34,16 +34,16 @@ int				main(void)
 	str = "test";
 	mr = 0;
 	or = 0;
-	mr = ft_printf("%10d", 10);
-	printf("\n");
-	or = printf("%10d", 10);
-	printf("\n");
-	ft_p(mr, or);
+	mr = ft_printf("%10$");
+//	printf("\n");
+//	or = printf("%10d", 10);
+//	printf("\n");
+//	ft_p(mr, or);
 
-	char *temp;
-	temp = ft_strnew(5);
-	ft_memcpy(temp, "desk", 4);
+//	char *temp;
+//	temp = ft_strnew(5);
+//	ft_memcpy(temp, "desk", 4);
 
-	printf("%s", ft_add_spaces(temp, 0));
+//	printf("%s", ft_add_spaces(temp, 0));
 	return (0);
 }

@@ -14,15 +14,12 @@
 
 static size_t	ft_handler(t_com **com, va_list ap)
 {
-//	char			*command;
-	char			z;
+	char			*z;
 	union u_type	type;
 
-//	command = (*com)->command;
-//	z = *command;
-	z = (*com)->type;
-	ft_switch(z, &type, ap, *&com);
-//	ft_do_something(z, &type);
+	z = (*com)->modifier;
+	ft_switch(*z, &type, ap, *&com);
+
 	return ((*com)->len);
 }
 
@@ -41,7 +38,7 @@ int				ft_printf(const char *restrict format, ...)
 	ft_parser(format, &com, &argc);
 	dupl = ft_tcom_revert(&com);
 //	printf("a: %zu\n", argc);
-//	ft_tcom_print(com);
+	ft_tcom_print(com);
 	while (com != NULL)
 	{
 		if (com->type == '%')

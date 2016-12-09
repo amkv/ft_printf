@@ -12,6 +12,7 @@
 
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
+# pragma GCC diagnostic ignored "-Wunused-function"
 
 # include "libft.h"
 # include <stdarg.h>
@@ -36,7 +37,6 @@ typedef struct	s_com
 	char			*precision;
 	char			*length;
 	char 			*modifier;
-
 
 	struct s_com	*next;
 }				t_com;
@@ -66,7 +66,7 @@ union			u_type
 int				ft_printf(const char *restrict format, ...);
 void			ft_parser(const char *format, t_com **list, size_t *argc);
 void			ft_switch(char c, union u_type *type, va_list ap, t_com **com);
-void			ft_second_check(t_com **com, char **holder, size_t *yn);
+void			ft_check_patterns(t_com **com, size_t *yn);
 
 /*
 ** Lists
