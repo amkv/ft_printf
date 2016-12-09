@@ -82,7 +82,12 @@ char 		*ft_pat_modifier(char **holder)
 		return (0);
 	len = ft_strlen(*holder);
 	if (len == 1)
-		return (*holder);
+	{
+		modifier = ft_strdup(*holder);
+		free(*holder);
+		*holder = NULL;
+		return (modifier);
+	}
 	copy = *holder;
 	copy++;
 	len--;

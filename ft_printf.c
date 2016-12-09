@@ -31,9 +31,9 @@ int				ft_printf(const char *restrict format, ...)
 	size_t		argc;
 	size_t		characters;
 
-	if (*format == '\0')
-		return (0);
 	characters = 0;
+	if (*format == '\0')
+		return ((int)characters);
 	va_start(ap, format);
 	ft_parser(format, &com, &argc);
 	dupl = ft_tcom_revert(&com);

@@ -12,11 +12,27 @@
 
 #include "../libftprintf.h"
 
+static int 	ft_check_modifier(const char *str)
+{
+	int 	len;
+
+	len = 0;
+	while (*str)
+	{
+		if (ft_is_modifier(*str) == 1)
+			len++;
+		str++;
+	}
+	if (len > 0)
+		return (1);
+	return (0);
+}
+
 static void	ft_tcom_list(t_com **list, size_t yn, char *holder)
 {
 	char	sign;
 
-	if (yn > 0)
+	if (yn > 0 && (ft_check_modifier(holder) == 1))
 		sign = '%';
 	else
 		sign = '.';
@@ -67,12 +83,18 @@ void	ft_check_patterns(t_com **com, size_t *yn)
 	(*com)->param = ft_pat_parameter(&holder);
 //	(*com)->flag = ft_is_flags(&holder);
 //	(*com)->width = ft_pat_width(&holder);
-	(*com)->width = ft_pat_width(&(*com)->scroll);
+	(*com)->width = ft_pat_width(&holder);
 //	(*com)->precision = ft_is_precision(&holder);
 //	(*com)->length =  ft_is_lenght(&holder);
 	(*com)->modifier = ft_pat_modifier(&holder);
-//	free((*com)->scroll);
-//	(*com)->scroll = NULL;
+
+	if (ft_strlen(holder) > 0)
+	{
+		(*com)->scroll = NULL;
+		ft_tcom_list(*&com, 0, holder);
+	}
+	else
+		(*com)->scroll = holder;
 
 
 //	tmp = ft_pat_string(*&holder);
@@ -84,30 +106,6 @@ void	ft_check_patterns(t_com **com, size_t *yn)
 //	free(copy);
 //	(*com)->scroll = *holder;
 }
-
-//static void	ft_check_patterns(t_com **com, char **holder, size_t *yn)
-//{
-//	char	*copy;
-//	char 	*new;
-//	char 	*hold;
-//
-//	if (*yn == 0)
-//		return ;
-//	copy = *holder;
-//	if (*copy == '%')
-//		*yn = 0;
-//	if (ft_strlen(copy) == 1)
-//		return ;
-//	if (ft_is_modifier(*copy) == 1)
-//	{
-//		ft_memcpy((hold = ft_strnew(2)), copy, 1);
-//		ft_tcom_list(*&com, *yn, hold);
-//	}
-//	new = ft_strdup(++copy);
-//	free(*holder);
-//	*holder = new;
-//	*yn = 0;
-//}
 
 void		ft_parser(const char *format, t_com **com, size_t *argc)
 {
@@ -133,3 +131,27 @@ void		ft_parser(const char *format, t_com **com, size_t *argc)
 		(*argc)++;
 	}
 }
+
+//static void	ft_check_patterns(t_com **com, char **holder, size_t *yn)
+//{
+//	char	*copy;
+//	char 	*new;
+//	char 	*hold;
+//
+//	if (*yn == 0)
+//		return ;
+//	copy = *holder;
+//	if (*copy == '%')
+//		*yn = 0;
+//	if (ft_strlen(copy) == 1)
+//		return ;
+//	if (ft_is_modifier(*copy) == 1)
+//	{
+//		ft_memcpy((hold = ft_strnew(2)), copy, 1);
+//		ft_tcom_list(*&com, *yn, hold);
+//	}
+//	new = ft_strdup(++copy);
+//	free(*holder);
+//	*holder = new;
+//	*yn = 0;
+//}

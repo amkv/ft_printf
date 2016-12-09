@@ -31,19 +31,14 @@ int				main(void)
 	int			or;
 	char 		*str;
 
-	str = "test";
-	mr = 0;
-	or = 0;
-	mr = ft_printf("%10$");
-//	printf("\n");
-//	or = printf("%10d", 10);
-//	printf("\n");
-//	ft_p(mr, or);
+	str = "hello";
+	mr = 0; or = 0;
 
-//	char *temp;
-//	temp = ft_strnew(5);
-//	ft_memcpy(temp, "desk", 4);
+	mr = ft_printf("%10s%dtest", str, 2);
+	printf("\n");
+	or = printf("%10s%dtest", str, 2);
 
-//	printf("%s", ft_add_spaces(temp, 0));
+	printf("\n");
+	ft_p(mr, or);
 	return (0);
 }
