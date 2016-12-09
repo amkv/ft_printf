@@ -17,6 +17,7 @@ char 				*ft_strdel_begn(char *str, size_t n)
 	char 			*result;
 	size_t 			len;
 
+	result = NULL;
 	len = ft_strlen(str);
 	result = ft_strnew(len - n + 1);
 	ft_memnncpy(result, str, n, (len - n));

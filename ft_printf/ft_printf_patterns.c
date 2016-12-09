@@ -50,10 +50,32 @@ char		*ft_pat_width(char **holder)
 		ft_memcpy(result, *holder, len);
 	}
 	*holder = ft_strdel_begn(*holder, len);
+//	**holder = '\0';
+//	free(*holder);
 	return (result);
 }
 
 char 		*ft_pat_string(char **holder)
 {
 	return (*holder);
+}
+
+char 		*ft_pat_modifier(char **holder)
+{
+	size_t 	len;
+	char 	*copy;
+	char 	*modifier;
+
+	if (ft_is_modifier(**holder) == 0)
+		return (0);
+	len = ft_strlen(*holder);
+	if (len == 1)
+		return (*holder);
+	copy = *holder;
+	copy++;
+	len--;
+	modifier = ft_strnew(len + 1);
+	ft_memcpy(modifier, copy, len);
+	*holder = ft_strdel_begn(*holder, 1);
+	return (modifier);
 }

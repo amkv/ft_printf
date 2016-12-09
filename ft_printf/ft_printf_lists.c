@@ -86,7 +86,7 @@ void		ft_tcom_free(t_com *list)
 		free(tmp->width);
 		free(tmp->precision);
 		free(tmp->length);
-		free(tmp->modifier);
+//		free(tmp->modifier);
 
 		free(tmp);
 		tmp = next;

@@ -60,33 +60,53 @@ union			u_type
 	size_t			zu;
 };
 
+/*
+** Main functions
+*/
 int				ft_printf(const char *restrict format, ...);
-
-char 			*ft_pat_parameter(char **holder);
-int				ft_is_flag(char c);
-char			*ft_pat_width(char **holder);
-int				ft_is_precision(char c);
-int				ft_is_length(char c);
-int				ft_is_modifier(char c);
-char 			*ft_pat_string(char **holder);
-
 void			ft_parser(const char *format, t_com **list, size_t *argc);
+void			ft_switch(char c, union u_type *type, va_list ap, t_com **com);
+void			ft_second_check(t_com **com, char **holder, size_t *yn);
+
+/*
+** Lists
+*/
 t_com			*ft_tcom_new(char type, char *command);
 void			ft_tcom_add(t_com **beg, t_com *next);
 void			ft_tcom_free(t_com *list);
 void			ft_tcom_print(t_com *list);
 t_com			*ft_tcom_revert(t_com **list);
-void			ft_switch(char c, union u_type *type, va_list ap, t_com **com);
+
+/*
+** ft_is chekers
+*/
+int				ft_is_flag(char c);
+int				ft_is_precision(char c);
+int				ft_is_length(char c);
+int				ft_is_modifier(char c);
+
 
 /*
 ** Addons
 */
-
 char			*ft_strnncpy(char *dst, const char *src, size_t beg, size_t n);
 void			*ft_memnncpy(void *dst, const void *src, size_t beg, size_t n);
 long int		ft_numlen(long int num);
 char			*ft_itoa_base(long int value, long int base);
 char 			*ft_strdel_begn(char *str, size_t n);
+
+/*
+** Modifiers
+*/
+char 			*ft_add_spaces(char *str, size_t space);
+
+/*
+** patterns
+*/
+char 			*ft_pat_parameter(char **holder);
+char			*ft_pat_width(char **holder);
+char 			*ft_pat_modifier(char **holder);
+char 			*ft_pat_string(char **holder);
 
 /*
 ** DOs
@@ -99,14 +119,7 @@ void			ft_do_x(int num, t_com **com);
 void			ft_do_X(int num, t_com **com);
 void			ft_do_p(void *ptr, t_com **com);
 
-/*
-** int			ft_atoi_base(char *str, char *base);
-** void			ft_print_pointer(void *ptr, t_com **com);
-*/
 
-void	ft_second_check(t_com **com, char **holder, size_t *yn);
-
-
-void		ft_nothing(void);
+void	ft_nothing(void);
 
 #endif

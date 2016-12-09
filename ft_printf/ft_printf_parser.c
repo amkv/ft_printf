@@ -50,7 +50,7 @@ static void	ft_get_arg(char **str, size_t *beg, size_t *yn, size_t *len)
 void	ft_second_check(t_com **com, char **holder, size_t *yn)
 {
 	char	*copy;
-	char 	*tmp;
+//	char 	*tmp;
 
 	if (*yn == 0)
 		return ;
@@ -63,18 +63,19 @@ void	ft_second_check(t_com **com, char **holder, size_t *yn)
 //	(*com)->param = ft_pat_parameter(*&holder);
 //	(*com)->flag = ft_is_flags(*&holder);
 	(*com)->width = ft_pat_width(*&holder);
+//	(*com)->width = ft_pat_width(&(*com)->scroll);
 //	(*com)->precision = ft_is_precision(*&holder);
 //	(*com)->length =  ft_is_lenght(*&holder);
-//	(*com)->modifier = ft_is_modifier(*&holder);
+	(*com)->modifier = ft_pat_modifier(*&holder);
 
 
-	tmp = ft_pat_string(*&holder);
+//	tmp = ft_pat_string(*&holder);
 //	if (tmp != NULL)
 //		ft_tcom_list(*&com, *yn, *holder);
 //	else
 //		(*com)->scroll = tmp;
 
-	(*com)->scroll = tmp;
+	(*com)->scroll = *holder;
 }
 
 //static void	ft_second_check(t_com **com, char **holder, size_t *yn)
