@@ -26,7 +26,7 @@ t_com		*ft_tcom_new(char type, char *command)
 	new->type = type;
 	new->param = NULL;
 	new->flag = NULL;
-	new->width = NULL;
+	new->width = 0;
 	new->precision = NULL;
 	new->length = NULL;
 	new->modifier = NULL;
@@ -83,7 +83,7 @@ void		ft_tcom_free(t_com *list)
 
 		free(tmp->param);
 		free(tmp->flag);
-		free(tmp->width);
+//		free(tmp->width);
 		free(tmp->precision);
 		free(tmp->length);
 		free(tmp->modifier);
@@ -106,7 +106,7 @@ void		ft_tcom_print(t_com *list)
 		printf("type:     %c\n", tmp->type);
 		printf("param:    %s\n", tmp->param);
 		printf("flag:     %s\n", tmp->flag);
-		printf("width:    %s\n", tmp->width);
+		printf("width:    %lu\n", tmp->width);
 		printf("precision:%s\n", tmp->precision);
 		printf("length:   %s\n", tmp->length);
 		printf("modifier: %s\n\n", tmp->modifier);

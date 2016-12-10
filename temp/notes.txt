@@ -299,40 +299,6 @@ t_com		*ft_tcom_new(char type, char *command)
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 */
-/* ************************************************************************** *//*
-
-*/
-/*                                                                            *//*
-
-*/
-/*                                                        :::      ::::::::   *//*
-
-*/
-/*   ft_printf_parser.c                                 :+:      :+:    :+:   *//*
-
-*/
-/*                                                    +:+ +:+         +:+     *//*
-
-*/
-/*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        *//*
-
-*/
-/*                                                +#+#+#+#+#+   +#+           *//*
-
-*/
-/*   Created: 2016/11/25 20:00:32 by akalmyko          #+#    #+#             *//*
-
-*/
-/*   Updated: 2016/11/30 12:01:37 by akalmyko         ###   ########.fr       *//*
-
-*/
-/*                                                                            *//*
-
-*/
-/* ************************************************************************** *//*
-
-
-*/
 /*
 
 #include "../libftprintf.h"
@@ -497,5 +463,61 @@ int ft_parser(const char *format, t_com **list)
 //}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//static void	ft_check_patterns(t_com **com, char **holder, size_t *yn)
+//{
+//	char	*copy;
+//	char 	*new;
+//	char 	*hold;
+//
+//	if (*yn == 0)
+//		return ;
+//	copy = *holder;
+//	if (*copy == '%')
+//		*yn = 0;
+//	if (ft_strlen(copy) == 1)
+//		return ;
+//	if (ft_is_modifier(*copy) == 1)
+//	{
+//		ft_memcpy((hold = ft_strnew(2)), copy, 1);
+//		ft_tcom_list(*&com, *yn, hold);
+//	}
+//	new = ft_strdup(++copy);
+//	free(*holder);
+//	*holder = new;
+//	*yn = 0;
+//}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+char 			*ft_add_spaces(char *str, long int width)
+{
+//	long int	len;
+//	long int 	spaces;
+//	char 		*temp;
+//	char 		*result;
+//	long int 	index;
+
+//	len = ft_strlen(str);
+//	if (width > 0)
+//	{
+//		if (len >= width)
+//			return (ft_strdup(str));
+//	}
+//	else
+//		width = -(width);
+//	spaces = width - len;
+//	temp = ft_strnew((size_t)spaces + 1);
+//	if (!temp)
+//		return (NULL);
+//	index = 0;
+//	while (index < spaces)
+//		temp[index++] = ' ';
+//	result = ft_strjoin(temp, str);
+//	if (!result)
+//		return (NULL);
+//	free(temp);
+//	return (result);
+}
 
 */

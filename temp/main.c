@@ -34,11 +34,14 @@ int				main(void)
 	str = "hello";
 	mr = 0; or = 0;
 
-	mr = ft_printf("%10s%2dtest", str, 1);
+ 	mr = ft_printf("%X", -1);
 	printf("\n");
-	or = printf("%10s%2dtest", str, 1);
+	or = printf("%X", -1);
 
 	printf("\n");
 	ft_p(mr, or);
 	return (0);
+
+//	mr = ft_printf("%-5%test");
+//	mr = ft_printf("%f", 5.1);
 }

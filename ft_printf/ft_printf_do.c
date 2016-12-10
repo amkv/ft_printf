@@ -29,32 +29,33 @@ void		ft_do_p(void *ptr, t_com **com)
 void		ft_do_x(int num, t_com **com)
 {
 	char 	*result;
-//	unsigned int	revers;
-//	unsigned int	number;
-//
-//	if (num >= 0)
-//		number = (unsigned int)num;
-//	else
-//	{
-//		revers = 4294967295;
-//		num = -(num);
-//		number = revers - num;
-//
-//	}
-	result = ft_itoa_base(num, 16);
-	(*com)->scroll = result;
-	(*com)->len = ft_strlen(result);
+	unsigned int	number;
+
+	if (num >= 0)
+	{
+		result = ft_itoa_base(num, 16);
+		(*com)->scroll = result;
+		(*com)->len = ft_strlen(result);
+	}
+	if (num < 0)
+	{
+		number = 4294967295 - (-num) + 1;
+		result = ft_itoa_base(number, 16);
+		(*com)->scroll = result;
+		(*com)->len = ft_strlen(result);
+	}
 }
 
 void		ft_do_X(int num, t_com **com)
 {
-	char 	*result;
+	ft_do_x(num, *&com);
+	ft_do_S((*com)->scroll, *&com);
+}
 
-//	if (num < 0)
-//		num = -(num);
-	result = ft_itoa_base(num, 16);
-	ft_do_S(result, *&com);
-	free(result);
+void		ft_do_s(char *str, t_com **com)
+{
+	(*com)->scroll = ft_strdup(str);
+	(*com)->len = ft_strlen(str);
 }
 
 void		ft_do_S(char *str, t_com **com)
@@ -93,8 +94,68 @@ void		ft_do_d(int d, t_com **com)
 	(*com)->len = ft_strlen((*com)->scroll);
 }
 
-void		ft_do_s(char *str, t_com **com)
+void		ft_do_u(unsigned int d, t_com **com)
 {
-	(*com)->scroll = ft_strdup(str);
-	(*com)->len = ft_strlen(str);
+	(*com)->scroll = ft_itoa_base(d, 10);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void		ft_do_o(int d, t_com **com)
+{
+	(*com)->scroll = NULL;
+	(*com)->len = 0;
+}
+
+void		ft_do_f(double f, t_com **com)
+{
+	(*com)->scroll = ft_itoa(f);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void		ft_do_F(double f, t_com **com)
+{
+	(*com)->scroll = NULL;
+	(*com)->len = 0;
+}
+
+void		ft_do_e(double f, t_com **com)
+{
+	(*com)->scroll = NULL;
+	(*com)->len = 0;
+}
+
+void		ft_do_E(double f, t_com **com)
+{
+	(*com)->scroll = NULL;
+	(*com)->len = 0;
+}
+
+void		ft_do_g(double f, t_com **com)
+{
+	(*com)->scroll = NULL;
+	(*com)->len = 0;
+}
+
+void		ft_do_G(double f, t_com **com)
+{
+	(*com)->scroll = NULL;
+	(*com)->len = 0;
+}
+
+void		ft_do_a(double f, t_com **com)
+{
+	(*com)->scroll = NULL;
+	(*com)->len = 0;
+}
+
+void		ft_do_A(double f, t_com **com)
+{
+	(*com)->scroll = NULL;
+	(*com)->len = 0;
+}
+
+void		ft_do_n(char *str, t_com **com)
+{
+	(*com)->scroll = NULL;
+	(*com)->len = 0;
 }

@@ -16,9 +16,9 @@ void		ft_pre_print_width(t_com **com)
 {
 	char 			*result;
 
-	if ((*com)->width &&ft_strlen((*com)->width) > 0)
+	if ((*com)->width)
 	{
-		result = ft_add_spaces((*com)->scroll, (size_t)ft_atoi((*com)->width));
+		result = ft_add_spaces((*com)->scroll, (*com)->width);
 		free((*com)->scroll);
 		(*com)->scroll = result;
 		(*com)->len = ft_strlen(result);

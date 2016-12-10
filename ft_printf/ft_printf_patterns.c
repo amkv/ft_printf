@@ -39,33 +39,51 @@ char 	*ft_pat_parameter(char **holder)
 	return (NULL);
 }
 
-char		*ft_pat_width(char **holder)
+long int	ft_pat_width(char **holder)
 {
-	char 	*copy;
-	char 	*result;
+//	char 	*result;
 	char 	*temp;
 	size_t 	len;
+	long int num;
 
-	copy = *holder;
-	len = 0;
-	while (ft_isdigit(*copy) && *copy && ft_is_modifier(*copy) == 0)
-	{
-		copy++;
-		len++;
-	}
-	if (len == 0)
-		return (NULL);
-	else
-	{
-		result = ft_strnew(len + 1);
-		ft_memcpy(result, *holder, len);
-	}
+	num = ft_atoi(*holder);
+	len = (size_t)ft_numlen(num);
+//	if (len == 0)
+//		return (0);
 	temp = ft_strdel_begn(*holder, len);
 	free(*holder);
 	*holder = NULL;
 	*holder = temp;
-	return (result);
+	return (num);
 }
+
+//char		*ft_pat_width(char **holder)
+//{
+//	char 	*copy;
+//	char 	*result;
+//	char 	*temp;
+//	size_t 	len;
+//
+//	copy = *holder;
+//	len = 0;
+//	while (ft_isdigit(*copy) && *copy && ft_is_modifier(*copy) == 0)
+//	{
+//		copy++;
+//		len++;
+//	}
+//	if (len == 0)
+//		return (NULL);
+//	else
+//	{
+//		result = ft_strnew(len + 1);
+//		ft_memcpy(result, *holder, len);
+//	}
+//	temp = ft_strdel_begn(*holder, len);
+//	free(*holder);
+//	*holder = NULL;
+//	*holder = temp;
+//	return (result);
+//}
 
 char 		*ft_pat_string(char **holder)
 {
@@ -78,8 +96,8 @@ char 		*ft_pat_modifier(char **holder)
 	char 	*modifier;
 	char 	*temp;
 
-	if (ft_is_modifier(**holder) == 0)
-		return (0);
+	if (!(*holder) || ft_is_modifier(**holder) == 0)
+		return (NULL);
 	len = ft_strlen(*holder);
 	if (len == 1)
 	{

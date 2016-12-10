@@ -12,8 +12,10 @@
 
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
-//# pragma GCC diagnostic ignored "-Wunused-function"
-//# pragma GCC diagnostic ignored "-Wunused-variable"
+# pragma GCC diagnostic ignored "-Wunused-function"
+# pragma GCC diagnostic ignored "-Wunused-variable"
+# pragma GCC diagnostic ignored "-Wunused-parameter"
+# pragma GCC diagnostic ignored "-Wformat"
 
 # include "libft.h"
 # include <stdarg.h>
@@ -34,7 +36,7 @@ typedef struct	s_com
 
 	char			*param;
 	char			*flag;
-	char			*width;
+	long int		width;
 	char			*precision;
 	char			*length;
 	char 			*modifier;
@@ -98,13 +100,13 @@ char 			*ft_strdel_begn(char *str, size_t n);
 /*
 ** Modifiers
 */
-char 			*ft_add_spaces(char *str, size_t space);
+char 			*ft_add_spaces(char *str, long int width);
 
 /*
 ** patterns
 */
 char 			*ft_pat_parameter(char **holder);
-char			*ft_pat_width(char **holder);
+long int		ft_pat_width(char **holder);
 char 			*ft_pat_modifier(char **holder);
 char 			*ft_pat_string(char **holder);
 
@@ -115,9 +117,20 @@ void			ft_do_S(char *str, t_com **com);
 void			ft_do_s(char *str, t_com **com);
 void			ft_do_c(char c, t_com **com);
 void			ft_do_d(int d, t_com **com);
-void			ft_do_x(int num, t_com **com);
-void			ft_do_X(int num, t_com **com);
+void			ft_do_x(int num, t_com **com);				// сделано не до конца
+void			ft_do_X(int num, t_com **com);				// сделано не до конца
 void			ft_do_p(void *ptr, t_com **com);
+void			ft_do_u(unsigned int d, t_com **com);		// не сделано
+void			ft_do_o(int d, t_com **com);				// не сделано
+void			ft_do_f(double f, t_com **com);				// не сделано
+void			ft_do_F(double f, t_com **com);				// не сделано
+void			ft_do_e(double f, t_com **com);				// не сделано
+void			ft_do_E(double f, t_com **com);				// не сделано
+void			ft_do_g(double f, t_com **com);				// не сделано
+void			ft_do_G(double f, t_com **com);				// не сделано
+void			ft_do_a(double f, t_com **com);				// не сделано
+void			ft_do_A(double f, t_com **com);				// не сделано
+void			ft_do_n(char *str, t_com **com);			// не сделано
 
 /*
 ** Pre print functions

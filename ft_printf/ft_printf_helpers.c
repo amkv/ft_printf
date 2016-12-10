@@ -17,27 +17,35 @@ void		ft_nothing(void)
 	return ;
 }
 
-char 		*ft_add_spaces(char *str, size_t width)
+char 			*ft_add_spaces(char *str, long int width)
 {
-	size_t	len;
-	size_t 	spaces;
-	char 	*temp;
-	char 	*result;
-	size_t 	index;
+	long int	len;
+	long int	spaces;
+	char 		*temp;
+	long int	index;
+	char 		*result;
 
-	len = ft_strlen(str);
-	if (len >= width)
-		return (ft_strdup(str));
-	spaces = width - len;
-	temp = ft_strnew(spaces + 1);
-	if (!temp)
-		return (NULL);
 	index = 0;
+	len = ft_strlen(str);
+	if (width >= 0)
+	{
+		if (len >= width || len <= -(width))
+			return (ft_strdup(str));
+		spaces = width - len;
+	}
+	else
+		spaces = -(width) - len;
+	if (!(temp = ft_strnew((size_t)spaces + 1)))
+		return (NULL);
 	while (index < spaces)
 		temp[index++] = ' ';
-	result = ft_strjoin(temp, str);
-	if (!result)
-		return (NULL);
+	if (width >= 0)
+		result = ft_strjoin(temp, str);
+	else
+		result = ft_strjoin(str, temp);
 	free(temp);
 	return (result);
 }
+
+
+
