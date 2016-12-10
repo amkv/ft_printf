@@ -12,7 +12,8 @@
 
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
-# pragma GCC diagnostic ignored "-Wunused-function"
+//# pragma GCC diagnostic ignored "-Wunused-function"
+//# pragma GCC diagnostic ignored "-Wunused-variable"
 
 # include "libft.h"
 # include <stdarg.h>
@@ -85,7 +86,6 @@ int				ft_is_precision(char c);
 int				ft_is_length(char c);
 int				ft_is_modifier(char c);
 
-
 /*
 ** Addons
 */
@@ -118,6 +118,11 @@ void			ft_do_d(int d, t_com **com);
 void			ft_do_x(int num, t_com **com);
 void			ft_do_X(int num, t_com **com);
 void			ft_do_p(void *ptr, t_com **com);
+
+/*
+** Pre print functions
+*/
+void			ft_pre_print_width(t_com **com);
 
 
 void	ft_nothing(void);

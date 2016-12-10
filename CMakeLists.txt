@@ -36,5 +36,6 @@ set(SOURCE_FILES
 		ft_printf/ft_numlen.c
 		ft_printf/ft_strdel_begn.c
 		ft_printf/ft_printf_patterns.c
+		ft_printf/ft_pre_print.c
 		)
 add_executable(ft_printf ${SOURCE_FILES})

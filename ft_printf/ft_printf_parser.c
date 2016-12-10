@@ -88,13 +88,13 @@ void	ft_check_patterns(t_com **com, size_t *yn)
 //	(*com)->length =  ft_is_lenght(&holder);
 	(*com)->modifier = ft_pat_modifier(&holder);
 
-	if (ft_strlen(holder) > 0)
+	if (holder && ft_strlen(holder) > 0)
 	{
 		(*com)->scroll = NULL;
 		ft_tcom_list(*&com, 0, holder);
 	}
 	else
-		(*com)->scroll = holder;
+		(*com)->scroll = NULL;
 
 
 //	tmp = ft_pat_string(*&holder);

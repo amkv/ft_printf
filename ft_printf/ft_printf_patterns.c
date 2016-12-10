@@ -75,8 +75,8 @@ char 		*ft_pat_string(char **holder)
 char 		*ft_pat_modifier(char **holder)
 {
 	size_t 	len;
-	char 	*copy;
 	char 	*modifier;
+	char 	*temp;
 
 	if (ft_is_modifier(**holder) == 0)
 		return (0);
@@ -88,11 +88,11 @@ char 		*ft_pat_modifier(char **holder)
 		*holder = NULL;
 		return (modifier);
 	}
-	copy = *holder;
-	copy++;
-	len--;
-	modifier = ft_strnew(len + 1);
-	ft_memcpy(modifier, copy, len);
-	*holder = ft_strdel_begn(*holder, 1);
+	modifier = ft_strnew(2);
+	ft_memcpy(modifier, *holder, 1);
+	temp = ft_strdel_begn(*holder, 1);
+	free(*holder);
+	*holder = NULL;
+	*holder = temp;
 	return (modifier);
 }

@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_pre_print.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/22 10:30:53 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/09/22 10:30:55 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/12/09 16:46:00 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/12/09 16:46:02 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libftprintf.h"
 
-size_t				ft_strlen(const char *s)
+void		ft_pre_print_width(t_com **com)
 {
-	unsigned int	len;
+	char 			*result;
 
-	len = 0;
-//	if (!s)
-//		return (0);
-	while (s[len] != '\0')
-		len++;
-	return (len);
+	if ((*com)->width &&ft_strlen((*com)->width) > 0)
+	{
+		result = ft_add_spaces((*com)->scroll, (size_t)ft_atoi((*com)->width));
+		free((*com)->scroll);
+		(*com)->scroll = result;
+		(*com)->len = ft_strlen(result);
+	}
 }

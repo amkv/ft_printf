@@ -34,9 +34,9 @@ int				main(void)
 	str = "hello";
 	mr = 0; or = 0;
 
-	mr = ft_printf("%10s%dtest", str, 2);
+	mr = ft_printf("%10s%2dtest", str, 1);
 	printf("\n");
-	or = printf("%10s%dtest", str, 2);
+	or = printf("%10s%2dtest", str, 1);
 
 	printf("\n");
 	ft_p(mr, or);
