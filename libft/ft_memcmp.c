@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnncpy.c                                      :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 11:27:06 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/12/01 11:27:07 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/28 13:39:01 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/28 13:39:03 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "libft.h"
 
-char		*ft_strnncpy(char *dst, const char *src, size_t start, size_t len)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
+	const unsigned char *s1ptr;
+	const unsigned char *s2ptr;
 
-	i = 0;
-	while (i < start && *src != '\0')
+	s1ptr = s1;
+	s2ptr = s2;
+	if (n == 0)
+		return (0);
+	while (n > 1 && *s1ptr == *s2ptr)
 	{
-		src++;
-		i++;
+		s1ptr++;
+		s2ptr++;
+		n--;
 	}
-	return (ft_strncpy(dst, src, len));
+	return (*s1ptr - *s2ptr);
 }

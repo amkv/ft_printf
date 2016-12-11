@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnncpy.c                                      :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 11:27:06 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/12/01 11:27:07 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/29 19:55:41 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/29 19:55:42 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "libft.h"
 
-char		*ft_strnncpy(char *dst, const char *src, size_t start, size_t len)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
+	unsigned int	nb;
 
-	i = 0;
-	while (i < start && *src != '\0')
+	nb = (n < 0) ? n * -1 : n;
+	if (n < 0)
+		ft_putchar_fd('-', fd);
+	if (nb > 9)
 	{
-		src++;
-		i++;
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putnbr_fd(nb % 10, fd);
 	}
-	return (ft_strncpy(dst, src, len));
+	else
+		ft_putchar_fd(nb + '0', fd);
 }

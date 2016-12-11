@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnncpy.c                                      :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 11:27:06 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/12/01 11:27:07 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/23 15:20:25 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/23 15:20:26 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "libft.h"
 
-char		*ft_strnncpy(char *dst, const char *src, size_t start, size_t len)
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	size_t	i;
+	const unsigned char *s1ptr;
+	const unsigned char *s2ptr;
 
-	i = 0;
-	while (i < start && *src != '\0')
+	s1ptr = (unsigned char*)s1;
+	s2ptr = (unsigned char*)s2;
+	while (*s1ptr != '\0' || *s2ptr != '\0')
 	{
-		src++;
-		i++;
+		if (*s1ptr == *s2ptr)
+		{
+			s1ptr++;
+			s2ptr++;
+		}
+		else
+			return (*s1ptr - *s2ptr);
 	}
-	return (ft_strncpy(dst, src, len));
+	return (0);
 }

@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnncpy.c                                      :+:      :+:    :+:   */
+/*   ft_skiptochr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 11:27:06 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/12/01 11:27:07 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/10/03 20:33:43 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/10/03 20:34:12 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "libft.h"
 
-char		*ft_strnncpy(char *dst, const char *src, size_t start, size_t len)
+char	*ft_skiptochr(char *s, char c)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < start && *src != '\0')
+	if (s)
 	{
-		src++;
-		i++;
+		while (*s)
+		{
+			if (*s == c)
+				return (s - 1);
+			s++;
+		}
+		return (s - 1);
 	}
-	return (ft_strncpy(dst, src, len));
+	else
+		return (NULL);
 }

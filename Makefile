@@ -6,7 +6,7 @@
 #    By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/22 14:50:24 by akalmyko          #+#    #+#              #
-#    Updated: 2016/12/10 15:22:49 by akalmyko         ###   ########.fr        #
+#    Updated: 2016/12/10 20:44:22 by akalmyko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,51 +16,197 @@ NAME = libftprintf.a
 CC = gcc
 FLAGS = -Wall -Wextra -Werror -c
 RM = /bin/rm -rfv
-LIB = libft/
+L = libft/
+A = addons/
+P = ft_printf/
 
-CFILES = ft_atoi.c  ft_bzero.c  ft_isalnum.c  ft_isalpha.c  ft_isascii.c
-CFILES += ft_isdigit.c  ft_isprint.c  ft_isspace.c  ft_itoa.c  ft_lstadd.c
-CFILES += ft_lstdel.c  ft_lstdelone.c  ft_lstiter.c  ft_lstmap.c  ft_lstnew.c
-CFILES += ft_memalloc.c  ft_memccpy.c  ft_memchr.c  ft_memcmp.c  ft_memcpy.c
-CFILES += ft_memdel.c  ft_memmove.c  ft_memset.c  ft_nextchar.c  ft_prvschar.c
-CFILES += ft_ptrlen.c  ft_ptrtoend.c  ft_putchar.c  ft_putchar_fd.c  ft_putendl.c
-CFILES += ft_putendl_fd.c  ft_putnbr.c  ft_putnbr_fd.c  ft_putstr.c  ft_putstr_fd.c
-CFILES += ft_skipchr.c  ft_skipspace_beg.c  ft_skipspace_end.c  ft_skiptochr.c
-CFILES += ft_strcat.c  ft_strchr.c  ft_strchr_qt.c  ft_strchrto_end.c  ft_strclr.c
-CFILES += ft_strcmp.c  ft_strcpy.c  ft_strdel.c  ft_strdup.c  ft_strequ.c
-CFILES += ft_striter.c  ft_striteri.c  ft_strjoin.c  ft_strlcat.c  ft_strlen.c
-CFILES += ft_strmap.c  ft_strmapi.c  ft_strncat.c  ft_strncmp.c  ft_strncpy.c
-CFILES += ft_strnequ.c  ft_strnew.c  ft_strnstr.c  ft_strrchr.c  ft_strsplit.c
-CFILES += ft_strstr.c  ft_strsub.c  ft_strtrim.c  ft_tolower.c  ft_toupper.c
-CFILES += ft_get_next_line.c
-CFILES += ft_printf.c
+LC = $(L)ft_atoi.c
+LC += $(L)ft_bzero.c
+LC += $(L)ft_isalnum.c
+LC += $(L)ft_isalpha.c
+LC += $(L)ft_isascii.c
+LC += $(L)ft_isdigit.c
+LC += $(L)ft_isprint.c
+LC += $(L)ft_isspace.c
+LC += $(L)ft_itoa.c
+LC += $(L)ft_lstadd.c
+LC += $(L)ft_lstdel.c
+LC += $(L)ft_lstdelone.c
+LC += $(L)ft_lstiter.c
+LC += $(L)ft_lstmap.c
+LC += $(L)ft_lstnew.c
+LC += $(L)ft_memalloc.c
+LC += $(L)ft_memccpy.c
+LC += $(L)ft_memchr.c
+LC += $(L)ft_memcmp.c
+LC += $(L)ft_memcpy.c
+LC += $(L)ft_memdel.c
+LC += $(L)ft_memmove.c
+LC += $(L)ft_memset.c
+LC += $(L)ft_nextchar.c
+LC += $(L)ft_prvschar.c
+LC += $(L)ft_ptrlen.c
+LC += $(L)ft_ptrtoend.c
+LC += $(L)ft_putchar.c
+LC += $(L)ft_putchar_fd.c
+LC += $(L)ft_putendl.c
+LC += $(L)ft_putendl_fd.c
+LC += $(L)ft_putnbr.c
+LC += $(L)ft_putnbr_fd.c
+LC += $(L)ft_putstr.c
+LC += $(L)ft_putstr_fd.c
+LC += $(L)ft_skipchr.c
+LC += $(L)ft_skipspace_beg.c
+LC += $(L)ft_skipspace_end.c
+LC += $(L)ft_skiptochr.c
+LC += $(L)ft_strcat.c
+LC += $(L)ft_strchr.c
+LC += $(L)ft_strchr_qt.c
+LC += $(L)ft_strchrto_end.c
+LC += $(L)ft_strclr.c
+LC += $(L)ft_strcmp.c
+LC += $(L)ft_strcpy.c
+LC += $(L)ft_strdel.c
+LC += $(L)ft_strdup.c
+LC += $(L)ft_strequ.c
+LC += $(L)ft_striter.c
+LC += $(L)ft_striteri.c
+LC += $(L)ft_strjoin.c
+LC += $(L)ft_strlcat.c
+LC += $(L)ft_strlen.c
+LC += $(L)ft_strmap.c
+LC += $(L)ft_strmapi.c
+LC += $(L)ft_strncat.c
+LC += $(L)ft_strncmp.c
+LC += $(L)ft_strncpy.c
+LC += $(L)ft_strnequ.c
+LC += $(L)ft_strnew.c
+LC += $(L)ft_strnstr.c
+LC += $(L)ft_strrchr.c
+LC += $(L)ft_strsplit.c
+LC += $(L)ft_strstr.c
+LC += $(L)ft_strsub.c
+LC += $(L)ft_strtrim.c
+LC += $(L)ft_tolower.c
+LC += $(L)ft_toupper.c
+LC += $(L)ft_get_next_line.c
 
-FTCFILES += ft_printf/ft_memnncpy.c ft_printf/ft_printf_helpers.c 
-FTCFILES += ft_printf/ft_printf_is.c ft_printf/ft_printf_lists.c 
-FTCFILES += ft_printf/ft_printf_parser.c ft_printf/ft_strnncpy.c
-FTCFILES += ft_printf/ft_printf_switch.c ft_printf/ft_printf_do.c
-FTCFILES += ft_printf/ft_itoa_base.c ft_printf/ft_numlen.c
-FTCFILES += ft_printf/ft_strdel_begn.c ft_printf/ft_printf_patterns.c
-FTCFILES += ft_printf/ft_printf_pre_print.c ft_printf/ft_pow.c
-FTCFILES += ft_printf/ft_ftoa.c
+PC = $(P)ft_printf.c
+PC += $(P)ft_memnncpy.c
+PC += $(P)ft_printf_helpers.c
+PC += $(P)ft_printf_is.c
+PC += $(P)ft_printf_lists.c
+PC += $(P)ft_printf_parser.c
+PC += $(P)ft_strnncpy.c
+PC += $(P)ft_printf_switch.c
+PC += $(P)ft_printf_do.c
+PC += $(P)ft_itoa_base.c
+PC += $(P)ft_numlen.c
+PC += $(P)ft_strdel_begn.c
+PC += $(P)ft_printf_patterns.c
+PC += $(P)ft_printf_pre_print.c
+PC += $(P)ft_pow.c
+PC += $(P)ft_ftoa.c
 
-OFILES = $(CFILES:.c=.o)
-OFILES += ft_memnncpy.o ft_printf_helpers.o ft_printf_is.o ft_printf_lists.o
-OFILES += ft_printf_parser.o ft_strnncpy.o ft_printf_switch.o ft_printf_do.o
-OFILES += ft_itoa_base.o ft_numlen.o ft_strdel_begn.o ft_printf_patterns.o
-OFILES += ft_printf_pre_print.o ft_pow.o ft_ftoa.o
+OF += ft_atoi.o
+OF += ft_bzero.o
+OF += ft_isalnum.o
+OF += ft_isalpha.o
+OF += ft_isascii.o
+OF += ft_isdigit.o
+OF += ft_isprint.o
+OF += ft_isspace.o
+OF += ft_itoa.o
+OF += ft_lstadd.o
+OF += ft_lstdel.o
+OF += ft_lstdelone.o
+OF += ft_lstiter.o
+OF += ft_lstmap.o
+OF += ft_lstnew.o
+OF += ft_memalloc.o
+OF += ft_memccpy.o
+OF += ft_memchr.o
+OF += ft_memcmp.o
+OF += ft_memcpy.o
+OF += ft_memdel.o
+OF += ft_memmove.o
+OF += ft_memset.o
+OF += ft_nextchar.o
+OF += ft_prvschar.o
+OF += ft_ptrlen.o
+OF += ft_ptrtoend.o
+OF += ft_putchar.o
+OF += ft_putchar_fd.o
+OF += ft_putendl.o
+OF += ft_putendl_fd.o
+OF += ft_putnbr.o
+OF += ft_putnbr_fd.o
+OF += ft_putstr.o
+OF += ft_putstr_fd.o
+OF += ft_skipchr.o
+OF += ft_skipspace_beg.o
+OF += ft_skipspace_end.o
+OF += ft_skiptochr.o
+OF += ft_strcat.o
+OF += ft_strchr.o
+OF += ft_strchr_qt.o
+OF += ft_strchrto_end.o
+OF += ft_strclr.o
+OF += ft_strcmp.o
+OF += ft_strcpy.o
+OF += ft_strdel.o
+OF += ft_strdup.o
+OF += ft_strequ.o
+OF += ft_striter.o
+OF += ft_striteri.o
+OF += ft_strjoin.o
+OF += ft_strlcat.o
+OF += ft_strlen.o
+OF += ft_strmap.o
+OF += ft_strmapi.o
+OF += ft_strncat.o
+OF += ft_strncmp.o
+OF += ft_strncpy.o
+OF += ft_strnequ.o
+OF += ft_strnew.o
+OF += ft_strnstr.o
+OF += ft_strrchr.o
+OF += ft_strsplit.o
+OF += ft_strstr.o
+OF += ft_strsub.o
+OF += ft_strtrim.o
+OF += ft_tolower.o
+OF += ft_toupper.o
+OF += ft_get_next_line.o
+
+OF += ft_printf.o
+OF += ft_memnncpy.o
+OF += ft_printf_helpers.o
+OF += ft_printf_is.o
+OF += ft_printf_lists.o
+OF += ft_printf_parser.o
+OF += ft_strnncpy.o
+OF += ft_printf_switch.o
+OF += ft_printf_do.o
+OF += ft_itoa_base.o
+OF += ft_numlen.o
+OF += ft_strdel_begn.o
+OF += ft_printf_patterns.o
+OF += ft_printf_pre_print.o
+OF += ft_pow.o
+OF += ft_ftoa.o
 
 all: $(NAME)
 
 $(NAME):
 	@echo compiling...
-	@$(CC) $(FLAGS) $(CFILES) $(FTCFILES)
-	@ar rc $(NAME) $(OFILES)
+	@$(CC) $(FLAGS) $(LC) $(PC)
+	@ar rc $(NAME) $(OF)
 	@ranlib $(NAME)
 	@echo $(NAME) created
 
 clean: 
-	@$(RM) $(OFILES) | wc -l | tr '\n' ' ' && echo ft_*.o files deleted
+	@$(RM) $(OF) | wc -l | tr '\n' ' ' && echo ft_*.o files deleted
 
 fclean: clean
 	@$(RM) $(NAME) | wc -l | tr '\n' ' ' && echo $(NAME) deleted

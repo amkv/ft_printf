@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnncpy.c                                      :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 11:27:06 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/12/01 11:27:07 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/28 10:23:46 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/28 10:23:49 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "libft.h"
 
-char		*ft_strnncpy(char *dst, const char *src, size_t start, size_t len)
+void					*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	size_t	i;
+	unsigned char		*dstptr;
+	const unsigned char	*srcptr;
 
-	i = 0;
-	while (i < start && *src != '\0')
+	srcptr = src;
+	dstptr = dst;
+	while (n > 0)
 	{
-		src++;
-		i++;
+		*dstptr = *srcptr;
+		if (*srcptr == (unsigned char)c)
+			return (++dstptr);
+		n--;
+		dstptr++;
+		srcptr++;
 	}
-	return (ft_strncpy(dst, src, len));
+	return (NULL);
 }

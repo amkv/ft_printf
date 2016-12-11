@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnncpy.c                                      :+:      :+:    :+:   */
+/*   ft_skipspace_end.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 11:27:06 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/12/01 11:27:07 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/30 16:46:52 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/30 16:46:54 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "libft.h"
 
-char		*ft_strnncpy(char *dst, const char *src, size_t start, size_t len)
+char				*ft_skipspace_end(char *s)
 {
-	size_t	i;
+	unsigned int	len;
 
-	i = 0;
-	while (i < start && *src != '\0')
+	if (s)
 	{
-		src++;
-		i++;
+		len = ft_strlen(s);
+		if (len == 0)
+			return (s);
+		s = s + (len - 1);
+		while ((*s == ' ' || *s == '\n' || *s == '\t') && len-- > 0)
+			s--;
+		return (s);
 	}
-	return (ft_strncpy(dst, src, len));
+	else
+		return (NULL);
 }

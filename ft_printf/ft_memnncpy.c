@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../libft/libft.h"
 
 void		*ft_memnncpy(void *dst, const void *src, size_t start, size_t n)
 {

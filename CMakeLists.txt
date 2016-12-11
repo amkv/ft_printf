@@ -23,7 +23,7 @@ set(SOURCE_FILES
 		ft_isspace.c
 
 		temp/main.c
-		ft_printf.c
+		ft_printf/ft_printf.c
 		ft_printf/ft_printf_is.c
 		ft_printf/ft_printf_helpers.c
 		ft_printf/ft_printf_parser.c

@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnncpy.c                                      :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 11:27:06 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/12/01 11:27:07 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/30 16:13:26 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/30 16:13:27 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "libft.h"
 
-char		*ft_strnncpy(char *dst, const char *src, size_t start, size_t len)
+char				*ft_strtrim(char const *s)
 {
-	size_t	i;
+	char			*copy;
+	char			*beg;
+	char			*end;
 
-	i = 0;
-	while (i < start && *src != '\0')
+	if (s)
 	{
-		src++;
-		i++;
+		beg = ft_skipspace_beg((char*)s);
+		end = ft_skipspace_end((char*)beg);
+		if (!(copy = (char*)malloc(sizeof(char) * (ft_ptrlen(beg, end) + 1))))
+			return (NULL);
+		ft_strncpy(copy, beg, ft_ptrlen(beg, end));
+		copy[ft_ptrlen(beg, end)] = '\0';
+		return (copy);
 	}
-	return (ft_strncpy(dst, src, len));
+	else
+		return (NULL);
 }

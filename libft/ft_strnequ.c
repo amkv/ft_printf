@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnncpy.c                                      :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 11:27:06 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/12/01 11:27:07 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/29 18:13:25 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/29 18:13:26 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "libft.h"
 
-char		*ft_strnncpy(char *dst, const char *src, size_t start, size_t len)
+int	ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < start && *src != '\0')
+	if (!s1 || !s2)
+		return (0);
+	if (n == 0)
+		return (1);
+	while ((*s1 == *s2) && *s1 != '\0' && n > 1)
 	{
-		src++;
-		i++;
+		s1++;
+		s2++;
+		n--;
 	}
-	return (ft_strncpy(dst, src, len));
+	if (*s1 != *s2)
+		return (0);
+	return (1);
 }

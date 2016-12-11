@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnncpy.c                                      :+:      :+:    :+:   */
+/*   ft_ptrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 11:27:06 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/12/01 11:27:07 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/30 19:48:40 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/30 19:48:42 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "libft.h"
 
-char		*ft_strnncpy(char *dst, const char *src, size_t start, size_t len)
+size_t		ft_ptrlen(char *beg, char *end)
 {
-	size_t	i;
+	size_t		len;
 
-	i = 0;
-	while (i < start && *src != '\0')
+	if (beg && end)
 	{
-		src++;
-		i++;
+		len = 0;
+		while (beg++ != end)
+			len++;
+		return (len + 1);
 	}
-	return (ft_strncpy(dst, src, len));
+	else
+		return (1);
 }

@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnncpy.c                                      :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 11:27:06 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/12/01 11:27:07 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/23 22:45:34 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/23 22:45:35 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "libft.h"
 
-char		*ft_strnncpy(char *dst, const char *src, size_t start, size_t len)
+char		*ft_strcat(char *s1, const char *s2)
 {
-	size_t	i;
+	char	*temp;
 
-	i = 0;
-	while (i < start && *src != '\0')
-	{
-		src++;
-		i++;
-	}
-	return (ft_strncpy(dst, src, len));
+	temp = s1;
+	while (*s1 != '\0')
+		s1++;
+	while (*s2 != '\0')
+		*s1++ = *s2++;
+	*s1 = '\0';
+	return (temp);
 }

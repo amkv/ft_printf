@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnncpy.c                                      :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 11:27:06 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/12/01 11:27:07 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/24 15:44:53 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/24 15:44:55 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "libft.h"
 
-char		*ft_strnncpy(char *dst, const char *src, size_t start, size_t len)
+char	*ft_strrchr(const char *s, int c)
 {
-	size_t	i;
+	char	*match;
+	int		truth;
 
-	i = 0;
-	while (i < start && *src != '\0')
+	truth = 0;
+	while (*s != '\0')
 	{
-		src++;
-		i++;
+		if (c == *s)
+		{
+			match = (char*)s;
+			truth = 1;
+		}
+		s++;
 	}
-	return (ft_strncpy(dst, src, len));
+	if (truth > 0)
+		return (match);
+	if (c == '\0')
+		return ((char*)s);
+	else
+		return (NULL);
 }

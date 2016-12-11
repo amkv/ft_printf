@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnncpy.c                                      :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 11:27:06 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/12/01 11:27:07 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/09/24 16:42:30 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/09/24 16:42:31 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "libft.h"
 
-char		*ft_strnncpy(char *dst, const char *src, size_t start, size_t len)
+char	*ft_strstr(const char *big, const char *little)
 {
-	size_t	i;
+	char const	*bigbox;
+	char const	*littlebox;
 
-	i = 0;
-	while (i < start && *src != '\0')
+	littlebox = little;
+	while (*big != '\0')
 	{
-		src++;
-		i++;
+		bigbox = big;
+		while (*little != '\0' && *big == *little)
+		{
+			++big;
+			++little;
+		}
+		if (*little == '\0')
+			return ((char *)bigbox);
+		big = bigbox + 1;
+		little = littlebox;
 	}
-	return (ft_strncpy(dst, src, len));
+	return (*little == '\0' ? (char *)big : NULL);
 }
