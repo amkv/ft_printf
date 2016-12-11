@@ -17,7 +17,7 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror -c
 RM = /bin/rm -rfv
 L = libft/
-A = addons/
+E = ft_extra_functions/
 P = ft_printf/
 
 LC = $(L)ft_atoi.c
@@ -92,21 +92,22 @@ LC += $(L)ft_toupper.c
 LC += $(L)ft_get_next_line.c
 
 PC = $(P)ft_printf.c
-PC += $(P)ft_memnncpy.c
 PC += $(P)ft_printf_helpers.c
 PC += $(P)ft_printf_is.c
 PC += $(P)ft_printf_lists.c
 PC += $(P)ft_printf_parser.c
-PC += $(P)ft_strnncpy.c
 PC += $(P)ft_printf_switch.c
 PC += $(P)ft_printf_do.c
-PC += $(P)ft_itoa_base.c
-PC += $(P)ft_numlen.c
-PC += $(P)ft_strdel_begn.c
 PC += $(P)ft_printf_patterns.c
 PC += $(P)ft_printf_pre_print.c
-PC += $(P)ft_pow.c
-PC += $(P)ft_ftoa.c
+
+EC = $(E)ft_memnncpy.c
+EC += $(E)ft_strnncpy.c
+EC += $(E)ft_itoa_base.c
+EC += $(E)ft_strdel_begn.c
+EC += $(E)ft_numlen.c
+EC += $(E)ft_pow.c
+EC += $(E)ft_ftoa.c
 
 OF += ft_atoi.o
 OF += ft_bzero.o
@@ -180,27 +181,29 @@ OF += ft_toupper.o
 OF += ft_get_next_line.o
 
 OF += ft_printf.o
-OF += ft_memnncpy.o
 OF += ft_printf_helpers.o
 OF += ft_printf_is.o
 OF += ft_printf_lists.o
 OF += ft_printf_parser.o
-OF += ft_strnncpy.o
 OF += ft_printf_switch.o
 OF += ft_printf_do.o
-OF += ft_itoa_base.o
-OF += ft_numlen.o
 OF += ft_strdel_begn.o
 OF += ft_printf_patterns.o
 OF += ft_printf_pre_print.o
+
+OF += ft_memnncpy.o
+OF += ft_strnncpy.o
+OF += ft_itoa_base.o
+OF += ft_numlen.o
 OF += ft_pow.o
 OF += ft_ftoa.o
+OF += ft_strdel_begn.o
 
 all: $(NAME)
 
 $(NAME):
 	@echo compiling...
-	@$(CC) $(FLAGS) $(LC) $(PC)
+	@$(CC) $(FLAGS) $(LC) $(EC) $(PC)
 	@ar rc $(NAME) $(OF)
 	@ranlib $(NAME)
 	@echo $(NAME) created

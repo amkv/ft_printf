@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "../libft/libft.h"
 
 double			ft_pow(double x, double y)
 {

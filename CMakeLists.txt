@@ -6,21 +6,21 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -fsanitize=address -Wall -Werror -Wextra"
 #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -fsanitize=address")
 
 set(SOURCE_FILES
-		ft_putstr.c
-		ft_putchar.c
-		ft_putnbr.c
-		ft_strlen.c
-		ft_isdigit.c
-		ft_memcpy.c
-		ft_strncpy.c
-		ft_strdup.c
-		ft_strnew.c
-		ft_bzero.c
-		ft_toupper.c
-		ft_itoa.c
-		ft_strjoin.c
-		ft_atoi.c
-		ft_isspace.c
+		libft/ft_putstr.c
+		libft/ft_putchar.c
+		libft/ft_putnbr.c
+		libft/ft_strlen.c
+		libft/ft_isdigit.c
+		libft/ft_memcpy.c
+		libft/ft_strncpy.c
+		libft/ft_strdup.c
+		libft/ft_strnew.c
+		libft/ft_bzero.c
+		libft/ft_toupper.c
+		libft/ft_itoa.c
+		libft/ft_strjoin.c
+		libft/ft_atoi.c
+		libft/ft_isspace.c
 
 		temp/main.c
 		ft_printf/ft_printf.c
