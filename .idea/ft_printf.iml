@@ -2,17 +2,39 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/ft_putstr.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ft_isdigit.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/temp/main.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ft_putchar.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ft_strlen.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ft_putnbr.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ft_printf/ft_printf_parser.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ft_printf/ft_is_helper.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_strdup.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ft_printf/ft_printf_helpers.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ft_printf.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_printf/ft_printf_lists.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_printf/ft_strdel_begn.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_printf/ft_ftoa.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_printf/ft_printf_switch.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_printf/ft_printf_is.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_printf/ft_itoa_base.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_printf/ft_printf.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_printf/ft_memnncpy.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_printf/ft_pow.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_printf/ft_printf_parser.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_printf/ft_printf_pre_print.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_printf/ft_printf_patterns.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_printf/ft_numlen.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_printf/ft_strnncpy.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_printf/ft_printf_do.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_putstr.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_putnbr.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_putchar.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_bzero.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_isdigit.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_strlen.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_toupper.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_strncpy.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_itoa.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_memcpy.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_strnew.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/temp/main.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_atoi.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_strjoin.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ft_isspace.c" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
