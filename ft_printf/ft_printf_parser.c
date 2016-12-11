@@ -70,15 +70,8 @@ void	ft_check_patterns(t_com **com, size_t *yn)
 	char 	*holder;
 
 	holder = (*com)->scroll;
-	if (*yn == 0)
+	if (*yn == 0 || ft_pat_one(*&com) == 1)
 		return ;
-	if (ft_strlen(holder) == 1 && ft_is_modifier(*holder) == 1)
-	{
-		(*com)->modifier = ft_strdup(holder);
-		free((*com)->scroll);
-		(*com)->scroll = NULL;
-		return ;
-	}
 	(*com)->param = ft_pat_parameter(&holder);
 //	(*com)->flag = ft_is_flags(&holder);
 	(*com)->width = ft_pat_width(&holder);

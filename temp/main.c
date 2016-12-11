@@ -16,9 +16,18 @@
 ** type va_arg(va_list ap, type);
 ** void va_copy(va_list dest, va_list src);
 ** void va_end(va_list ap);
+ *
+ *
+ * how to add new modifier?
+ *
+ * ft_do_XXX
+ * ft_switch_XXX
+ * ft_is_modifier..if
+ * +add union type
 */
 
 #include "../libftprintf.h"
+#include "math.h"
 
 static void		ft_p(int mr, int or)
 {
@@ -30,18 +39,28 @@ int				main(void)
 	int			mr;
 	int			or;
 	char 		*str;
+	char 		c;
 
 	str = "hello";
 	mr = 0; or = 0;
 
- 	mr = ft_printf("%X", -1);
+	mr = ft_printf("%u", "4294967295");
 	printf("\n");
-	or = printf("%X", -1);
+	or = printf("%e\n", -16123123123.1);
+	or = printf("%e\n", 16123123123.1);
+	or = printf("%e\n", -0.1345231231);
+	or = printf("%e\n", 0.1345231231);
 
 	printf("\n");
 	ft_p(mr, or);
+
+	c = 0;
+	write(1, &c, 1);
+
 	return (0);
 
+// мертвые кейсы...
 //	mr = ft_printf("%-5%test");
-//	mr = ft_printf("%f", 5.1);
+//	mr = ft_printf("%2c", 0);
+
 }

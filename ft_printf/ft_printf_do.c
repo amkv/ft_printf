@@ -29,7 +29,7 @@ void		ft_do_p(void *ptr, t_com **com)
 void		ft_do_x(int num, t_com **com)
 {
 	char 	*result;
-	unsigned int	number;
+	long int	number;
 
 	if (num >= 0)
 	{
@@ -54,7 +54,11 @@ void		ft_do_X(int num, t_com **com)
 
 void		ft_do_s(char *str, t_com **com)
 {
-	(*com)->scroll = ft_strdup(str);
+	char 	*result;
+
+	result = ft_strdup(str);
+//	free((*com)->scroll);
+	(*com)->scroll = result;
 	(*com)->len = ft_strlen(str);
 }
 
@@ -76,16 +80,21 @@ void		ft_do_S(char *str, t_com **com)
 		temp++;
 	}
 	*copy = '\0';
+//	free((*com)->scroll);
 	(*com)->scroll = result;
 	(*com)->len = ft_strlen(result);
 }
 
 void		ft_do_c(char c, t_com **com)
 {
-	(*com)->scroll = ft_strnew(2);
-	*(*com)->scroll = c;
-	*((*com)->scroll + 1) = '\0';
+	char 	*result;
+
+	result = ft_strnew(2);
+	result[0] = c;
+	result[1] = '\0';
+	free((*com)->scroll);
 	(*com)->len = 1;
+	(*com)->scroll = result;
 }
 
 void		ft_do_d(int d, t_com **com)
@@ -96,26 +105,44 @@ void		ft_do_d(int d, t_com **com)
 
 void		ft_do_u(unsigned int d, t_com **com)
 {
-	(*com)->scroll = ft_itoa_base(d, 10);
+	char 	*result;
+
+	result = ft_itoa_base(d, 10);
+	free((*com)->scroll);
+	(*com)->scroll = result;
 	(*com)->len = ft_strlen((*com)->scroll);
 }
 
-void		ft_do_o(int d, t_com **com)
+void		ft_do_U(unsigned int d, t_com **com)
 {
-	(*com)->scroll = NULL;
-	(*com)->len = 0;
+	char 	*result;
+
+	result = ft_itoa_base(d, 10);
+	free((*com)->scroll);
+	(*com)->scroll = result;
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void		ft_do_o(unsigned int d, t_com **com)
+{
+	char 	*result;
+
+	result = ft_itoa_base(d, 8);
+	free((*com)->scroll);
+	(*com)->scroll = result;
+	(*com)->len = ft_strlen(result);
 }
 
 void		ft_do_f(double f, t_com **com)
 {
-	(*com)->scroll = ft_itoa(f);
+	(*com)->scroll = ft_ftoa(f, 6);
 	(*com)->len = ft_strlen((*com)->scroll);
 }
 
 void		ft_do_F(double f, t_com **com)
 {
-	(*com)->scroll = NULL;
-	(*com)->len = 0;
+	(*com)->scroll = ft_ftoa(f, 6);
+	(*com)->len = ft_strlen((*com)->scroll);
 }
 
 void		ft_do_e(double f, t_com **com)

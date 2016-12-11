@@ -42,10 +42,10 @@ int		ft_is_length(char c)
 
 int		ft_is_modifier(char c)
 {
-	if (c == 'd' || c == 'i' || c == 'u' || c == 'f' || c == 'F' || c == 'e'
+	if (c == 'd' || c == 'i' || c == 'u' || c == 'U' || c == 'f' || c == 'F' || c == 'e'
 		|| c == 'E' || c == 'g' || c == 'G' || c == 'x' || c == 'X'
-		|| c == 'o' || c == 's' || c == 'c' || c == 'p' || c == 'a'
-		|| c == 'A' || c == 'n')
+		|| c == 'o' || c == 's' || c == 'S' || c == 'c' || c == 'p'
+		|| c == 'a' || c == 'A' || c == 'n')
 		return (1);
 	return (0);
 }

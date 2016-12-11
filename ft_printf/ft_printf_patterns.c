@@ -12,6 +12,22 @@
 
 #include "../libftprintf.h"
 
+int	ft_pat_one(t_com **com)
+{
+	char 	*holder;
+
+	holder = (*com)->scroll;
+	if (ft_strlen(holder) == 1 && ft_is_modifier(*holder) == 1)
+	{
+		(*com)->modifier = ft_strdup(holder);
+		free((*com)->scroll);
+		(*com)->scroll = NULL;
+		(*com)->len = 0;
+		return (1);
+	}
+	return (0);
+}
+
 char 	*ft_pat_parameter(char **holder)
 {
 	char	*copy;
@@ -57,33 +73,7 @@ long int	ft_pat_width(char **holder)
 	return (num);
 }
 
-//char		*ft_pat_width(char **holder)
-//{
-//	char 	*copy;
-//	char 	*result;
-//	char 	*temp;
-//	size_t 	len;
-//
-//	copy = *holder;
-//	len = 0;
-//	while (ft_isdigit(*copy) && *copy && ft_is_modifier(*copy) == 0)
-//	{
-//		copy++;
-//		len++;
-//	}
-//	if (len == 0)
-//		return (NULL);
-//	else
-//	{
-//		result = ft_strnew(len + 1);
-//		ft_memcpy(result, *holder, len);
-//	}
-//	temp = ft_strdel_begn(*holder, len);
-//	free(*holder);
-//	*holder = NULL;
-//	*holder = temp;
-//	return (result);
-//}
+
 
 char 		*ft_pat_string(char **holder)
 {

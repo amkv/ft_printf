@@ -44,7 +44,7 @@ void		ft_tcom_add(t_com **beg, t_com *next)
 	}
 }
 
-t_com		*ft_tcom_revert(t_com **list)
+void		ft_tcom_revert(t_com **list)
 {
 	t_com	*tmp;
 	t_com	*revers;
@@ -65,7 +65,6 @@ t_com		*ft_tcom_revert(t_com **list)
 		tmp = revers;
 	}
 	*list = save;
-	return (save);
 }
 
 void		ft_tcom_free(t_com *list)
@@ -83,7 +82,6 @@ void		ft_tcom_free(t_com *list)
 
 		free(tmp->param);
 		free(tmp->flag);
-//		free(tmp->width);
 		free(tmp->precision);
 		free(tmp->length);
 		free(tmp->modifier);

@@ -50,6 +50,7 @@ union			u_type
 	unsigned char	ac;
 	signed char		sc;
 	int				d;
+	unsigned int 	uo;
 	unsigned int	ui;
 	short			sh;
 	unsigned short	ush;
@@ -78,7 +79,7 @@ t_com			*ft_tcom_new(char type, char *command);
 void			ft_tcom_add(t_com **beg, t_com *next);
 void			ft_tcom_free(t_com *list);
 void			ft_tcom_print(t_com *list);
-t_com			*ft_tcom_revert(t_com **list);
+void			ft_tcom_revert(t_com **list);
 
 /*
 ** ft_is chekers
@@ -89,15 +90,6 @@ int				ft_is_length(char c);
 int				ft_is_modifier(char c);
 
 /*
-** Addons
-*/
-char			*ft_strnncpy(char *dst, const char *src, size_t beg, size_t n);
-void			*ft_memnncpy(void *dst, const void *src, size_t beg, size_t n);
-long int		ft_numlen(long int num);
-char			*ft_itoa_base(long int value, long int base);
-char 			*ft_strdel_begn(char *str, size_t n);
-
-/*
 ** Modifiers
 */
 char 			*ft_add_spaces(char *str, long int width);
@@ -105,6 +97,7 @@ char 			*ft_add_spaces(char *str, long int width);
 /*
 ** patterns
 */
+int				ft_pat_one(t_com **com);
 char 			*ft_pat_parameter(char **holder);
 long int		ft_pat_width(char **holder);
 char 			*ft_pat_modifier(char **holder);
@@ -117,12 +110,13 @@ void			ft_do_S(char *str, t_com **com);
 void			ft_do_s(char *str, t_com **com);
 void			ft_do_c(char c, t_com **com);
 void			ft_do_d(int d, t_com **com);
-void			ft_do_x(int num, t_com **com);				// сделано не до конца
-void			ft_do_X(int num, t_com **com);				// сделано не до конца
+void			ft_do_x(int num, t_com **com);
+void			ft_do_X(int num, t_com **com);
 void			ft_do_p(void *ptr, t_com **com);
 void			ft_do_u(unsigned int d, t_com **com);		// не сделано
-void			ft_do_o(int d, t_com **com);				// не сделано
-void			ft_do_f(double f, t_com **com);				// не сделано
+void			ft_do_U(unsigned int d, t_com **com);
+void			ft_do_o(unsigned int d, t_com **com);
+void			ft_do_f(double f, t_com **com);
 void			ft_do_F(double f, t_com **com);				// не сделано
 void			ft_do_e(double f, t_com **com);				// не сделано
 void			ft_do_E(double f, t_com **com);				// не сделано
@@ -137,6 +131,16 @@ void			ft_do_n(char *str, t_com **com);			// не сделано
 */
 void			ft_pre_print_width(t_com **com);
 
+/*
+** Addons
+*/
+char			*ft_strnncpy(char *dst, const char *src, size_t beg, size_t n);
+void			*ft_memnncpy(void *dst, const void *src, size_t beg, size_t n);
+long int		ft_numlen(long int num);
+char			*ft_itoa_base(long int value, long int base);
+char 			*ft_strdel_begn(char *str, size_t n);
+char 			*ft_ftoa(double number, int length);
+double			ft_pow(double x, double y);
 
 void	ft_nothing(void);
 
