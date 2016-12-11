@@ -32,12 +32,13 @@ set(SOURCE_FILES
 		ft_printf/ft_printf_do.c
 		ft_printf/ft_printf_patterns.c
 		ft_printf/ft_printf_pre_print.c
-		ft_printf/ft_strnncpy.c
-		ft_printf/ft_memnncpy.c
-		ft_printf/ft_itoa_base.c
-		ft_printf/ft_numlen.c
-		ft_printf/ft_strdel_begn.c
-		ft_printf/ft_ftoa.c
-		ft_printf/ft_pow.c
+
+		ft_extra_functions/ft_strnncpy.c
+		ft_extra_functions/ft_memnncpy.c
+		ft_extra_functions/ft_itoa_base.c
+		ft_extra_functions/ft_numlen.c
+		ft_extra_functions/ft_strdel_begn.c
+		ft_extra_functions/ft_ftoa.c
+		ft_extra_functions/ft_pow.c
 		)
 add_executable(ft_printf ${SOURCE_FILES})
