@@ -19,9 +19,9 @@ static void	ft_switch2(char c, union u_type *type, va_list ap, t_com **com)
 	if (c == 'F')
 		ft_do_F(type->db = va_arg(ap, double), *&com);
 	if (c == 'e')
-		ft_do_e(type->d = va_arg(ap, double), *&com);
+		ft_do_e(type->db = va_arg(ap, double), *&com);
 	if (c == 'E')
-		ft_do_E(type->d = va_arg(ap, double), *&com);
+		ft_do_E(type->db = va_arg(ap, double), *&com);
 	if (c == 'g')
 		ft_do_g(type->d = va_arg(ap, double), *&com);
 	if (c == 'G')

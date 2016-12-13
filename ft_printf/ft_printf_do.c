@@ -145,10 +145,70 @@ void		ft_do_F(double f, t_com **com)
 	(*com)->len = ft_strlen((*com)->scroll);
 }
 
-void		ft_do_e(double f, t_com **com)
+void		ft_do_e(double number, t_com **com)
 {
-	(*com)->scroll = NULL;
-	(*com)->len = 0;
+// переписать полностью
+
+//	int 	left;
+//	double	right;
+//	char 	*result;
+//	char 	len;
+//	char 	minus[2];
+//	int 	length;
+//
+//	length = 6;
+////	length = (*com)->precision;
+//
+//	minus[0] = '-';
+//	minus[1] = '\0';
+//
+//	len = 0;
+//	if (number < 0)
+//	{
+//		number = -number;
+//		len++;
+//	}
+//	else
+//		minus[0] = '\0';
+//	left = (int)number;
+//	right = number - (double)left;
+//	if (left == 0)
+//		right = right * ft_pow(10, length);
+
+
+	char 	*num_string;
+	int 	index;
+	char 	*multi;
+	char 	*temp;
+
+	index = 0;
+//	if (number < 0)
+//		number = -number;
+	num_string = ft_ftoa(number, 10);
+
+
+
+	while (num_string[index] != '\0')
+	{
+		if (num_string[index] == '.')
+			break;
+		index++;
+	}
+	multi = ft_itoa(index - 1);
+	while (index != 1)
+	{
+		num_string[index] = num_string[index - 1];
+		index--;
+	}
+	num_string[1] = '.';
+	temp = ft_strjoin(num_string, "e+0");
+	free(num_string);
+	num_string = ft_strjoin(temp, multi);
+	free(temp);
+	free(multi);
+	free((*com)->scroll);
+	(*com)->scroll = num_string;
+	(*com)->len = ft_strlen(num_string);
 }
 
 void		ft_do_E(double f, t_com **com)

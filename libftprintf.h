@@ -90,18 +90,15 @@ int				ft_is_length(char c);
 int				ft_is_modifier(char c);
 
 /*
-** Modifiers
-*/
-char 			*ft_add_spaces(char *str, long int width);
-
-/*
 ** patterns
 */
 int				ft_pat_one(t_com **com);
-char 			*ft_pat_parameter(char **holder);
+char			*ft_pat_parameter(char **holder);
 long int		ft_pat_width(char **holder);
-char 			*ft_pat_modifier(char **holder);
-char 			*ft_pat_string(char **holder);
+char			*ft_pat_modifier(char **holder);
+char			*ft_pat_string(char **holder);
+char			*ft_pat_flags(char **holder);
+char			*ft_pat_precision(char **holder);
 
 /*
 ** DOs
@@ -127,6 +124,11 @@ void			ft_do_A(double f, t_com **com);				// не сделано
 void			ft_do_n(char *str, t_com **com);			// не сделано
 
 /*
+** Modifiers
+*/
+char			*ft_add_spaces(char *str, long int width);
+
+/*
 ** Pre print functions
 */
 void			ft_pre_print_width(t_com **com);
@@ -138,8 +140,8 @@ char			*ft_strnncpy(char *dst, const char *src, size_t beg, size_t n);
 void			*ft_memnncpy(void *dst, const void *src, size_t beg, size_t n);
 long int		ft_numlen(long int num);
 char			*ft_itoa_base(long int value, long int base);
-char 			*ft_strdel_begn(char *str, size_t n);
-char 			*ft_ftoa(double number, int length);
+char			*ft_strdel_begn(char *str, size_t n);
+char			*ft_ftoa(double number, int length);
 double			ft_pow(double x, double y);
 
 void	ft_nothing(void);

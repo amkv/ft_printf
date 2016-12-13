@@ -14,6 +14,7 @@
 
 char 		*ft_ftoa(double number, int length)
 {
+	// не верный, необходимо переписать полностью
 	char 	*result;
 	char 	*part1;
 	char 	*part2;

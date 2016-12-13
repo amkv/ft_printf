@@ -21,6 +21,7 @@ set(SOURCE_FILES
 		libft/ft_strjoin.c
 		libft/ft_atoi.c
 		libft/ft_isspace.c
+		libft/ft_strcmp.c
 
 		temp/main.c
 		ft_printf/ft_printf.c

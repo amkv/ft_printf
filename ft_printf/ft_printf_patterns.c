@@ -64,8 +64,8 @@ long int	ft_pat_width(char **holder)
 
 	num = ft_atoi(*holder);
 	len = (size_t)ft_numlen(num);
-//	if (len == 0)
-//		return (0);
+	if (len == 0)
+		return (0);
 	temp = ft_strdel_begn(*holder, len);
 	free(*holder);
 	*holder = NULL;
@@ -103,4 +103,57 @@ char 		*ft_pat_modifier(char **holder)
 	*holder = NULL;
 	*holder = temp;
 	return (modifier);
+}
+
+char 		*ft_pat_flags(char **holder)
+{
+	char 	*hold;
+	char 	*result;
+
+	if (!(*holder) || ft_is_flag(**holder) == 0)
+		return (NULL);
+	result = ft_strnew(2);
+	result = ft_memcpy(result, *holder, 1);
+	hold = ft_strdel_begn(*holder, 1);
+	free(*holder);
+	*holder = NULL;
+	*holder = hold;
+	return (result);
+}
+
+
+char 		*ft_pat_precision(char **holder)
+{
+	char 	*copy;
+	char 	*temp;
+	char 	*result;
+	int 	index;
+
+	if (!(*holder))
+		return (NULL);
+	result = NULL;
+	temp = NULL;
+	copy = *holder;
+	if (*copy == '.')
+	{
+		copy = *holder;
+		if (*(copy + 1) != '\0')
+			copy++;
+		index = 0;
+		while (ft_isdigit(*copy))
+		{
+			index++;
+			copy++;
+		}
+		result = ft_strnew((size_t)index + 1 + 1);
+	}
+	if (*copy == '*')
+	{
+		result = ft_strjoin("", "*");
+		temp = ft_strdel_begn(*holder, 1);
+	}
+	free(*holder);
+	*holder = NULL;
+	*holder = temp;
+	return (result);
 }

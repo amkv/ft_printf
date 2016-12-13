@@ -14,7 +14,7 @@
 
 int		ft_is_flag(char c)
 {
-	if (c == '-' || c == '+' || c == ' ' || c == '0' || c == '#' || c == '\'')
+	if (c == '-' || c == '+' || c == ' ' || c == '0' || c == '#')
 		return (1);
 	return (0);
 }
@@ -26,12 +26,12 @@ int 	ft_is_width(char c)
 	return (0);
 }
 
-int		ft_is_precision(char c)
-{
-	if (c == '.' || ft_isdigit(c) == 1)
-		return (1);
-	return (0);
-}
+//int		ft_is_precision(char c)
+//{
+//	if (c == '.' || c == '*')
+//		return (1);
+//	return (0);
+//}
 
 int		ft_is_length(char c)
 {

@@ -20,7 +20,7 @@ static int 	ft_check_modifier(const char *str)
 	while (*str)
 	{
 		if (ft_is_modifier(*str) == 1)
-			len++;
+			len++; // просто вернуть значение return(1);
 		str++;
 	}
 	if (len > 0)
@@ -68,33 +68,27 @@ static void	ft_get_arg(char **str, size_t *beg, size_t *yn, size_t *len)
 void	ft_check_patterns(t_com **com, size_t *yn)
 {
 	char 	*holder;
+	char 	*temp;
 
-	holder = (*com)->scroll;
 	if (*yn == 0 || ft_pat_one(*&com) == 1)
 		return ;
+	holder = ft_strdup((*com)->scroll);
+	temp = ft_strdup((*com)->scroll);
+
+	free((*com)->scroll);
+	(*com)->scroll = NULL;
+	(*com)->len = 0;
+
 	(*com)->param = ft_pat_parameter(&holder);
-//	(*com)->flag = ft_is_flags(&holder);
+	(*com)->flag = ft_pat_flags(&holder);
 	(*com)->width = ft_pat_width(&holder);
-//	(*com)->precision = ft_is_precision(&holder);
+	(*com)->precision = ft_pat_precision(&holder);
 //	(*com)->length =  ft_is_lenght(&holder);
 	(*com)->modifier = ft_pat_modifier(&holder);
-	if (holder && *holder == '%' && ft_strlen(holder) == 1)
-	{
-		if ((*com)->width)
-			(*com)->scroll = ft_add_spaces(holder, (*com)->width);
-		else
-			(*com)->scroll = holder;
-		(*com)->len = ft_strlen((*com)->scroll);
-		return ;
-	}
-	if (holder && ft_strlen(holder) > 0)
+
+	if (holder && ft_strcmp(temp, holder) != 0)
 		ft_tcom_list(*&com, 0, holder);
-	else
-	{
-		(*com)->scroll = NULL;
-		(*com)->len = 0;
-	}
-//	(*com)->scroll = NULL;
+	free(temp);
 }
 
 void		ft_parser(const char *format, t_com **com, size_t *argc)
@@ -116,6 +110,8 @@ void		ft_parser(const char *format, t_com **com, size_t *argc)
 			return ;
 		ft_memnncpy((holder = ft_strnew(len + 1)), format, beg, len);
 		beg += len;
+//		ft_tcom_list(*&com, yn, NULL);
+//		ft_check_patterns(*&com, &yn, *&holder);	// переписать чтобы сократить время работы
 		ft_tcom_list(*&com, yn, holder);
 		ft_check_patterns(*&com, &yn);
 		(*argc)++;

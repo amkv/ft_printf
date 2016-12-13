@@ -41,26 +41,38 @@ int				main(void)
 	char 		*str;
 	char 		c;
 
+
 	str = "hello";
 	mr = 0; or = 0;
 
-	mr = ft_printf("%u", "4294967295");
+	mr = ft_printf("%*s", str);
 	printf("\n");
-	or = printf("%e\n", -16123123123.1);
-	or = printf("%e\n", 16123123123.1);
-	or = printf("%e\n", -0.1345231231);
-	or = printf("%e\n", 0.1345231231);
+	or = printf("% s", str);
+//	or = printf("%e\n", -16123123123.1);
+//	or = printf("%e\n", -0.1345231231);
+//	or = printf("%e\n", 0.1345231231);
+
+//	double 		number;
+//	number = 1.23;
+//
+////	printf("%s\n", ft_ftoa(number, 0));
+//	ft_printf("%f\n", number);
+//	printf("%f", number);
+
 
 	printf("\n");
 	ft_p(mr, or);
 
-	c = 0;
-	write(1, &c, 1);
 
 	return (0);
 
 // мертвые кейсы...
 //	mr = ft_printf("%-5%test");
+
 //	mr = ft_printf("%2c", 0);
+//	c = 0;
+//	write(1, &c, 1);
+
+
 
 }
