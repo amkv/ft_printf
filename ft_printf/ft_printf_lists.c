@@ -12,18 +12,41 @@
 
 #include "../libftprintf.h"
 
-t_com		*ft_tcom_new(char type, char *command)
+//t_com		*ft_tcom_new(char type, char *command)
+//{
+//	t_com	*new;
+//
+//	if (!(new = (t_com*)malloc(sizeof(t_com) * 1)))
+//		return (NULL);
+//	new->scroll = command;
+//	new->size = sizeof(command);
+//	new->len = ft_strlen(command);
+//	new->ptr = NULL;
+//
+//	new->type = type;
+//	new->param = NULL;
+//	new->flag = NULL;
+//	new->width = 0;
+//	new->precision = NULL;
+//	new->length = NULL;
+//	new->modifier = NULL;
+//
+//	new->next = NULL;
+//	return (new);
+//}
+
+t_com		*ft_tcom_fresh(void)
 {
 	t_com	*new;
 
 	if (!(new = (t_com*)malloc(sizeof(t_com) * 1)))
 		return (NULL);
-	new->scroll = command;
-	new->size = sizeof(command);
-	new->len = ft_strlen(command);
+	new->scroll = NULL;
+	new->size = 0;
+	new->len = 0;
 	new->ptr = NULL;
 
-	new->type = type;
+	new->type = '.';
 	new->param = NULL;
 	new->flag = NULL;
 	new->width = 0;

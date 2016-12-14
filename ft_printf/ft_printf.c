@@ -35,6 +35,23 @@ static int		ft_exceptions(const char *format, int *characters)
 			return ((*characters = 1));
 		}
 	}
+	if (*format == '%')
+	{
+		index = 1;
+		while (ft_isdigit(format[index]) == 1)
+			index++;
+		if (format[index] == '%' && format[index + 1] == '\0')
+		{
+			while (index > 0)
+			{
+				ft_putchar(' ');
+				index--;
+			}
+			ft_putchar('%');
+			*characters = index;
+			return (*characters);
+		}
+	}
 	return (-1);
 }
 
@@ -60,7 +77,7 @@ static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
 
 	copy = com;
 	argc = 0;
-	while (copy != NULL)
+	while (copy != NULL && argc > 0)
 	{
 		if (copy->type == '%')
 		{
@@ -68,6 +85,7 @@ static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
 			ft_switch(*modifier, &type, ap, &copy);
 			ft_pre_print_width(&copy);
 		}
+		argc--;
 		copy = copy->next;
 	}
 }
@@ -84,7 +102,7 @@ int				ft_printf(const char *restrict format, ...)
 	va_start(ap, format);
 	ft_parser(format, &com, &argc);
 	ft_tcom_revert(&com);
-//	printf("a: %zu\n", argc);
+//	printf("аргументов: %zu\n", argc);
 //	ft_tcom_print(com);
 	ft_pre_printing(*&com, ap, argc);
 //	ft_tcom_print(com);

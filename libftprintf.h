@@ -70,12 +70,13 @@ union			u_type
 int				ft_printf(const char *restrict format, ...);
 void			ft_parser(const char *format, t_com **list, size_t *argc);
 void			ft_switch(char c, union u_type *type, va_list ap, t_com **com);
-void			ft_check_patterns(t_com **com, size_t *yn);
+void			ft_check_patterns(t_com **com, size_t *yn, char **holder, size_t *argc);
 
 /*
 ** Lists
 */
 t_com			*ft_tcom_new(char type, char *command);
+t_com			*ft_tcom_fresh(void);
 void			ft_tcom_add(t_com **beg, t_com *next);
 void			ft_tcom_free(t_com *list);
 void			ft_tcom_print(t_com *list);
@@ -92,7 +93,7 @@ int				ft_is_modifier(char c);
 /*
 ** patterns
 */
-int				ft_pat_one(t_com **com);
+int				ft_pat_one(t_com **com, char **holder);
 char			*ft_pat_parameter(char **holder);
 long int		ft_pat_width(char **holder);
 char			*ft_pat_modifier(char **holder);

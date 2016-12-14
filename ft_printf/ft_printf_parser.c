@@ -12,34 +12,23 @@
 
 #include "../libftprintf.h"
 
-static int 	ft_check_modifier(const char *str)
+//static int 	ft_check_modifier(const char *str)
+//{
+//	while (*str)
+//	{
+//		if (ft_is_modifier(*str) == 1)
+//			return (1);
+//		str++;
+//	}
+//	return (0);
+//}
+
+static void	ft_tcom_list(t_com **list, t_com *fresh)
 {
-	int 	len;
-
-	len = 0;
-	while (*str)
-	{
-		if (ft_is_modifier(*str) == 1)
-			len++; // просто вернуть значение return(1);
-		str++;
-	}
-	if (len > 0)
-		return (1);
-	return (0);
-}
-
-static void	ft_tcom_list(t_com **list, size_t yn, char *holder)
-{
-	char	sign;
-
-	if (yn > 0 && (ft_check_modifier(holder) == 1))
-		sign = '%';
-	else
-		sign = '.';
 	if (*list == NULL)
-		*list = ft_tcom_new(sign, holder);
+		*list = fresh;
 	else
-		ft_tcom_add(*&list, ft_tcom_new(sign, holder));
+		ft_tcom_add(*&list, fresh);
 }
 
 static void	ft_get_arg(char **str, size_t *beg, size_t *yn, size_t *len)
@@ -65,30 +54,53 @@ static void	ft_get_arg(char **str, size_t *beg, size_t *yn, size_t *len)
 		(*beg)++;
 }
 
-void	ft_check_patterns(t_com **com, size_t *yn)
+void	ft_check_patterns(t_com **com, size_t *yn, char **holder, size_t *argc) // структура, булеан есть ли %, стринг отрезанной команды
 {
-	char 	*holder;
-	char 	*temp;
+	char 	*copy;	// переменная для сравнения начального состояния *holder и конечного, сохраняю адрес на первую ячейку в памяти
+	t_com	*fresh; // новый чистый лист для манипуляций
+	char 	*newholder;
 
-	if (*yn == 0 || ft_pat_one(*&com) == 1)
+	copy = ft_strdup(*holder);
+	// создаю новый чистый лист
+	fresh = ft_tcom_fresh();
+	// если модификаторов во время распиливания стринга не обнаружилось
+	// создаю простой лист для печати
+	if (*yn == 0)
+	{
+		fresh->scroll = *holder;
+		fresh->len = ft_strlen(*holder);
+		ft_tcom_list(*&com, fresh);
 		return ;
-	holder = ft_strdup((*com)->scroll);
-	temp = ft_strdup((*com)->scroll);
+	}
+	// заношу все данные в лист
+	(fresh)->param = ft_pat_parameter(*&holder);
+	(fresh)->flag = ft_pat_flags(*&holder);
+	(fresh)->width = ft_pat_width(*&holder);
+//	(fresh)->precision = ft_pat_precision(*&holder);
+//	(fresh)->length =  ft_is_lenght(*&holder);
+	(fresh)->modifier = ft_pat_modifier(*&holder);
+	if ((fresh)->modifier == NULL && *holder) // добавить проверку на нулевой холдер
+		(fresh)->scroll = ft_strdup(*holder);
+	else
+	{
+		(fresh)->type = '%';
+		(*argc)++;
+	}
+	// добавляю лист в цепочку
+	ft_tcom_list(*&com, fresh);
 
-	free((*com)->scroll);
-	(*com)->scroll = NULL;
-	(*com)->len = 0;
 
-	(*com)->param = ft_pat_parameter(&holder);
-	(*com)->flag = ft_pat_flags(&holder);
-	(*com)->width = ft_pat_width(&holder);
-	(*com)->precision = ft_pat_precision(&holder);
-//	(*com)->length =  ft_is_lenght(&holder);
-	(*com)->modifier = ft_pat_modifier(&holder);
-
-	if (holder && ft_strcmp(temp, holder) != 0)
-		ft_tcom_list(*&com, 0, holder);
-	free(temp);
+	// проверяю остаток в *holder
+	if (*holder == NULL)
+		return ;
+	if (ft_strcmp(copy, *holder) != 0)
+	{
+		newholder = ft_strdup(*holder);
+		fresh->scroll = newholder;
+		fresh->len = ft_strlen(newholder);
+		ft_tcom_list(*&com, fresh);
+	}
+	free(copy);
 }
 
 void		ft_parser(const char *format, t_com **com, size_t *argc)
@@ -110,10 +122,34 @@ void		ft_parser(const char *format, t_com **com, size_t *argc)
 			return ;
 		ft_memnncpy((holder = ft_strnew(len + 1)), format, beg, len);
 		beg += len;
-//		ft_tcom_list(*&com, yn, NULL);
-//		ft_check_patterns(*&com, &yn, *&holder);	// переписать чтобы сократить время работы
-		ft_tcom_list(*&com, yn, holder);
-		ft_check_patterns(*&com, &yn);
-		(*argc)++;
+		ft_check_patterns(*&com, &yn, &holder, *&argc);
 	}
 }
+
+//void	ft_check_patterns(t_com **com, size_t *yn, )
+//{
+//	char 	*holder;
+//	char 	*temp;
+//
+//	if (*yn == 0 || ft_pat_one(*&com) == 1)
+//		return ;
+//	holder = ft_strdup((*com)->scroll);
+//	temp = ft_strdup((*com)->scroll);
+//
+//	free((*com)->scroll);
+//	(*com)->scroll = NULL;
+//	(*com)->len = 0;
+//
+//	(*com)->param = ft_pat_parameter(&holder);
+//	(*com)->flag = ft_pat_flags(&holder);
+//	(*com)->width = ft_pat_width(&holder);
+//	(*com)->precision = ft_pat_precision(&holder);
+////	(*com)->length =  ft_is_lenght(&holder);
+//	(*com)->modifier = ft_pat_modifier(&holder);
+//	if ((*com)->modifier == NULL)
+//		(*com)->type = '.';
+//
+//	if (holder && ft_strcmp(temp, holder) != 0) // ||
+//		ft_tcom_list(*&com, 0, holder);
+//	free(temp);
+//}

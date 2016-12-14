@@ -12,21 +12,34 @@
 
 #include "../libftprintf.h"
 
-int	ft_pat_one(t_com **com)
+int	ft_pat_one(t_com **com, char **holder)
 {
-	char 	*holder;
-
-	holder = (*com)->scroll;
-	if (ft_strlen(holder) == 1 && ft_is_modifier(*holder) == 1)
+	if (ft_strlen(*holder) == 1 && ft_is_modifier(**holder) == 1)
 	{
-		(*com)->modifier = ft_strdup(holder);
-		free((*com)->scroll);
-		(*com)->scroll = NULL;
-		(*com)->len = 0;
+		(*com)->modifier = ft_strdup(*holder);
+//		free((*com)->scroll);
+//		(*com)->scroll = NULL;
+//		(*com)->len = 0;
 		return (1);
 	}
 	return (0);
 }
+
+//int	ft_pat_one(t_com **com)
+//{
+//	char 	*holder;
+//
+//	holder = (*com)->scroll;
+//	if (ft_strlen(holder) == 1 && ft_is_modifier(*holder) == 1)
+//	{
+//		(*com)->modifier = ft_strdup(holder);
+//		free((*com)->scroll);
+//		(*com)->scroll = NULL;
+//		(*com)->len = 0;
+//		return (1);
+//	}
+//	return (0);
+//}
 
 char 	*ft_pat_parameter(char **holder)
 {
@@ -35,6 +48,8 @@ char 	*ft_pat_parameter(char **holder)
 	char 	*result;
 	char 	*temp;
 
+	if (!(*holder))
+		return (NULL);
 	copy = *holder;
 	len = 0;
 	while (ft_isdigit(*copy) == 1)
@@ -47,7 +62,7 @@ char 	*ft_pat_parameter(char **holder)
 		result = ft_strnew(len + 1);
 		ft_memcpy(result, *holder, len);
 		temp = ft_strdel_begn(*holder, len + 1);
-//		free(*holder);
+		free(*holder);
 		*holder = NULL;
 		*holder = temp;
 		return (result);
@@ -62,6 +77,8 @@ long int	ft_pat_width(char **holder)
 	size_t 	len;
 	long int num;
 
+	if (!(*holder))
+		return (0);
 	num = ft_atoi(*holder);
 	len = (size_t)ft_numlen(num);
 	if (len == 0)
@@ -131,11 +148,12 @@ char 		*ft_pat_precision(char **holder)
 
 	if (!(*holder))
 		return (NULL);
-	result = NULL;
-	temp = NULL;
-	copy = *holder;
-	if (*copy == '.')
+
+	if (**holder == '.')
 	{
+		copy = *holder;
+		result = NULL;
+		temp = NULL;
 		copy = *holder;
 		if (*(copy + 1) != '\0')
 			copy++;
@@ -146,14 +164,20 @@ char 		*ft_pat_precision(char **holder)
 			copy++;
 		}
 		result = ft_strnew((size_t)index + 1 + 1);
+//		free(*holder);
+//		*holder = NULL;
+//		*holder = temp;
 	}
-	if (*copy == '*')
+	if (**holder == '*')
 	{
+		copy = *holder;
+		result = NULL;
+		temp = NULL;
 		result = ft_strjoin("", "*");
 		temp = ft_strdel_begn(*holder, 1);
+		free(*holder);
+		*holder = NULL;
+		*holder = temp;
 	}
-	free(*holder);
-	*holder = NULL;
-	*holder = temp;
 	return (result);
 }
