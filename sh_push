@@ -1,0 +1,16 @@
+#!/bin/bash
+
+git status
+git add *
+git commit -m "progress"
+
+echo push to School
+git push
+mv .git/config .git/config_s
+mv .git/config_g .git/config
+echo "----------------------------------------------------------------OK (SChool)"
+echo push to GIT
+git push
+mv .git/config .git/config_g
+mv .git/config_s .git/config
+echo "----------------------------------------------------------------OK (GIT)"
