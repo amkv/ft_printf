@@ -12,6 +12,7 @@
 
 #include "../libftprintf.h"
 
+/*
 int	ft_pat_one(t_com **com, char **holder)
 {
 	if (ft_strlen(*holder) == 1 && ft_is_modifier(**holder) == 1)
@@ -24,89 +25,124 @@ int	ft_pat_one(t_com **com, char **holder)
 	}
 	return (0);
 }
+*/
 
-//int	ft_pat_one(t_com **com)
-//{
-//	char 	*holder;
-//
-//	holder = (*com)->scroll;
-//	if (ft_strlen(holder) == 1 && ft_is_modifier(*holder) == 1)
-//	{
-//		(*com)->modifier = ft_strdup(holder);
-//		free((*com)->scroll);
-//		(*com)->scroll = NULL;
-//		(*com)->len = 0;
-//		return (1);
-//	}
-//	return (0);
-//}
-
-char 	*ft_pat_parameter(char **holder)
+/*
+int	ft_pat_one(t_com **com)
 {
-	char	*copy;
-	size_t 	len;
-	char 	*result;
-	char 	*temp;
+	char 	*holder;
 
-	if (!(*holder))
-		return (NULL);
-	copy = *holder;
-	len = 0;
-	while (ft_isdigit(*copy) == 1)
+	holder = (*com)->scroll;
+	if (ft_strlen(holder) == 1 && ft_is_modifier(*holder) == 1)
 	{
-		copy++;
-		len++;
+		(*com)->modifier = ft_strdup(holder);
+		free((*com)->scroll);
+		(*com)->scroll = NULL;
+		(*com)->len = 0;
+		return (1);
 	}
-	if (len > 0 && *copy == '$')
-	{
-		result = ft_strnew(len + 1);
-		ft_memcpy(result, *holder, len);
-		temp = ft_strdel_begn(*holder, len + 1);
-		free(*holder);
-		*holder = NULL;
-		*holder = temp;
-		return (result);
-	}
-	return (NULL);
+	return (0);
 }
+*/
 
-long int	ft_pat_width(char **holder)
-{
-//	char 	*result;
-	char 	*temp;
-	size_t 	len;
-	long int num;
-
-	if (!(*holder))
-		return (0);
-	num = ft_atoi(*holder);
-	len = (size_t)ft_numlen(num);
-	if (len == 0)
-		return (0);
-	temp = ft_strdel_begn(*holder, len);
-	free(*holder);
-	*holder = NULL;
-	*holder = temp;
-	return (num);
-}
-
-
-
-char 		*ft_pat_string(char **holder)
+char			*ft_pat_string(char **holder)
 {
 	return (*holder);
 }
 
-char 		*ft_pat_modifier(char **holder)
+char			*ft_pat_parameter(char **holder)
 {
-	size_t 	len;
-	char 	*modifier;
-	char 	*temp;
+	char		*copy;
+	char		*parameter;
+	char		*new_holder;
+	size_t		len;
+
+	if (!(*holder))
+		return (NULL);
+	len = 0;
+	copy = *holder;
+	while (ft_isdigit(*copy) == 1)
+	{
+		len++;
+		copy++;
+	}
+	if (len > 0 && *copy == '$')
+	{
+		parameter = ft_strnew(len + 1);
+		ft_memcpy(parameter, *holder, len);
+		new_holder = ft_strdel_begn(*holder, len + 1);
+		ft_free_and_set(*&holder, &new_holder);
+		return (parameter);
+	}
+	return (NULL);
+}
+
+char			*ft_pat_flags(char **holder)
+{
+	char		*new_holder;
+	char		*flag;
+
+	if (!(*holder) || ft_is_flag(**holder) == 0)
+		return (NULL);
+	flag = ft_strnew(2);
+	flag = ft_memcpy(flag, *holder, 1);
+	new_holder = ft_strdel_begn(*holder, 1);
+	ft_free_and_set(*&holder, &new_holder);
+	return (flag);
+}
+
+long int		ft_pat_width(char **holder)
+{
+	char		*new_holder;
+	long int	width;
+	size_t		len;
+
+	if (!(*holder))
+		return (0);
+	width = ft_atoi(*holder);
+	len = (size_t)ft_numlen(width);
+	if (len == 0)
+		return (0);
+	new_holder = ft_strdel_begn(*holder, len);
+	ft_free_and_set(*&holder, &new_holder);
+	return (width);
+}
+
+char			*ft_pat_precision(char **holder)
+{
+	char		*new_holder;
+	char		*precision;
+
+	if (!(*holder))
+		return (NULL);
+	precision = *holder;
+	if (**holder == '.')
+	{
+		new_holder = *holder;
+		if (*(new_holder + 1) != '\0')
+			new_holder++;
+		precision = ft_itoa(ft_atoi(new_holder));
+		new_holder = ft_strdel_begn(*holder, ft_strlen(precision) + 1);
+	}
+	else if (**holder == '*')
+	{
+		precision = ft_strdup("*");
+		new_holder = ft_strdel_begn(*holder, 1);
+	}
+	else
+		return (NULL);
+	ft_free_and_set(*&holder, &new_holder);
+	return (precision);
+}
+
+char			*ft_pat_modifier(char **holder)
+{
+	char		*modifier;
+	char		*new_holder;
 
 	if (!(*holder) || ft_is_modifier(**holder) == 0)
 		return (NULL);
-	len = ft_strlen(*holder);
-	if (len == 1)
+	if (ft_strlen(*holder) == 1)
 	{
 		modifier = ft_strdup(*holder);
 		free(*holder);
@@ -115,69 +151,7 @@ char 		*ft_pat_modifier(char **holder)
 	}
 	modifier = ft_strnew(2);
 	ft_memcpy(modifier, *holder, 1);
-	temp = ft_strdel_begn(*holder, 1);
-	free(*holder);
-	*holder = NULL;
-	*holder = temp;
+	new_holder = ft_strdel_begn(*holder, 1);
+	ft_free_and_set(*&holder, &new_holder);
 	return (modifier);
-}
-
-char 		*ft_pat_flags(char **holder)
-{
-	char 	*hold;
-	char 	*result;
-
-	if (!(*holder) || ft_is_flag(**holder) == 0)
-		return (NULL);
-	result = ft_strnew(2);
-	result = ft_memcpy(result, *holder, 1);
-	hold = ft_strdel_begn(*holder, 1);
-	free(*holder);
-	*holder = NULL;
-	*holder = hold;
-	return (result);
-}
-
-
-char 		*ft_pat_precision(char **holder)
-{
-	char 	*copy;
-	char 	*temp;
-	char 	*result;
-	int 	index;
-
-	if (!(*holder))
-		return (NULL);
-
-	if (**holder == '.')
-	{
-		copy = *holder;
-		result = NULL;
-		temp = NULL;
-		copy = *holder;
-		if (*(copy + 1) != '\0')
-			copy++;
-		index = 0;
-		while (ft_isdigit(*copy))
-		{
-			index++;
-			copy++;
-		}
-		result = ft_strnew((size_t)index + 1 + 1);
-//		free(*holder);
-//		*holder = NULL;
-//		*holder = temp;
-	}
-	if (**holder == '*')
-	{
-		copy = *holder;
-		result = NULL;
-		temp = NULL;
-		result = ft_strjoin("", "*");
-		temp = ft_strdel_begn(*holder, 1);
-		free(*holder);
-		*holder = NULL;
-		*holder = temp;
-	}
-	return (result);
 }

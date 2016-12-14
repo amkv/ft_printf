@@ -12,18 +12,25 @@
 
 #include "../libftprintf.h"
 
-void		ft_nothing(void)
+void			ft_nothing(void)
 {
 	return ;
 }
 
-char 			*ft_add_spaces(char *str, long int width)
+void			ft_free_and_set(char **old, char **new)
+{
+	free(*old);
+	*old = NULL;
+	*old = *new;
+}
+
+char			*ft_add_spaces(char *str, long int width)
 {
 	long int	len;
 	long int	spaces;
-	char 		*temp;
+	char		*temp;
 	long int	index;
-	char 		*result;
+	char		*result;
 
 	index = 0;
 	len = ft_strlen(str);
@@ -46,6 +53,3 @@ char 			*ft_add_spaces(char *str, long int width)
 	free(temp);
 	return (result);
 }
-
-
-

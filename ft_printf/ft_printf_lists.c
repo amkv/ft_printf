@@ -12,53 +12,7 @@
 
 #include "../libftprintf.h"
 
-//t_com		*ft_tcom_new(char type, char *command)
-//{
-//	t_com	*new;
-//
-//	if (!(new = (t_com*)malloc(sizeof(t_com) * 1)))
-//		return (NULL);
-//	new->scroll = command;
-//	new->size = sizeof(command);
-//	new->len = ft_strlen(command);
-//	new->ptr = NULL;
-//
-//	new->type = type;
-//	new->param = NULL;
-//	new->flag = NULL;
-//	new->width = 0;
-//	new->precision = NULL;
-//	new->length = NULL;
-//	new->modifier = NULL;
-//
-//	new->next = NULL;
-//	return (new);
-//}
-
-t_com		*ft_tcom_fresh(void)
-{
-	t_com	*new;
-
-	if (!(new = (t_com*)malloc(sizeof(t_com) * 1)))
-		return (NULL);
-	new->scroll = NULL;
-	new->size = 0;
-	new->len = 0;
-	new->ptr = NULL;
-
-	new->type = '.';
-	new->param = NULL;
-	new->flag = NULL;
-	new->width = 0;
-	new->precision = NULL;
-	new->length = NULL;
-	new->modifier = NULL;
-
-	new->next = NULL;
-	return (new);
-}
-
-void		ft_tcom_add(t_com **beg, t_com *next)
+static void		ft_tcom_add(t_com **beg, t_com *next)
 {
 	if (*beg && next)
 	{
@@ -67,12 +21,41 @@ void		ft_tcom_add(t_com **beg, t_com *next)
 	}
 }
 
-void		ft_tcom_revert(t_com **list)
+t_com			*ft_tcom_new(void)
 {
-	t_com	*tmp;
-	t_com	*revers;
-	t_com	*save;
-	int		yesno;
+	t_com		*new;
+
+	if (!(new = (t_com*)malloc(sizeof(t_com) * 1)))
+		return (NULL);
+	new->scroll = NULL;
+	new->size = 0;
+	new->len = 0;
+	new->ptr = NULL;
+	new->type = '.';
+	new->param = NULL;
+	new->flag = NULL;
+	new->width = 0;
+	new->precision = NULL;
+	new->length = NULL;
+	new->modifier = NULL;
+	new->next = NULL;
+	return (new);
+}
+
+void			ft_tcom_list(t_com **list, t_com *fresh)
+{
+	if (*list == NULL)
+		*list = fresh;
+	else
+		ft_tcom_add(*&list, fresh);
+}
+
+void			ft_tcom_revert(t_com **list)
+{
+	t_com		*tmp;
+	t_com		*revers;
+	t_com		*save;
+	int			yesno;
 
 	yesno = 0;
 	tmp = *list;
@@ -90,33 +73,30 @@ void		ft_tcom_revert(t_com **list)
 	*list = save;
 }
 
-void		ft_tcom_free(t_com *list)
+void			ft_tcom_free(t_com *list)
 {
-	t_com	*tmp;
-	t_com	*next;
+	t_com		*tmp;
+	t_com		*next;
 
 	tmp = list;
 	while (tmp)
 	{
 		next = tmp->next;
-
 		free(tmp->scroll);
 		free(tmp->ptr);
-
 		free(tmp->param);
 		free(tmp->flag);
 		free(tmp->precision);
 		free(tmp->length);
 		free(tmp->modifier);
-
 		free(tmp);
 		tmp = next;
 	}
 }
 
-void		ft_tcom_print(t_com *list)
+void			ft_tcom_print(t_com *list)
 {
-	t_com	*tmp;
+	t_com		*tmp;
 
 	tmp = list;
 	while (tmp)
@@ -131,7 +111,6 @@ void		ft_tcom_print(t_com *list)
 		printf("precision:%s\n", tmp->precision);
 		printf("length:   %s\n", tmp->length);
 		printf("modifier: %s\n\n", tmp->modifier);
-
 		tmp = tmp->next;
 	}
 }

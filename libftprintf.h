@@ -75,9 +75,8 @@ void			ft_check_patterns(t_com **com, size_t *yn, char **holder, size_t *argc);
 /*
 ** Lists
 */
-t_com			*ft_tcom_new(char type, char *command);
-t_com			*ft_tcom_fresh(void);
-void			ft_tcom_add(t_com **beg, t_com *next);
+t_com			*ft_tcom_new(void);
+void			ft_tcom_list(t_com **list, t_com *fresh);
 void			ft_tcom_free(t_com *list);
 void			ft_tcom_print(t_com *list);
 void			ft_tcom_revert(t_com **list);
@@ -104,24 +103,24 @@ char			*ft_pat_precision(char **holder);
 /*
 ** DOs
 */
-void			ft_do_S(char *str, t_com **com);
+void			ft_do_ss(char *str, t_com **com);
 void			ft_do_s(char *str, t_com **com);
 void			ft_do_c(char c, t_com **com);
 void			ft_do_d(int d, t_com **com);
 void			ft_do_x(int num, t_com **com);
-void			ft_do_X(int num, t_com **com);
+void			ft_do_xx(int num, t_com **com);
 void			ft_do_p(void *ptr, t_com **com);
 void			ft_do_u(unsigned int d, t_com **com);		// не сделано
-void			ft_do_U(unsigned int d, t_com **com);
+void			ft_do_uu(unsigned int d, t_com **com);
 void			ft_do_o(unsigned int d, t_com **com);
 void			ft_do_f(double f, t_com **com);
-void			ft_do_F(double f, t_com **com);				// не сделано
+void			ft_do_ff(double f, t_com **com);				// не сделано
 void			ft_do_e(double f, t_com **com);				// не сделано
-void			ft_do_E(double f, t_com **com);				// не сделано
+void			ft_do_ee(double f, t_com **com);				// не сделано
 void			ft_do_g(double f, t_com **com);				// не сделано
-void			ft_do_G(double f, t_com **com);				// не сделано
+void			ft_do_gg(double f, t_com **com);				// не сделано
 void			ft_do_a(double f, t_com **com);				// не сделано
-void			ft_do_A(double f, t_com **com);				// не сделано
+void			ft_do_aa(double f, t_com **com);				// не сделано
 void			ft_do_n(char *str, t_com **com);			// не сделано
 
 /*
@@ -144,6 +143,11 @@ char			*ft_itoa_base(long int value, long int base);
 char			*ft_strdel_begn(char *str, size_t n);
 char			*ft_ftoa(double number, int length);
 double			ft_pow(double x, double y);
+
+/*
+** helpers
+*/
+void			ft_free_and_set(char **old, char **new);
 
 void	ft_nothing(void);
 

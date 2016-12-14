@@ -606,10 +606,50 @@ void	ft_check_patterns(t_com **com, size_t *yn)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+//void	ft_check_patterns(t_com **com, size_t *yn, )
+//{
+//	char 	*holder;
+//	char 	*temp;
+//
+//	if (*yn == 0 || ft_pat_one(*&com) == 1)
+//		return ;
+//	holder = ft_strdup((*com)->scroll);
+//	temp = ft_strdup((*com)->scroll);
+//
+//	free((*com)->scroll);
+//	(*com)->scroll = NULL;
+//	(*com)->len = 0;
+//
+//	(*com)->param = ft_pat_parameter(&holder);
+//	(*com)->flag = ft_pat_flags(&holder);
+//	(*com)->width = ft_pat_width(&holder);
+//	(*com)->precision = ft_pat_precision(&holder);
+////	(*com)->length =  ft_is_lenght(&holder);
+//	(*com)->modifier = ft_pat_modifier(&holder);
+//	if ((*com)->modifier == NULL)
+//		(*com)->type = '.';
+//
+//	if (holder && ft_strcmp(temp, holder) != 0) // ||
+//		ft_tcom_list(*&com, 0, holder);
+//	free(temp);
+//}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
+//static int 	ft_check_modifier(const char *str)
+//{
+//	while (*str)
+//	{
+//		if (ft_is_modifier(*str) == 1)
+//			return (1);
+//		str++;
+//	}
+//	return (0);
+//}
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 */

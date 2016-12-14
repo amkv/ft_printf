@@ -12,9 +12,9 @@
 
 #include "../libftprintf.h"
 
-static int		ft_exceptions(const char *format, int *characters)
+static int			ft_exceptions(const char *format, int *characters)
 {
-	int 		index;
+	int				index;
 
 	*characters = 0;
 	if ((*format == '\0') || (*format == '%' && *(format + 1) == '\0'))
@@ -35,6 +35,7 @@ static int		ft_exceptions(const char *format, int *characters)
 			return ((*characters = 1));
 		}
 	}
+/*
 	if (*format == '%')
 	{
 		index = 1;
@@ -52,12 +53,13 @@ static int		ft_exceptions(const char *format, int *characters)
 			return (*characters);
 		}
 	}
+ */
 	return (-1);
 }
 
-static void		ft_print_result(t_com *com, int *characters)
+static void			ft_print_result(t_com *com, int *characters)
 {
-	t_com		*copy;
+	t_com			*copy;
 
 	copy = com;
 	*characters = 0;
@@ -72,11 +74,10 @@ static void		ft_print_result(t_com *com, int *characters)
 static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
 {
 	t_com			*copy;
-	char 			*modifier;
+	char			*modifier;
 	union u_type	type;
 
 	copy = com;
-	argc = 0;
 	while (copy != NULL && argc > 0)
 	{
 		if (copy->type == '%')
@@ -90,15 +91,15 @@ static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
 	}
 }
 
-int				ft_printf(const char *restrict format, ...)
+int					ft_printf(const char *restrict format, ...)
 {
-	va_list		ap;
-	t_com		*com;
-	size_t		argc;
-	int		characters;
+	va_list			ap;
+	t_com			*com;
+	size_t			argc;
+	int				characters;
 
-	if (ft_exceptions(format, &characters) >= 0)
-		return (characters);
+//	if (ft_exceptions(format, &characters) >= 0)
+//		return (characters);
 	va_start(ap, format);
 	ft_parser(format, &com, &argc);
 	ft_tcom_revert(&com);

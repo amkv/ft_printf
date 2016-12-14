@@ -12,10 +12,10 @@
 
 #include "../libftprintf.h"
 
-void		ft_do_p(void *ptr, t_com **com)
+void				ft_do_p(void *ptr, t_com **com)
 {
-	char 			*str;
-	char 			*result;
+	char			*str;
+	char			*result;
 	long int		pointer;
 
 	pointer = (long int)*&ptr;
@@ -26,10 +26,10 @@ void		ft_do_p(void *ptr, t_com **com)
 	(*com)->len = ft_strlen(result);
 }
 
-void		ft_do_x(int num, t_com **com)
+void				ft_do_x(int num, t_com **com)
 {
-	char 	*result;
-	long int	number;
+	char			*result;
+	long int		number;
 
 	if (num >= 0)
 	{
@@ -46,15 +46,15 @@ void		ft_do_x(int num, t_com **com)
 	}
 }
 
-void		ft_do_X(int num, t_com **com)
+void				ft_do_xx(int num, t_com **com)
 {
 	ft_do_x(num, *&com);
-	ft_do_S((*com)->scroll, *&com);
+	ft_do_ss((*com)->scroll, *&com);
 }
 
-void		ft_do_s(char *str, t_com **com)
+void				ft_do_s(char *str, t_com **com)
 {
-	char 	*result;
+	char			*result;
 
 	result = ft_strdup(str);
 //	free((*com)->scroll);
@@ -62,11 +62,11 @@ void		ft_do_s(char *str, t_com **com)
 	(*com)->len = ft_strlen(str);
 }
 
-void		ft_do_S(char *str, t_com **com)
+void				ft_do_ss(char *str, t_com **com)
 {
-	char	*temp;
-	char	*result;
-	char	*copy;
+	char			*temp;
+	char			*result;
+	char			*copy;
 
 	temp = str;
 	result = ft_strnew(ft_strlen(str) + 1);
@@ -85,9 +85,9 @@ void		ft_do_S(char *str, t_com **com)
 	(*com)->len = ft_strlen(result);
 }
 
-void		ft_do_c(char c, t_com **com)
+void				ft_do_c(char c, t_com **com)
 {
-	char 	*result;
+	char			*result;
 
 	result = ft_strnew(2);
 	result[0] = c;
@@ -97,15 +97,15 @@ void		ft_do_c(char c, t_com **com)
 	(*com)->scroll = result;
 }
 
-void		ft_do_d(int d, t_com **com)
+void				ft_do_d(int d, t_com **com)
 {
 	(*com)->scroll = ft_itoa(d);
 	(*com)->len = ft_strlen((*com)->scroll);
 }
 
-void		ft_do_u(unsigned int d, t_com **com)
+void				ft_do_u(unsigned int d, t_com **com)
 {
-	char 	*result;
+	char			*result;
 
 	result = ft_itoa_base(d, 10);
 	free((*com)->scroll);
@@ -113,9 +113,9 @@ void		ft_do_u(unsigned int d, t_com **com)
 	(*com)->len = ft_strlen((*com)->scroll);
 }
 
-void		ft_do_U(unsigned int d, t_com **com)
+void				ft_do_uu(unsigned int d, t_com **com)
 {
-	char 	*result;
+	char			*result;
 
 	result = ft_itoa_base(d, 10);
 	free((*com)->scroll);
@@ -123,9 +123,9 @@ void		ft_do_U(unsigned int d, t_com **com)
 	(*com)->len = ft_strlen((*com)->scroll);
 }
 
-void		ft_do_o(unsigned int d, t_com **com)
+void				ft_do_o(unsigned int d, t_com **com)
 {
-	char 	*result;
+	char			*result;
 
 	result = ft_itoa_base(d, 8);
 	free((*com)->scroll);
@@ -133,65 +133,33 @@ void		ft_do_o(unsigned int d, t_com **com)
 	(*com)->len = ft_strlen(result);
 }
 
-void		ft_do_f(double f, t_com **com)
+void				ft_do_f(double f, t_com **com)
 {
 	(*com)->scroll = ft_ftoa(f, 6);
 	(*com)->len = ft_strlen((*com)->scroll);
 }
 
-void		ft_do_F(double f, t_com **com)
+void				ft_do_ff(double f, t_com **com)
 {
 	(*com)->scroll = ft_ftoa(f, 6);
 	(*com)->len = ft_strlen((*com)->scroll);
 }
 
-void		ft_do_e(double number, t_com **com)
+void				ft_do_e(double number, t_com **com)
 {
-// переписать полностью
-
-//	int 	left;
-//	double	right;
-//	char 	*result;
-//	char 	len;
-//	char 	minus[2];
-//	int 	length;
-//
-//	length = 6;
-////	length = (*com)->precision;
-//
-//	minus[0] = '-';
-//	minus[1] = '\0';
-//
-//	len = 0;
-//	if (number < 0)
-//	{
-//		number = -number;
-//		len++;
-//	}
-//	else
-//		minus[0] = '\0';
-//	left = (int)number;
-//	right = number - (double)left;
-//	if (left == 0)
-//		right = right * ft_pow(10, length);
-
-
-	char 	*num_string;
-	int 	index;
-	char 	*multi;
-	char 	*temp;
+	char			*num_string;
+	int				index;
+	char			*multi;
+	char			*temp;
 
 	index = 0;
 //	if (number < 0)
 //		number = -number;
 	num_string = ft_ftoa(number, 10);
-
-
-
 	while (num_string[index] != '\0')
 	{
 		if (num_string[index] == '.')
-			break;
+			break ;
 		index++;
 	}
 	multi = ft_itoa(index - 1);
@@ -209,39 +177,65 @@ void		ft_do_e(double number, t_com **com)
 	free((*com)->scroll);
 	(*com)->scroll = num_string;
 	(*com)->len = ft_strlen(num_string);
+	/*
+ переписать полностью
+	int 	left;
+	double	right;
+	char 	*result;
+	char 	len;
+	char 	minus[2];
+	int 	length;
+//
+	length = 6;
+//	length = (*com)->precision;
+	minus[0] = '-';
+	minus[1] = '\0';
+	len = 0;
+	if (number < 0)
+	{
+		number = -number;
+		len++;
+	}
+	else
+		minus[0] = '\0';
+	left = (int)number;
+	right = number - (double)left;
+	if (left == 0)
+		right = right * ft_pow(10, length);
+*/
 }
 
-void		ft_do_E(double f, t_com **com)
+void				ft_do_ee(double f, t_com **com)
 {
 	(*com)->scroll = NULL;
 	(*com)->len = 0;
 }
 
-void		ft_do_g(double f, t_com **com)
+void				ft_do_g(double f, t_com **com)
 {
 	(*com)->scroll = NULL;
 	(*com)->len = 0;
 }
 
-void		ft_do_G(double f, t_com **com)
+void				ft_do_gg(double f, t_com **com)
 {
 	(*com)->scroll = NULL;
 	(*com)->len = 0;
 }
 
-void		ft_do_a(double f, t_com **com)
+void				ft_do_a(double f, t_com **com)
 {
 	(*com)->scroll = NULL;
 	(*com)->len = 0;
 }
 
-void		ft_do_A(double f, t_com **com)
+void				ft_do_aa(double f, t_com **com)
 {
 	(*com)->scroll = NULL;
 	(*com)->len = 0;
 }
 
-void		ft_do_n(char *str, t_com **com)
+void				ft_do_n(char *str, t_com **com)
 {
 	(*com)->scroll = NULL;
 	(*com)->len = 0;

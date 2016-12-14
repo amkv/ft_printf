@@ -12,9 +12,9 @@
 
 #include "../libftprintf.h"
 
-void		ft_pre_print_width(t_com **com)
+void			ft_pre_print_width(t_com **com)
 {
-	char 			*result;
+	char		*result;
 
 	if ((*com)->width)
 	{

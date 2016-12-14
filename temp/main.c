@@ -45,10 +45,10 @@ int				main(void)
 	str = "hello";
 	mr = 0; or = 0;
 
-	mr = ft_printf("%10%");
+	mr = ft_printf("%10$-32.7s", str);
 
 	printf("\n");
-	or = printf("%10%");
+	or = printf("%.2s", str);
 //	or = printf("%e\n", -16123123123.1);
 //	or = printf("%e\n", -0.1345231231);
 //	or = printf("%e\n", 0.1345231231);
@@ -71,6 +71,8 @@ int				main(void)
 //	mr = ft_printf("%10%");
 //	mr = ft_printf("%-5%test");
 //	mr = ft_printf("%2c", 0);
+//	mr = ft_printf("%-10s", str);
+//	mr = ft_printf("%10$s", str); // оригинальный printf падает на этой строчке, мой нет
 
 //	c = 0;
 //	write(1, &c, 1);
