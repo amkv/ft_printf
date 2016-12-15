@@ -1,9 +1,7 @@
 # ft_printf
 implementation of ft_printf function on C language
 
-```
-in progress
-```
+# in progress
 
 how to check status?
 launch and test :)
