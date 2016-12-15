@@ -92,23 +92,6 @@ char			*ft_pat_width(char **holder)
 	return (NULL);
 }
 
-//long int		ft_pat_width(char **holder)
-//{
-//	char		*new_holder;
-//	long int	width;
-//	size_t		len;
-//
-//	if (!(*holder))
-//		return (0);
-//	width = ft_atoi(*holder);
-//	len = (size_t)ft_numlen(width);
-//	if (len == 0)
-//		return (0);
-//	new_holder = ft_strdel_begn(*holder, len);
-//	ft_free_and_set(*&holder, &new_holder);
-//	return (width);
-//}
-
 char			*ft_pat_precision(char **holder)
 {
 	char		*new_holder;
