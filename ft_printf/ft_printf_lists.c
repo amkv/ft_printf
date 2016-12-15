@@ -73,7 +73,45 @@ void			ft_tcom_revert(t_com **list)
 	*list = save;
 }
 
-void			ft_tcom_free(t_com *list)
+void			ft_tcom_free_first(t_com **list)
+{
+	t_com		*next;
+	t_com		*victim;
+
+	next = (*list)->next->next;
+	victim = (*list)->next;
+	free(victim->scroll);
+	free(victim->ptr);
+	free(victim->param);
+	free(victim->flag);
+	free(victim->width);
+	free(victim->precision);
+	free(victim->length);
+	free(victim->modifier);
+	free(victim);
+	(*list)->next = next;
+}
+
+void			ft_tcom_free_next(t_com **list)
+{
+	t_com		*next;
+	t_com		*victim;
+
+	next = (*list)->next->next;
+	victim = (*list)->next;
+	free(victim->scroll);
+	free(victim->ptr);
+	free(victim->param);
+	free(victim->flag);
+	free(victim->width);
+	free(victim->precision);
+	free(victim->length);
+	free(victim->modifier);
+	free(victim);
+	(*list)->next = next;
+}
+
+void			ft_tcom_free_all(t_com *list)
 {
 	t_com		*tmp;
 	t_com		*next;

@@ -47,9 +47,10 @@ void		ft_check_patterns(t_com **com, size_t *yn, char **holder, size_t *argc)
 	(fresh)->param = ft_pat_parameter(*&holder);
 	(fresh)->flag = ft_pat_flags(*&holder);
 	(fresh)->width = ft_pat_width(*&holder);
-//	if ((fresh)->width == '*')
+//	if (*(fresh)->width == '*')
 //	{
 //		ft_tcom_list(*&com, ft_tcom_new());
+//		(*com)->width = ft_strdup("*");
 //		(*com)->modifier = ft_strdup("d");
 //		(*com)->type = '%';
 //	}
@@ -70,6 +71,9 @@ void		ft_check_patterns(t_com **com, size_t *yn, char **holder, size_t *argc)
 		(*argc)++;
 	}
 	ft_tcom_list(*&com, fresh);
+
+
+
 
 	if (*holder == NULL)
 	{

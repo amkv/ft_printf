@@ -33,6 +33,7 @@ set(SOURCE_FILES
 		ft_printf/ft_printf_do.c
 		ft_printf/ft_printf_patterns.c
 		ft_printf/ft_printf_pre_print.c
+		ft_printf/ft_printf_flags.c
 
 		ft_extra_functions/ft_strnncpy.c
 		ft_extra_functions/ft_memnncpy.c

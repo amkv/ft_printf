@@ -77,7 +77,9 @@ void			ft_check_patterns(t_com **com, size_t *yn, char **holder, size_t *argc);
 */
 t_com			*ft_tcom_new(void);
 void			ft_tcom_list(t_com **list, t_com *fresh);
-void			ft_tcom_free(t_com *list);
+void			ft_tcom_free_all(t_com *list);
+void			ft_tcom_free_next(t_com **list);
+void			ft_tcom_free_first(t_com **list);
 void			ft_tcom_print(t_com *list);
 void			ft_tcom_revert(t_com **list);
 
@@ -104,8 +106,8 @@ char			*ft_pat_string(char **holder);
 /*
 ** DOs
 */
-void			ft_do_ss(char *str, t_com **com);
 void			ft_do_s(char *str, t_com **com);
+void			ft_do_ss(char *str, t_com **com);			// не сделано
 void			ft_do_c(char c, t_com **com);
 void			ft_do_d(int d, t_com **com);
 void			ft_do_x(int num, t_com **com);
@@ -115,19 +117,24 @@ void			ft_do_u(unsigned int d, t_com **com);		// не сделано
 void			ft_do_uu(unsigned int d, t_com **com);
 void			ft_do_o(unsigned int d, t_com **com);
 void			ft_do_f(double f, t_com **com);
-void			ft_do_ff(double f, t_com **com);				// не сделано
+void			ft_do_ff(double f, t_com **com);			// не сделано
 void			ft_do_e(double f, t_com **com);				// не сделано
-void			ft_do_ee(double f, t_com **com);				// не сделано
+void			ft_do_ee(double f, t_com **com);			// не сделано
 void			ft_do_g(double f, t_com **com);				// не сделано
-void			ft_do_gg(double f, t_com **com);				// не сделано
+void			ft_do_gg(double f, t_com **com);			// не сделано
 void			ft_do_a(double f, t_com **com);				// не сделано
-void			ft_do_aa(double f, t_com **com);				// не сделано
+void			ft_do_aa(double f, t_com **com);			// не сделано
 void			ft_do_n(char *str, t_com **com);			// не сделано
 
 /*
 ** Modifiers
 */
 char			*ft_add_spaces(char *str, char *width);
+
+/*
+** Flags
+*/
+void			ft_flags_minus(void);
 
 /*
 ** Pre print functions

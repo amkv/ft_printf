@@ -28,6 +28,8 @@
 
 #include "../libftprintf.h"
 #include "math.h"
+//#include <wchar.h>
+//#include <wctype.h>
 
 static void		ft_p(int mr, int or)
 {
@@ -45,10 +47,10 @@ int				main(void)
 	str = "hello";
 	mr = 0; or = 0;
 
-	mr = ft_printf("%10$-*.*lls", str);
+	mr = ft_printf("%d", 100);
 
 	printf("\n");
-	or = printf("%.s", str);
+	printf("%d", 100);
 //	or = printf("%e\n", -16123123123.1);
 //	or = printf("%e\n", -0.1345231231);
 //	or = printf("%e\n", 0.1345231231);
@@ -68,6 +70,8 @@ int				main(void)
 	return (0);
 
 // мертвые кейсы...
+//	or = printf("%S", 100);
+//	mr = ft_printf("%  +d", 42); // непонятно как парсить
 //	or = printf("%.s", str); // printf ничего не печатает
 //	mr = ft_printf("%.", str); // printf ничего не печатает
 //	mr = ft_printf("%10m33", str); // создает два листа
