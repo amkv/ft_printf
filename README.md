@@ -4,7 +4,7 @@ implementation of ft_printf function on C language
 # in progress
 
 how to check status?
-launch and test :)
+compile, launch and test :)
 ```
 make re
 gcc temp/main.c libftprintf.a
