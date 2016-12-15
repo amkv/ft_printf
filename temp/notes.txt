@@ -711,4 +711,67 @@ void		ft_check_patterns(t_com **com, size_t *yn, char **holder, size_t *argc)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//char			*ft_pat_precision(char **holder)
+//{
+//	char		*new_holder;
+//	char		*precision;
+//	char 		*copy;
+//
+//	if (!(*holder))
+//		return (NULL);
+//	if (**holder == '.')
+//	{
+//		copy = *holder;
+//		if (*(copy + 1) != '\0')
+//			copy++;
+//		if (ft_isdigit(*copy) == 1)
+//		{
+//			precision = ft_itoa(ft_atoi(copy));
+//			new_holder = ft_strdel_begn(*holder, ft_strlen(precision) + 1);
+//			ft_free_and_set(*&holder, &new_holder);
+//			return (precision);
+//		}
+//		else if (*copy== '*')
+//		{
+//			precision = ft_strdup("*");
+//			new_holder = ft_strdel_begn(*holder, 1);
+//			ft_free_and_set(*&holder, &new_holder);
+//			return (precision);
+//		}
+//	}
+//	return (NULL);
+//}
+
+//char			*ft_pat_precision(char **holder)
+//{
+//	char		*new_holder;
+//	char		*precision;
+//
+//	if (!(*holder))
+//		return (NULL);
+//	precision = *holder;
+//	if (**holder == '.')
+//	{
+//		new_holder = *holder;
+//		if (*(new_holder + 1) != '\0')
+//			new_holder++;
+//		precision = ft_itoa(ft_atoi(new_holder));
+//		new_holder = ft_strdel_begn(*holder, ft_strlen(precision) + 1);
+//	}
+//	else if (**holder == '*')
+//	{
+//		precision = ft_strdup("*");
+//		new_holder = ft_strdel_begn(*holder, 1);
+//	}
+//	else
+//		return (NULL);
+//	ft_free_and_set(*&holder, &new_holder);
+//	return (precision);
+//}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 */

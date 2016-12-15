@@ -45,10 +45,10 @@ int				main(void)
 	str = "hello";
 	mr = 0; or = 0;
 
-	mr = ft_printf("%10s33", str);
+	mr = ft_printf("%10$-*.*lls", str);
 
 	printf("\n");
-	or = printf("%10s33", str);
+	or = printf("%.s", str);
 //	or = printf("%e\n", -16123123123.1);
 //	or = printf("%e\n", -0.1345231231);
 //	or = printf("%e\n", 0.1345231231);
@@ -68,6 +68,8 @@ int				main(void)
 	return (0);
 
 // мертвые кейсы...
+//	or = printf("%.s", str); // printf ничего не печатает
+//	mr = ft_printf("%.", str); // printf ничего не печатает
 //	mr = ft_printf("%10m33", str); // создает два листа
 //	mr = ft_printf("%10%");
 //	mr = ft_printf("%-5%test");
