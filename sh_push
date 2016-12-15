@@ -1,17 +1,39 @@
 #!/bin/bash
 
+CF=config
+CFG=config_g
+CFS=config_s
+FIRST="school"
+SECOND="remote_git"
+COMMENT="progress"
+
 git status
 git add *
-git commit -m "progress"
-echo "----------------------------------------------------------------"
-echo push to School
-git push
-mv .git/config .git/config_s
-mv .git/config_g .git/config
-echo "----------------------------------------------------------------OK (School)"
-echo push to GIT
-git push
-mv .git/config .git/config_g
-mv .git/config_s .git/config
-echo "----------------------------------------------------------------OK (GIT)"
 
+if [ "$#" -gt 0 ]
+then
+	git commit -m "$1"
+else
+	git commit -m "${COMMENT}"
+fi
+echo "----------------------------------------------------------------"
+echo "push to ${FIRST} git"
+git push
+if [ -a $CF ]
+	then
+		mv .git/$CF .git/$CFS
+	else
+		echo "${CF} file not found"
+fi
+if [ -a CFG]
+	then
+		mv .git/$CFG .git/$CF
+	else
+		echo "${CFG} file not found"
+fi
+echo "----------------------------------------------------------------OK (${FIRST} git)"
+echo "push to ${SECOND} git"
+git push
+mv .git/$CF .git/$CFG
+mv .git/$CFS .git/$CF
+echo "----------------------------------------------------------------OK (${SECOND} git)"
