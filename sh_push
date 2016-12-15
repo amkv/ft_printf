@@ -27,7 +27,7 @@ if [ -a $CF ]
 		echo "${CF} file not found"
 		OK="BAD"
 fi
-if [ -a $CFG]
+if [ -a $CFG ]
 	then
 		mv .git/$CFG .git/$CF
 	else
