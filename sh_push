@@ -5,7 +5,7 @@ CFG=config_g
 CFS=config_s
 OK="OK"
 GIT=".git/"
-FIRST="school"
+FIRST="school git"
 SECOND="remote git"
 COMMENT="progress"
 
@@ -26,14 +26,14 @@ if [ -a $GIT$CF ]
 		mv $GIT/$CF $GIT/$CFS
 	else
 		echo "${CF} file not found"
-		OK="BAD"
+		exit 1
 fi
 if [ -a $GIT$CFG ]
 	then
 		mv $GIT/$CFG $GIT/$CF
 	else
 		echo "${CFG} file not found"
-		OK="BAD"
+		exit 1
 fi
 echo "----------------------------------------------------------------${OK} (${FIRST} git)"
 echo "push to ${SECOND} git"

@@ -36,7 +36,7 @@ typedef struct	s_com
 
 	char			*param;
 	char			*flag;
-	long int		width;
+	char			*width;
 	char			*precision;
 	char			*length;
 	char 			*modifier;
@@ -92,13 +92,14 @@ int				ft_is_modifier(char c);
 /*
 ** patterns
 */
-int				ft_pat_one(t_com **com, char **holder);
+int				ft_pat_one(t_com **com, t_com **fresh, char **holder, size_t *yn);
 char			*ft_pat_parameter(char **holder);
-long int		ft_pat_width(char **holder);
+char			*ft_pat_flags(char **holder);
+char			*ft_pat_width(char **holder);
+char			*ft_pat_precision(char **holder);
+char			*ft_pat_length(char **holder);
 char			*ft_pat_modifier(char **holder);
 char			*ft_pat_string(char **holder);
-char			*ft_pat_flags(char **holder);
-char			*ft_pat_precision(char **holder);
 
 /*
 ** DOs
@@ -126,7 +127,7 @@ void			ft_do_n(char *str, t_com **com);			// не сделано
 /*
 ** Modifiers
 */
-char			*ft_add_spaces(char *str, long int width);
+char			*ft_add_spaces(char *str, char *width);
 
 /*
 ** Pre print functions

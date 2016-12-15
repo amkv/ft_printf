@@ -80,12 +80,12 @@ static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
 	copy = com;
 	while (copy != NULL && argc > 0)
 	{
-		if (copy->type == '%')
-		{
+//		if (copy->type == '%')
+//		{
 			modifier = copy->modifier;
 			ft_switch(*modifier, &type, ap, &copy);
 			ft_pre_print_width(&copy);
-		}
+//		}
 		argc--;
 		copy = copy->next;
 	}
