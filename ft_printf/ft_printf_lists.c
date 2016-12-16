@@ -24,6 +24,7 @@ static void		ft_tcom_add(t_com **beg, t_com *next)
 t_com			*ft_tcom_new(void)
 {
 	t_com		*new;
+	static int	counter;
 
 	if (!(new = (t_com*)malloc(sizeof(t_com) * 1)))
 		return (NULL);
@@ -39,6 +40,7 @@ t_com			*ft_tcom_new(void)
 	new->length = NULL;
 	new->modifier = NULL;
 	new->next = NULL;
+	new->counter = ++counter;
 	return (new);
 }
 
@@ -55,9 +57,11 @@ void			ft_tcom_revert(t_com **list)
 	t_com		*tmp;
 	t_com		*revers;
 	t_com		*save;
-	int			yesno;
+	long int	yesno;
+//	int 		counter;
 
 	yesno = 0;
+//	counter = 0;
 	tmp = *list;
 	save = NULL;
 	while (tmp)
@@ -68,7 +72,9 @@ void			ft_tcom_revert(t_com **list)
 		else
 			tmp->next = save;
 		save = tmp;
+//		tmp->counter = ++counter;
 		tmp = revers;
+
 	}
 	*list = save;
 }
@@ -149,7 +155,8 @@ void			ft_tcom_print(t_com *list)
 		printf("width:    %s\n", tmp->width);
 		printf("precision:%s\n", tmp->precision);
 		printf("length:   %s\n", tmp->length);
-		printf("modifier: %s\n\n", tmp->modifier);
+		printf("modifier: %s\n", tmp->modifier);
+		printf("counter:  %d\n\n", tmp->counter);
 		tmp = tmp->next;
 	}
 }

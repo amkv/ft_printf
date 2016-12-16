@@ -40,7 +40,6 @@ int				main(void)
 {
 	int			mr;
 	int			or;
-	char 		c;
 	char 		*str;
 
 	str = "hello";
@@ -48,7 +47,7 @@ int				main(void)
 
 	mr = ft_printf("%10dtest", 42);
 	printf("\n");
-	or = printf("%10dtest", 42);
+	or = printf("%2$s %1$d", 42, "shool");
 
 	printf("\n");
 	ft_p(mr, or);

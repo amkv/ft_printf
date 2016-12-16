@@ -114,7 +114,7 @@ int					ft_printf(const char *restrict format, ...)
 	ft_parser(format, &com, &argc);
 	ft_tcom_revert(&com);
 //	printf("аргументов: %zu\n", argc);
-//	ft_tcom_print(com);
+	ft_tcom_print(com);
 	ft_pre_printing(*&com, ap, argc);
 //	ft_tcom_print(com);
 	ft_print_result(*&com, &characters);
