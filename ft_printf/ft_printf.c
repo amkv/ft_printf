@@ -78,7 +78,8 @@ static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
 	union u_type	type;
 
 	copy = com;
-	while (copy != NULL && argc > 0)
+//	while (copy != NULL && argc > 0)
+	while (copy != NULL)
 	{
 		if (copy->type == '%')
 		{
@@ -93,7 +94,7 @@ static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
 		}
 		if (copy->type == '.')
 			ft_pre_print(&copy);
-		argc--;
+//		argc--;
 		copy = copy->next;
 	}
 }
@@ -107,6 +108,8 @@ int					ft_printf(const char *restrict format, ...)
 
 //	if (ft_exceptions(format, &characters) >= 0)
 //		return (characters);
+	characters = 0;
+	argc = 0;
 	va_start(ap, format);
 	ft_parser(format, &com, &argc);
 	ft_tcom_revert(&com);

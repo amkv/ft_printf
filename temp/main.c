@@ -40,33 +40,18 @@ int				main(void)
 {
 	int			mr;
 	int			or;
-	char 		*str;
 	char 		c;
-
+	char 		*str;
 
 	str = "hello";
 	mr = 0; or = 0;
 
 	mr = ft_printf("%10dtest", 42);
-
 	printf("\n");
 	or = printf("%10dtest", 42);
-//	or = printf("%e\n", -16123123123.1);
-//	or = printf("%e\n", -0.1345231231);
-//	or = printf("%e\n", 0.1345231231);
-
-//	double 		number;
-//	number = 1.23;
-//
-////	printf("%s\n", ft_ftoa(number, 0));
-//	ft_printf("%f\n", number);
-//	printf("%f", number);
-
 
 	printf("\n");
 	ft_p(mr, or);
-
-
 	return (0);
 
 // мертвые кейсы...
@@ -81,9 +66,17 @@ int				main(void)
 //	mr = ft_printf("%-10s", str);
 //	mr = ft_printf("%10$s", str); // оригинальный printf падает на этой строчке, мой нет
 
+//	or = printf("%e\n", -16123123123.1);
+//	or = printf("%e\n", -0.1345231231);
+//	or = printf("%e\n", 0.1345231231);
+
 //	c = 0;
 //	write(1, &c, 1);
 
-
-
+//	double 		number;
+//	number = 1.23;
+//
+////	printf("%s\n", ft_ftoa(number, 0));
+//	ft_printf("%f\n", number);
+//	printf("%f", number);
 }
