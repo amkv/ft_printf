@@ -47,47 +47,17 @@ void		ft_check_patterns(t_com **com, size_t *yn, char **holder, size_t *argc)
 	(fresh)->param = ft_pat_parameter(*&holder);
 	(fresh)->flag = ft_pat_flags(*&holder);
 	(fresh)->width = ft_pat_width(*&holder);
-//	if (*(fresh)->width == '*')
-//	{
-//		ft_tcom_list(*&com, ft_tcom_new());
-//		(*com)->width = ft_strdup("*");
-//		(*com)->modifier = ft_strdup("d");
-//		(*com)->type = '%';
-//	}
 	(fresh)->precision = ft_pat_precision(*&holder);
 	(fresh)->length =  ft_pat_length(*&holder);
 	(fresh)->modifier = ft_pat_modifier(*&holder);
-
-	if ((fresh)->modifier == NULL && *holder)
-	{
-		(fresh)->scroll = ft_strdup(*holder);
-		(fresh)->len = ft_strlen((fresh)->scroll);
-		free(*holder);
-		*holder = NULL;
-	}
-	else
-	{
-		(fresh)->type = '%';
-		(*argc)++;
-	}
+	ft_pat_ending(&fresh, *&holder, *&argc);
 	ft_tcom_list(*&com, fresh);
-
-
-
-
 	if (*holder == NULL)
 	{
 		free(copy);
 		return ;
 	}
-
-	if (ft_strcmp(copy, *holder) != 0)
-	{
-		fresh = ft_tcom_new();
-		fresh->scroll = ft_strdup(*holder);
-		fresh->len = ft_strlen(fresh->scroll);
-		ft_tcom_list(*&com, fresh);
-	}
+	ft_pat_string(*&com, &copy, *&holder);
 	free(copy);
 }
 

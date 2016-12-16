@@ -78,8 +78,7 @@ static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
 	union u_type	type;
 
 	copy = com;
-//	while (copy != NULL && argc > 0)
-	while (copy != NULL)
+	while (copy != NULL && argc > 0)
 	{
 		if (copy->type == '%')
 		{
@@ -90,11 +89,11 @@ static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
 				copy->width = ft_itoa(va_arg(ap, int));
 			}
 			ft_switch(*modifier, &type, ap, &copy);
-			ft_pre_print_width(&copy);
+			ft_pre_print(&copy);
 		}
 		if (copy->type == '.')
-			ft_pre_print_width(&copy);
-//		argc--;
+			ft_pre_print(&copy);
+		argc--;
 		copy = copy->next;
 	}
 }

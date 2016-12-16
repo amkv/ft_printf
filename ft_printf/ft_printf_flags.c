@@ -12,7 +12,27 @@
 
 #include "../libftprintf.h"
 
-void		ft_flags_minus(void)
+void		ft_flags_minus(t_com **com)
 {
+	return ;
+}
 
+void		ft_flags_plus(t_com **com)
+{
+	return ;
+}
+
+void		ft_flags_space(t_com **com)
+{
+	return ;
+}
+
+void		ft_flags_octo(t_com **com)
+{
+	return ;
+}
+
+void		ft_flags_zero(t_com **com)
+{
+	return ;
 }

@@ -6,7 +6,7 @@
 #    By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/22 14:50:24 by akalmyko          #+#    #+#              #
-#    Updated: 2016/12/15 13:29:10 by akalmyko         ###   ########.fr        #
+#    Updated: 2016/12/15 16:21:43 by akalmyko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,6 +99,7 @@ PC += $(P)ft_printf_parser.c
 PC += $(P)ft_printf_switch.c
 PC += $(P)ft_printf_do.c
 PC += $(P)ft_printf_patterns.c
+PC += $(P)ft_printf_patterns2.c
 PC += $(P)ft_printf_pre_print.c
 PC += $(P)ft_printf_flags.c
 
@@ -190,6 +191,7 @@ OF += ft_printf_switch.o
 OF += ft_printf_do.o
 OF += ft_strdel_begn.o
 OF += ft_printf_patterns.o
+OF += ft_printf_patterns2.o
 OF += ft_printf_pre_print.o
 OF += ft_printf_flags.o
 

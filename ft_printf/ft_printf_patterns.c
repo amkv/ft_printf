@@ -12,8 +12,7 @@
 
 #include "../libftprintf.h"
 
-
-int	ft_pat_one(t_com **com, t_com **fresh, char **holder, size_t *yn)
+int			ft_pat_one(t_com **com, t_com **fresh, char **holder, size_t *yn)
 {
 	if (*yn == 0)
 	{
@@ -25,12 +24,12 @@ int	ft_pat_one(t_com **com, t_com **fresh, char **holder, size_t *yn)
 	return (0);
 }
 
-char			*ft_pat_parameter(char **holder)
+char		*ft_pat_parameter(char **holder)
 {
-	char		*copy;
-	char		*parameter;
-	char		*new_holder;
-	size_t		len;
+	char	*copy;
+	char	*parameter;
+	char	*new_holder;
+	size_t	len;
 
 	if (!(*holder))
 		return (NULL);
@@ -52,10 +51,10 @@ char			*ft_pat_parameter(char **holder)
 	return (NULL);
 }
 
-char			*ft_pat_flags(char **holder)
+char		*ft_pat_flags(char **holder)
 {
-	char		*new_holder;
-	char		*flag;
+	char	*new_holder;
+	char	*flag;
 
 	if (!(*holder) || ft_is_flag(**holder) == 0)
 		return (NULL);
@@ -66,11 +65,11 @@ char			*ft_pat_flags(char **holder)
 	return (flag);
 }
 
-char			*ft_pat_width(char **holder)
+char		*ft_pat_width(char **holder)
 {
-	char		*new_holder;
-	char		*width;
-	char 		*copy;
+	char	*new_holder;
+	char	*width;
+	char	*copy;
 
 	if (!(*holder))
 		return (0);
@@ -92,10 +91,10 @@ char			*ft_pat_width(char **holder)
 	return (NULL);
 }
 
-char			*ft_pat_precision(char **holder)
+char		*ft_pat_precision(char **holder)
 {
-	char		*new_holder;
-	char		*precision;
+	char	*new_holder;
+	char	*precision;
 
 	if (!(*holder))
 		return (NULL);
@@ -110,7 +109,7 @@ char			*ft_pat_precision(char **holder)
 			ft_free_and_set(*&holder, &new_holder);
 			return (precision);
 		}
-		else if (*new_holder== '*')
+		else if (*new_holder == '*')
 		{
 			precision = ft_strdup("*");
 			new_holder = ft_strdel_begn(*holder, 2);
@@ -119,48 +118,4 @@ char			*ft_pat_precision(char **holder)
 		}
 	}
 	return (NULL);
-}
-
-char			*ft_pat_length(char **holder)
-{
-	char 		*result;
-	char 		*new_holder;
-	size_t 		len;
-
-	if (ft_is_length(**holder) == 0)
-		return (NULL);
-	len = 1;
-	if (*(*holder + 1) == 'h' || *(*holder + 1) == 'l')
-		len = 2;
-	result = ft_strnew(len + 1);
-	ft_memcpy(result, *holder, len);
-	new_holder = ft_strdel_begn(*holder, len);
-	ft_free_and_set(*&holder, &new_holder);
-	return (result);
-}
-
-char			*ft_pat_modifier(char **holder)
-{
-	char		*modifier;
-	char		*new_holder;
-
-	if (!(*holder) || ft_is_modifier(**holder) == 0)
-		return (NULL);
-	if (ft_strlen(*holder) == 1)
-	{
-		modifier = ft_strdup(*holder);
-		free(*holder);
-		*holder = NULL;
-		return (modifier);
-	}
-	modifier = ft_strnew(2);
-	ft_memcpy(modifier, *holder, 1);
-	new_holder = ft_strdel_begn(*holder, 1);
-	ft_free_and_set(*&holder, &new_holder);
-	return (modifier);
-}
-
-char			*ft_pat_string(char **holder)
-{
-	return (*holder);
 }

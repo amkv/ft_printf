@@ -92,6 +92,7 @@ int				ft_is_length(char c);
 int				ft_is_modifier(char c);
 
 /*
+** PARSER.
 ** patterns
 */
 int				ft_pat_one(t_com **com, t_com **fresh, char **holder, size_t *yn);
@@ -101,7 +102,8 @@ char			*ft_pat_width(char **holder);
 char			*ft_pat_precision(char **holder);
 char			*ft_pat_length(char **holder);
 char			*ft_pat_modifier(char **holder);
-char			*ft_pat_string(char **holder);
+void			ft_pat_ending(t_com **fresh, char **holder, size_t *argc);
+void			ft_pat_string(t_com **com, char **copy, char **holder);
 
 /*
 ** DOs
@@ -134,11 +136,18 @@ char			*ft_add_spaces(char *str, char *width);
 /*
 ** Flags
 */
-void			ft_flags_minus(void);
+void			ft_flags_minus(t_com **com);
+void			ft_flags_plus(t_com **com);
+void			ft_flags_space(t_com **com);
+void			ft_flags_octo(t_com **com);
+void			ft_flags_zero(t_com **com);
 
 /*
 ** Pre print functions
 */
+void			ft_pre_print(t_com **com);
+void			ft_pre_print_precision(t_com **com);
+void			ft_pre_print_flags(t_com **com);
 void			ft_pre_print_width(t_com **com);
 
 /*

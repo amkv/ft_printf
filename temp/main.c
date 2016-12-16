@@ -47,10 +47,10 @@ int				main(void)
 	str = "hello";
 	mr = 0; or = 0;
 
-	mr = ft_printf("%d", 100);
+	mr = ft_printf("%10dtest", 42);
 
 	printf("\n");
-	printf("%d", 100);
+	or = printf("%10dtest", 42);
 //	or = printf("%e\n", -16123123123.1);
 //	or = printf("%e\n", -0.1345231231);
 //	or = printf("%e\n", 0.1345231231);
