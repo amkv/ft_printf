@@ -43,10 +43,10 @@ int				main(void)
 	str = "hello";
 	mr = 0; or = 0;
 
-	mr = ft_printf("%D", 2147483647);
+//	mr = ft_printf("%#08x", 42);
+	mr = ft_printf("%10x", 42);
 	printf("\n");
-	or = printf("%D", 2147483647);
-//	or = printf("%s", "美国USAСША");
+	or = printf("%10x", 42);
 
 	printf("\n");
 	ft_p(mr, or);

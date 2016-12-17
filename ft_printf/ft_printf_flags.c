@@ -14,6 +14,7 @@
 
 void		ft_flags_octo(t_com **com)
 {
+	ft_add_0x(*&com);
 	return ;
 }
 
@@ -24,6 +25,7 @@ void		ft_flags_zero(t_com **com)
 
 void		ft_flags_minus(t_com **com)
 {
+	ft_add_spaces(*&com);
 	return ;
 }
 

@@ -38,8 +38,8 @@ union			u_type
 	unsigned int	o; 			// OK (base 8)
 	unsigned int	u;			// OK
 	long int		l;			//
+	char			c;			//
 
-	char			c;
 	unsigned char	ac;
 	signed char		sc;
 	short			sh;
@@ -138,11 +138,6 @@ void			ft_do_aa(double f, t_com **com);			//bonus		A	// не сделано
 void			ft_do_n(char *str, t_com **com);			//bonus		n	// не сделано
 
 /*
-** Modifiers
-*/
-char			*ft_add_spaces(char *str, char *width);
-
-/*
 ** Flags
 */
 void			ft_flags_octo(t_com **com);
@@ -160,7 +155,20 @@ void			ft_pre_print_flags(t_com **com);
 void			ft_pre_print_width(t_com **com);
 
 /*
-** Addons
+** Modifiers (scroll)
+*/
+char			*ft_add_spaces_to_beg(char *str, char *width);
+void 			ft_add_spaces(t_com **com);
+void			ft_add_0x(t_com **com);
+void			ft_string_to_upper(char *str, t_com **com);
+
+/*
+** helpers
+*/
+void			ft_free_and_set(char **old, char **new);
+
+/*
+** Addons, которые можно использовать в других проектах
 */
 char			*ft_strnncpy(char *dst, const char *src, size_t beg, size_t n);
 void			*ft_memnncpy(void *dst, const void *src, size_t beg, size_t n);
@@ -169,13 +177,7 @@ char			*ft_itoa_base(long int value, long int base);
 char			*ft_strdel_begn(char *str, size_t n);
 char			*ft_ftoa(double number, int length);
 double			ft_pow(double x, double y);
-
-/*
-** helpers
-*/
-void			ft_free_and_set(char **old, char **new);
-void			ft_string_to_upper(char *str, t_com **com);
-
-void			ft_nothing(void);
+void			ft_putstrn(const char *str, size_t n);
+char 			*ft_strnew_spaces(size_t len, char c);
 
 #endif

@@ -42,8 +42,8 @@ void			ft_pre_print_precision(t_com **com)
 	size_t 		len;
 	size_t 		str_len;
 
-	if ((*com)->precision != NULL && *(*com)->modifier != 'd'
-			&& *(*com)->modifier != 'x')
+	if ((*com)->precision != NULL && (*com)->modifier &&
+			*(*com)->modifier != 'd' && *(*com)->modifier != 'x')
 	{
 		len = (size_t)ft_atoi((*com)->precision);
 		str_len = ft_strlen((*com)->scroll);
@@ -61,13 +61,14 @@ void			ft_pre_print_precision(t_com **com)
 
 void			ft_pre_print_width(t_com **com)
 {
-	char		*result;
+//	char		*result;
 
 	if ((*com)->width)
 	{
-		result = ft_add_spaces((*com)->scroll, (*com)->width);
-		free((*com)->scroll);
-		(*com)->scroll = result;
-		(*com)->len = ft_strlen(result);
+//		result = ft_add_spaces_to_beg((*com)->scroll, (*com)->width);
+		ft_add_spaces(*&com);
+//		free((*com)->scroll);
+//		(*com)->scroll = result;
+//		(*com)->len = ft_strlen(result);
 	}
 }

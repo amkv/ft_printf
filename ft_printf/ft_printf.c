@@ -65,7 +65,21 @@ static void			ft_print_result(t_com *com, int *characters)
 	*characters = 0;
 	while (copy != NULL)
 	{
-		ft_putstr(copy->scroll);
+		if (copy->modifier && *copy->modifier == 'c' && copy->type == '%')
+		{
+			if (copy->flag && *copy->flag == '-')
+			{
+				ft_putchar(copy->var.c);
+				ft_putstrn(copy->scroll, ((copy->len) - 1));
+			}
+			else
+			{
+				ft_putstrn(copy->scroll, ((copy->len) - 1));
+				ft_putchar(copy->var.c);
+			}
+		}
+		else
+			ft_putstr(copy->scroll);
 		*characters += copy->len;
 		copy = copy->next;
 	}
@@ -87,10 +101,8 @@ static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
 				copy->width = ft_itoa(va_arg(ap, int));
 			}
 			ft_switch(*(copy)->modifier, ap, &copy);
-			ft_pre_print(&copy);
 		}
-		if (copy->type == '.')
-			ft_pre_print(&copy);
+		ft_pre_print(&copy);
 //		argc--;
 		copy = copy->next;
 	}
@@ -103,8 +115,8 @@ int					ft_printf(const char *restrict format, ...)
 	size_t			argc;
 	int				characters;
 
-//	if (ft_exceptions(format, &characters) >= 0)
-//		return (characters);
+	if (ft_exceptions(format, &characters) >= 0)
+		return (characters);
 	characters = 0; // удалить
 	argc = 0; // удалить
 	va_start(ap, format);

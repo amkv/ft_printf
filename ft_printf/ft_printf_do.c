@@ -75,9 +75,11 @@ void				ft_do_d(int d, t_com **com) // OK
 
 void				ft_do_dd(long int d, t_com **com) // не готова
 {
-	free((*com)->scroll);
-	(*com)->scroll = ft_itoa(d);
-	(*com)->len = ft_strlen((*com)->scroll);
+	ft_do_d((int)d, *&com);
+//	free((*com)->scroll);
+//	(*com)->scroll = ft_itoa(d);
+//	(*com)->len = ft_strlen((*com)->scroll);
+	return ;
 }
 
 void				ft_do_i(int i, t_com **com) // OK
@@ -143,14 +145,10 @@ void				ft_do_xx(unsigned int num, t_com **com)
 
 void				ft_do_c(char c, t_com **com)
 {
-	char			*result;
-
-	result = ft_strnew(2);
-	result[0] = c;
-	result[1] = '\0';
 	free((*com)->scroll);
+	(*com)->scroll = NULL;
+	(*com)->scroll = ft_strnew(1);
 	(*com)->len = 1;
-	(*com)->scroll = result;
 }
 
 /*
