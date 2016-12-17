@@ -16,6 +16,12 @@ void				ft_do_s(char *str, t_com **com)
 {
 	char			*result;
 
+	if (str == NULL)
+	{
+		(*com)->scroll = ft_strdup("(null)");
+		(*com)->len = 6;
+		return ;
+	}
 	result = ft_strdup(str);
 	free((*com)->scroll);
 	(*com)->scroll = result;
@@ -24,25 +30,26 @@ void				ft_do_s(char *str, t_com **com)
 
 void				ft_do_ss(char *str, t_com **com)
 {
-	char			*temp;
-	char			*result;
-	char			*copy;
-
-	temp = str;
-	result = ft_strnew(ft_strlen(str) + 1);
-	if (result == NULL)
-		return ;
-	copy = result;
-	while (*temp)
-	{
-		*copy = (char)ft_toupper(*temp);
-		copy++;
-		temp++;
-	}
-	*copy = '\0';
+//	char			*temp;
+//	char			*result;
+//	char			*copy;
+//
+//	temp = str;
+//	result = ft_strnew(ft_strlen(str) + 1);
+//	if (result == NULL)
+//		return ;
+//	copy = result;
+//	while (*temp)
+//	{
+//		*copy = (char)ft_toupper(*temp);
+//		copy++;
+//		temp++;
+//	}
+//	*copy = '\0';
 //	free((*com)->scroll);
-	(*com)->scroll = result;
-	(*com)->len = ft_strlen(result);
+//	(*com)->scroll = result;
+//	(*com)->len = ft_strlen(result);
+	return ;
 }
 
 void				ft_do_p(void *ptr, t_com **com)
@@ -59,29 +66,32 @@ void				ft_do_p(void *ptr, t_com **com)
 	(*com)->len = ft_strlen(result);
 }
 
-void				ft_do_d(int d, t_com **com)
+void				ft_do_d(int d, t_com **com) // OK
 {
+	free((*com)->scroll);
 	(*com)->scroll = ft_itoa(d);
 	(*com)->len = ft_strlen((*com)->scroll);
 }
 
-void				ft_do_dd(int d, t_com **com) // не готова
+void				ft_do_dd(long int d, t_com **com) // не готова
 {
+	free((*com)->scroll);
 	(*com)->scroll = ft_itoa(d);
 	(*com)->len = ft_strlen((*com)->scroll);
 }
 
-void				ft_do_i(int d, t_com **com) // не готова
+void				ft_do_i(int i, t_com **com) // OK
 {
-	(*com)->scroll = ft_itoa(d);
+	free((*com)->scroll);
+	(*com)->scroll = ft_itoa(i);
 	(*com)->len = ft_strlen((*com)->scroll);
 }
 
-void				ft_do_o(unsigned int d, t_com **com)
+void				ft_do_o(unsigned int o, t_com **com)
 {
 	char			*result;
 
-	result = ft_itoa_base(d, 8);
+	result = ft_itoa_base(o, 8);
 	free((*com)->scroll);
 	(*com)->scroll = result;
 	(*com)->len = ft_strlen(result);
@@ -117,30 +127,18 @@ void				ft_do_uu(unsigned int d, t_com **com)
 	(*com)->len = ft_strlen((*com)->scroll);
 }
 
-void				ft_do_x(int num, t_com **com)
+void				ft_do_x(unsigned int num, t_com **com)
 {
-	char			*result;
-	long int		number;
-
-	if (num >= 0)
-	{
-		result = ft_itoa_base(num, 16);
-		(*com)->scroll = result;
-		(*com)->len = ft_strlen(result);
-	}
-	if (num < 0)
-	{
-		number = 4294967295 - (-num) + 1;
-		result = ft_itoa_base(number, 16);
-		(*com)->scroll = result;
-		(*com)->len = ft_strlen(result);
-	}
+	free((*com)->scroll);
+	(*com)->scroll = NULL;
+	(*com)->scroll = ft_itoa_base(num, 16);
+	(*com)->len = ft_strlen((*com)->scroll);
 }
 
-void				ft_do_xx(int num, t_com **com)
+void				ft_do_xx(unsigned int num, t_com **com)
 {
 	ft_do_x(num, *&com);
-	ft_do_ss((*com)->scroll, *&com);
+	ft_string_to_upper((*com)->scroll, *&com);
 }
 
 void				ft_do_c(char c, t_com **com)

@@ -139,7 +139,35 @@ void			ft_tcom_free_all(t_com *list)
 	}
 }
 
-void			ft_tcom_print(t_com *list)
+static void		ft_tcom_print2(t_com *list, int yesno)
+{
+	if (yesno != 1 || list->modifier == NULL || list->type == '.')
+	{
+		printf("var:      .....\n\n");
+		return ;
+	}
+	if (*list->modifier == 's')
+		printf("var s:    %s\n", list->var.s);
+	else if (*list->modifier == 'p')
+		printf("var p:    %p\n", list->var.p);
+	else if (*list->modifier == 'd')
+		printf("var d:    %d\n", list->var.d);
+	else if (*list->modifier == 'D')
+		printf("var l:    %ld\n", list->var.l);
+	else if (*list->modifier == 'i')
+		printf("var i:    %i\n", list->var.i);
+	else if (*list->modifier == 'o')
+		printf("var o:    %i\n", list->var.o);
+	else if (*list->modifier == 'u')
+		printf("var u:    %i\n", list->var.u);
+	else if (*list->modifier == 'x')
+		printf("var x:    %i\n", list->var.u);
+	else if (*list->modifier == 'X')
+		printf("var X:    %i\n", list->var.u);
+	printf("\n");
+}
+
+void			ft_tcom_print(t_com *list, int yesno)
 {
 	t_com		*tmp;
 
@@ -156,7 +184,8 @@ void			ft_tcom_print(t_com *list)
 		printf("precision:%s\n", tmp->precision);
 		printf("length:   %s\n", tmp->length);
 		printf("modifier: %s\n", tmp->modifier);
-		printf("counter:  %d\n\n", tmp->counter);
+		printf("counter:  %d\n", tmp->counter);
+		ft_tcom_print2(tmp, yesno);
 		tmp = tmp->next;
 	}
 }

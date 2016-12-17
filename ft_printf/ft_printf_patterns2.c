@@ -74,8 +74,9 @@ void		ft_pat_string(t_com **com, char **copy, char **holder)
 	if (ft_strcmp(*copy, *holder) != 0)
 	{
 		fresh = ft_tcom_new();
-		fresh->scroll = ft_strdup(*holder);
-		fresh->len = ft_strlen(fresh->scroll);
+		fresh->scroll = *holder;
+		fresh->len = ft_strlen(*holder);
 		ft_tcom_list(*&com, fresh);
+		free(*copy);
 	}
 }

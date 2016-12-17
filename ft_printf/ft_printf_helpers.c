@@ -55,3 +55,26 @@ char			*ft_add_spaces(char *str, char *width)
 	free(temp);
 	return (result);
 }
+
+void				ft_string_to_upper(char *str, t_com **com)
+{
+	char			*temp;
+	char			*result;
+	char			*copy;
+
+	temp = str;
+	result = ft_strnew(ft_strlen(str) + 1);
+	if (result == NULL)
+		return ;
+	copy = result;
+	while (*temp)
+	{
+		*copy = (char)ft_toupper(*temp);
+		copy++;
+		temp++;
+	}
+	*copy = '\0';
+	free((*com)->scroll);
+	(*com)->scroll = result;
+	(*com)->len = ft_strlen(result);
+}

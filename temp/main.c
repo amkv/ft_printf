@@ -28,8 +28,6 @@
 
 #include "../libftprintf.h"
 #include "math.h"
-//#include <wchar.h>
-//#include <wctype.h>
 
 static void		ft_p(int mr, int or)
 {
@@ -45,15 +43,17 @@ int				main(void)
 	str = "hello";
 	mr = 0; or = 0;
 
-	mr = ft_printf("%10dtest", 42);
+	mr = ft_printf("%D", 2147483647);
 	printf("\n");
-	or = printf("%2$s %1$d", 42, "shool");
+	or = printf("%D", 2147483647);
+//	or = printf("%s", "美国USAСША");
 
 	printf("\n");
 	ft_p(mr, or);
 	return (0);
 
 // мертвые кейсы...
+//	ft_printf("%%\n");
 //	or = printf("%S", 100);
 //	mr = ft_printf("%  +d", 42); // непонятно как парсить
 //	or = printf("%.s", str); // printf ничего не печатает

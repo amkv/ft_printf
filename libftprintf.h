@@ -21,56 +21,63 @@
 # include <stdarg.h>
 # include <stdio.h>
 
+//# include <wchar.h>
+//# include <wctype.h>
+
 /*
 ** # include <stdio.h> // delete
 ** void			ft_tcom_print(t_com *list); // fot tests only
 */
 
-typedef struct	s_com
-{
-	char			*scroll;
-	size_t			size;
-	size_t			len;
-	char			type;
-	void			*ptr;
-
-	char			*param;
-	char			*flag;
-	char			*width;
-	char			*precision;
-	char			*length;
-	char 			*modifier;
-	int				counter;
-
-	struct s_com	*next;
-}				t_com;
-
 union			u_type
 {
+	char			*s;			// OK
+	void			*p;			// OK (pointer)
+	int				d;			// OK
+	int				i; 			// OK (d)
+	unsigned int	o; 			// OK (base 8)
+	unsigned int	u;			// OK
+	long int		l;			//
+
 	char			c;
 	unsigned char	ac;
 	signed char		sc;
-	int				d;
-	unsigned int 	uo;
-	unsigned int	ui;
 	short			sh;
 	unsigned short	ush;
-	long			l;
+
 	unsigned long	ul;
 	float			f;
 	double			db;
 	long double		ldb;
-	char			*s;
-	void			*p;
 	size_t			zu;
 };
+
+typedef struct	s_com
+{
+	char			*scroll;	// стринг для хранения вывода на печать
+	size_t			size;		// не используется
+	size_t			len;		// длина scroll
+	char			type;		// % или .
+	void			*ptr;		// не используется
+
+	char			*param;		// n$ не используется
+	char			*flag;		// - + space o # '
+	char			*width;		// * или цифра
+	char			*precision;	// * или .цифра
+	char			*length;	// флаги hh h l ll z j t (L)bonus
+	char 			*modifier;	// sS p dD i oO uU xX cC &bonus eE fF gG aA n
+	int				counter;	// счетчик количества листов
+	union u_type	var;		// оригинальная переменная из стека ...
+
+	struct s_com	*next;		// ссылка на сл.структуру
+}				t_com;
 
 /*
 ** Main functions
 */
 int				ft_printf(const char *restrict format, ...);
 void			ft_parser(const char *format, t_com **list, size_t *argc);
-void			ft_switch(char c, union u_type *type, va_list ap, t_com **com);
+void			ft_switch(char c, va_list ap, t_com **com);
 void			ft_check_patterns(t_com **com, size_t *yn, char **holder, size_t *argc);
 
 /*
@@ -81,7 +88,7 @@ void			ft_tcom_list(t_com **list, t_com *fresh);
 void			ft_tcom_free_all(t_com *list);
 void			ft_tcom_free_next(t_com **list);
 void			ft_tcom_free_first(t_com **list);
-void			ft_tcom_print(t_com *list);
+void			ft_tcom_print(t_com *list, int yesno);
 void			ft_tcom_revert(t_com **list);
 
 /*
@@ -109,14 +116,14 @@ void			ft_do_s(char *str, t_com **com);			//mandatory s
 void			ft_do_ss(char *str, t_com **com);			//mandatory S	//не сделано
 void			ft_do_p(void *ptr, t_com **com);			//mandatory p
 void			ft_do_d(int d, t_com **com);				//mandatory d
-void			ft_do_dd(int d, t_com **com);				//mandatory D	//не сделано
-void			ft_do_i(int d, t_com **com);				//mandatory i	//не сделано
+void			ft_do_dd(long int d, t_com **com);			//mandatory D	//не сделано
+void			ft_do_i(int d, t_com **com);				//mandatory i
 void			ft_do_o(unsigned int d, t_com **com);		//mandatory o
 void			ft_do_oo(unsigned int d, t_com **com);		//mandatory O	// не сделано
-void			ft_do_u(unsigned int d, t_com **com);		//mandatory u	// не сделано
+void			ft_do_u(unsigned int d, t_com **com);		//mandatory u
 void			ft_do_uu(unsigned int d, t_com **com);		//mandatory U	// не сделано
-void			ft_do_x(int num, t_com **com);				//mandatory x
-void			ft_do_xx(int num, t_com **com);				//mandatory X
+void			ft_do_x(unsigned int num, t_com **com);		//mandatory x
+void			ft_do_xx(unsigned int num, t_com **com);	//mandatory X
 void			ft_do_c(char c, t_com **com);				//mandatory c
 void			ft_do_cc(char c, t_com **com);				//mandatory C	// не сделано
 
@@ -167,6 +174,7 @@ double			ft_pow(double x, double y);
 ** helpers
 */
 void			ft_free_and_set(char **old, char **new);
+void			ft_string_to_upper(char *str, t_com **com);
 
 void			ft_nothing(void);
 

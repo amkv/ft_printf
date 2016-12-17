@@ -19,13 +19,6 @@ int		ft_is_flag(char c)
 	return (0);
 }
 
-int		ft_is_width(char c)
-{
-	if (c == '*')
-		return (1);
-	return (0);
-}
-
 int		ft_is_length(char c)
 {
 	if (c == 'h' || c == 'l' || c == 'L' || c == 'z' || c == 'j' || c == 't')
@@ -35,10 +28,19 @@ int		ft_is_length(char c)
 
 int		ft_is_modifier(char c)
 {
-	if (c == 'd' || c == 'i' || c == 'u' || c == 'U' || c == 'f' || c == 'F'
-		|| c == 'e' || c == 'E' || c == 'g' || c == 'G' || c == 'x' || c == 'X'
-		|| c == 'o' || c == 's' || c == 'S' || c == 'c' || c == 'p'
-		|| c == 'a' || c == 'A' || c == 'n')
+	if (c == 's' || c == 'S' || c == 'p' || c == 'd' || c == 'D' ||
+		c == 'i' || c == 'o' || c == 'O' || c == 'u' || c == 'U' ||
+		c == 'x' || c == 'X' || c == 'c' || c == 'C')
+		return (1);
+	else if (c == 'e' || c == 'E' || c == 'f' || c == 'F' || c == 'g' ||
+			 c == 'G' || c == 'a' || c == 'A' || c == 'n')
 		return (1);
 	return (0);
 }
+
+//int		ft_is_width(char c)
+//{
+//	if (c == '*')
+//		return (1);
+//	return (0);
+//}

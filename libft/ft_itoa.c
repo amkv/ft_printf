@@ -12,24 +12,40 @@
 
 #include "libft.h"
 
-char		*ft_itoa(int n)
+static void	ft_itoa_helper(char **result, long int n)
+{
+	char	*temp1;
+	char	*temp2;
+
+//	free(*result);
+	temp1 = ft_itoa(n / 10);
+	temp2 = ft_itoa(n % 10);
+	*result = ft_strjoin(temp1, temp2);
+	free(temp1);
+	free(temp2);
+}
+
+char		*ft_itoa(long int n)
 {
 	char	*result;
+	char	*temp;
 
+	result = NULL;
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
-	if (!(result = (char*)malloc(sizeof(result) * 2)))
-		return (NULL);
 	if (n < 0)
 	{
-		result[0] = '-';
-		result[1] = '\0';
-		result = ft_strjoin(result, ft_itoa(-n));
+		temp = ft_itoa(-n);
+		result = ft_strjoin("-", temp);
+		free(temp);
 	}
 	else if (n >= 10)
-		result = ft_strjoin(ft_itoa(n / 10), ft_itoa(n % 10));
+		ft_itoa_helper(&result, n);
 	else if (n < 10 && n >= 0)
 	{
+		result = ft_strnew(2);
+		if (!result)
+			return (NULL);
 		result[0] = n + '0';
 		result[1] = '\0';
 	}

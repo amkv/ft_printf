@@ -74,8 +74,6 @@ static void			ft_print_result(t_com *com, int *characters)
 static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
 {
 	t_com			*copy;
-	char			*modifier;
-	union u_type	type;
 
 	copy = com;
 //	while (copy != NULL && argc > 0)
@@ -83,13 +81,12 @@ static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
 	{
 		if (copy->type == '%')
 		{
-			modifier = copy->modifier;
 			if (copy->width != NULL && *copy->width == '*')
 			{
 				free(copy->width);
 				copy->width = ft_itoa(va_arg(ap, int));
 			}
-			ft_switch(*modifier, &type, ap, &copy);
+			ft_switch(*(copy)->modifier, ap, &copy);
 			ft_pre_print(&copy);
 		}
 		if (copy->type == '.')
@@ -108,15 +105,14 @@ int					ft_printf(const char *restrict format, ...)
 
 //	if (ft_exceptions(format, &characters) >= 0)
 //		return (characters);
-	characters = 0;
-	argc = 0;
+	characters = 0; // удалить
+	argc = 0; // удалить
 	va_start(ap, format);
 	ft_parser(format, &com, &argc);
-	ft_tcom_revert(&com);
 //	printf("аргументов: %zu\n", argc);
-	ft_tcom_print(com);
+//	ft_tcom_print(com, 0);
 	ft_pre_printing(*&com, ap, argc);
-//	ft_tcom_print(com);
+//	ft_tcom_print(com, 1);
 	ft_print_result(*&com, &characters);
 	ft_tcom_free_all(com);
 	va_end(ap);

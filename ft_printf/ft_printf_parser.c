@@ -22,7 +22,11 @@ static void	ft_get_arg(char **str, size_t *beg, size_t *yn, size_t *len)
 		(*str)++;
 	}
 	if (**str == '%')
+	{
 		(*len) = 1;
+		(*str)++;
+	}
+
 	else
 		while (**str != '%' && **str != '\0')
 		{
@@ -57,8 +61,8 @@ void		ft_check_patterns(t_com **com, size_t *yn, char **holder, size_t *argc)
 		free(copy);
 		return ;
 	}
-	ft_pat_string(*&com, &copy, *&holder);
-	free(copy);
+	else
+		ft_pat_string(*&com, &copy, *&holder);
 }
 
 void		ft_parser(const char *format, t_com **com, size_t *argc)
@@ -77,9 +81,10 @@ void		ft_parser(const char *format, t_com **com, size_t *argc)
 	{
 		ft_get_arg(&copy, &beg, &yn, &len);
 		if (*copy == '\0' && len == 0)
-			return ;
+			break ;
 		ft_memnncpy((holder = ft_strnew(len + 1)), format, beg, len);
 		beg += len;
 		ft_check_patterns(*&com, &yn, &holder, *&argc);
 	}
+	ft_tcom_revert(*&com);
 }
