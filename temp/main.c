@@ -44,17 +44,16 @@ int				main(void)
 	mr = 0; or = 0;
 
 //	mr = ft_printf("%#08x", 42);
-//	mr = ft_printf("%.10d", 4242);
-	mr = ft_printf("%.10d", 4242);
+	mr = ft_printf("%+d", 0);
 	printf("\n");
-//	or = printf("%.10s", 4242);
-	or = printf("%.10d", 4242);
+	or = printf("%+d", 0);
 
 	printf("\n");
 	ft_p(mr, or);
 	return (0);
 
 // мертвые кейсы...
+//	mr = ft_printf("%c", NULL);
 //	ft_printf("%%\n");
 //	or = printf("%S", 100);
 //	mr = ft_printf("%  +d", 42); // непонятно как парсить

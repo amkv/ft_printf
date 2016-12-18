@@ -45,16 +45,16 @@ void			ft_pre_print_precision(t_com **com)
 
 	precision = (size_t)ft_atoi((*com)->precision);
 	len = (*com)->len;
-	if (precision == len)
+	if (precision == len || len == 0)
 		return ;
 	else if (precision < len)
-		ft_cut_the_word(*&com, precision);
+		ft_mod_cut_word(*&com, precision);
 	else if (precision > len)
-		ft_extend_the_word(*&com, precision, len);
+		ft_mod_extend_word(*&com, precision, len);
 }
 
 void			ft_pre_print_width(t_com **com)
 {
 	if ((*com)->width)
-		ft_add_spaces(*&com);
+		ft_mod_add_spaces(*&com);
 }

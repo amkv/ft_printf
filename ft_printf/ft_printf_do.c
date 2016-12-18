@@ -145,8 +145,8 @@ void				ft_do_xx(unsigned int num, t_com **com)
 
 void				ft_do_c(char c, t_com **com)
 {
-	free((*com)->scroll);
-	(*com)->scroll = NULL;
+//	free((*com)->scroll);
+//	(*com)->scroll = NULL;
 	(*com)->scroll = ft_strnew(1);
 	(*com)->len = 1;
 }

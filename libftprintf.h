@@ -157,12 +157,12 @@ void			ft_pre_print_width(t_com **com);
 /*
 ** Modifiers (scroll)
 */
-//char			*ft_add_spaces_to_beg(char *str, char *width);
-void			ft_add_spaces(t_com **com);
-void			ft_add_0x(t_com **com);
+void			ft_mod_add_spaces(t_com **com);
+void			ft_mod_add_0x(t_com **com);
 void			ft_string_to_upper(char *str, t_com **com);
-void			ft_cut_the_word(t_com **com, size_t precision);
-void 			ft_extend_the_word(t_com **com, size_t precision, size_t len);
+void			ft_mod_cut_word(t_com **com, size_t precision);
+void 			ft_mod_extend_word(t_com **com, size_t precision, size_t len);
+void			ft_mod_add_sign(t_com **com);
 
 /*
 ** helpers

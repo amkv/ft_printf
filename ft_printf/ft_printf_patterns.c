@@ -116,6 +116,12 @@ char		*ft_pat_precision(char **holder)
 			ft_free_and_set(*&holder, &new_holder);
 			return (precision);
 		}
+		else
+		{
+			new_holder = ft_strdup(new_holder);
+			ft_free_and_set(*&holder, &new_holder);
+			return(ft_strdup("0"));
+		}
 	}
 	return (NULL);
 }

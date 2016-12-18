@@ -490,7 +490,7 @@ int ft_parser(const char *format, t_com **list)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-char 			*ft_add_spaces(char *str, long int width)
+char 			*ft_mod_add_spaces(char *str, long int width)
 {
 //	long int	len;
 //	long int 	spaces;

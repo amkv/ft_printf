@@ -68,7 +68,7 @@ static int		ft_add_spaces_helper(t_com **com)
 	return (0);
 }
 
-void 			ft_add_spaces(t_com **com)
+void 			ft_mod_add_spaces(t_com **com)
 {
 	char 		*result;
 	char 		*spaces;
@@ -107,7 +107,7 @@ static int 		ft_add_0x_helper(char c)
 	return (0);
 }
 
-void			ft_add_0x(t_com **com)
+void			ft_mod_add_0x(t_com **com)
 {
 	char 		*beg;
 	char 		*result;
@@ -155,13 +155,18 @@ void			ft_string_to_upper(char *str, t_com **com)
 	(*com)->len = ft_strlen(result);
 }
 
-/* ************************************************************************** */
+/* ************************************************************************ */
+/* 								Precision 									*/
+/* ************************************************************************ */
 
-void 			ft_cut_the_word(t_com **com, size_t precision)
+void 			ft_mod_cut_word(t_com **com, size_t precision)
 {
 	char 		*result;
 
-	if (!(*com)->scroll)
+	if (!(*com)->scroll || !(*com)->modifier)
+		return ;
+	if (*(*com)->modifier == 'x' || *(*com)->modifier == 'X'
+		|| *(*com)->modifier == 'd' || *(*com)->modifier == 'i')
 		return ;
 	result = ft_strdupn((*com)->scroll, precision);
 	ft_free_and_set(&(*com)->scroll, &result);
@@ -169,22 +174,26 @@ void 			ft_cut_the_word(t_com **com, size_t precision)
 	return ;
 }
 
-/* *************************** */
+/* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */
 
 static int 		ft_extend_the_word_helper(char *modifier)
 {
 	if (!modifier)
 		return (-1);
+//	if (*modifier == 'd' || *modifier == 'o' || *modifier == 'u' ||
+//		*modifier == 'i')
+//		return (-1);
 	if (*modifier == 'd' || *modifier == 'o' || *modifier == 'u' ||
 			*modifier == 'i')
 		return (1);
 	return (0);
 }
 
-void 			ft_extend_the_word(t_com **com, size_t precision, size_t len)
+void 			ft_mod_extend_word(t_com **com, size_t precision, size_t len)
 {
 	char 		*result;
-	char 		*spaces;
+	char		*spaces;
+	char 		*temp;
 
 	if (ft_extend_the_word_helper((*com)->modifier) == -1)
 		return ;
@@ -192,12 +201,44 @@ void 			ft_extend_the_word(t_com **com, size_t precision, size_t len)
 		spaces = ft_strnew_spaces(precision - len, '0');
 	else
 		spaces = ft_strnew_spaces(precision - len, ' ');
-
-	result = ft_strjoin(spaces, (*com)->scroll);
+	if (*(*com)->modifier == 'd' || *(*com)->modifier == 'i')
+	{
+		if ((*com)->var.d < 0)
+		{
+			result = ft_itoa(-((*com)->var.d));
+			temp = ft_strjoin(spaces, result);
+			free(result);
+			result = ft_strjoin("-0", temp);
+			free(temp);
+		}
+		else
+			result = ft_strjoin(spaces, (*com)->scroll);
+	}
+	else
+		result = ft_strjoin(spaces, (*com)->scroll);
 	free(spaces);
 	ft_free_and_set(&(*com)->scroll, &result);
-	(*com)->len = precision;
+	(*com)->len = ft_strlen((*com)->scroll);
 	return ;
 }
 
 /* ************************************************************************** */
+
+void			ft_mod_add_sign(t_com **com)
+{
+	char 		*result;
+
+	if (!(*com)->scroll && !(*com)->modifier)
+		return ;
+	if (*(*com)->modifier == 'd' || *(*com)->modifier == 'i')
+	{
+		if (ft_atoi((*com)->scroll) < 0)
+			return ;
+		else
+		{
+			result = ft_strjoin("+", (*com)->scroll);
+			ft_free_and_set(&(*com)->scroll, &result);
+			(*com)->len += 1;
+		}
+	}
+}
