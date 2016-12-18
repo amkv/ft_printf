@@ -90,20 +90,24 @@ static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
 	t_com			*copy;
 
 	copy = com;
-//	while (copy != NULL && argc > 0)
+	argc = 0;
 	while (copy != NULL)
 	{
 		if (copy->type == '%')
 		{
-			if (copy->width != NULL && *copy->width == '*')
+			if (copy->width && *copy->width == '*')
 			{
 				free(copy->width);
 				copy->width = ft_itoa(va_arg(ap, int));
 			}
+			if (copy->precision && *copy->precision == '*')
+			{
+				free(copy->precision);
+				copy->precision = ft_itoa(va_arg(ap, int));
+			}
 			ft_switch(*(copy)->modifier, ap, &copy);
 		}
 		ft_pre_print(&copy);
-//		argc--;
 		copy = copy->next;
 	}
 }

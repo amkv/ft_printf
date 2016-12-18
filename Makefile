@@ -6,7 +6,7 @@
 #    By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/22 14:50:24 by akalmyko          #+#    #+#              #
-#    Updated: 2016/12/15 16:21:43 by akalmyko         ###   ########.fr        #
+#    Updated: 2016/12/17 17:15:00 by akalmyko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -110,6 +110,7 @@ EC += $(E)ft_strdel_begn.c
 EC += $(E)ft_numlen.c
 EC += $(E)ft_pow.c
 EC += $(E)ft_ftoa.c
+EC += $(E)ft_strdupn.c
 
 OF += ft_atoi.o
 OF += ft_bzero.o
@@ -202,6 +203,7 @@ OF += ft_numlen.o
 OF += ft_pow.o
 OF += ft_ftoa.o
 OF += ft_strdel_begn.o
+OF += ft_strdupn.o
 
 all: $(NAME)
 

@@ -60,7 +60,7 @@ static int		ft_add_spaces_helper(t_com **com)
 	if (!(*com)->modifier)
 		return (0);
 	c = *(*com)->modifier;
-	if (c == 'd' || c == 'x' || c == 'o')
+	if (c == 'd' || c == 'x' || c == 'o' || c == 'u')
 	{
 		if ((*com)->flag && *(*com)->flag == '0')
 			return (1);
@@ -93,9 +93,7 @@ void 			ft_add_spaces(t_com **com)
 	else
 		result = ft_strjoin(spaces, (*com)->scroll);
 	free(spaces);
-	free((*com)->scroll);
-	(*com)->scroll = NULL;
-	(*com)->scroll = result;
+	ft_free_and_set(&(*com)->scroll, &result);
 	(*com)->len = width;
 }
 
@@ -155,6 +153,51 @@ void			ft_string_to_upper(char *str, t_com **com)
 	free((*com)->scroll);
 	(*com)->scroll = result;
 	(*com)->len = ft_strlen(result);
+}
+
+/* ************************************************************************** */
+
+void 			ft_cut_the_word(t_com **com, size_t precision)
+{
+	char 		*result;
+
+	if (!(*com)->scroll)
+		return ;
+	result = ft_strdupn((*com)->scroll, precision);
+	ft_free_and_set(&(*com)->scroll, &result);
+	(*com)->len = precision;
+	return ;
+}
+
+/* *************************** */
+
+static int 		ft_extend_the_word_helper(char *modifier)
+{
+	if (!modifier)
+		return (-1);
+	if (*modifier == 'd' || *modifier == 'o' || *modifier == 'u' ||
+			*modifier == 'i')
+		return (1);
+	return (0);
+}
+
+void 			ft_extend_the_word(t_com **com, size_t precision, size_t len)
+{
+	char 		*result;
+	char 		*spaces;
+
+	if (ft_extend_the_word_helper((*com)->modifier) == -1)
+		return ;
+	else if (ft_extend_the_word_helper((*com)->modifier) == 1)
+		spaces = ft_strnew_spaces(precision - len, '0');
+	else
+		spaces = ft_strnew_spaces(precision - len, ' ');
+
+	result = ft_strjoin(spaces, (*com)->scroll);
+	free(spaces);
+	ft_free_and_set(&(*com)->scroll, &result);
+	(*com)->len = precision;
+	return ;
 }
 
 /* ************************************************************************** */

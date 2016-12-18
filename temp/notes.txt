@@ -860,4 +860,26 @@ void		ft_check_patterns(t_com **com, size_t *yn, char **holder, size_t *argc)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+ft_precision
+//	char		*result;
+//	size_t 		len;
+//	size_t 		str_len;
+//
+//	if ((*com)->precision != NULL && (*com)->modifier &&
+//			*(*com)->modifier != 'd' && *(*com)->modifier != 'x')
+//	{
+//		len = (size_t)ft_atoi((*com)->precision);
+//		str_len = ft_strlen((*com)->scroll);
+//		if (len >= str_len)
+//			return ;
+//		result = ft_strnew(str_len + 1);
+//		ft_memcpy(result, (*com)->scroll, len);
+//		free((*com)->scroll);
+//		(*com)->scroll = NULL;
+//		(*com)->scroll = result;
+//		(*com)->len = len;
+//	}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 */

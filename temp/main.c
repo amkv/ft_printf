@@ -44,9 +44,11 @@ int				main(void)
 	mr = 0; or = 0;
 
 //	mr = ft_printf("%#08x", 42);
-	mr = ft_printf("%10x", 42);
+//	mr = ft_printf("%.10d", 4242);
+	mr = ft_printf("%.10d", 4242);
 	printf("\n");
-	or = printf("%10x", 42);
+//	or = printf("%.10s", 4242);
+	or = printf("%.10d", 4242);
 
 	printf("\n");
 	ft_p(mr, or);

@@ -38,37 +38,23 @@ void			ft_pre_print_flags(t_com **com)
 
 void			ft_pre_print_precision(t_com **com)
 {
-	char		*result;
-	size_t 		len;
-	size_t 		str_len;
+	if (!(*com)->precision)
+		return ;
+	size_t 		precision;
+	size_t		len;
 
-	if ((*com)->precision != NULL && (*com)->modifier &&
-			*(*com)->modifier != 'd' && *(*com)->modifier != 'x')
-	{
-		len = (size_t)ft_atoi((*com)->precision);
-		str_len = ft_strlen((*com)->scroll);
-		if (len >= str_len)
-			return ;
-		result = ft_strnew(str_len + 1);
-		ft_memcpy(result, (*com)->scroll, len);
-		free((*com)->scroll);
-		(*com)->scroll = NULL;
-		(*com)->scroll = result;
-		(*com)->len = len;
-
-	}
+	precision = (size_t)ft_atoi((*com)->precision);
+	len = (*com)->len;
+	if (precision == len)
+		return ;
+	else if (precision < len)
+		ft_cut_the_word(*&com, precision);
+	else if (precision > len)
+		ft_extend_the_word(*&com, precision, len);
 }
 
 void			ft_pre_print_width(t_com **com)
 {
-//	char		*result;
-
 	if ((*com)->width)
-	{
-//		result = ft_add_spaces_to_beg((*com)->scroll, (*com)->width);
 		ft_add_spaces(*&com);
-//		free((*com)->scroll);
-//		(*com)->scroll = result;
-//		(*com)->len = ft_strlen(result);
-	}
 }
