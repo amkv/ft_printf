@@ -48,7 +48,7 @@ int				ft_isascii(int c);
 int				ft_isprint(int c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
-int				ft_atoi(const char *str);
+long long       ft_atoi(const char *str);
 char			*ft_strncat(char *s1, const char *s2, size_t n);
 void			ft_bzero(void *s, size_t n);
 void			*ft_memset(void *b, int c, size_t len);

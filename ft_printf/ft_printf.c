@@ -126,7 +126,7 @@ int					ft_printf(const char *restrict format, ...)
 	va_start(ap, format);
 	ft_parser(format, &com, &argc);
 //	printf("аргументов: %zu\n", argc);
-	ft_tcom_print(com, 0);
+//	ft_tcom_print(com, 0);
 	ft_pre_printing(*&com, ap, argc);
 //	ft_tcom_print(com, 1);
 	ft_print_result(*&com, &characters);

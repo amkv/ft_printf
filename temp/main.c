@@ -44,9 +44,9 @@ int				main(void)
 	mr = 0; or = 0;
 
 //	mr = ft_printf("%#08x", 42);
-	mr = ft_printf("%llx", 9223372036854775807);
+	mr = ft_printf("test");
 	printf("\n");
-	or = printf("%lx", 9223372036854775807);
+	or = printf("test");
 
 	printf("\n");
 	ft_p(mr, or);

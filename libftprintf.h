@@ -29,6 +29,23 @@
 ** void			ft_tcom_print(t_com *list); // fot tests only
 */
 
+# define CHAR_BIT 8
+# define SCHAR_MIN -128
+# define SCHAR_MAX 127
+# define UCHAR_MAX 256
+# define CHAR_MIN -128
+# define CHAR_MAX 127
+# define MB_LEN_MAX 16
+# define SHRT_MIN -32768
+# define SHRT_MAX 32767
+# define USHRT_MAX 65535
+# define INT_MIN -2147483648
+# define INT_MAX 2147483647
+# define UINT_MAX 4294967295
+# define LONG_MIN -9223372036854775808
+# define LONG_MAX 9223372036854775807
+# define ULONG_MAX 18446744073709551615
+
 union			u_type
 {
 	char			*s;			// OK
@@ -43,7 +60,7 @@ union			u_type
 	signed char		sc;			// hh
 	short			sh;			// h
 	long 			lo;
-	long 			ll;
+	long long		ll;
 	intmax_t 		it;
 //	ptrdiff_t		pt;
 
@@ -125,14 +142,22 @@ int				ft_is_modifier(char c);
 void			ft_do_s(char *str, t_com **com);			//mandatory s
 void			ft_do_ss(char *str, t_com **com);			//mandatory S	//не сделано
 void			ft_do_p(void *ptr, t_com **com);			//mandatory p
+
 void			ft_do_d(int d, t_com **com);				//mandatory d
 void			ft_do_dd(long int d, t_com **com);			//mandatory D	//не сделано
+void			ft_do_d_h(short d, t_com **com);
+void			ft_do_d_hh(signed char d, t_com **com);
+void            ft_do_d_l(long d, t_com **com);
+void			ft_do_d_ll(long long d, t_com **com);
+void			ft_do_d_j(intmax_t d, t_com **com);
+void			ft_do_d_z(size_t d, t_com **com);
+
 void			ft_do_i(int d, t_com **com);				//mandatory i
 void			ft_do_o(unsigned int d, t_com **com);		//mandatory o
 void			ft_do_oo(unsigned int d, t_com **com);		//mandatory O	// не сделано
 void			ft_do_u(unsigned int d, t_com **com);		//mandatory u
 void			ft_do_uu(unsigned int d, t_com **com);		//mandatory U	// не сделано
-void			ft_do_x(unsigned int num, t_com **com);		//mandatory x
+void			ft_do_x(long long num, t_com **com);		//mandatory x
 void			ft_do_xx(unsigned int num, t_com **com);	//mandatory X
 void			ft_do_c(char c, t_com **com);				//mandatory c
 void			ft_do_cc(char c, t_com **com);				//mandatory C	// не сделано
@@ -185,7 +210,7 @@ void			ft_free_and_set(char **old, char **new);
 char			*ft_strnncpy(char *dst, const char *src, size_t beg, size_t n);
 void			*ft_memnncpy(void *dst, const void *src, size_t beg, size_t n);
 long int		ft_numlen(long int num);
-char			*ft_itoa_base(long int value, long int base);
+char		    *ft_itoa_base(long long value, long long base);
 char			*ft_strdel_begn(char *str, size_t n);
 char			*ft_ftoa(double number, int length);
 double			ft_pow(double x, double y);

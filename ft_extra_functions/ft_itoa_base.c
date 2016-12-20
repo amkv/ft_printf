@@ -12,7 +12,7 @@
 
 #include "../libftprintf.h"
 
-static long int	ft_return_value(long int v)
+static long int	ft_return_value(long long v)
 {
 	if (v < 0)
 		return (-(v));
@@ -20,7 +20,7 @@ static long int	ft_return_value(long int v)
 		return (v);
 }
 
-static void	ft_aux(long int value, long int base, char *result, int *index)
+static void	ft_aux(long long value, long long base, char *result, long *index)
 {
 	char	b[17];
 	int		i;
@@ -40,10 +40,10 @@ static void	ft_aux(long int value, long int base, char *result, int *index)
 	result[(*index)++] = (char)b[ft_return_value(value % base)];
 }
 
-char		*ft_itoa_base(long int value, long int base)
+char		*ft_itoa_base(long long value, long long base)
 {
 	char	*result;
-	int		index;
+	long	index;
 
 	if (base < 2 || base > 16 || !(result = ft_strnew(35)))
 		return (NULL);

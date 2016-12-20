@@ -66,7 +66,56 @@ void				ft_do_p(void *ptr, t_com **com)
 	(*com)->len = ft_strlen(result);
 }
 
+/*
+** d modifier **************************************************************
+*/
+
 void				ft_do_d(int d, t_com **com) // OK
+{
+	free((*com)->scroll);
+	(*com)->scroll = ft_itoa(d);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void				ft_do_d_h(short d, t_com **com)
+{
+	free((*com)->scroll);
+	(*com)->scroll = ft_itoa(d);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void				ft_do_d_hh(signed char d, t_com **com)
+{
+	free((*com)->scroll);
+	(*com)->scroll = ft_itoa(d);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void				ft_do_d_l(long d, t_com **com)
+{
+	free((*com)->scroll);
+//	if (d > UINT_MAX)
+//		(*com)->scroll = ft_strdup("100000000");
+//	else
+		(*com)->scroll = ft_itoa(d);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void				ft_do_d_ll(long long d, t_com **com)
+{
+	free((*com)->scroll);
+	(*com)->scroll = ft_itoa(d);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void				ft_do_d_j(intmax_t d, t_com **com)
+{
+	free((*com)->scroll);
+	(*com)->scroll = ft_itoa(d);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void				ft_do_d_z(size_t d, t_com **com)
 {
 	free((*com)->scroll);
 	(*com)->scroll = ft_itoa(d);
@@ -88,6 +137,10 @@ void				ft_do_i(int i, t_com **com) // OK
 	(*com)->scroll = ft_itoa(i);
 	(*com)->len = ft_strlen((*com)->scroll);
 }
+
+/*
+** d modifier **************************************************************
+*/
 
 void				ft_do_o(unsigned int o, t_com **com)
 {
@@ -129,7 +182,7 @@ void				ft_do_uu(unsigned int d, t_com **com)
 	(*com)->len = ft_strlen((*com)->scroll);
 }
 
-void				ft_do_x(unsigned int num, t_com **com)
+void				ft_do_x(long long num, t_com **com)
 {
 	free((*com)->scroll);
 	(*com)->scroll = NULL;

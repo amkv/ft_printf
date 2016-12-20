@@ -97,6 +97,7 @@ PC += $(P)ft_printf_is.c
 PC += $(P)ft_printf_lists.c
 PC += $(P)ft_printf_parser.c
 PC += $(P)ft_printf_switch.c
+PC += $(P)ft_printf_switch_length.c
 PC += $(P)ft_printf_do.c
 PC += $(P)ft_printf_patterns.c
 PC += $(P)ft_printf_patterns2.c
@@ -195,6 +196,7 @@ OF += ft_printf_patterns.o
 OF += ft_printf_patterns2.o
 OF += ft_printf_pre_print.o
 OF += ft_printf_flags.o
+OF += ft_printf_switch_length.o
 
 OF += ft_memnncpy.o
 OF += ft_strnncpy.o
