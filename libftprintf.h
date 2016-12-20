@@ -40,11 +40,16 @@ union			u_type
 	long int		l;			//
 	char			c;			//
 
-	unsigned char	ac;
-	signed char		sc;
-	short			sh;
-	unsigned short	ush;
+	signed char		sc;			// hh
+	short			sh;			// h
+	long 			lo;
+	long 			ll;
+	intmax_t 		it;
+//	ptrdiff_t		pt;
 
+	unsigned char	ac;
+
+	unsigned short	ush;
 	unsigned long	ul;
 	float			f;
 	double			db;
@@ -77,8 +82,13 @@ typedef struct	s_com
 */
 int				ft_printf(const char *restrict format, ...);
 void			ft_parser(const char *format, t_com **list, size_t *argc);
-void			ft_switch(char c, va_list ap, t_com **com);
 void			ft_check_patterns(t_com **com, size_t *yn, char **holder, size_t *argc);
+
+/*
+** Switch
+*/
+void			ft_switch(char c, va_list ap, t_com **com);
+void			ft_switch_d(va_list ap, t_com **com);
 
 /*
 ** Lists

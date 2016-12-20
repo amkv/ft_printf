@@ -20,6 +20,12 @@ void			ft_pre_print(t_com **com)
 	return ;
 }
 
+void			ft_pre_print_length(t_com **com)
+{
+
+	return ;
+}
+
 void			ft_pre_print_flags(t_com **com)
 {
 	if ((*com)->flag == NULL)

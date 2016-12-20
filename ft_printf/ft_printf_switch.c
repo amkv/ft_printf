@@ -52,6 +52,24 @@ static void	ft_switch2(char c, va_list ap, t_com **com)
 		ft_switch3(c, ap, *&com);
 }
 
+void		ft_switch_d(va_list ap, t_com **com)
+{
+	if (*(*com)->length == 'h' && (*(*com)->length + 1) == 'h')
+		ft_do_d((*com)->var.sc = va_arg(ap, int), *&com);
+	else if (*(*com)->length == 'h')
+		ft_do_d((*com)->var.sh = va_arg(ap, int), *&com);
+	else if (*(*com)->length == 'l' && (*(*com)->length + 1) == 'l')
+		ft_do_d((*com)->var.ll = va_arg(ap, long long), *&com);
+	else if (*(*com)->length == 'l')
+		ft_do_d((*com)->var.lo = va_arg(ap, long), *&com);
+	else if (*(*com)->length == 'j')
+		ft_do_d((*com)->var.it = va_arg(ap, intmax_t), *&com);
+//	else if (*(*com)->length == 't')
+//		ft_do_d((*com)->var.pt = va_arg(ap, ptrdiff_t), *&com);
+	else if (*(*com)->length == 'z')
+		ft_do_d((*com)->var.d = va_arg(ap, int), *&com);
+}
+
 void		ft_switch(char c, va_list ap, t_com **com)
 {
 	if (c == 's')														// OK
@@ -60,8 +78,8 @@ void		ft_switch(char c, va_list ap, t_com **com)
 		ft_do_ss((*com)->var.s = va_arg(ap, char*), *&com);
 	else if (c == 'p')													// OK
 		ft_do_p((*com)->var.p = va_arg(ap, void *), *&com);
-	else if (c == 'd')													// OK
-		ft_do_d((*com)->var.d = va_arg(ap, int), *&com);
+	else if (c == 'd') 													// не OK
+		ft_switch_d(ap, *&com);
 	else if (c == 'D')													// .
 		ft_do_dd((*com)->var.l = va_arg(ap, long int), *&com);
 	else if (c == 'i') 													// OK
