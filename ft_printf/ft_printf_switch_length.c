@@ -21,3 +21,5 @@ void		ft_switch_d(va_list ap, t_com **com)
 		ft_do_d_z((*com)->var.zu = va_arg(ap, unsigned long int), *&com);
 
 }
+
+//test
