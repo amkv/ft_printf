@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/12/20 19:31:14 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/12/20 19:31:15 by akalmyko         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../libftprintf.h"
 
 void		ft_switch_d(va_list ap, t_com **com)
 {
+	free((*com)->scroll);
+	(*com)->scroll = NULL;
 	if ((*com)->length == NULL)
 		ft_do_d((*com)->var.d = va_arg(ap, int), *&com);
 	else if (*(*com)->length == 'h' && *((*com)->length + 1) == 'h')
@@ -15,92 +28,31 @@ void		ft_switch_d(va_list ap, t_com **com)
 		ft_do_d_l((*com)->var.lo = va_arg(ap, long), *&com);
 	else if (*(*com)->length == 'j')
 		ft_do_d_j((*com)->var.it = va_arg(ap, intmax_t), *&com);
-//	else if (*(*com)->length == 't')
-//		ft_do_d((*com)->var.pt = va_arg(ap, ptrdiff_t), *&com);
 	else if (*(*com)->length == 'z')
 		ft_do_d_z((*com)->var.zu = va_arg(ap, unsigned long int), *&com);
+	(*com)->len = ft_strlen((*com)->scroll);
 }
 
-void		ft_switch_o(va_list ap, t_com **com)
+void		ft_switch_oux(va_list ap, t_com **com, int base, int yesno)
 {
+	free((*com)->scroll);
+	(*com)->scroll = NULL;
 	if ((*com)->length == NULL)
-		ft_do_o((*com)->var.o = va_arg(ap, unsigned int), *&com);
+		ft_do_oux((*com)->var.o = va_arg(ap, unsigned int), *&com, base);
 	else if (*(*com)->length == 'h' && *((*com)->length + 1) == 'h')
-		ft_do_o_hh((*com)->var.uc = va_arg(ap, int), *&com);
+		ft_do_oux_hh((*com)->var.uc = va_arg(ap, int), *&com, base);
 	else if (*(*com)->length == 'h')
-		ft_do_o_h((*com)->var.us = va_arg(ap, int), *&com);
+		ft_do_oux_h((*com)->var.us = va_arg(ap, int), *&com, base);
 	else if (*(*com)->length == 'l' && *((*com)->length + 1) == 'l')
-		ft_do_o_ll((*com)->var.ull = va_arg(ap, unsigned long long), *&com);
+		ft_do_oux_ll(
+				(*com)->var.ull = va_arg(ap, unsigned long long), *&com, base);
 	else if (*(*com)->length == 'l')
-		ft_do_o_l((*com)->var.ul = va_arg(ap, unsigned long), *&com);
+		ft_do_oux_l((*com)->var.ul = va_arg(ap, unsigned long), *&com, base);
 	else if (*(*com)->length == 'j')
-		ft_do_o_j((*com)->var.ut = va_arg(ap, uintmax_t), *&com);
-//	else if (*(*com)->length == 't')
-//		ft_do_d((*com)->var.pt = va_arg(ap, ptrdiff_t), *&com);
+		ft_do_oux_j((*com)->var.ut = va_arg(ap, uintmax_t), *&com, base);
 	else if (*(*com)->length == 'z')
-		ft_do_o_z((*com)->var.zu = va_arg(ap, size_t), *&com);
-	return ;
-}
-
-void		ft_switch_x(va_list ap, t_com **com)
-{
-	if ((*com)->length == NULL)
-		ft_do_x((*com)->var.o = va_arg(ap, unsigned int), *&com);
-	else if (*(*com)->length == 'h' && *((*com)->length + 1) == 'h')
-		ft_do_x_hh((*com)->var.uc = va_arg(ap, int), *&com);
-	else if (*(*com)->length == 'h')
-		ft_do_x_h((*com)->var.us = va_arg(ap, int), *&com);
-	else if (*(*com)->length == 'l' && *((*com)->length + 1) == 'l')
-		ft_do_x_ll((*com)->var.ull = va_arg(ap, unsigned long long), *&com);
-	else if (*(*com)->length == 'l')
-		ft_do_x_l((*com)->var.ul = va_arg(ap, unsigned long), *&com);
-	else if (*(*com)->length == 'j')
-		ft_do_x_j((*com)->var.ut = va_arg(ap, uintmax_t), *&com);
-//	else if (*(*com)->length == 't')
-//		ft_do_d((*com)->var.pt = va_arg(ap, ptrdiff_t), *&com);
-	else if (*(*com)->length == 'z')
-		ft_do_x_z((*com)->var.zu = va_arg(ap, size_t), *&com);
-	return ;
-}
-
-void		ft_switch_xx(va_list ap, t_com **com)
-{
-	if ((*com)->length == NULL)
-		ft_do_xx((*com)->var.o = va_arg(ap, unsigned int), *&com);
-	else if (*(*com)->length == 'h' && *((*com)->length + 1) == 'h')
-		ft_do_xx_hh((*com)->var.uc = va_arg(ap, int), *&com);
-	else if (*(*com)->length == 'h')
-		ft_do_xx_h((*com)->var.us = va_arg(ap, int), *&com);
-	else if (*(*com)->length == 'l' && *((*com)->length + 1) == 'l')
-		ft_do_xx_ll((*com)->var.ull = va_arg(ap, unsigned long long), *&com);
-	else if (*(*com)->length == 'l')
-		ft_do_xx_l((*com)->var.ul = va_arg(ap, unsigned long), *&com);
-	else if (*(*com)->length == 'j')
-		ft_do_xx_j((*com)->var.ut = va_arg(ap, uintmax_t), *&com);
-//	else if (*(*com)->length == 't')
-//		ft_do_d((*com)->var.pt = va_arg(ap, ptrdiff_t), *&com);
-	else if (*(*com)->length == 'z')
-		ft_do_xx_z((*com)->var.zu = va_arg(ap, size_t), *&com);
-	return ;
-}
-
-void		ft_switch_u(va_list ap, t_com **com)
-{
-	if ((*com)->length == NULL)
-		ft_do_u((*com)->var.o = va_arg(ap, unsigned int), *&com);
-	else if (*(*com)->length == 'h' && *((*com)->length + 1) == 'h')
-		ft_do_u_hh((*com)->var.uc = va_arg(ap, int), *&com);
-	else if (*(*com)->length == 'h')
-		ft_do_u_h((*com)->var.us = va_arg(ap, int), *&com);
-	else if (*(*com)->length == 'l' && *((*com)->length + 1) == 'l')
-		ft_do_u_ll((*com)->var.ull = va_arg(ap, unsigned long long), *&com);
-	else if (*(*com)->length == 'l')
-		ft_do_u_l((*com)->var.ul = va_arg(ap, unsigned long), *&com);
-	else if (*(*com)->length == 'j')
-		ft_do_u_j((*com)->var.ut = va_arg(ap, uintmax_t), *&com);
-//	else if (*(*com)->length == 't')
-//		ft_do_d((*com)->var.pt = va_arg(ap, ptrdiff_t), *&com);
-	else if (*(*com)->length == 'z')
-		ft_do_u_z((*com)->var.zu = va_arg(ap, size_t), *&com);
-	return ;
+		ft_do_oux_z((*com)->var.zu = va_arg(ap, size_t), *&com, base);
+	(*com)->len = ft_strlen((*com)->scroll);
+	if (yesno == 1)
+		ft_string_to_upper((*com)->scroll, *&com);
 }

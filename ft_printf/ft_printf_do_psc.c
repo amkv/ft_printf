@@ -12,9 +12,9 @@
 
 #include "../libftprintf.h"
 
-void				ft_do_s(char *str, t_com **com)
+void		ft_do_s(char *str, t_com **com)
 {
-	char			*result;
+	char	*result;
 
 	if (str == NULL)
 	{
@@ -28,7 +28,28 @@ void				ft_do_s(char *str, t_com **com)
 	(*com)->len = ft_strlen(str);
 }
 
-void				ft_do_ss(char *str, t_com **com)
+//void		ft_do_ss(char *str, t_com **com)
+//{
+//	return ;
+//}
+
+void		ft_do_c(char c, t_com **com)
 {
-	return ;
+	free((*com)->scroll);
+	(*com)->scroll = NULL;
+	c = ' ';
+	(*com)->scroll = ft_strnew(1);
+	(*com)->len = 1;
+}
+
+void		ft_do_p(void *ptr, t_com **com)
+{
+	char	*temp;
+
+	free((*com)->scroll);
+	(*com)->scroll = NULL;
+	temp = ft_itoa_base((long int)*&ptr, 16);
+	(*com)->scroll = ft_strjoin("0x", temp);
+	free(temp);
+	(*com)->len = ft_strlen((*com)->scroll);
 }

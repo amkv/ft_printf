@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_do_d_2.c                                 :+:      :+:    :+:   */
+/*   ft_printf_do_oux_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/20 19:13:22 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/12/20 19:13:23 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/12/20 20:56:39 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/12/20 20:56:41 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-void	ft_do_d_j(intmax_t d, t_com **com)
+void	ft_do_oux_j(uintmax_t o, t_com **com, int base)
 {
-	(*com)->scroll = ft_itoa_base(d, 10);
+	(*com)->scroll = ft_itoa_base_uintmax(o, (uintmax_t)base);
 }
 
-void	ft_do_d_z(size_t d, t_com **com)
+void	ft_do_oux_z(size_t o, t_com **com, int base)
 {
-	(*com)->scroll = ft_itoa_base(d, 10);
+	(*com)->scroll = ft_itoa_base_uintmax(o, (uintmax_t)base);
 }
 
-void	ft_do_dd(long int d, t_com **com)
+void	ft_do_oo(long int d, t_com **com)
 {
-	ft_do_d_l(d, *&com);
+	ft_do_oux_l((unsigned long int)d, *&com, 8);
 	(*com)->len = ft_strlen((*com)->scroll);
 }
 
-void	ft_do_i(int i, t_com **com)
+void	ft_do_uu(long int u, t_com **com)
 {
-	(*com)->scroll = ft_itoa_base(i, 10);
+	ft_do_oux_l((unsigned long) u, *&com, 10);
+	(*com)->len = ft_strlen((*com)->scroll);
 }

@@ -44,9 +44,9 @@ int				main(void)
 	mr = 0; or = 0;
 
 //	mr = ft_printf("%#08x", 42);
-	mr = ft_printf("still working");
+	mr = ft_printf("%ld", 4294967295);
 	printf("\n");
-	or = printf("always working");
+	or = printf("%ld", 4294967295);
 
 	printf("\n");
 	ft_p(mr, or);

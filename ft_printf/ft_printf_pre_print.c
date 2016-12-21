@@ -20,11 +20,10 @@ void			ft_pre_print(t_com **com)
 	return ;
 }
 
-void			ft_pre_print_length(t_com **com)
-{
-
-	return ;
-}
+//void			ft_pre_print_length(t_com **com)
+//{
+//	return ;
+//}
 
 void			ft_pre_print_flags(t_com **com)
 {
@@ -34,12 +33,12 @@ void			ft_pre_print_flags(t_com **com)
 		ft_flags_minus(*&com);
 	if (*(*com)->flag == '+')
 		ft_flags_plus(*&com);
-	if (*(*com)->flag == ' ')
-		ft_flags_space(*&com);
+//	if (*(*com)->flag == ' ')
+//		ft_flags_space(*&com);
 	if (*(*com)->flag == '#')
 		ft_flags_octo(*&com);
-	if (*(*com)->flag == '0')
-		ft_flags_zero(*&com);
+//	if (*(*com)->flag == '0')
+//		ft_flags_zero(*&com);
 }
 
 void			ft_pre_print_precision(t_com **com)
