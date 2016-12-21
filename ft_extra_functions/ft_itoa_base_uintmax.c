@@ -1,47 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_itoa_base_uintmax.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/06 15:09:41 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/12/06 15:09:42 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/12/20 17:29:07 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/12/20 17:29:09 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-static intmax_t	ft_return_value(intmax_t v)
+static void	ft_a(uintmax_t value, uintmax_t base, char *ret, int *i)
 {
-	if (v < 0)
-		return (-(v));
-	else
-		return (v);
-}
+	char	*b;
 
-static void		ft_a(intmax_t val, intmax_t base, char *ret, intmax_t *i)
-{
-	char		*b;
-
-	if (val <= -base || base <= val)
-		ft_a((val / base), base, ret, i);
+	if (value == 0)
+		return ;
+	if (value <= -base || base <= value)
+		ft_a((value / base), base, ret, i);
 	b = ft_strdup("0123456789abcdef");
-	ret[(*i)++] = b[ft_return_value(val % base)];
+	ret[(*i)++] = b[value % base];
 	free(b);
 }
 
-char			*ft_itoa_base(intmax_t val, intmax_t base)
+char		*ft_itoa_base_uintmax(uintmax_t value, uintmax_t base)
 {
-	char		*ret;
-	intmax_t	i;
+	char	*ret;
+	int		index;
 
 	if (base < 2 || base > 16 || !(ret = ft_strnew(35)))
 		return (NULL);
-	i = 0;
-	if (base == 10 && val < 0)
-		ret[i++] = '-';
-	ft_a(val, base, ret, &i);
-	ret[i] = '\0';
+	index = 0;
+	ft_a(value, base, ret, &index);
+	ret[index] = '\0';
 	return (ret);
 }

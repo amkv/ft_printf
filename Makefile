@@ -6,7 +6,7 @@
 #    By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/22 14:50:24 by akalmyko          #+#    #+#              #
-#    Updated: 2016/12/17 17:15:00 by akalmyko         ###   ########.fr        #
+#    Updated: 2016/12/20 17:34:45 by akalmyko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,8 +99,12 @@ PC += $(P)ft_printf_parser.c
 PC += $(P)ft_printf_switch.c
 PC += $(P)ft_printf_switch_length.c
 PC += $(P)ft_printf_do.c
-PC += $(P)ft_printf_patterns.c
-PC += $(P)ft_printf_patterns2.c
+PC += $(P)ft_printf_do_s.c
+PC += $(P)ft_printf_do_p.c
+PC += $(P)ft_printf_do_d_1.c
+PC += $(P)ft_printf_do_d_2.c
+PC += $(P)ft_printf_patterns_1.c
+PC += $(P)ft_printf_patterns_2.c
 PC += $(P)ft_printf_pre_print.c
 PC += $(P)ft_printf_flags.c
 
@@ -112,6 +116,7 @@ EC += $(E)ft_numlen.c
 EC += $(E)ft_pow.c
 EC += $(E)ft_ftoa.c
 EC += $(E)ft_strdupn.c
+EC += $(E)ft_itoa_base_uintmax.c
 
 OF += ft_atoi.o
 OF += ft_bzero.o
@@ -191,9 +196,13 @@ OF += ft_printf_lists.o
 OF += ft_printf_parser.o
 OF += ft_printf_switch.o
 OF += ft_printf_do.o
+OF += ft_printf_do_s.o
+OF += ft_printf_do_p.o
+OF += ft_printf_do_d_1.o
+OF += ft_printf_do_d_2.o
 OF += ft_strdel_begn.o
-OF += ft_printf_patterns.o
-OF += ft_printf_patterns2.o
+OF += ft_printf_patterns_1.o
+OF += ft_printf_patterns_2.o
 OF += ft_printf_pre_print.o
 OF += ft_printf_flags.o
 OF += ft_printf_switch_length.o
@@ -206,6 +215,7 @@ OF += ft_pow.o
 OF += ft_ftoa.o
 OF += ft_strdel_begn.o
 OF += ft_strdupn.o
+OF += ft_itoa_base_uintmax.o
 
 all: $(NAME)
 

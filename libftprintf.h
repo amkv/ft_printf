@@ -15,6 +15,7 @@
 # pragma GCC diagnostic ignored "-Wunused-function"
 # pragma GCC diagnostic ignored "-Wunused-variable"
 # pragma GCC diagnostic ignored "-Wunused-parameter"
+# pragma GCC diagnostic ignored "-Wimplicitly-unsigned-literal"
 //# pragma GCC diagnostic ignored "-Wformat"
 
 # include "libft/libft.h"
@@ -29,22 +30,22 @@
 ** void			ft_tcom_print(t_com *list); // fot tests only
 */
 
-# define CHAR_BIT 8
-# define SCHAR_MIN -128
-# define SCHAR_MAX 127
-# define UCHAR_MAX 256
-# define CHAR_MIN -128
-# define CHAR_MAX 127
-# define MB_LEN_MAX 16
-# define SHRT_MIN -32768
-# define SHRT_MAX 32767
-# define USHRT_MAX 65535
-# define INT_MIN -2147483648
-# define INT_MAX 2147483647
-# define UINT_MAX 4294967295
-# define LONG_MIN -9223372036854775808
-# define LONG_MAX 9223372036854775807
-# define ULONG_MAX 18446744073709551615
+//# define CHAR_BIT 8
+//# define SCHAR_MIN -128
+//# define SCHAR_MAX 127
+//# define UCHAR_MAX 256
+//# define CHAR_MIN -128
+//# define CHAR_MAX 127
+//# define MB_LEN_MAX 16
+//# define SHRT_MIN -32768
+//# define SHRT_MAX 32767
+//# define USHRT_MAX 65535
+//# define INT_MIN -2147483648
+//# define INT_MAX 2147483647
+//# define UINT_MAX 4294967295
+//# define LONG_MIN -9223372036854775808
+//# define LONG_MAX 9223372036854775807
+//# define ULONG_MAX 18446744073709551615
 
 union			u_type
 {
@@ -64,10 +65,12 @@ union			u_type
 	intmax_t 		it;
 //	ptrdiff_t		pt;
 
-	unsigned char	ac;
-
-	unsigned short	ush;
+	unsigned char	uc;
+	unsigned short	us;
+	unsigned long long ull;
 	unsigned long	ul;
+	uintmax_t		ut;
+
 	float			f;
 	double			db;
 	long double		ldb;
@@ -101,11 +104,7 @@ int				ft_printf(const char *restrict format, ...);
 void			ft_parser(const char *format, t_com **list, size_t *argc);
 void			ft_check_patterns(t_com **com, size_t *yn, char **holder, size_t *argc);
 
-/*
-** Switch
-*/
-void			ft_switch(char c, va_list ap, t_com **com);
-void			ft_switch_d(va_list ap, t_com **com);
+
 
 /*
 ** Lists
@@ -136,6 +135,18 @@ int				ft_is_flag(char c);
 int				ft_is_precision(char c);
 int				ft_is_length(char c);
 int				ft_is_modifier(char c);
+
+/*
+** Switch
+*/
+void			ft_switch(char c, va_list ap, t_com **com);
+void			ft_switch_d(va_list ap, t_com **com);
+void			ft_switch_o(va_list ap, t_com **com);
+void			ft_switch_x(va_list ap, t_com **com);
+void			ft_switch_xx(va_list ap, t_com **com);
+void			ft_switch_u(va_list ap, t_com **com);
+void			ft_switch_uu(va_list ap, t_com **com);
+
 /*
 ** DOs
 */
@@ -144,6 +155,7 @@ void			ft_do_ss(char *str, t_com **com);			//mandatory S	//не сделано
 void			ft_do_p(void *ptr, t_com **com);			//mandatory p
 
 void			ft_do_d(int d, t_com **com);				//mandatory d
+void			ft_do_i(int d, t_com **com);				//mandatory i
 void			ft_do_dd(long int d, t_com **com);			//mandatory D	//не сделано
 void			ft_do_d_h(short d, t_com **com);
 void			ft_do_d_hh(signed char d, t_com **com);
@@ -152,13 +164,39 @@ void			ft_do_d_ll(long long d, t_com **com);
 void			ft_do_d_j(intmax_t d, t_com **com);
 void			ft_do_d_z(size_t d, t_com **com);
 
-void			ft_do_i(int d, t_com **com);				//mandatory i
 void			ft_do_o(unsigned int d, t_com **com);		//mandatory o
-void			ft_do_oo(unsigned int d, t_com **com);		//mandatory O	// не сделано
-void			ft_do_u(unsigned int d, t_com **com);		//mandatory u
-void			ft_do_uu(unsigned int d, t_com **com);		//mandatory U	// не сделано
-void			ft_do_x(long long num, t_com **com);		//mandatory x
-void			ft_do_xx(unsigned int num, t_com **com);	//mandatory X
+void			ft_do_oo(long int d, t_com **com);
+void			ft_do_o_hh(unsigned char o, t_com **com);
+void			ft_do_o_h(unsigned short o, t_com **com);
+void			ft_do_o_ll(unsigned long long o, t_com **com);
+void			ft_do_o_l(unsigned long o, t_com **com);
+void			ft_do_o_j(uintmax_t o, t_com **com);
+void			ft_do_o_z(size_t o, t_com **com);
+
+void			ft_do_u(unsigned int u, t_com **com);		//mandatory u
+void			ft_do_uu(long int u, t_com **com);		//mandatory U	// не сделано
+void			ft_do_u_hh(unsigned char u, t_com **com);
+void			ft_do_u_h(unsigned short u, t_com **com);
+void			ft_do_u_ll(unsigned long long u, t_com **com);
+void			ft_do_u_l(unsigned long u, t_com **com);
+void			ft_do_u_j(uintmax_t u, t_com **com);
+void			ft_do_u_z(size_t u, t_com **com);
+
+void			ft_do_x(long long x, t_com **com);		//mandatory x
+void			ft_do_x_hh(unsigned char x, t_com **com);
+void			ft_do_x_h(unsigned short x, t_com **com);
+void			ft_do_x_ll(unsigned long long x, t_com **com);
+void			ft_do_x_l(unsigned long x, t_com **com);
+void			ft_do_x_j(uintmax_t x, t_com **com);
+void			ft_do_x_z(size_t x, t_com **com);
+void			ft_do_xx(unsigned int x, t_com **com);	//mandatory X
+void			ft_do_xx_hh(unsigned char x, t_com **com);
+void			ft_do_xx_h(unsigned short x, t_com **com);
+void			ft_do_xx_ll(unsigned long long x, t_com **com);
+void			ft_do_xx_l(unsigned long x, t_com **com);
+void			ft_do_xx_j(uintmax_t x, t_com **com);
+void			ft_do_xx_z(size_t x, t_com **com);
+
 void			ft_do_c(char c, t_com **com);				//mandatory c
 void			ft_do_cc(char c, t_com **com);				//mandatory C	// не сделано
 
@@ -210,7 +248,8 @@ void			ft_free_and_set(char **old, char **new);
 char			*ft_strnncpy(char *dst, const char *src, size_t beg, size_t n);
 void			*ft_memnncpy(void *dst, const void *src, size_t beg, size_t n);
 long int		ft_numlen(long int num);
-char		    *ft_itoa_base(long long value, long long base);
+char			*ft_itoa_base(intmax_t value, intmax_t base);
+char			*ft_itoa_base_uintmax(uintmax_t value, uintmax_t base);
 char			*ft_strdel_begn(char *str, size_t n);
 char			*ft_ftoa(double number, int length);
 double			ft_pow(double x, double y);

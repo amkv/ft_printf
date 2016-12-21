@@ -12,134 +12,8 @@
 
 #include "../libftprintf.h"
 
-void				ft_do_s(char *str, t_com **com)
-{
-	char			*result;
-
-	if (str == NULL)
-	{
-		(*com)->scroll = ft_strdup("(null)");
-		(*com)->len = 6;
-		return ;
-	}
-	result = ft_strdup(str);
-	free((*com)->scroll);
-	(*com)->scroll = result;
-	(*com)->len = ft_strlen(str);
-}
-
-void				ft_do_ss(char *str, t_com **com)
-{
-//	char			*temp;
-//	char			*result;
-//	char			*copy;
-//
-//	temp = str;
-//	result = ft_strnew(ft_strlen(str) + 1);
-//	if (result == NULL)
-//		return ;
-//	copy = result;
-//	while (*temp)
-//	{
-//		*copy = (char)ft_toupper(*temp);
-//		copy++;
-//		temp++;
-//	}
-//	*copy = '\0';
-//	free((*com)->scroll);
-//	(*com)->scroll = result;
-//	(*com)->len = ft_strlen(result);
-	return ;
-}
-
-void				ft_do_p(void *ptr, t_com **com)
-{
-	char			*str;
-	char			*result;
-	long int		pointer;
-
-	pointer = (long int)*&ptr;
-	str = ft_itoa_base(pointer, 16);
-	result = ft_strjoin("0x", str);
-	free(str);
-	(*com)->scroll = result;
-	(*com)->len = ft_strlen(result);
-}
-
 /*
-** d modifier **************************************************************
-*/
-
-void				ft_do_d(int d, t_com **com) // OK
-{
-	free((*com)->scroll);
-	(*com)->scroll = ft_itoa(d);
-	(*com)->len = ft_strlen((*com)->scroll);
-}
-
-void				ft_do_d_h(short d, t_com **com)
-{
-	free((*com)->scroll);
-	(*com)->scroll = ft_itoa(d);
-	(*com)->len = ft_strlen((*com)->scroll);
-}
-
-void				ft_do_d_hh(signed char d, t_com **com)
-{
-	free((*com)->scroll);
-	(*com)->scroll = ft_itoa(d);
-	(*com)->len = ft_strlen((*com)->scroll);
-}
-
-void				ft_do_d_l(long d, t_com **com)
-{
-	free((*com)->scroll);
-//	if (d > UINT_MAX)
-//		(*com)->scroll = ft_strdup("100000000");
-//	else
-		(*com)->scroll = ft_itoa(d);
-	(*com)->len = ft_strlen((*com)->scroll);
-}
-
-void				ft_do_d_ll(long long d, t_com **com)
-{
-	free((*com)->scroll);
-	(*com)->scroll = ft_itoa(d);
-	(*com)->len = ft_strlen((*com)->scroll);
-}
-
-void				ft_do_d_j(intmax_t d, t_com **com)
-{
-	free((*com)->scroll);
-	(*com)->scroll = ft_itoa(d);
-	(*com)->len = ft_strlen((*com)->scroll);
-}
-
-void				ft_do_d_z(size_t d, t_com **com)
-{
-	free((*com)->scroll);
-	(*com)->scroll = ft_itoa(d);
-	(*com)->len = ft_strlen((*com)->scroll);
-}
-
-void				ft_do_dd(long int d, t_com **com) // не готова
-{
-	ft_do_d((int)d, *&com);
-//	free((*com)->scroll);
-//	(*com)->scroll = ft_itoa(d);
-//	(*com)->len = ft_strlen((*com)->scroll);
-	return ;
-}
-
-void				ft_do_i(int i, t_com **com) // OK
-{
-	free((*com)->scroll);
-	(*com)->scroll = ft_itoa(i);
-	(*com)->len = ft_strlen((*com)->scroll);
-}
-
-/*
-** d modifier **************************************************************
+** o modifier **************************************************************
 */
 
 void				ft_do_o(unsigned int o, t_com **com)
@@ -152,49 +26,255 @@ void				ft_do_o(unsigned int o, t_com **com)
 	(*com)->len = ft_strlen(result);
 }
 
-void				ft_do_oo(unsigned int d, t_com **com) // не готова
+void				ft_do_o_hh(unsigned char o, t_com **com)
 {
 	char			*result;
 
-	result = ft_itoa_base(d, 8);
+	result = ft_itoa_base(o, 8);
 	free((*com)->scroll);
 	(*com)->scroll = result;
 	(*com)->len = ft_strlen(result);
 }
 
-void				ft_do_u(unsigned int d, t_com **com)
+void				ft_do_o_h(unsigned short o, t_com **com)
 {
 	char			*result;
 
-	result = ft_itoa_base(d, 10);
+	result = ft_itoa_base(o, 8);
 	free((*com)->scroll);
 	(*com)->scroll = result;
-	(*com)->len = ft_strlen((*com)->scroll);
+	(*com)->len = ft_strlen(result);
 }
 
-void				ft_do_uu(unsigned int d, t_com **com)
+void				ft_do_o_ll(unsigned long long o, t_com **com)
 {
 	char			*result;
 
-	result = ft_itoa_base(d, 10);
+	result = ft_itoa_base_uintmax(o, 8);
 	free((*com)->scroll);
 	(*com)->scroll = result;
+	(*com)->len = ft_strlen(result);
+}
+
+void				ft_do_o_l(unsigned long o, t_com **com)
+{
+	char			*result;
+
+	result = ft_itoa_base_uintmax(o, 8);
+	free((*com)->scroll);
+	(*com)->scroll = result;
+	(*com)->len = ft_strlen(result);
+}
+
+void				ft_do_o_j(uintmax_t o, t_com **com)
+{
+	char			*result;
+
+	result = ft_itoa_base_uintmax(o, 8);
+	free((*com)->scroll);
+	(*com)->scroll = result;
+	(*com)->len = ft_strlen(result);
+}
+
+void				ft_do_o_z(size_t o, t_com **com)
+{
+	char			*result;
+
+	result = ft_itoa_base_uintmax(o, 8);
+	free((*com)->scroll);
+	(*com)->scroll = result;
+	(*com)->len = ft_strlen(result);
+}
+
+void				ft_do_oo(long int d, t_com **com)
+{
+//	free((*com)->scroll);
+//	(*com)->scroll = ft_itoa_base(d, 8);
+//	(*com)->len = ft_strlen((*com)->scroll);
+	ft_do_o_l((unsigned long int)d, *&com);
+}
+
+/*
+** u modifier **************************************************************
+*/
+
+void				ft_do_u(unsigned int u, t_com **com)
+{
+	free((*com)->scroll);
+	(*com)->scroll = ft_itoa_base(u, 10);
 	(*com)->len = ft_strlen((*com)->scroll);
 }
 
-void				ft_do_x(long long num, t_com **com)
+void				ft_do_uu(long int u, t_com **com)
+{
+//	free((*com)->scroll);
+//	(*com)->scroll = ft_itoa_base(u, 10);
+//	(*com)->len = ft_strlen((*com)->scroll);
+	ft_do_u_l((unsigned long) u, *&com);
+}
+
+void			ft_do_u_hh(unsigned char u, t_com **com)
+{
+	free((*com)->scroll);
+	(*com)->scroll = ft_itoa_base(u, 10);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void			ft_do_u_h(unsigned short u, t_com **com)
+{
+	free((*com)->scroll);
+	(*com)->scroll = ft_itoa_base(u, 10);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void			ft_do_u_ll(unsigned long long u, t_com **com)
+{
+	free((*com)->scroll);
+	(*com)->scroll = ft_itoa_base_uintmax(u, 10);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void			ft_do_u_l(unsigned long u, t_com **com)
+{
+	free((*com)->scroll);
+	(*com)->scroll = ft_itoa_base_uintmax(u, 10);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void			ft_do_u_j(uintmax_t u, t_com **com)
+{
+	free((*com)->scroll);
+	(*com)->scroll = ft_itoa_base_uintmax(u, 10);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void			ft_do_u_z(size_t u, t_com **com)
+{
+	free((*com)->scroll);
+	(*com)->scroll = ft_itoa_base_uintmax(u, 10);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+/*
+** x modifier **************************************************************
+*/
+
+void				ft_do_x(long long x, t_com **com)
 {
 	free((*com)->scroll);
 	(*com)->scroll = NULL;
-	(*com)->scroll = ft_itoa_base(num, 16);
+	(*com)->scroll = ft_itoa_base(x, 16);
 	(*com)->len = ft_strlen((*com)->scroll);
 }
 
-void				ft_do_xx(unsigned int num, t_com **com)
+void			ft_do_x_hh(unsigned char x, t_com **com)
 {
-	ft_do_x(num, *&com);
+	free((*com)->scroll);
+	(*com)->scroll = NULL;
+	(*com)->scroll = ft_itoa_base(x, 16);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void			ft_do_x_h(unsigned short x, t_com **com)
+{
+	free((*com)->scroll);
+	(*com)->scroll = NULL;
+	(*com)->scroll = ft_itoa_base(x, 16);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void			ft_do_x_ll(unsigned long long x, t_com **com)
+{
+	free((*com)->scroll);
+	(*com)->scroll = NULL;
+	(*com)->scroll = ft_itoa_base_uintmax(x, 16);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void			ft_do_x_l(unsigned long x, t_com **com)
+{
+	free((*com)->scroll);
+	(*com)->scroll = NULL;
+	(*com)->scroll = ft_itoa_base_uintmax(x, 16);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void			ft_do_x_j(uintmax_t x, t_com **com)
+{
+	free((*com)->scroll);
+	(*com)->scroll = NULL;
+	(*com)->scroll = ft_itoa_base_uintmax(x, 16);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void			ft_do_x_z(size_t x, t_com **com)
+{
+	free((*com)->scroll);
+	(*com)->scroll = NULL;
+	(*com)->scroll = ft_itoa_base_uintmax(x, 16);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+/*
+** xx modifier **************************************************************
+*/
+
+void				ft_do_xx(unsigned int x, t_com **com)
+{
+	ft_do_x(x, *&com);
 	ft_string_to_upper((*com)->scroll, *&com);
 }
+
+void			ft_do_xx_hh(unsigned char x, t_com **com)
+{
+	free((*com)->scroll);
+	(*com)->scroll = NULL;
+	(*com)->scroll = ft_itoa_base(x, 16);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void			ft_do_xx_h(unsigned short x, t_com **com)
+{
+	free((*com)->scroll);
+	(*com)->scroll = NULL;
+	(*com)->scroll = ft_itoa_base(x, 16);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void			ft_do_xx_ll(unsigned long long x, t_com **com)
+{
+	free((*com)->scroll);
+	(*com)->scroll = NULL;
+	(*com)->scroll = ft_itoa_base_uintmax(x, 16);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void			ft_do_xx_l(unsigned long x, t_com **com)
+{
+	free((*com)->scroll);
+	(*com)->scroll = NULL;
+	(*com)->scroll = ft_itoa_base_uintmax(x, 16);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void			ft_do_xx_j(uintmax_t x, t_com **com)
+{
+	free((*com)->scroll);
+	(*com)->scroll = NULL;
+	(*com)->scroll = ft_itoa_base_uintmax(x, 16);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+void			ft_do_xx_z(size_t x, t_com **com)
+{	free((*com)->scroll);
+	(*com)->scroll = NULL;
+	(*com)->scroll = ft_itoa_base_uintmax(x, 16);
+	(*com)->len = ft_strlen((*com)->scroll);
+}
+
+/*
+** c modifier **************************************************************
+*/
 
 void				ft_do_c(char c, t_com **com)
 {
@@ -225,7 +305,7 @@ void				ft_do_e(double number, t_com **com)
 			break ;
 		index++;
 	}
-	multi = ft_itoa(index - 1);
+	multi = ft_itoa_base(index - 1, 10);
 	while (index != 1)
 	{
 		num_string[index] = num_string[index - 1];

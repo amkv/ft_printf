@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoe.c                                          :+:      :+:    :+:   */
+/*   ft_printf_do_s.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/10 20:23:57 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/12/10 20:23:58 by akalmyko         ###   ########.fr       */
+/*   Created: 2016/12/20 19:01:43 by akalmyko          #+#    #+#             */
+/*   Updated: 2016/12/20 19:01:44 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-/*
-** пустая функция
-*/
-
-char	*ft_itoe(double num, int length)
+void				ft_do_s(char *str, t_com **com)
 {
-	return (NULL);
+	char			*result;
+
+	if (str == NULL)
+	{
+		(*com)->scroll = ft_strdup("(null)");
+		(*com)->len = 6;
+		return ;
+	}
+	result = ft_strdup(str);
+	free((*com)->scroll);
+	(*com)->scroll = result;
+	(*com)->len = ft_strlen(str);
+}
+
+void				ft_do_ss(char *str, t_com **com)
+{
+	return ;
 }

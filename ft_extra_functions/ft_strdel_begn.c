@@ -12,10 +12,10 @@
 
 #include "../libftprintf.h"
 
-char 				*ft_strdel_begn(char *str, size_t n)
+char				*ft_strdel_begn(char *str, size_t n)
 {
-	char 			*result;
-	size_t 			len;
+	char			*result;
+	size_t			len;
 
 	if (!str)
 		return (NULL);
