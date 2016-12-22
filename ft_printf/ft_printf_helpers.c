@@ -209,7 +209,7 @@ static void		ft_set_result(char **result, char **spaces, t_com **com)
 	{
 		*result = ft_itoa(-((*com)->var.d));
 		temp = ft_strjoin(*spaces, *result);
-		free(result);
+		free(*result);
 		*result = ft_strjoin("-0", temp);
 		free(temp);
 	}

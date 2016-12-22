@@ -35,9 +35,9 @@ int				main(void)
 	str = "hello";
 	mr = 0;
 	or = 0;
-	mr = ft_printf("@moulitest: %#.o %#.0o", 0, 0);
+	mr = ft_printf("%0+5d", 42);
 	printf("\n");
-	or = printf("@moulitest: %#.o %#.0o", 0, 0);
+	or = printf("%0+5d", 42);
 	printf("\n");
 	ft_p(mr, or);
 	return (0);

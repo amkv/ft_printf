@@ -14,18 +14,27 @@
 
 void		ft_do_s(char *str, t_com **com)
 {
-	char	*result;
-
 	if (str == NULL)
 	{
 		(*com)->scroll = ft_strdup("(null)");
 		(*com)->len = 6;
 		return ;
 	}
-	result = ft_strdup(str);
-	free((*com)->scroll);
-	(*com)->scroll = result;
-	(*com)->len = ft_strlen(str);
+	else if (*str == '\0')
+	{
+		free((*com)->scroll);
+		(*com)->scroll = NULL;
+		(*com)->scroll = ft_strdup("");
+		(*com)->len = 0;
+		return ;
+	}
+	else
+	{
+		free((*com)->scroll);
+		(*com)->scroll = NULL;
+		(*com)->scroll = ft_strdup(str);
+		(*com)->len = ft_strlen((*com)->scroll);
+	}
 }
 
 //void		ft_do_ss(char *str, t_com **com)

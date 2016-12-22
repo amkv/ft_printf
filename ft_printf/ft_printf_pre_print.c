@@ -51,6 +51,8 @@ void			ft_pre_print_precision(t_com **com)
 	len = (*com)->len;
 	if (precision == 0)
 		return ;
+	if ((*com)->scroll && *(*com)->scroll == '\0')
+		return ;
 	if (precision < len)
 		ft_mod_cut_word(*&com, precision);
 	else if (precision > len)
@@ -67,7 +69,8 @@ void		ft_pre_print_null_precision(t_com **com)
 {
 	if ((*com)->precision && *(*com)->precision == '!')
 	{
-		if ((*com)->flag && *(*com)->flag == '#')
+		if ((*com)->flag && *(*com)->flag == '#' && (*com)->modifier
+			&& *(*com)->modifier != 'x' && *(*com)->modifier != 'X')
 			return ;
 		else if (ft_atoi((*com)->scroll) == 0)
 		{
