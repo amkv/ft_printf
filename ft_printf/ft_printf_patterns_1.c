@@ -55,14 +55,28 @@ char		*ft_pat_flags(char **holder)
 {
 	char	*new_holder;
 	char	*flag;
+	char 	*copy;
+	size_t 	len;
 
 	if (!(*holder) || ft_is_flag(**holder) == 0)
 		return (NULL);
-	flag = ft_strnew(2);
-	flag = ft_memcpy(flag, *holder, 1);
-	new_holder = ft_strdel_begn(*holder, 1);
+	flag = NULL;
+	copy = *holder;
+	len = 0;
+	while (ft_is_flag(*copy) == 1)
+	{
+		copy++;
+		len++;
+	}
+	flag = ft_strdupn(*holder, len);
+	new_holder = ft_strdel_begn(*holder, len);
 	ft_free_and_set(*&holder, &new_holder);
+
 	return (flag);
+//	flag = ft_strnew(2);
+//	flag = ft_memcpy(flag, *holder, 1);
+//	new_holder = ft_strdel_begn(*holder, 1);
+//	ft_free_and_set(*&holder, &new_holder);
 }
 
 char		*ft_pat_width(char **holder)

@@ -17,7 +17,6 @@ static void	ft_itoa_helper(char **result, long int n)
 	char	*temp1;
 	char	*temp2;
 
-//	free(*result);
 	temp1 = ft_itoa(n / 10);
 	temp2 = ft_itoa(n % 10);
 	*result = ft_strjoin(temp1, temp2);
@@ -46,7 +45,7 @@ char		*ft_itoa(long int n)
 		result = ft_strnew(2);
 		if (!result)
 			return (NULL);
-		result[0] = n + '0';
+		result[0] = (int)n + '0';
 		result[1] = '\0';
 	}
 	return (result);

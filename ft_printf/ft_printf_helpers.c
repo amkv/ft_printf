@@ -247,7 +247,7 @@ void			ft_mod_add_sign(t_com **com)
 
 	if (!(*com)->scroll && !(*com)->modifier)
 		return ;
-	if (*(*com)->modifier == 'd' || *(*com)->modifier == 'i')
+	if ((*com)->modifier && (*(*com)->modifier == 'd' || *(*com)->modifier == 'i'))
 	{
 		if (ft_atoi((*com)->scroll) < 0)
 			return ;

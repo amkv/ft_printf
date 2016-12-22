@@ -1,5 +1,5 @@
 # ft_printf
-implementation of ft_printf function on C language
+my implementation of printf function on C language
 
 # in progress
 
