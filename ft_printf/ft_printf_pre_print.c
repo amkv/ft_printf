@@ -43,16 +43,15 @@ void			ft_pre_print_flags(t_com **com)
 
 void			ft_pre_print_precision(t_com **com)
 {
-	if (!(*com)->precision)
-		return ;
 	size_t 		precision;
 	size_t		len;
-
+	if (!(*com)->precision)
+		return ;
 	precision = (size_t)ft_atoi((*com)->precision);
 	len = (*com)->len;
-	if (precision == len || len == 0)
+	if (precision == 0)
 		return ;
-	else if (precision < len)
+	if (precision < len)
 		ft_mod_cut_word(*&com, precision);
 	else if (precision > len)
 		ft_mod_extend_word(*&com, precision, len);
@@ -62,4 +61,22 @@ void			ft_pre_print_width(t_com **com)
 {
 	if ((*com)->width)
 		ft_mod_add_spaces(*&com);
+}
+
+void		ft_pre_print_null_precision(t_com **com)
+{
+	if ((*com)->precision && *(*com)->precision == '!')
+	{
+		if ((*com)->flag && *(*com)->flag == '#')
+			return ;
+		else if (ft_atoi((*com)->scroll) == 0)
+		{
+			free((*com)->scroll);
+			(*com)->scroll = NULL;
+			(*com)->scroll = ft_strdup("");
+			(*com)->len = 0;
+			free((*com)->precision);
+			(*com)->precision = NULL;
+		}
+	}
 }

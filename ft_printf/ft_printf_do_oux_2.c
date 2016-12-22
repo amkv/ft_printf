@@ -30,6 +30,6 @@ void	ft_do_oo(long int d, t_com **com)
 
 void	ft_do_uu(long int u, t_com **com)
 {
-	ft_do_oux_l((unsigned long) u, *&com, 10);
+	ft_do_oux_l((unsigned long)u, *&com, 10);
 	(*com)->len = ft_strlen((*com)->scroll);
 }

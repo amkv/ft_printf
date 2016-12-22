@@ -12,7 +12,9 @@
 
 #include "../libftprintf.h"
 
-/* ************************************************************************** */
+/*
+** ****************************************************************************
+*/
 
 void			ft_free_and_set(char **old, char **new)
 {
@@ -21,7 +23,9 @@ void			ft_free_and_set(char **old, char **new)
 	*old = *new;
 }
 
-/* ************************************************************************** */
+/*
+** ****************************************************************************
+*/
 
 void			ft_putstrn(const char *str, size_t n)
 {
@@ -32,26 +36,28 @@ void			ft_putstrn(const char *str, size_t n)
 	}
 }
 
-/* ************************************************************************** */
+/*
+** ****************************************************************************
+*/
 
-char 			*ft_strnew_spaces(size_t len, char c)
+char			*ft_strnew_spaces(size_t len, char c)
 {
-	char 		*result;
-	char 		*temp;
+	char		*result;
+	char		*temp;
 
-	result = ft_strnew(len);
+	result = ft_strnew(len + 1);
 	if (!result)
 		return (NULL);
 	temp = result;
-	while(len > 0)
-	{
+	while (len-- > 0)
 		*temp++ = c;
-		len--;
-	}
+	*temp = '\0';
 	return (result);
 }
 
-/* ************************************************************************** */
+/*
+** ****************************************************************************
+*/
 
 static int		ft_add_spaces_helper(t_com **com)
 {
@@ -68,18 +74,17 @@ static int		ft_add_spaces_helper(t_com **com)
 	return (0);
 }
 
-void 			ft_mod_add_spaces(t_com **com)
+void			ft_mod_add_spaces(t_com **com)
 {
-	char 		*result;
-	char 		*spaces;
-	size_t 		width;
-	size_t 		len;
+	char		*result;
+	char		*spaces;
+	size_t		width;
+	size_t		len;
 
 	if (!(*com)->width)
 		return ;
 	width = (size_t)ft_atoi((*com)->width);
-	len = (*com)->len;
-	if (len >= width)
+	if ((len = (*com)->len) >= width)
 		return ;
 	if (ft_add_spaces_helper(*&com) == 1)
 		spaces = ft_strnew_spaces(width - len, '0');
@@ -88,6 +93,7 @@ void 			ft_mod_add_spaces(t_com **com)
 	if ((*com)->flag && *(*com)->flag == '-')
 	{
 		result = ft_strjoin((*com)->scroll, spaces);
+		free((*com)->width);
 		(*com)->width = NULL;
 	}
 	else
@@ -97,9 +103,11 @@ void 			ft_mod_add_spaces(t_com **com)
 	(*com)->len = width;
 }
 
-/* ************************************************************************** */
+/*
+** ****************************************************************************
+*/
 
-static int 		ft_add_0x_helper(char c)
+static int		ft_add_0x_helper(char c)
 {
 	if (c == 'c' || c == 'd' || c == 'i' || c == 'n' || c == 'p' ||
 			c == 's' || c == 'u')
@@ -109,17 +117,19 @@ static int 		ft_add_0x_helper(char c)
 
 void			ft_mod_add_0x(t_com **com)
 {
-	char 		*beg;
-	char 		*result;
+	char		*beg;
+	char		*result;
 
-	if (ft_atoi((*com)->scroll) == 0 || !(*com)->modifier ||
-			ft_add_0x_helper(*(*com)->modifier) == 1)
+	if (!(*com)->scroll || ft_atoi((*com)->scroll) == 0 ||
+			!(*com)->modifier || ft_add_0x_helper(*(*com)->modifier) == 1)
 		return ;
 	else if (*(*com)->modifier == 'x')
 		beg = ft_strdup("0x");
 	else if (*(*com)->modifier == 'X')
 		beg = ft_strdup("0X");
 	else if (*(*com)->modifier == 'o')
+		beg = ft_strdup("0");
+	else if (*(*com)->modifier == 'O')
 		beg = ft_strdup("0");
 	else
 		return ;
@@ -130,7 +140,9 @@ void			ft_mod_add_0x(t_com **com)
 	(*com)->len = ft_strlen(result);
 }
 
-/* ************************************************************************** */
+/*
+** ****************************************************************************
+*/
 
 void			ft_string_to_upper(char *str, t_com **com)
 {
@@ -155,13 +167,13 @@ void			ft_string_to_upper(char *str, t_com **com)
 	(*com)->len = ft_strlen(result);
 }
 
-/* ************************************************************************ */
-/* 								Precision 									*/
-/* ************************************************************************ */
+/*
+** ******************  PRECISION  *********************************************
+*/
 
-void 			ft_mod_cut_word(t_com **com, size_t precision)
+void			ft_mod_cut_word(t_com **com, size_t precision)
 {
-	char 		*result;
+	char		*result;
 
 	if (!(*com)->scroll || !(*com)->modifier)
 		return ;
@@ -174,59 +186,64 @@ void 			ft_mod_cut_word(t_com **com, size_t precision)
 	return ;
 }
 
-/* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */
+/*
+** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+*/
 
-static int 		ft_extend_the_word_helper(char *modifier)
+static int		ft_check_modifier(char *modifier)
 {
 	if (!modifier)
 		return (-1);
-//	if (*modifier == 'd' || *modifier == 'o' || *modifier == 'u' ||
-//		*modifier == 'i')
-//		return (-1);
-	if (*modifier == 'd' || *modifier == 'o' || *modifier == 'u' ||
-			*modifier == 'i')
+	if (*modifier == 'd' || *modifier == 'D' || *modifier == 'i' ||
+		*modifier == 'o' || *modifier == 'O' || *modifier == 'u'
+		|| *modifier == 'U' || *modifier == 'x' || *modifier == 'X')
 		return (1);
 	return (0);
 }
 
-void 			ft_mod_extend_word(t_com **com, size_t precision, size_t len)
+static void		ft_set_result(char **result, char **spaces, t_com **com)
 {
-	char 		*result;
-	char		*spaces;
-	char 		*temp;
+	char		*temp;
 
-	if (ft_extend_the_word_helper((*com)->modifier) == -1)
+	if ((*com)->var.d < 0)
+	{
+		*result = ft_itoa(-((*com)->var.d));
+		temp = ft_strjoin(*spaces, *result);
+		free(result);
+		*result = ft_strjoin("-0", temp);
+		free(temp);
+	}
+	else
+		*result = ft_strjoin(*spaces, (*com)->scroll);
+}
+
+void			ft_mod_extend_word(t_com **com, size_t precision, size_t len)
+{
+	char		*result;
+	char		*spaces;
+
+	if (ft_check_modifier((*com)->modifier) == -1)
 		return ;
-	else if (ft_extend_the_word_helper((*com)->modifier) == 1)
+	else if (ft_check_modifier((*com)->modifier) == 1)
 		spaces = ft_strnew_spaces(precision - len, '0');
 	else
 		spaces = ft_strnew_spaces(precision - len, ' ');
 	if (*(*com)->modifier == 'd' || *(*com)->modifier == 'i')
-	{
-		if ((*com)->var.d < 0)
-		{
-			result = ft_itoa(-((*com)->var.d));
-			temp = ft_strjoin(spaces, result);
-			free(result);
-			result = ft_strjoin("-0", temp);
-			free(temp);
-		}
-		else
-			result = ft_strjoin(spaces, (*com)->scroll);
-	}
+		ft_set_result(&result, &spaces, *&com);
 	else
 		result = ft_strjoin(spaces, (*com)->scroll);
 	free(spaces);
 	ft_free_and_set(&(*com)->scroll, &result);
 	(*com)->len = ft_strlen((*com)->scroll);
-	return ;
 }
 
-/* ************************************************************************** */
+/*
+** ****************************************************************************
+*/
 
 void			ft_mod_add_sign(t_com **com)
 {
-	char 		*result;
+	char		*result;
 
 	if (!(*com)->scroll && !(*com)->modifier)
 		return ;
@@ -242,8 +259,3 @@ void			ft_mod_add_sign(t_com **com)
 		}
 	}
 }
-
-/* ************************************************************************** */
-
-
-

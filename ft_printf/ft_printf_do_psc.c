@@ -37,7 +37,7 @@ void		ft_do_c(char c, t_com **com)
 {
 	free((*com)->scroll);
 	(*com)->scroll = NULL;
-	c = ' ';
+//	c = ' ';
 	(*com)->scroll = ft_strnew(1);
 	(*com)->len = 1;
 }

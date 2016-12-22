@@ -26,7 +26,6 @@ static void	ft_get_arg(char **str, size_t *beg, size_t *yn, size_t *len)
 		(*len) = 1;
 		(*str)++;
 	}
-
 	else
 		while (**str != '%' && **str != '\0')
 		{
@@ -39,7 +38,8 @@ static void	ft_get_arg(char **str, size_t *beg, size_t *yn, size_t *len)
 		(*beg)++;
 }
 
-void		ft_check_patterns(t_com **com, size_t *yn, char **holder, size_t *argc)
+void		ft_check_patterns(
+			t_com **com, size_t *yn, char **holder, size_t *argc)
 {
 	char	*copy;
 	t_com	*fresh;
@@ -52,7 +52,7 @@ void		ft_check_patterns(t_com **com, size_t *yn, char **holder, size_t *argc)
 	(fresh)->flag = ft_pat_flags(*&holder);
 	(fresh)->width = ft_pat_width(*&holder);
 	(fresh)->precision = ft_pat_precision(*&holder);
-	(fresh)->length =  ft_pat_length(*&holder);
+	(fresh)->length = ft_pat_length(*&holder);
 	(fresh)->modifier = ft_pat_modifier(*&holder);
 	ft_pat_ending(&fresh, *&holder, *&argc);
 	ft_tcom_list(*&com, fresh);

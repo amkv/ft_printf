@@ -90,7 +90,7 @@ static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
 	t_com			*copy;
 
 	copy = com;
-	argc = 0;
+	argc = 0; // перегрузка значения
 	while (copy != NULL)
 	{
 		if (copy->type == '%')
@@ -106,6 +106,7 @@ static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
 				copy->precision = ft_itoa(va_arg(ap, int));
 			}
 			ft_switch(*(copy)->modifier, ap, &copy);
+			ft_pre_print_null_precision(&copy);
 		}
 		ft_pre_print(&copy);
 		copy = copy->next;

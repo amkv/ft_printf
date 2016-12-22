@@ -98,30 +98,22 @@ char		*ft_pat_precision(char **holder)
 
 	if (!(*holder))
 		return (NULL);
+	precision = NULL;
 	if (**holder == '.')
 	{
-		new_holder = *holder;
-		new_holder++;
-		if (ft_isdigit(*new_holder) == 1)
-		{
-			precision = ft_itoa(ft_atoi(new_holder));
-			new_holder = ft_strdel_begn(*holder, ft_strlen(precision) + 1);
-			ft_free_and_set(*&holder, &new_holder);
-			return (precision);
-		}
-		else if (*new_holder == '*')
-		{
+		if (ft_isdigit(*(*holder + 1)) == 1)
+			precision = ft_itoa(ft_atoi(*holder + 1));
+		else if (*(*holder + 1) == '*')
 			precision = ft_strdup("*");
+		if (precision == NULL || (precision && *precision == '0'))
+			precision = ft_strdup("!");
+		if (ft_isdigit(*(*holder + 1)) == 1)
+			new_holder = ft_strdel_begn(*holder, ft_strlen(precision) + 1);
+		else if (*(*holder + 1) == '*')
 			new_holder = ft_strdel_begn(*holder, 2);
-			ft_free_and_set(*&holder, &new_holder);
-			return (precision);
-		}
 		else
-		{
-			new_holder = ft_strdup(new_holder);
-			ft_free_and_set(*&holder, &new_holder);
-			return(ft_strdup("0"));
-		}
+			new_holder = ft_strdup(*holder + 1);
+		ft_free_and_set(*&holder, &new_holder);
 	}
-	return (NULL);
+	return (precision);
 }
