@@ -54,5 +54,5 @@ void		ft_switch_oux(va_list ap, t_com **com, int base, int yesno)
 		ft_do_oux_z((*com)->var.zu = va_arg(ap, size_t), *&com, base);
 	(*com)->len = ft_strlen((*com)->scroll);
 	if (yesno == 1)
-		ft_string_to_upper((*com)->scroll, *&com);
+		ft_mod_string_to_upper((*com)->scroll, *&com);
 }

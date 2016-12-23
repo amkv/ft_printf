@@ -12,17 +12,38 @@
 
 #include "../libftprintf.h"
 
-//static void	ft_switch3(char c, va_list ap, t_com **com)
-//{
-//	if (c == 'n')
-//		ft_do_n((*com)->var.s = va_arg(ap, char*), *&com);
-////	else if (c == 'b') // заглушка
-////		ft_do_n((*com)->var.s = va_arg(ap, char*), *&com);
-////	else if (c == 'r') // заглушка
-////		ft_do_n((*com)->var.s = va_arg(ap, char*), *&com);
-////	else if (c == 'k') // заглушка
-////		ft_do_n((*com)->var.s = va_arg(ap, char*), *&com);
-//}
+/*
+**	else
+**		ft_switch3(c, ap, *&com);
+**
+**	static void	ft_switch3(char c, va_list ap, t_com **com)
+**	{
+**		if (c == 'e')
+**			ft_do_e((*com)->var.db = va_arg(ap, double), *&com);
+**		else if (c == 'E')
+**			ft_do_ee((*com)->var.db = va_arg(ap, double), *&com);
+**		else if (c == 'f')
+**			ft_do_f((*com)->var.db = va_arg(ap, double), *&com);
+**		else if (c == 'F')
+**			ft_do_ff((*com)->var.db = va_arg(ap, double), *&com);
+**		else if (c == 'g')
+**			ft_do_g((*com)->var.d = va_arg(ap, double), *&com);
+**		else if (c == 'G')
+**			ft_do_gg((*com)->var.d = va_arg(ap, double), *&com);
+**		else if (c == 'a')
+**			ft_do_a((*com)->var.d = va_arg(ap, double), *&com);
+**		else if (c == 'A')
+**			ft_do_aa((*com)->var.d = va_arg(ap, double), *&com);
+**		else if (c == 'n')
+**			ft_do_n((*com)->var.s = va_arg(ap, char*), *&com);
+**		else if (c == 'b')
+**			ft_do_n((*com)->var.s = va_arg(ap, char*), *&com);
+**		else if (c == 'r')
+**			ft_do_n((*com)->var.s = va_arg(ap, char*), *&com);
+**		else if (c == 'k')
+**			ft_do_n((*com)->var.s = va_arg(ap, char*), *&com);
+**	}
+*/
 
 static void	ft_switch2(char c, va_list ap, t_com **com)
 {
@@ -32,24 +53,6 @@ static void	ft_switch2(char c, va_list ap, t_com **com)
 		ft_do_c((*com)->var.c = va_arg(ap, int), *&com);
 	else if (c == 'C')
 		ft_do_c((*com)->var.c = va_arg(ap, int), *&com);
-//	else if (c == 'e')
-//		ft_do_e((*com)->var.db = va_arg(ap, double), *&com);
-//	else if (c == 'E')
-//		ft_do_ee((*com)->var.db = va_arg(ap, double), *&com);
-//	else if (c == 'f')
-//		ft_do_f((*com)->var.db = va_arg(ap, double), *&com);
-//	else if (c == 'F')
-//		ft_do_ff((*com)->var.db = va_arg(ap, double), *&com);
-//	else if (c == 'g')
-//		ft_do_g((*com)->var.d = va_arg(ap, double), *&com);
-//	else if (c == 'G')
-//		ft_do_gg((*com)->var.d = va_arg(ap, double), *&com);
-//	else if (c == 'a')
-//		ft_do_a((*com)->var.d = va_arg(ap, double), *&com);
-//	else if (c == 'A')
-//		ft_do_aa((*com)->var.d = va_arg(ap, double), *&com);
-//	else
-//		ft_switch3(c, ap, *&com);
 }
 
 void		ft_switch(char c, va_list ap, t_com **com)

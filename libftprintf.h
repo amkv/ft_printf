@@ -150,7 +150,6 @@ char			*ft_pat_length(char **holder);
 char			*ft_pat_modifier(char **holder);
 void			ft_pat_ending(t_com **fresh, char **holder, size_t *argc);
 void			ft_pat_string(t_com **com, char **copy, char **holder);
-void			ft_pre_print_null_precision(t_com **fresh);
 
 int				ft_is_flag(char c);
 int				ft_is_precision(char c);
@@ -217,16 +216,19 @@ void			ft_pre_print(t_com **com);
 void			ft_pre_print_precision(t_com **com);
 void			ft_pre_print_flags(t_com **com);
 void			ft_pre_print_width(t_com **com);
+void			ft_pre_print_null_precision(t_com **fresh);
 
 /*
 ** Modifiers (scroll)
 */
 void			ft_mod_add_spaces(t_com **com);
 void			ft_mod_add_0x(t_com **com);
-void			ft_string_to_upper(char *str, t_com **com);
+void			ft_mod_string_to_upper(char *str, t_com **com);
 void			ft_mod_cut_word(t_com **com, size_t precision);
 void			ft_mod_extend_word(t_com **com, size_t precision, size_t len);
 void			ft_mod_add_sign(t_com **com);
+void			ft_mod_add_zero(t_com **com);
+void			ft_mod_add_one_space(t_com **com);
 
 /*
 ** helpers
@@ -245,7 +247,7 @@ char			*ft_strdel_begn(char *str, size_t n);
 char			*ft_ftoa(double number, int length);
 double			ft_pow(double x, double y);
 void			ft_putstrn(const char *str, size_t n);
-char			*ft_strnew_spaces(size_t len, char c);
+char			*ft_strnew_char_filled(size_t len, char c);
 char			*ft_strdupn(const char *str, size_t n);
 
 #endif

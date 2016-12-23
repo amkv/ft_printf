@@ -973,4 +973,128 @@ ft_precision
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//void			ft_mod_add_zero(t_com **com)
+//{
+//	char		*modifier;
+//	char 		*width;
+//	char 		*precision;
+//	char 		*zeros;
+//	char 		*result;
+//	size_t 		len;
+//	size_t 		width_num;
+//
+//	modifier = (*com)->modifier;
+//	width = (*com)->width;
+//	precision = (*com)->precision;
+//	if (precision)
+//		return ;
+//	if (modifier && (*modifier == 'd' || *modifier == 'D'
+//					 || *modifier == 'i' || *modifier == 'o' || *modifier == 'O'
+//					 || *modifier == 'u' || *modifier == 'U' || *modifier == 'x'
+//					 || *modifier == 'X'))
+//		return ;
+//	if (!width)
+//		return ;
+//	width_num = (size_t)ft_atoi((*com)->width);
+//	len = (*com)->len;
+//	zeros = NULL;
+//	if (width_num > len)
+//		zeros = ft_strnew_char_filled(width_num - len, '0');
+//	if (width_num <= len)
+//		zeros = ft_strdup("");
+//	result = ft_strjoin(zeros, (*com)->scroll);
+//	free((*com)->scroll);
+//	free(zeros);
+//	(*com)->scroll = NULL;
+//	(*com)->scroll = result;
+//	if (*modifier == 'c')
+//		(*com)->len = width_num;
+//	else
+//		(*com)->len = ft_strlen((*com)->scroll);
+//	free((*com)->width);
+//	(*com)->width = NULL;
+//	return ;
+//}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+//void 		ft_pat_flags_parser(t_com **fresh)
+//{
+//	char 	*flags;
+//	char 	*result;
+//	char 	*result_copy;
+//	int 	index;
+//	int 	tab[5] = {0, 0, 0, 0, 0};
+//
+//	flags = (*fresh)->flag;
+//	if (!flags)
+//		return ;
+//	result = ft_strnew(5 + 1);
+//	result_copy = result;
+//	while (*flags)
+//	{
+//		index = 0;
+//		if (*flags == '-')
+//			tab[0] += 1;
+//		if (*flags == '+')
+//			tab[1] += 1;
+//		if (*flags == ' ')
+//			tab[2] += 1;
+//		if (*flags == '0')
+//			tab[3] += 1;
+//		if (*flags == '#')
+//			tab[4] += 1;
+//		while (index < 5)
+//		{
+//			if (tab[index] == 1)
+//			{
+//				*result_copy++ = *flags;
+//				tab[index] += 1;
+//				break ;
+//			}
+//			index++;
+//		}
+//		flags++;
+//	}
+//	free((*fresh)->flag);
+//	(*fresh)->flag = NULL;
+//	(*fresh)->flag = result;
+//}
+ */
+
+ ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ //void		ft_pat_flags_parser(t_com **fresh)
+ //{
+ //	char	*flags;
+ //	char	*result;
+ //	char	*result_copy;
+ //	char	*tab;
+ //
+ //	if (!(flags = (*fresh)->flag))
+ //		return ;
+ //	tab = ft_strnew_char_filled(5, 0);
+ //	result = ft_strnew(5 + 1);
+ //	result_copy = result;
+ //	while (*flags)
+ //	{
+ //		if (*flags == '-' && (tab[0]++ < 1))
+ //			*result_copy++ = *flags;
+ //		if (*flags == '+' && (tab[1]++ < 1))
+ //			*result_copy++ = *flags;
+ //		if (*flags == ' ' && (tab[2]++ < 1))
+ //			*result_copy++ = *flags;
+ //		if (*flags == '0' && (tab[3]++ < 1))
+ //			*result_copy++ = *flags;
+ //		if (*flags == '#' && (tab[4]++ < 1))
+ //			*result_copy++ = *flags;
+ //		flags++;
+ //	}
+ //	ft_free_and_set(&(*fresh)->flag, &result);
+ //	free(tab);
+ //}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 */

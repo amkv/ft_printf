@@ -12,6 +12,33 @@
 
 #include "../libftprintf.h"
 
+char		*ft_pat_precision(char **holder)
+{
+	char	*new_holder;
+	char	*precision;
+
+	if (!(*holder))
+		return (NULL);
+	precision = NULL;
+	if (**holder == '.')
+	{
+		if (ft_isdigit(*(*holder + 1)) == 1)
+			precision = ft_itoa(ft_atoi(*holder + 1));
+		else if (*(*holder + 1) == '*')
+			precision = ft_strdup("*");
+		if (precision == NULL || (precision && *precision == '0'))
+			precision = ft_strdup("!");
+		if (ft_isdigit(*(*holder + 1)) == 1)
+			new_holder = ft_strdel_begn(*holder, ft_strlen(precision) + 1);
+		else if (*(*holder + 1) == '*')
+			new_holder = ft_strdel_begn(*holder, 2);
+		else
+			new_holder = ft_strdup(*holder + 1);
+		ft_free_and_set(*&holder, &new_holder);
+	}
+	return (precision);
+}
+
 char		*ft_pat_length(char **holder)
 {
 	char	*result;

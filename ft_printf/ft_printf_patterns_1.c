@@ -51,12 +51,41 @@ char		*ft_pat_parameter(char **holder)
 	return (NULL);
 }
 
+static void	ft_pat_flags_parser(char **flag)
+{
+	char	*flag_copy;
+	char	*result;
+	char	*result_copy;
+	char	*tab;
+
+	flag_copy = *flag;
+	result = ft_strnew(5 + 1);
+	result_copy = result;
+	tab = ft_strnew_char_filled(5, 0);
+	while (*flag_copy)
+	{
+		if (*flag_copy == '-' && (tab[0]++ < 1))
+			*result_copy++ = *flag_copy;
+		if (*flag_copy == '+' && (tab[1]++ < 1))
+			*result_copy++ = *flag_copy;
+		if (*flag_copy == ' ' && (tab[2]++ < 1))
+			*result_copy++ = *flag_copy;
+		if (*flag_copy == '0' && (tab[3]++ < 1))
+			*result_copy++ = *flag_copy;
+		if (*flag_copy == '#' && (tab[4]++ < 1))
+			*result_copy++ = *flag_copy;
+		flag_copy++;
+	}
+	ft_free_and_set(*&flag, &result);
+	free(tab);
+}
+
 char		*ft_pat_flags(char **holder)
 {
 	char	*new_holder;
 	char	*flag;
-	char 	*copy;
-	size_t 	len;
+	char	*copy;
+	size_t	len;
 
 	if (!(*holder) || ft_is_flag(**holder) == 0)
 		return (NULL);
@@ -71,12 +100,9 @@ char		*ft_pat_flags(char **holder)
 	flag = ft_strdupn(*holder, len);
 	new_holder = ft_strdel_begn(*holder, len);
 	ft_free_and_set(*&holder, &new_holder);
-
+	if (flag != NULL)
+		ft_pat_flags_parser(&flag);
 	return (flag);
-//	flag = ft_strnew(2);
-//	flag = ft_memcpy(flag, *holder, 1);
-//	new_holder = ft_strdel_begn(*holder, 1);
-//	ft_free_and_set(*&holder, &new_holder);
 }
 
 char		*ft_pat_width(char **holder)
@@ -103,31 +129,4 @@ char		*ft_pat_width(char **holder)
 		return (width);
 	}
 	return (NULL);
-}
-
-char		*ft_pat_precision(char **holder)
-{
-	char	*new_holder;
-	char	*precision;
-
-	if (!(*holder))
-		return (NULL);
-	precision = NULL;
-	if (**holder == '.')
-	{
-		if (ft_isdigit(*(*holder + 1)) == 1)
-			precision = ft_itoa(ft_atoi(*holder + 1));
-		else if (*(*holder + 1) == '*')
-			precision = ft_strdup("*");
-		if (precision == NULL || (precision && *precision == '0'))
-			precision = ft_strdup("!");
-		if (ft_isdigit(*(*holder + 1)) == 1)
-			new_holder = ft_strdel_begn(*holder, ft_strlen(precision) + 1);
-		else if (*(*holder + 1) == '*')
-			new_holder = ft_strdel_begn(*holder, 2);
-		else
-			new_holder = ft_strdup(*holder + 1);
-		ft_free_and_set(*&holder, &new_holder);
-	}
-	return (precision);
 }

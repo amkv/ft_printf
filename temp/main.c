@@ -35,10 +35,11 @@ int				main(void)
 	str = "hello";
 	mr = 0;
 	or = 0;
-	mr = ft_printf("%  +d", 42);
+//	mr = ft_printf("%0#0-xd", 42);
+	mr = ft_printf("%++ d", 42);
 	printf("\n");
-	or = printf("%  +d", 42);
-	printf("\n");
+	or = printf("%++ d", 42);
+//	printf("\n");
 	ft_p(mr, or);
 	return (0);
 }

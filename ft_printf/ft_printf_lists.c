@@ -143,7 +143,7 @@ static void		ft_tcom_print2(t_com *list, int yesno)
 {
 	if (yesno != 1 || list->modifier == NULL || list->type == '.')
 	{
-		printf("var:      .....\n\n");
+		printf("var:       ...\n\n");
 		return ;
 	}
 	if (*list->modifier == 's')
@@ -174,17 +174,17 @@ void			ft_tcom_print(t_com *list, int yesno)
 	tmp = list;
 	while (tmp)
 	{
-		printf("scroll:    %s\n", tmp->scroll);
-		printf("size:      %zu\n", tmp->size);
-		printf("len:       %zu\n", tmp->len);
-		printf("type:      %c\n", tmp->type);
-		printf("param:     %s\n", tmp->param);
-		printf("flag:      %s\n", tmp->flag);
-		printf("width:     %s\n", tmp->width);
-		printf("precision: %s\n", tmp->precision);
-		printf("length:    %s\n", tmp->length);
-		printf("modifier:  %s\n", tmp->modifier);
-		printf("counter:   %d\n", tmp->counter);
+		printf("scroll:    \'%s\'\n", tmp->scroll);
+		printf("size:      \'%zu\'\n", tmp->size);
+		printf("len:       \'%zu\'\n", tmp->len);
+		printf("type:      \'%c\'\n", tmp->type);
+		printf("param:     \'%s\'\n", tmp->param);
+		printf("flag:      \'%s\'\n", tmp->flag);
+		printf("width:     \'%s\'\n", tmp->width);
+		printf("precision: \'%s\'\n", tmp->precision);
+		printf("length:    \'%s\'\n", tmp->length);
+		printf("modifier:  \'%s\'\n", tmp->modifier);
+		printf("counter:   \'%d\'\n", tmp->counter);
 		ft_tcom_print2(tmp, yesno);
 		tmp = tmp->next;
 	}

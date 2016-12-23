@@ -27,18 +27,24 @@ void			ft_pre_print(t_com **com)
 
 void			ft_pre_print_flags(t_com **com)
 {
-	if ((*com)->flag == NULL)
+	char 		*flags;
+
+	if (!(flags = (*com)->flag))
 		return ;
-	if (*(*com)->flag == '_')
-		ft_flags_minus(*&com);
-	if (*(*com)->flag == '+')
-		ft_flags_plus(*&com);
-//	if (*(*com)->flag == ' ')
-//		ft_flags_space(*&com);
-	if (*(*com)->flag == '#')
-		ft_flags_octo(*&com);
-//	if (*(*com)->flag == '0')
-//		ft_flags_zero(*&com);
+	while (*flags)
+	{
+		if (*flags == '_')
+			ft_flags_minus(*&com);
+		if (*flags == '+')
+			ft_flags_plus(*&com);
+		if (*flags == ' ')
+			ft_flags_space(*&com);
+		if (*flags == '#')
+			ft_flags_octo(*&com);
+		if (*flags == '0')
+			ft_flags_zero(*&com);
+		flags++;
+	}
 }
 
 void			ft_pre_print_precision(t_com **com)
