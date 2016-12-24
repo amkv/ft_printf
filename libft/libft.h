@@ -102,7 +102,7 @@ char			*ft_skipspace_end(char *s);
 size_t			ft_ptrlen(char *beg, char *end);
 char			*ft_ptrtoend(char *s);
 char			*ft_strtrim(char const *s);
-size_t			ft_strchr_qt(char *s, char c);
+size_t			ft_strchr_qt(const char *s, char c);
 char			*ft_strchrto_end(char *s, char c);
 char			*ft_skipchr(char *s, char c);
 char			*ft_skiptochr(char *s, char c);

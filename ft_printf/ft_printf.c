@@ -65,7 +65,8 @@ static void			ft_print_result(t_com *com, int *characters)
 	*characters = 0;
 	while (copy != NULL)
 	{
-		if (copy->modifier && *copy->modifier == 'c' && copy->type == '%')
+		if (copy->modifier && (*copy->modifier == 'c' ||  *copy->modifier == 'C')
+			&& copy->type == '%')
 		{
 			if (copy->flag && *copy->flag == '-')
 			{

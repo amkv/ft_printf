@@ -28,7 +28,7 @@ set(SOURCE_FILES
 		ft_printf/ft_printf.c
 		ft_printf/ft_printf_parser.c
 		ft_printf/ft_printf_is.c
-		ft_printf/ft_printf_flags.c
+#		ft_printf/ft_printf_flags.c
 		ft_printf/ft_printf_patterns_1.c
 		ft_printf/ft_printf_patterns_2.c
 		ft_printf/ft_printf_lists.c

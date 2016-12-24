@@ -47,9 +47,7 @@
 
 static void	ft_switch2(char c, va_list ap, t_com **com)
 {
-	if (c == 'X')
-		ft_switch_oux(ap, *&com, 16, 1);
-	else if (c == 'c')
+	if (c == 'c')
 		ft_do_c((*com)->var.c = va_arg(ap, int), *&com);
 	else if (c == 'C')
 		ft_do_c((*com)->var.c = va_arg(ap, int), *&com);
@@ -63,12 +61,10 @@ void		ft_switch(char c, va_list ap, t_com **com)
 //		ft_do_ss((*com)->var.s = va_arg(ap, char*), *&com);
 	else if (c == 'p')
 		ft_do_p((*com)->var.p = va_arg(ap, void *), *&com);
-	else if (c == 'd')
+	else if (c == 'd' || c == 'i')
 		ft_switch_d(ap, *&com);
 	else if (c == 'D')
 		ft_do_dd((*com)->var.l = va_arg(ap, long int), *&com);
-	else if (c == 'i')
-		ft_switch_d(ap, *&com);
 	else if (c == 'o')
 		ft_switch_oux(ap, *&com, 8, 0);
 	else if (c == 'O')
@@ -79,6 +75,8 @@ void		ft_switch(char c, va_list ap, t_com **com)
 		ft_do_uu((*com)->var.l = va_arg(ap, long int), *&com);
 	else if (c == 'x')
 		ft_switch_oux(ap, *&com, 16, 0);
+	else if (c == 'X')
+		ft_switch_oux(ap, *&com, 16, 1);
 	else
 		ft_switch2(c, ap, *&com);
 }

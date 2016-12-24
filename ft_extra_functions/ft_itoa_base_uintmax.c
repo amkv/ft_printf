@@ -30,6 +30,8 @@ char		*ft_itoa_base_uintmax(uintmax_t value, uintmax_t base)
 	char	*ret;
 	int		index;
 
+	if (value == 0)
+		return (ft_strdup("0"));
 	if (base < 2 || base > 16 || !(ret = ft_strnew(35)))
 		return (NULL);
 	index = 0;

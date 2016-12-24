@@ -10,47 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
-
-void	ft_flags_octo(t_com **com)
-{
-	ft_mod_add_0x(*&com);
-	return ;
-}
-
-void	ft_flags_zero(t_com **com)
-{
-	ft_mod_add_zero(*&com);
-	return ;
-}
-
-void	ft_flags_minus(t_com **com)
-{
-	ft_mod_add_spaces(*&com);
-	return ;
-}
-
-void	ft_flags_plus(t_com **com)
-{
-	ft_mod_add_sign(*&com);
-	return ;
-}
-
-void	ft_flags_space(t_com **com)
-{
-	char *mod;
-
-	if (!(mod = (*com)->modifier))
-		return ;
-	if (*mod == 'd' || *mod == 'D' || *mod == 'i')
-	{
-		if ((*com)->var.d < 0)
-			return ;
-		else if (ft_strchr_qt((*com)->flag,'+') > 0)
-			return ;
-		else if ((*com)->scroll && *(*com)->scroll == '+')
-			return ;
-		else
-			ft_mod_add_one_space(*&com);
-	}
-}
+//#include "../libftprintf.h"
+//
+//void	ft_flags_octo(t_com **com)
+//{
+//
+//}
+//
+//void	ft_flags_zero(t_com **com)
+//{
+//
+//}
+//
+//void	ft_flags_minus(t_com **com)
+//{
+//
+//}
+//
+//void	ft_flags_plus(t_com **com)
+//{
+//
+//}
+//
+//void	ft_flags_space(t_com **com)
+//{
+//
+//}

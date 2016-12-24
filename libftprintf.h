@@ -21,10 +21,10 @@
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
 
-# pragma GCC diagnostic ignored "-Wunused-function"
-# pragma GCC diagnostic ignored "-Wunused-variable"
-# pragma GCC diagnostic ignored "-Wunused-parameter"
-# pragma GCC diagnostic ignored "-Wimplicitly-unsigned-literal"
+//# pragma GCC diagnostic ignored "-Wunused-function"
+//# pragma GCC diagnostic ignored "-Wunused-variable"
+//# pragma GCC diagnostic ignored "-Wunused-parameter"
+//# pragma GCC diagnostic ignored "-Wimplicitly-unsigned-literal"
 # pragma GCC diagnostic ignored "-Wformat"
 
 # include "libft/libft.h"
@@ -203,11 +203,11 @@ void			ft_do_n(char *str, t_com **com);
 /*
 ** Flags
 */
-void			ft_flags_octo(t_com **com);
-void			ft_flags_zero(t_com **com);
-void			ft_flags_minus(t_com **com);
-void			ft_flags_plus(t_com **com);
-void			ft_flags_space(t_com **com);
+//void			ft_flags_octo(t_com **com);
+//void			ft_flags_zero(t_com **com);
+//void			ft_flags_minus(t_com **com);
+//void			ft_flags_plus(t_com **com);
+//void			ft_flags_space(t_com **com);
 
 /*
 ** Pre print functions
@@ -249,5 +249,6 @@ double			ft_pow(double x, double y);
 void			ft_putstrn(const char *str, size_t n);
 char			*ft_strnew_char_filled(size_t len, char c);
 char			*ft_strdupn(const char *str, size_t n);
+char			*ft_strjoin_and_free(char *str1, char *str2, int a, int b);
 
 #endif

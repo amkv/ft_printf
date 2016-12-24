@@ -10,3 +10,8 @@ make re
 gcc temp/main.c libftprintf.a
 ./a.out
 ```
+
+or launch run.sh script
+```
+sh run.sh
+```

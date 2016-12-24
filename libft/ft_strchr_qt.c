@@ -12,20 +12,21 @@
 
 #include "libft.h"
 
-size_t		ft_strchr_qt(char *s, char c)
+size_t		ft_strchr_qt(const char *s, char c)
 {
 	size_t	quantity;
 
 	if (s)
 	{
-		if (ft_strlen(s) == 0)
-			return (0);
 		quantity = 0;
-		while (*s++)
+		while (*s)
+		{
 			if (*s == c)
 				quantity++;
+			s++;
+		}
 		return (quantity);
 	}
 	else
-		return (-1);
+		return (0);
 }

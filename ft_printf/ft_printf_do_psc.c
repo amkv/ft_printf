@@ -44,9 +44,9 @@ void		ft_do_s(char *str, t_com **com)
 
 void		ft_do_c(char c, t_com **com)
 {
+	c = 0;
 	free((*com)->scroll);
 	(*com)->scroll = NULL;
-//	c = ' ';
 	(*com)->scroll = ft_strnew(1);
 	(*com)->len = 1;
 }
@@ -58,7 +58,10 @@ void		ft_do_p(void *ptr, t_com **com)
 	free((*com)->scroll);
 	(*com)->scroll = NULL;
 	temp = ft_itoa_base((long int)*&ptr, 16);
-	(*com)->scroll = ft_strjoin("0x", temp);
+	if (ptr == NULL)
+		(*com)->scroll = ft_strjoin(temp, "x0");
+	else
+		(*com)->scroll = ft_strjoin("0x", temp);
 	free(temp);
 	(*com)->len = ft_strlen((*com)->scroll);
 }

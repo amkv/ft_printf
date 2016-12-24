@@ -14,7 +14,11 @@
 
 static void		ft_p(int mr, int or)
 {
-	printf("\nm: %d\no: %d\n- - - - - - - - - \n", mr, or);
+	printf("\nm: %d\no: %d\n\n--------/\\-------\n", mr, or);
+	printf(" |  ft_printf  | ");
+	printf("\n-----------------\n");
+	printf("| output order: |\n| m - my printf |\n| o - original  |");
+	printf("\n-----------------");
 }
 
 /*
@@ -35,11 +39,25 @@ int				main(void)
 	str = "hello";
 	mr = 0;
 	or = 0;
-//	mr = ft_printf("%0#0-xd", 42);
-	mr = ft_printf("%++ d", 42);
+
+//	mr = ft_printf("%010x", 542);
+//	"%#08x", 42
+//	mr = ft_printf("%3.0p", 12345678);
+	mr = ft_printf("%4.s", "42");
 	printf("\n");
-	or = printf("%++ d", 42);
-//	printf("\n");
+	or = printf("%4.s", "42");
 	ft_p(mr, or);
 	return (0);
 }
+
+/*
+printf("%.4o", 424242);
+printf("%15.4o", 424242);
+printf("%8.4o", 424242424);
+printf("%4.8o", 424242424);
+*/
+
+
+
+
+
