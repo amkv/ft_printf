@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
+#include <locale.h>
 
 static void		ft_p(int mr, int or)
 {
@@ -40,21 +41,19 @@ int				main(void)
 	mr = 0;
 	or = 0;
 
-//	mr = ft_printf("%010x", 542);
-//	"%#08x", 42
-//	mr = ft_printf("%3.0p", 12345678);
-	mr = ft_printf("%4.s", "42");
+	setlocale(LC_ALL, "en_GB");
+
+//	mr = ft_printf("% 10.5d", 4242);
+	mr = ft_printf("{% 03d}", 0);
 	printf("\n");
-	or = printf("%4.s", "42");
+	or = printf("{% 03d}", 0);
+
 	ft_p(mr, or);
 	return (0);
 }
 
 /*
-printf("%.4o", 424242);
-printf("%15.4o", 424242);
-printf("%8.4o", 424242424);
-printf("%4.8o", 424242424);
+
 */
 
 

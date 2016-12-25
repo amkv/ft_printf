@@ -1097,4 +1097,91 @@ ft_precision
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/*
+//unsigned int		wchar_converter(wchar_t c, unsigned char **result)
+//{
+//	unsigned char	*wide_char;
+//	unsigned int	lenght;
+//
+//	lenght = 0;
+//	wide_char = NULL;
+//	if (c < (1 << 7))// 7 bit Unicode encoded as plain ascii
+//	{
+//		wide_char = (unsigned char*)malloc(sizeof(char) * 2);
+//		wide_char[0] = (unsigned char)(c);
+//		lenght = 1;
+//	}
+//	else if ( c < (1 << 11))// 11 bit Unicode encoded in 2 UTF-8 bytes
+//	{
+//		wide_char = (unsigned char*)malloc(sizeof(char) * 3);
+//		wide_char[0] = (unsigned char)((c>>6)|0xC0);
+//		wide_char[1] = (unsigned char)((c&0x3F)|0x80);
+//		lenght = 2;
+//	}
+//	else if ( c < (1 << 16))// 16 bit Unicode encoded in 3 UTF-8 bytes
+//	{
+//		wide_char = (unsigned char*)malloc(sizeof(char) * 4);
+//		wide_char[0] = (unsigned char)(((c>>12))|0xE0);
+//		wide_char[1] =  (unsigned char)(((c>>6)&0x3F)|0x80);
+//		wide_char[2] =  (unsigned char)((c&0x3F)|0x80);
+//		lenght = 3;
+//	}
+//	else if (c < (1 << 21))// 21 bit Unicode encoded in 4 UTF-8 bytes
+//	{
+//		wide_char = (unsigned char*)malloc(sizeof(char) * 5);
+//		wide_char[0] = (unsigned char)(((c>>18))|0xF0);
+//		wide_char[1] = (unsigned char)(((c>>12)&0x3F)|0x80);
+//		wide_char[2] = (unsigned char)(((c>>6)&0x3F)|0x80);
+//		wide_char[3] = (unsigned char)((c&0x3F)|0x80);
+//		lenght = 4;
+//	}
+//	if (lenght > 0)
+//		wide_char[lenght] = '\0';
+//	*result = wide_char;
+//	return (lenght);
+//}
+*/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+//void			ft_pre_print_precision(t_com **com)
+//{
+//	size_t		precision;
+//	size_t		len;
+//
+//	if (!(*com)->precision)
+//		return ;
+//	if ((*com)->modifier && (*com)->var.c != 0
+//		&& (*(*com)->modifier == 'c' || *(*com)->modifier == 'C'))
+//	{
+//		free((*com)->scroll);
+//		(*com)->scroll = ft_strdup("*");
+//		*(*com)->modifier = 's';
+//		return ;
+//	}
+//	precision = (size_t)ft_atoi((*com)->precision);
+//	len = (*com)->len;
+//	if (precision == 0 || ((*com)->modifier
+//		&& *(*com)->modifier == 's' && *(*com)->modifier == 'S'))
+//		return ;
+//	else if ((*com)->scroll && *(*com)->scroll == '\0')
+//		return ;
+//	else if ((*com)->modifier && *(*com)->modifier == 'p' && precision < len)
+//		return ;
+//	else if ((*com)->modifier && (*(*com)->modifier == 'u' || *(*com)->modifier == 'U') && precision < len)
+//		return ;
+//	else if ((*com)->modifier && *(*com)->modifier == 's' && precision >= len)
+//		return ;
+//	else if ((*com)->modifier && (*(*com)->modifier == 'o' || *(*com)->modifier == 'O') && precision < len)
+//		return ;
+//	else if (precision < len)
+//		ft_mod_cut_word(*&com, precision);
+//	else if (precision > len)
+//		ft_mod_extend_word(*&com, precision, len);
+//}
+*/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 */

@@ -29,10 +29,13 @@ void			ft_free_and_set(char **old, char **new)
 
 void			ft_putstrn(const char *str, size_t n)
 {
-	while (*str && n > 0)
+	if (str)
 	{
-		ft_putchar(*str);
-		n--;
+		while (*str && n > 0)
+		{
+			ft_putchar(*str);
+			n--;
+		}
 	}
 }
 
@@ -62,7 +65,6 @@ char			*ft_strnew_char_filled(size_t len, char c)
 static int		ft_add_spaces_helper(t_com **com)
 {
 	char		c;
-
 
 	if (!(*com)->modifier || (*(*com)->scroll == '0'
 			&& *(*com)->modifier != 'x' && *(*com)->modifier != 'X'))

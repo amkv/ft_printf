@@ -29,6 +29,7 @@ t_com			*ft_tcom_new(void)
 	if (!(new = (t_com*)malloc(sizeof(t_com) * 1)))
 		return (NULL);
 	new->scroll = NULL;
+	new->w_scroll = NULL;
 	new->size = 0;
 	new->len = 0;
 	new->ptr = NULL;
@@ -58,10 +59,8 @@ void			ft_tcom_revert(t_com **list)
 	t_com		*revers;
 	t_com		*save;
 	long int	yesno;
-//	int 		counter;
 
 	yesno = 0;
-//	counter = 0;
 	tmp = *list;
 	save = NULL;
 	while (tmp)
@@ -72,50 +71,48 @@ void			ft_tcom_revert(t_com **list)
 		else
 			tmp->next = save;
 		save = tmp;
-//		tmp->counter = ++counter;
 		tmp = revers;
-
 	}
 	*list = save;
 }
 
-void			ft_tcom_free_first(t_com **list)
-{
-	t_com		*next;
-	t_com		*victim;
-
-	next = (*list)->next->next;
-	victim = (*list)->next;
-	free(victim->scroll);
-	free(victim->ptr);
-	free(victim->param);
-	free(victim->flag);
-	free(victim->width);
-	free(victim->precision);
-	free(victim->length);
-	free(victim->modifier);
-	free(victim);
-	(*list)->next = next;
-}
-
-void			ft_tcom_free_next(t_com **list)
-{
-	t_com		*next;
-	t_com		*victim;
-
-	next = (*list)->next->next;
-	victim = (*list)->next;
-	free(victim->scroll);
-	free(victim->ptr);
-	free(victim->param);
-	free(victim->flag);
-	free(victim->width);
-	free(victim->precision);
-	free(victim->length);
-	free(victim->modifier);
-	free(victim);
-	(*list)->next = next;
-}
+//void			ft_tcom_free_first(t_com **list)
+//{
+//	t_com		*next;
+//	t_com		*victim;
+//
+//	next = (*list)->next->next;
+//	victim = (*list)->next;
+//	free(victim->scroll);
+//	free(victim->ptr);
+//	free(victim->param);
+//	free(victim->flag);
+//	free(victim->width);
+//	free(victim->precision);
+//	free(victim->length);
+//	free(victim->modifier);
+//	free(victim);
+//	(*list)->next = next;
+//}
+//
+//void			ft_tcom_free_next(t_com **list)
+//{
+//	t_com		*next;
+//	t_com		*victim;
+//
+//	next = (*list)->next->next;
+//	victim = (*list)->next;
+//	free(victim->scroll);
+//	free(victim->ptr);
+//	free(victim->param);
+//	free(victim->flag);
+//	free(victim->width);
+//	free(victim->precision);
+//	free(victim->length);
+//	free(victim->modifier);
+//	free(victim);
+//	(*list)->next = next;
+//}
 
 void			ft_tcom_free_all(t_com *list)
 {
@@ -127,6 +124,7 @@ void			ft_tcom_free_all(t_com *list)
 	{
 		next = tmp->next;
 		free(tmp->scroll);
+		free(tmp->w_scroll);
 		free(tmp->ptr);
 		free(tmp->param);
 		free(tmp->flag);
@@ -175,6 +173,7 @@ void			ft_tcom_print(t_com *list, int yesno)
 	while (tmp)
 	{
 		printf("scroll:    \'%s\'\n", tmp->scroll);
+		printf("w_scroll:  \'%s\'\n", tmp->w_scroll);
 		printf("size:      \'%zu\'\n", tmp->size);
 		printf("len:       \'%zu\'\n", tmp->len);
 		printf("type:      \'%c\'\n", tmp->type);

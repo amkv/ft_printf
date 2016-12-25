@@ -65,7 +65,7 @@ static void			ft_print_result(t_com *com, int *characters)
 	*characters = 0;
 	while (copy != NULL)
 	{
-		if (copy->modifier && (*copy->modifier == 'c' ||  *copy->modifier == 'C')
+		if (copy->modifier && (*copy->modifier == 'c' || (*copy->modifier == 'C' && copy->len == 1))
 			&& copy->type == '%')
 		{
 			if (copy->flag && *copy->flag == '-')
@@ -79,6 +79,8 @@ static void			ft_print_result(t_com *com, int *characters)
 				ft_putchar(copy->var.c);
 			}
 		}
+		else if (copy->modifier && (*copy->modifier == 'S' || *copy->modifier == 'C'))
+			ft_putwstr(copy->w_scroll);
 		else
 			ft_putstr(copy->scroll);
 		*characters += copy->len;
@@ -112,6 +114,13 @@ static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
 		ft_pre_print(&copy);
 		copy = copy->next;
 	}
+}
+
+void				ft_pre_print(t_com **com)
+{
+	ft_pre_print_precision(*&com);
+	ft_pre_print_flags(*&com);
+	ft_pre_print_width(*&com);
 }
 
 int					ft_printf(const char *restrict format, ...)

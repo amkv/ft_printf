@@ -50,15 +50,15 @@ static void	ft_switch2(char c, va_list ap, t_com **com)
 	if (c == 'c')
 		ft_do_c((*com)->var.c = va_arg(ap, int), *&com);
 	else if (c == 'C')
-		ft_do_c((*com)->var.c = va_arg(ap, int), *&com);
+		ft_do_cc((*com)->var.wc = va_arg(ap, wchar_t), *&com);
 }
 
 void		ft_switch(char c, va_list ap, t_com **com)
 {
 	if (c == 's')
 		ft_do_s((*com)->var.s = va_arg(ap, char*), *&com);
-//	else if (c == 'S')
-//		ft_do_ss((*com)->var.s = va_arg(ap, char*), *&com);
+	else if (c == 'S')
+		ft_do_ss((*com)->var.ws = va_arg(ap, wchar_t*), *&com);
 	else if (c == 'p')
 		ft_do_p((*com)->var.p = va_arg(ap, void *), *&com);
 	else if (c == 'd' || c == 'i')

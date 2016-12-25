@@ -37,10 +37,19 @@ void		ft_do_s(char *str, t_com **com)
 	}
 }
 
-//void		ft_do_ss(char *str, t_com **com)
-//{
-//	return ;
-//}
+void		ft_do_ss(wchar_t *str, t_com **com)
+{
+	unsigned int	len;
+
+	if (str == NULL)
+	{
+		(*com)->w_scroll = (unsigned char*)ft_strdup("(null)");
+		(*com)->len = 6;
+		return ;
+	}
+	(*com)->w_scroll = wchar_str(str, &len);
+	(*com)->len = len;
+}
 
 void		ft_do_c(char c, t_com **com)
 {
@@ -49,6 +58,19 @@ void		ft_do_c(char c, t_com **com)
 	(*com)->scroll = NULL;
 	(*com)->scroll = ft_strnew(1);
 	(*com)->len = 1;
+}
+
+void		ft_do_cc(wchar_t c, t_com **com)
+{
+	unsigned int	len;
+
+	if (c == 0)
+	{
+		ft_do_c(0, *&com);
+		return ;
+	}
+	(*com)->w_scroll = wchar_chr(c, &len);
+	(*com)->len = len;
 }
 
 void		ft_do_p(void *ptr, t_com **com)

@@ -13,18 +13,6 @@
 #include "../libftprintf.h"
 
 /*
-** ******* switch *******************************************
-*/
-
-void			ft_pre_print(t_com **com)
-{
-	ft_pre_print_precision(*&com);
-	ft_pre_print_flags(*&com);
-	ft_pre_print_width(*&com);
-	return ;
-}
-
-/*
 ** ******* pre print flags *******************************************
 */
 
@@ -56,37 +44,30 @@ void			ft_pre_print_flags(t_com **com)
 
 void			ft_pre_print_precision(t_com **com)
 {
-	size_t		precision;
+	size_t		pre_ion;
 	size_t		len;
+	char		*mod;
 
-	if (!(*com)->precision)
+	if (!(*com)->precision || !(mod = (*com)->modifier))
 		return ;
-	if ((*com)->modifier && (*com)->var.c != 0
-		&& (*(*com)->modifier == 'c' || *(*com)->modifier == 'C'))
+	if ((*com)->var.c != 0 && (*mod == 'c' || *mod == 'C'))
 	{
-		*(*com)->scroll = '*';
-		*(*com)->modifier = 's';
+		free((*com)->scroll);
+		(*com)->scroll = ft_strdup("*");
+		*mod = 's';
 		return ;
 	}
-	precision = (size_t)ft_atoi((*com)->precision);
+	pre_ion = (size_t)ft_atoi((*com)->precision);
 	len = (*com)->len;
-	if (precision == 0 || ((*com)->modifier
-		&& *(*com)->modifier == 's' && *(*com)->modifier == 'S'))
+	if ((pre_ion == 0 || (*mod == 's' && *mod == 'S')) || ((*com)->scroll
+		&& *(*com)->scroll == '\0') || (*mod == 'p' && pre_ion < len) ||
+		((*mod == 'u' || *mod == 'U') && pre_ion < len) || (*mod == 's'
+		&& pre_ion >= len) || ((*mod == 'o' || *mod == 'O') && pre_ion < len))
 		return ;
-	else if ((*com)->scroll && *(*com)->scroll == '\0')
-		return ;
-	else if ((*com)->modifier && *(*com)->modifier == 'p' && precision < len)
-		return ;
-	else if ((*com)->modifier && (*(*com)->modifier == 'u' || *(*com)->modifier == 'U') && precision < len)
-		return ;
-	else if ((*com)->modifier && *(*com)->modifier == 's' && precision >= len)
-		return ;
-	else if ((*com)->modifier && (*(*com)->modifier == 'o' || *(*com)->modifier == 'O') && precision < len)
-		return ;
-	else if (precision < len)
-		ft_mod_cut_word(*&com, precision);
-	else if (precision > len)
-		ft_mod_extend_word(*&com, precision, len);
+	else if (pre_ion < len)
+		ft_mod_cut_word(*&com, pre_ion);
+	else if (pre_ion > len)
+		ft_mod_extend_word(*&com, pre_ion, len);
 }
 
 /*

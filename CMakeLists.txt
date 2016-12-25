@@ -42,6 +42,7 @@ set(SOURCE_FILES
 		ft_printf/ft_printf_do_oux_2.c
 		ft_printf/ft_printf_pre_print.c
 		ft_printf/ft_printf_switch_length.c
+		ft_printf/ft_printf_wide_char.c
 
 		ft_extra_functions/ft_strnncpy.c
 		ft_extra_functions/ft_memnncpy.c
