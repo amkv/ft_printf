@@ -43,17 +43,32 @@ int				main(void)
 
 	setlocale(LC_ALL, "en_GB");
 
-//	mr = ft_printf("% 10.5d", 4242);
-	mr = ft_printf("{% 03d}", 0);
+//	mr = ft_printf("{%03.2d}", 0);
+//	printf("\n");
+//	mr = ft_printf("%03.2d", 0);
+//	printf("\n");
+//	or = printf("{%03.2d}", 0);
+//	printf("\n");
+//	or = printf("%03.2d", 0);
+
+	mr = ft_printf("%03.2d", -1);
 	printf("\n");
-	or = printf("{% 03d}", 0);
+	or = printf("%03.2d", -1);
+
+//	"%03.2d", 0
+//	"{%03.2d}", 0
+//	printf("\nlen1: %zu\n", ft_wcharlen(L'我'));
+//	printf("len2: %zu", ft_wstrlen(L"我是一只猫。"));
 
 	ft_p(mr, or);
 	return (0);
 }
 
 /*
-
+004
+ 04
+m: 3
+o: 3
 */
 
 

@@ -16,6 +16,12 @@ static void	ft_get_arg(char **str, size_t *beg, size_t *yn, size_t *len)
 {
 	*yn = 0;
 	*len = 0;
+	if (**str == '{')
+	{
+		(*len)++;
+		(*str)++;
+		return ;
+	}
 	if (**str == '%')
 	{
 		(*yn)++;
@@ -31,6 +37,8 @@ static void	ft_get_arg(char **str, size_t *beg, size_t *yn, size_t *len)
 		{
 			(*len)++;
 			(*str)++;
+			if (**str == '}')
+				break ;
 			if (**str == '%' && *(*str + 1) == '\0')
 				(*len)++;
 		}

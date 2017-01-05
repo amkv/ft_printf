@@ -76,44 +76,6 @@ void			ft_tcom_revert(t_com **list)
 	*list = save;
 }
 
-//void			ft_tcom_free_first(t_com **list)
-//{
-//	t_com		*next;
-//	t_com		*victim;
-//
-//	next = (*list)->next->next;
-//	victim = (*list)->next;
-//	free(victim->scroll);
-//	free(victim->ptr);
-//	free(victim->param);
-//	free(victim->flag);
-//	free(victim->width);
-//	free(victim->precision);
-//	free(victim->length);
-//	free(victim->modifier);
-//	free(victim);
-//	(*list)->next = next;
-//}
-//
-//void			ft_tcom_free_next(t_com **list)
-//{
-//	t_com		*next;
-//	t_com		*victim;
-//
-//	next = (*list)->next->next;
-//	victim = (*list)->next;
-//	free(victim->scroll);
-//	free(victim->ptr);
-//	free(victim->param);
-//	free(victim->flag);
-//	free(victim->width);
-//	free(victim->precision);
-//	free(victim->length);
-//	free(victim->modifier);
-//	free(victim);
-//	(*list)->next = next;
-//}
-
 void			ft_tcom_free_all(t_com *list)
 {
 	t_com		*tmp;
@@ -136,6 +98,10 @@ void			ft_tcom_free_all(t_com *list)
 		tmp = next;
 	}
 }
+
+/*
+** ******** delete ****************************************************
+*/
 
 static void		ft_tcom_print2(t_com *list, int yesno)
 {
@@ -162,6 +128,10 @@ static void		ft_tcom_print2(t_com *list, int yesno)
 		printf("var x:     %i\n", list->var.u);
 	else if (*list->modifier == 'X')
 		printf("var X:     %i\n", list->var.u);
+//	else if (*list->modifier == 'S')
+//		printf("var S:     %S\n", list->var.ws);
+//	else if (*list->modifier == 'C')
+//		printf("var C:     %C\n", list->var.wc);
 	printf("\n");
 }
 
@@ -188,3 +158,43 @@ void			ft_tcom_print(t_com *list, int yesno)
 		tmp = tmp->next;
 	}
 }
+
+/*
+void			ft_tcom_free_first(t_com **list)
+{
+	t_com		*next;
+	t_com		*victim;
+
+	next = (*list)->next->next;
+	victim = (*list)->next;
+	free(victim->scroll);
+	free(victim->ptr);
+	free(victim->param);
+	free(victim->flag);
+	free(victim->width);
+	free(victim->precision);
+	free(victim->length);
+	free(victim->modifier);
+	free(victim);
+	(*list)->next = next;
+}
+
+void			ft_tcom_free_next(t_com **list)
+{
+	t_com		*next;
+	t_com		*victim;
+
+	next = (*list)->next->next;
+	victim = (*list)->next;
+	free(victim->scroll);
+	free(victim->ptr);
+	free(victim->param);
+	free(victim->flag);
+	free(victim->width);
+	free(victim->precision);
+	free(victim->length);
+	free(victim->modifier);
+	free(victim);
+	(*list)->next = next;
+}
+*/

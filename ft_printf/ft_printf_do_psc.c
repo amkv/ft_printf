@@ -49,6 +49,8 @@ void		ft_do_ss(wchar_t *str, t_com **com)
 	}
 	(*com)->w_scroll = wchar_str(str, &len);
 	(*com)->len = len;
+	if ((*com)->modifier)
+		*(*com)->modifier = 'S';
 }
 
 void		ft_do_c(char c, t_com **com)
@@ -58,6 +60,8 @@ void		ft_do_c(char c, t_com **com)
 	(*com)->scroll = NULL;
 	(*com)->scroll = ft_strnew(1);
 	(*com)->len = 1;
+	if ((*com)->modifier)
+		*(*com)->modifier = 'c';
 }
 
 void		ft_do_cc(wchar_t c, t_com **com)
@@ -71,6 +75,8 @@ void		ft_do_cc(wchar_t c, t_com **com)
 	}
 	(*com)->w_scroll = wchar_chr(c, &len);
 	(*com)->len = len;
+	if ((*com)->modifier)
+		*(*com)->modifier = 'C';
 }
 
 void		ft_do_p(void *ptr, t_com **com)

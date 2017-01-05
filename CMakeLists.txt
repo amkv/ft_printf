@@ -8,7 +8,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -fsanitize=address -Wall -Werror -Wextra"
 set(SOURCE_FILES
 		libft/ft_putstr.c
 		libft/ft_putchar.c
-		libft/ft_putnbr.c
+#		libft/ft_putnbr.c
 		libft/ft_strlen.c
 		libft/ft_isdigit.c
 		libft/ft_memcpy.c
@@ -28,7 +28,7 @@ set(SOURCE_FILES
 		ft_printf/ft_printf.c
 		ft_printf/ft_printf_parser.c
 		ft_printf/ft_printf_is.c
-#		ft_printf/ft_printf_flags.c
+		ft_printf/ft_printf_flags.c
 		ft_printf/ft_printf_patterns_1.c
 		ft_printf/ft_printf_patterns_2.c
 		ft_printf/ft_printf_lists.c
@@ -41,13 +41,14 @@ set(SOURCE_FILES
 		ft_printf/ft_printf_do_oux_1.c
 		ft_printf/ft_printf_do_oux_2.c
 		ft_printf/ft_printf_pre_print.c
-		ft_printf/ft_printf_switch_length.c
 		ft_printf/ft_printf_wide_char.c
+		ft_printf/ft_printf_precision_1.c
+		ft_printf/ft_printf_width_1.c
 
 		ft_extra_functions/ft_strnncpy.c
 		ft_extra_functions/ft_memnncpy.c
 		ft_extra_functions/ft_itoa_base.c
-		ft_extra_functions/ft_numlen.c
+#		ft_extra_functions/ft_numlen.c
 		ft_extra_functions/ft_strdel_begn.c
 		ft_extra_functions/ft_ftoa.c
 		ft_extra_functions/ft_pow.c

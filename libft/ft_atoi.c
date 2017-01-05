@@ -19,16 +19,19 @@ long long		ft_atoi(const char *str)
 
 	sign = 1;
 	result = 0;
-	while (ft_isspace(*str))
-		str++;
-	if (*str == '-')
-		sign = -1;
-	if (*str == '+' || *str == '-')
-		str++;
-	while (ft_isdigit(*str))
+	if (str)
 	{
-		result = 10 * result + (*str - '0');
-		str++;
+		while (ft_isspace(*str))
+			str++;
+		if (*str == '-')
+			sign = -1;
+		if (*str == '+' || *str == '-')
+			str++;
+		while (ft_isdigit(*str))
+		{
+			result = 10 * result + (*str - '0');
+			str++;
+		}
 	}
 	return (result * sign);
 }

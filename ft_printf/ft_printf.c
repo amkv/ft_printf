@@ -65,7 +65,7 @@ static void			ft_print_result(t_com *com, int *characters)
 	*characters = 0;
 	while (copy != NULL)
 	{
-		if (copy->modifier && (*copy->modifier == 'c' || (*copy->modifier == 'C' && copy->len == 1))
+		if (copy->modifier && (*copy->modifier == 'c')
 			&& copy->type == '%')
 		{
 			if (copy->flag && *copy->flag == '-')
@@ -79,13 +79,34 @@ static void			ft_print_result(t_com *com, int *characters)
 				ft_putchar(copy->var.c);
 			}
 		}
-		else if (copy->modifier && (*copy->modifier == 'S' || *copy->modifier == 'C'))
-			ft_putwstr(copy->w_scroll);
+		else if (copy->modifier &&
+				(*copy->modifier == 'S' || *copy->modifier == 'C'))
+		{
+			if (ft_strchr_qt(copy->flag, '-') > 0)
+			{
+				ft_putwstr(copy->w_scroll);
+				ft_putstr(copy->scroll);
+			}
+			else
+			{
+				ft_putstr(copy->scroll);
+				ft_putwstr(copy->w_scroll);
+			}
+		}
 		else
 			ft_putstr(copy->scroll);
 		*characters += copy->len;
 		copy = copy->next;
 	}
+}
+
+static void			ft_pre_print(t_com **copy)
+{
+	if ((*copy)->type == '%')
+		ft_pre_print_null_precision(*&copy);
+	ft_pre_print_precision(*&copy);
+	ft_pre_print_flags(*&copy);
+	ft_pre_print_width(*&copy);
 }
 
 static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
@@ -109,18 +130,10 @@ static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
 				copy->precision = ft_itoa(va_arg(ap, int));
 			}
 			ft_switch(*(copy)->modifier, ap, &copy);
-			ft_pre_print_null_precision(&copy);
 		}
 		ft_pre_print(&copy);
 		copy = copy->next;
 	}
-}
-
-void				ft_pre_print(t_com **com)
-{
-	ft_pre_print_precision(*&com);
-	ft_pre_print_flags(*&com);
-	ft_pre_print_width(*&com);
 }
 
 int					ft_printf(const char *restrict format, ...)

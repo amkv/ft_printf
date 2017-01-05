@@ -102,6 +102,38 @@ unsigned char			*wchar_chr(wchar_t chr, unsigned int *length)
 	return (result);
 }
 
+size_t					ft_wcharlen(wchar_t wchar)
+{
+	size_t length;
+
+	length = 0;
+	if (wchar < (1 << 7))
+		length = 1;
+	else if (wchar < (1 << 11))
+		length = 2;
+	else if (wchar < (1 << 16))
+		length = 3;
+	else if (wchar < (1 << 21))
+		length = 4;
+	return (length);
+}
+
+size_t					ft_wstrlen(wchar_t *wstr)
+{
+	size_t length;
+	size_t onewchar;
+
+	length = 0;
+	onewchar = 0;
+	while (*wstr)
+	{
+		onewchar = ft_wcharlen(*wstr);
+		wstr++;
+		length += onewchar;
+	}
+	return (length);
+}
+
 void					ft_putwstr(unsigned char *str)
 {
 	if (str)

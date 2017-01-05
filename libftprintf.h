@@ -130,7 +130,7 @@ int				ft_printf(const char *restrict format, ...);
 void			ft_parser(const char *format, t_com **list, size_t *argc);
 void			ft_check_patterns(
 				t_com **com, size_t *yn, char **holder, size_t *argc);
-void			ft_pre_print(t_com **com);
+void			ft_switch(char c, va_list ap, t_com **com);
 
 /*
 ** Lists
@@ -145,7 +145,7 @@ void			ft_tcom_print(t_com *list, int yesno);
 
 /*
 ** PARSER.
-** patterns and chekers
+** patterns and checkers
 */
 int				ft_pat_one(
 				t_com **com, t_com **fresh, char **holder, size_t *yn);
@@ -166,9 +166,9 @@ int				ft_is_modifier(char c);
 /*
 ** Switch
 */
-void			ft_switch(char c, va_list ap, t_com **com);
-void			ft_switch_d(va_list ap, t_com **com);
-void			ft_switch_oux(va_list ap, t_com **com, int base, int yesno);
+
+//void			ft_switch_d(va_list ap, t_com **com);
+//void			ft_switch_oux(va_list ap, t_com **com, int base, int yesno);
 
 /*
 ** DOs
@@ -228,7 +228,6 @@ void			ft_mod_add_zero(t_com **com);
 void			ft_mod_add_one_space(t_com **com);
 unsigned char	*wchar_str(wchar_t *str, unsigned int *length);
 unsigned char	*wchar_chr(wchar_t chr, unsigned int *length);
-void			ft_putwstr(unsigned char *str);
 
 /*
 ** helpers
@@ -250,5 +249,9 @@ void			ft_putstrn(const char *str, size_t n);
 char			*ft_strnew_char_filled(size_t len, char c);
 char			*ft_strdupn(const char *str, size_t n);
 char			*ft_strjoin_and_free(char *str1, char *str2, int a, int b);
+
+void			ft_putwstr(unsigned char *str);
+size_t			ft_wstrlen(wchar_t *wstr);
+size_t			ft_wcharlen(wchar_t wchar);
 
 #endif

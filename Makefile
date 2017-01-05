@@ -6,7 +6,7 @@
 #    By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/22 14:50:24 by akalmyko          #+#    #+#              #
-#    Updated: 2016/12/24 17:33:45 by akalmyko         ###   ########.fr        #
+#    Updated: 2017/01/04 19:51:18 by akalmyko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,7 +97,6 @@ PC += $(P)ft_printf_is.c
 PC += $(P)ft_printf_lists.c
 PC += $(P)ft_printf_parser.c
 PC += $(P)ft_printf_switch.c
-PC += $(P)ft_printf_switch_length.c
 PC += $(P)ft_printf_do.c
 PC += $(P)ft_printf_do_psc.c
 PC += $(P)ft_printf_do_d_1.c
@@ -108,6 +107,9 @@ PC += $(P)ft_printf_patterns_1.c
 PC += $(P)ft_printf_patterns_2.c
 PC += $(P)ft_printf_pre_print.c
 PC += $(P)ft_printf_wide_char.c
+PC += $(P)ft_printf_precision_1.c
+PC += $(P)ft_printf_width_1.c
+PC += $(P)ft_printf_flags.c
 
 EC = $(E)ft_memnncpy.c
 EC += $(E)ft_strnncpy.c
@@ -206,8 +208,11 @@ OF += ft_strdel_begn.o
 OF += ft_printf_patterns_1.o
 OF += ft_printf_patterns_2.o
 OF += ft_printf_pre_print.o
-OF += ft_printf_switch_length.o
 OF += ft_printf_wide_char.o
+OF += ft_printf_precision_1.o
+OF += ft_printf_width_1.o
+OF += ft_printf_flags.o
+
 
 OF += ft_memnncpy.o
 OF += ft_strnncpy.o
