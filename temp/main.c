@@ -43,38 +43,15 @@ int				main(void)
 
 	setlocale(LC_ALL, "en_GB");
 
-//	bonus_03
-//	mr = ft_printf("{%3*d}", 0, 0);
-//	printf("\n");
-//	mr = ft_printf("{%*3d}", 0, 0);
-//	printf("\n");
-//	mr = ft_printf("{%*3d}", 5, 0);
-//	printf("\n");
-//	mr = ft_printf("{%05.*d}", -15, 42);
-//	printf("\n");
-//	printf("\n");
-//	or = printf("{%3*d}", 0, 0);
-//	printf("\n");
-//	or = printf("{%*3d}", 0, 0);
-//	printf("\n");
-//	or = printf("{%*3d}", 5, 0);
-//	printf("\n");
-//	or = printf("{%05.*d}", -15, 42);
-
-
-	mr = ft_printf("%+5d", 42);
+	mr = ft_printf("%s, test", str);
 	printf("\n");
-	or = printf("%+5d", 42);
+	or = printf("%s, test", str);
+
 	ft_p(mr, or);
 	return (0);
 }
 
 /*
-or = printf("%c");
-"{%3*d}", 0, 0
-"{%*3d}", 0, 0
-"{%*3d}", 5, 0
-"{%05.*d}", -15, 42
 */
 
 

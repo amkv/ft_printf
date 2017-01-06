@@ -78,6 +78,7 @@ static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
 			{
 				free(copy->width);
 				copy->width = ft_itoa(va_arg(ap, int));
+				copy->width_flag = 1;
 			}
 			if (copy->precision && *copy->precision == '*')
 			{

@@ -42,6 +42,12 @@ char		*ft_pat_precision(char **holder)
 		new_holder = ft_strdel_begn(*holder, 1);
 		ft_free_and_set(*&holder, &new_holder);
 	}
+	else if (ft_isdigit(**holder) == 1)
+	{
+		precision = ft_itoa(ft_atoi(*holder));
+		new_holder = ft_strdel_begn(*holder, ft_strlen(precision));
+		ft_free_and_set(*&holder, &new_holder);
+	}
 	return (precision);
 }
 

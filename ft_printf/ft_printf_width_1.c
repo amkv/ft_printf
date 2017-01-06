@@ -65,6 +65,8 @@ static int		ft_add_spaces_helper(t_com **com)
 		return (0);
 	if (ft_strchr_qt(flag, '0') > 0 && ft_atoi((*com)->precision) == 0)
 		return (1);
+	if ((*com)->modifier && *(*com)->modifier == 'd' && (*com)->prec_flag > 0)
+		return (1);
 	return (0);
 }
 

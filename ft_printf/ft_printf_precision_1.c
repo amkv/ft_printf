@@ -266,6 +266,8 @@ void			ft_mod_extend_word(t_com **com, size_t precision, size_t len)
 			else
 				spaces = ft_strnew_char_filled(precision - 1, '0');
 		}
+		else if ((*com)->width_flag > 0 && (*com)->width_flag < 0)
+			spaces = ft_strnew_char_filled(precision - len, ' ');
 		else
 			spaces = ft_strnew_char_filled(precision - len, '0');
 	}
