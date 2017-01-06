@@ -12,7 +12,7 @@
 
 #include "../libftprintf.h"
 
-static void ft_nothing(void)
-{
-	return ;
-}
+//static void ft_nothing(void)
+//{
+//	return ;
+//}

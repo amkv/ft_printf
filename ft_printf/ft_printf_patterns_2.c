@@ -36,6 +36,12 @@ char		*ft_pat_precision(char **holder)
 			new_holder = ft_strdup(*holder + 1);
 		ft_free_and_set(*&holder, &new_holder);
 	}
+	else if (**holder == '*')
+	{
+		precision = ft_strdup("*");
+		new_holder = ft_strdel_begn(*holder, 1);
+		ft_free_and_set(*&holder, &new_holder);
+	}
 	return (precision);
 }
 

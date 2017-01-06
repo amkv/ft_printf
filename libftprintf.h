@@ -21,11 +21,11 @@
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
 
-# pragma GCC diagnostic ignored "-Wunused-function"
+//# pragma GCC diagnostic ignored "-Wunused-function"
 //# pragma GCC diagnostic ignored "-Wunused-variable"
 //# pragma GCC diagnostic ignored "-Wunused-parameter"
 //# pragma GCC diagnostic ignored "-Wimplicitly-unsigned-literal"
-# pragma GCC diagnostic ignored "-Wformat"
+//# pragma GCC diagnostic ignored "-Wformat"
 
 # include "libft/libft.h"
 # include <stdarg.h>
@@ -115,7 +115,9 @@ typedef struct	s_com
 	char				*param;
 	char				*flag;
 	char				*width;
+	int					width_flag;
 	char				*precision;
+	int					prec_flag;
 	char				*length;
 	char				*modifier;
 	int					counter;
@@ -210,10 +212,10 @@ void			ft_do_uu(long int u, t_com **com);
 /*
 ** Pre print functions
 */
+void			ft_pre_print_null_precision(t_com **fresh);
 void			ft_pre_print_precision(t_com **com);
 void			ft_pre_print_flags(t_com **com);
 void			ft_pre_print_width(t_com **com);
-void			ft_pre_print_null_precision(t_com **fresh);
 
 /*
 ** Modifiers (scroll)
@@ -243,12 +245,13 @@ long int		ft_numlen(long int num);
 char			*ft_itoa_base(intmax_t value, intmax_t base);
 char			*ft_itoa_base_uintmax(uintmax_t value, uintmax_t base);
 char			*ft_strdel_begn(char *str, size_t n);
-char			*ft_ftoa(double number, int length);
 double			ft_pow(double x, double y);
 void			ft_putstrn(const char *str, size_t n);
 char			*ft_strnew_char_filled(size_t len, char c);
 char			*ft_strdupn(const char *str, size_t n);
 char			*ft_strjoin_and_free(char *str1, char *str2, int a, int b);
+
+char			*ft_ftoa(double number, int length);
 
 void			ft_putwstr(unsigned char *str);
 size_t			ft_wstrlen(wchar_t *wstr);

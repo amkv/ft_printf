@@ -23,6 +23,7 @@ set(SOURCE_FILES
 		libft/ft_isspace.c
 		libft/ft_strcmp.c
 		libft/ft_strchr_qt.c
+#		libft/ft_isprint.c
 
 		temp/main.c
 		ft_printf/ft_printf.c

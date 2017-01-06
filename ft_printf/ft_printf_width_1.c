@@ -21,6 +21,8 @@ void			ft_pre_print_width(t_com **com)
 	intmax_t	width;
 	size_t		len;
 	size_t		new_width;
+	char 		*spaces;
+	char 		*result;
 
 	if ((*com)->width)
 	{
@@ -29,10 +31,21 @@ void			ft_pre_print_width(t_com **com)
 		{
 			new_width = (size_t)-width;
 			len = (*com)->len;
+			spaces = ft_strnew_char_filled(new_width - len, ' ');
+			result = ft_strjoin((*com)->scroll, spaces);
+			free((*com)->scroll);
+			free(spaces);
+			(*com)->scroll = result;
 			if (new_width > len)
 				(*com)->len = (size_t)new_width;
-			return ;
 		}
+//		else if ((*com)->precision && ft_atoi((*com)->precision) == 0
+//				 && width <= 0)
+//			return ;
+//		else if ((*com)->modifier && *(*com)->modifier == 'p')
+//		{
+//			;
+//		}
 		else
 			ft_mod_add_spaces(*&com);
 	}
@@ -44,19 +57,14 @@ void			ft_pre_print_width(t_com **com)
 
 static int		ft_add_spaces_helper(t_com **com)
 {
-	char		*m;
 	char 		*flag;
 
-	if (!(m = (*com)->modifier) || !(flag = (*com)->flag))
+	if (!(flag = (*com)->flag))
 		return (0);
 	if (ft_strchr_qt(flag, '-') > 0 && ft_strchr_qt(flag, '0') > 0)
 		return (0);
-	if (*m == 'd' || *m == 'D' || *m == 'x' || *m == 'X' || *m == 'o'
-		|| *m == 'O' || *m == 'u' || *m == 'U' || *m == 'i' || *m == 's')
-	{
-		if (ft_strchr_qt(flag, '0') > 0 && ft_atoi((*com)->precision) == 0)
-			return (1);
-	}
+	if (ft_strchr_qt(flag, '0') > 0 && ft_atoi((*com)->precision) == 0)
+		return (1);
 	return (0);
 }
 

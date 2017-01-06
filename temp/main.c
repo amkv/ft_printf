@@ -43,32 +43,38 @@ int				main(void)
 
 	setlocale(LC_ALL, "en_GB");
 
-//	mr = ft_printf("{%03.2d}", 0);
+//	bonus_03
+//	mr = ft_printf("{%3*d}", 0, 0);
 //	printf("\n");
-//	mr = ft_printf("%03.2d", 0);
+//	mr = ft_printf("{%*3d}", 0, 0);
 //	printf("\n");
-//	or = printf("{%03.2d}", 0);
+//	mr = ft_printf("{%*3d}", 5, 0);
 //	printf("\n");
-//	or = printf("%03.2d", 0);
+//	mr = ft_printf("{%05.*d}", -15, 42);
+//	printf("\n");
+//	printf("\n");
+//	or = printf("{%3*d}", 0, 0);
+//	printf("\n");
+//	or = printf("{%*3d}", 0, 0);
+//	printf("\n");
+//	or = printf("{%*3d}", 5, 0);
+//	printf("\n");
+//	or = printf("{%05.*d}", -15, 42);
 
-	mr = ft_printf("%03.2d", -1);
+
+	mr = ft_printf("%+5d", 42);
 	printf("\n");
-	or = printf("%03.2d", -1);
-
-//	"%03.2d", 0
-//	"{%03.2d}", 0
-//	printf("\nlen1: %zu\n", ft_wcharlen(L'我'));
-//	printf("len2: %zu", ft_wstrlen(L"我是一只猫。"));
-
+	or = printf("%+5d", 42);
 	ft_p(mr, or);
 	return (0);
 }
 
 /*
-004
- 04
-m: 3
-o: 3
+or = printf("%c");
+"{%3*d}", 0, 0
+"{%*3d}", 0, 0
+"{%*3d}", 5, 0
+"{%05.*d}", -15, 42
 */
 
 

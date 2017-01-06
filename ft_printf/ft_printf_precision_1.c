@@ -19,6 +19,7 @@
 void			ft_pre_print_precision(t_com **com)
 {
 	size_t		pre_ion;
+	signed long	pre_cion;
 	size_t		len;
 	char		*mod;
 
@@ -31,12 +32,35 @@ void			ft_pre_print_precision(t_com **com)
 		*mod = 's';
 		return ;
 	}
-	pre_ion = (size_t)ft_atoi((*com)->precision);
+	if ((pre_cion = ft_atoi((*com)->precision)) < 0)
+		return;
+	pre_ion = (size_t)pre_cion;
 	len = (*com)->len;
-	if ((pre_ion == 0 || (*mod == 's' && *mod == 'S')) || ((*com)->scroll
-														   && *(*com)->scroll == '\0') || (*mod == 'p' && pre_ion < len) ||
-		((*mod == 'u' || *mod == 'U') && pre_ion < len) || (*mod == 's'
-															&& pre_ion >= len) || ((*mod == 'o' || *mod == 'O') && pre_ion < len))
+	if ((*mod == 'd' || *mod == 'i') && (*com)->var.d < 0)
+	{
+		if (pre_ion < len - 1)
+			ft_mod_cut_word(*&com, pre_ion);
+		else if (pre_ion > len - 1)
+			ft_mod_extend_word(*&com, pre_ion, len);
+	}
+	if (pre_ion == 0 && (*mod == 's' || *mod == 'S'))
+	{
+		free((*com)->scroll);
+		(*com)->scroll = NULL;
+		(*com)->len = 0;
+		(*com)->scroll = ft_strnew(1);
+	}
+//	if (*mod == 'p')
+//	{
+//		if (!(*com)->scroll)
+//			;
+//	}
+	if ((pre_ion == 0)
+		|| ((*com)->scroll && *(*com)->scroll == '\0')
+		|| (*mod == 'p' && pre_ion < len)
+		|| ((*mod == 'u' || *mod == 'U') && pre_ion < len)
+		|| (*mod == 's' && pre_ion >= len)
+		|| ((*mod == 'o' || *mod == 'O') && pre_ion < len))
 		return ;
 	else if (pre_ion < len)
 		ft_mod_cut_word(*&com, pre_ion);
@@ -211,9 +235,14 @@ static void		ft_set_result(char **result, char **spaces, t_com **com)
 	}
 	else if (*(*com)->modifier == 'p')
 	{
-		temp = ft_strdel_begn((*com)->scroll, 2);
-		temp2 = ft_strjoin("0x", *spaces);
-		*result = ft_strjoin_and_free(temp2, temp, 1, 1);
+		if ((*com)->prec_flag == 1)
+			*result = ft_strjoin(*spaces, (*com)->scroll);
+		else
+		{
+			temp = ft_strdel_begn((*com)->scroll, 2);
+			temp2 = ft_strjoin("0x", *spaces);
+			*result = ft_strjoin_and_free(temp2, temp, 1, 1);
+		}
 	}
 	else
 		*result = ft_strjoin(*spaces, (*com)->scroll);
@@ -230,7 +259,9 @@ void			ft_mod_extend_word(t_com **com, size_t precision, size_t len)
 	{
 		if (*(*com)->modifier == 'p')
 		{
-			if ((*com)->width && ((size_t)ft_atoi((*com)->precision)) > (*com)->len)
+			if ((*com)->prec_flag == 1)
+				spaces = ft_strnew_char_filled((size_t)ft_atoi((*com)->precision) - ft_strlen((*com)->scroll), ' ');
+			else if ((*com)->width && ((size_t)ft_atoi((*com)->precision)) > (*com)->len)
 				spaces = ft_strnew_char_filled((size_t)ft_atoi((*com)->precision) - (*com)->len + 2, '0');
 			else
 				spaces = ft_strnew_char_filled(precision - 1, '0');

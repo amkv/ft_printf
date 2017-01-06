@@ -37,7 +37,9 @@ t_com			*ft_tcom_new(void)
 	new->param = NULL;
 	new->flag = NULL;
 	new->width = 0;
+	new->width_flag = -1;
 	new->precision = NULL;
+	new->prec_flag = -1;
 	new->length = NULL;
 	new->modifier = NULL;
 	new->next = NULL;
@@ -151,6 +153,7 @@ void			ft_tcom_print(t_com *list, int yesno)
 		printf("flag:      \'%s\'\n", tmp->flag);
 		printf("width:     \'%s\'\n", tmp->width);
 		printf("precision: \'%s\'\n", tmp->precision);
+		printf("prec flag: \'%d\'\n", tmp->prec_flag);
 		printf("length:    \'%s\'\n", tmp->length);
 		printf("modifier:  \'%s\'\n", tmp->modifier);
 		printf("counter:   \'%d\'\n", tmp->counter);

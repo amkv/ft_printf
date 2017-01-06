@@ -12,57 +12,11 @@
 
 #include "../libftprintf.h"
 
-//static int			ft_exceptions(const char *format, int *characters)
-//{
-//	int				index;
-//
-//	*characters = 0;
-//	if ((*format == '\0') || (*format == '%' && *(format + 1) == '\0'))
-//		return (*characters);
-//	if (*format == '%' && *(format + 1) == '%' && *(format + 2) == '\0')
-//	{
-//		ft_putchar('%');
-//		return (++(*characters));
-//	}
-//	if (*format == '%' && *(format + 1) == ' ')
-//	{
-//		index = 1;
-//		while (format[index] == ' ')
-//			index++;
-//		if (format[index] == '%' && format[index + 1] == '\0')
-//		{
-//			ft_putchar('%');
-//			return ((*characters = 1));
-//		}
-//	}
-///*
-//	if (*format == '%')
-//	{
-//		index = 1;
-//		while (ft_isdigit(format[index]) == 1)
-//			index++;
-//		if (format[index] == '%' && format[index + 1] == '\0')
-//		{
-//			while (index > 0)
-//			{
-//				ft_putchar(' ');
-//				index--;
-//			}
-//			ft_putchar('%');
-//			*characters = index;
-//			return (*characters);
-//		}
-//	}
-// */
-//	return (-1);
-//}
-
 static void			ft_print_result(t_com *com, int *characters)
 {
 	t_com			*copy;
 
 	copy = com;
-	*characters = 0;
 	while (copy != NULL)
 	{
 		if (copy->modifier && (*copy->modifier == 'c')
@@ -73,6 +27,16 @@ static void			ft_print_result(t_com *com, int *characters)
 				ft_putchar(copy->var.c);
 				ft_putstrn(copy->scroll, ((copy->len) - 1));
 			}
+			else if (ft_atoi(copy->width) < 0)
+			{
+				ft_putchar(copy->var.c);
+				ft_putstr(copy->scroll);
+			}
+//			else if (ft_isprint(copy->var.c))
+//			{
+//				ft_putchar('h');
+//				ft_putstr(copy->scroll);
+//			}
 			else
 			{
 				ft_putstrn(copy->scroll, ((copy->len) - 1));
@@ -100,15 +64,6 @@ static void			ft_print_result(t_com *com, int *characters)
 	}
 }
 
-static void			ft_pre_print(t_com **copy)
-{
-	if ((*copy)->type == '%')
-		ft_pre_print_null_precision(*&copy);
-	ft_pre_print_precision(*&copy);
-	ft_pre_print_flags(*&copy);
-	ft_pre_print_width(*&copy);
-}
-
 static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
 {
 	t_com			*copy;
@@ -128,10 +83,14 @@ static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
 			{
 				free(copy->precision);
 				copy->precision = ft_itoa(va_arg(ap, int));
+				copy->prec_flag = 1;
 			}
 			ft_switch(*(copy)->modifier, ap, &copy);
+			ft_pre_print_null_precision(&copy);
 		}
-		ft_pre_print(&copy);
+		ft_pre_print_precision(&copy);
+		ft_pre_print_flags(&copy);
+		ft_pre_print_width(&copy);
 		copy = copy->next;
 	}
 }
@@ -143,10 +102,8 @@ int					ft_printf(const char *restrict format, ...)
 	size_t			argc;
 	int				characters;
 
-//	if (ft_exceptions(format, &characters) >= 0)
-//		return (characters);
-	characters = 0; // удалить
 	argc = 0; // удалить
+	characters = 0;
 	va_start(ap, format);
 	ft_parser(format, &com, &argc);
 //	printf("аргументов: %zu\n", argc);

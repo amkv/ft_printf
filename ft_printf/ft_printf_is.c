@@ -32,8 +32,8 @@ int		ft_is_modifier(char c)
 		c == 'i' || c == 'o' || c == 'O' || c == 'u' || c == 'U' ||
 		c == 'x' || c == 'X' || c == 'c' || c == 'C')
 		return (1);
-	else if (c == 'e' || c == 'E' || c == 'f' || c == 'F' || c == 'g' ||
-			c == 'G' || c == 'a' || c == 'A' || c == 'n')
-		return (1);
+//	else if (c == 'e' || c == 'E' || c == 'f' || c == 'F' || c == 'g' ||
+//			c == 'G' || c == 'a' || c == 'A' || c == 'n')
+//		return (1);
 	return (0);
 }

@@ -1184,4 +1184,96 @@ ft_precision
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//	if (ft_exceptions(format, &characters) >= 0)
+//		return (characters);
+
+
+static int			ft_exceptions(const char *format, int *characters)
+{
+	int				index;
+
+	*characters = 0;
+	if ((*format == '\0') || (*format == '%' && *(format + 1) == '\0'))
+		return (*characters);
+	if (*format == '%' && *(format + 1) == '%' && *(format + 2) == '\0')
+	{
+		ft_putchar('%');
+		return (++(*characters));
+	}
+	if (*format == '%' && *(format + 1) == ' ')
+	{
+		index = 1;
+		while (format[index] == ' ')
+			index++;
+		if (format[index] == '%' && format[index + 1] == '\0')
+		{
+			ft_putchar('%');
+			return ((*characters = 1));
+		}
+	}
+/*
+	if (*format == '%')
+	{
+		index = 1;
+		while (ft_isdigit(format[index]) == 1)
+			index++;
+		if (format[index] == '%' && format[index + 1] == '\0')
+		{
+			while (index > 0)
+			{
+				ft_putchar(' ');
+				index--;
+			}
+			ft_putchar('%');
+			*characters = index;
+			return (*characters);
+		}
+	}
+ */
+	return (-1);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//static void	ft_get_true_percent(char **str, size_t *len)
+//{
+//	char	*copy;
+//	size_t 	counter;
+//	size_t	beg2;
+//	int		scob;
+//
+//	copy = *str;
+//	counter = 0;
+//	beg2 = 0;
+//	scob = 0;
+//	while (*copy != '%' && *copy != '\0')
+//	{
+//		if (ft_is_modifier(*copy) == 1)
+//			counter++;
+//		if (*copy == '}')
+//			scob++;
+//		copy++;
+//		beg2++;
+//	}
+//	if (counter == 0)
+//	{
+//		(*len) += beg2;
+//		*str = (*str + beg2);
+//		if (**str == '%')
+//		{
+//			(*len)++;
+//			(*str)++;
+//		}
+//		if (scob > 0)
+//		{
+//			(*len) -= scob;
+//			--(*str);
+//		}
+//	}
+//	else
+//		ft_get_false_percent(*&str, *&len);
+//}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 */
