@@ -12,17 +12,6 @@
 
 #include "../libftprintf.h"
 
-static void	ft_get_false_percent(char **str, size_t *len)
-{
-	while (**str != '%' && **str != '\0')
-	{
-		(*len)++;
-		(*str)++;
-		if (**str == '}')
-			break ;
-	}
-}
-
 static void	ft_get_no_modifier(char **str, size_t *len, int *scob, int *beg)
 {
 	(*len) += (*beg);
@@ -59,7 +48,13 @@ static void	ft_get_true_percent(char **str, size_t *len)
 	if (counter == 0)
 		ft_get_no_modifier(*&str, *&len, &scob, &beg);
 	else
-		ft_get_false_percent(*&str, *&len);
+		while (**str != '%' && **str != '\0')
+		{
+			(*len)++;
+			(*str)++;
+			if (**str == '}')
+				break ;
+		}
 }
 
 static void	ft_get_arg(char **str, size_t *beg, size_t *yn, size_t *len)
@@ -79,13 +74,19 @@ static void	ft_get_arg(char **str, size_t *beg, size_t *yn, size_t *len)
 		ft_get_true_percent(*&str, *&len);
 	}
 	else
-		ft_get_false_percent(*&str, *&len);
+		while (**str != '%' && **str != '\0')
+		{
+			(*len)++;
+			(*str)++;
+			if (**str == '}')
+				break ;
+		}
 	if (*yn > 0)
 		(*beg)++;
 }
 
-void		ft_check_patterns(
-			t_com **com, size_t *yn, char **holder, size_t *argc)
+static void	ft_check_patterns(
+			t_com **com, size_t *yn, char **holder)
 {
 	char	*copy;
 	t_com	*fresh;
@@ -100,7 +101,7 @@ void		ft_check_patterns(
 	(fresh)->precision = ft_pat_precision(*&holder);
 	(fresh)->length = ft_pat_length(*&holder);
 	(fresh)->modifier = ft_pat_modifier(*&holder);
-	ft_pat_ending(&fresh, *&holder, *&argc);
+	ft_pat_ending(&fresh, *&holder);
 	ft_tcom_list(*&com, fresh);
 	if (*holder == NULL)
 		return (free(copy));
@@ -108,7 +109,7 @@ void		ft_check_patterns(
 		ft_pat_string(*&com, &copy, *&holder);
 }
 
-void		ft_parser(const char *format, t_com **com, size_t *argc)
+void		ft_parser(const char *format, t_com **com)
 {
 	char	*copy;
 	char	*holder;
@@ -116,7 +117,6 @@ void		ft_parser(const char *format, t_com **com, size_t *argc)
 	size_t	yn;
 	size_t	len;
 
-	*argc = 0;
 	*com = NULL;
 	beg = 0;
 	copy = (char*)format;
@@ -127,7 +127,7 @@ void		ft_parser(const char *format, t_com **com, size_t *argc)
 			break ;
 		ft_memnncpy((holder = ft_strnew(len + 1)), format, beg, len);
 		beg += len;
-		ft_check_patterns(*&com, &yn, &holder, *&argc);
+		ft_check_patterns(*&com, &yn, &holder);
 	}
 	ft_tcom_revert(*&com);
 }

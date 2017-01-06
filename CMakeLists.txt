@@ -8,7 +8,6 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -fsanitize=address -Wall -Werror -Wextra"
 set(SOURCE_FILES
 		libft/ft_putstr.c
 		libft/ft_putchar.c
-#		libft/ft_putnbr.c
 		libft/ft_strlen.c
 		libft/ft_isdigit.c
 		libft/ft_memcpy.c
@@ -23,37 +22,37 @@ set(SOURCE_FILES
 		libft/ft_isspace.c
 		libft/ft_strcmp.c
 		libft/ft_strchr_qt.c
-#		libft/ft_isprint.c
 
 		temp/main.c
 		ft_printf/ft_printf.c
 		ft_printf/ft_printf_parser.c
 		ft_printf/ft_printf_is.c
-		ft_printf/ft_printf_flags.c
+		ft_printf/ft_printf_flags_1.c
+		ft_printf/ft_printf_flags_2.c
 		ft_printf/ft_printf_patterns_1.c
 		ft_printf/ft_printf_patterns_2.c
+		ft_printf/ft_printf_patterns_3.c
 		ft_printf/ft_printf_lists.c
 		ft_printf/ft_printf_helpers.c
 		ft_printf/ft_printf_switch.c
-		ft_printf/ft_printf_do.c
 		ft_printf/ft_printf_do_psc.c
 		ft_printf/ft_printf_do_d_1.c
 		ft_printf/ft_printf_do_d_2.c
 		ft_printf/ft_printf_do_oux_1.c
 		ft_printf/ft_printf_do_oux_2.c
-		ft_printf/ft_printf_pre_print.c
 		ft_printf/ft_printf_wide_char.c
 		ft_printf/ft_printf_precision_1.c
+		ft_printf/ft_printf_precision_2.c
+		ft_printf/ft_printf_precision_3.c
+		ft_printf/ft_printf_precision_4.c
 		ft_printf/ft_printf_width_1.c
+		ft_printf/ft_printf_width_2.c
 
-		ft_extra_functions/ft_strnncpy.c
 		ft_extra_functions/ft_memnncpy.c
 		ft_extra_functions/ft_itoa_base.c
-#		ft_extra_functions/ft_numlen.c
 		ft_extra_functions/ft_strdel_begn.c
-		ft_extra_functions/ft_ftoa.c
-		ft_extra_functions/ft_pow.c
 		ft_extra_functions/ft_strdupn.c
 		ft_extra_functions/ft_itoa_base_uintmax.c
+		ft_extra_functions/ft_wcharlen.c
 		)
 add_executable(ft_printf ${SOURCE_FILES})

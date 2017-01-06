@@ -1,20 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_flags.c                                  :+:      :+:    :+:   */
+/*   ft_printf_flags_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/15 13:22:19 by akalmyko          #+#    #+#             */
-/*   Updated: 2016/12/15 13:22:21 by akalmyko         ###   ########.fr       */
+/*   Created: 2017/01/06 14:02:55 by akalmyko          #+#    #+#             */
+/*   Updated: 2017/01/06 14:02:57 by akalmyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
-
-/*
-** ******* pre print flags *******************************************
-*/
 
 void			ft_pre_print_flags(t_com **com)
 {
@@ -44,7 +40,7 @@ void			ft_pre_print_flags(t_com **com)
 }
 
 /*
-** ******* plus flag *********************************************************
+** + flag
 */
 
 void			ft_mod_add_sign(t_com **com)
@@ -53,7 +49,8 @@ void			ft_mod_add_sign(t_com **com)
 
 	if (!(*com)->scroll && !(*com)->modifier)
 		return ;
-	if ((*com)->modifier && (*(*com)->modifier == 'd' || *(*com)->modifier == 'i'))
+	if ((*com)->modifier && (*(*com)->modifier == 'd'
+						|| *(*com)->modifier == 'i'))
 	{
 		if (ft_atoi((*com)->scroll) < 0)
 			return ;
@@ -67,64 +64,12 @@ void			ft_mod_add_sign(t_com **com)
 }
 
 /*
-** ****** zero flag ***********************************************************
+** space flag (one space)
 */
 
-void			ft_mod_add_zero(t_com **com)
+void			ft_mod_add_one_space(t_com **com)
 {
-	char		*mod;
-	char 		*zeros;
 	char		*result;
-//	char 		*temp;
-	size_t 		width;
-
-	if (!(mod = (*com)->modifier))
-		return ;
-	if ((*com)->precision || ((*mod == 'd' || *mod == 'D' || *mod == 'i'
-		|| *mod == 'o' || *mod == 'O' || *mod == 'u' || *mod == 'U'
-		|| *mod == 'x' || *mod == 'X')) || !(*com)->width)
-		return ;
-	width = (size_t)ft_atoi((*com)->width);
-	zeros = NULL;
-	if (width > (*com)->len)
-		zeros = ft_strnew_char_filled(width - (*com)->len, '0');
-	if (width <= (*com)->len)
-		zeros = ft_strdup("");
-	if (*mod == 'p')
-		result = ft_strjoin((*com)->scroll, zeros);
-//	else if ((*com)->scroll && *(*com)->scroll == '-')
-//	{
-//		temp = ft_strdel_begn((*com)->scroll, 1);
-//		free((*com)->scroll);
-//		(*com)->scroll = ft_strjoin("-", zeros);
-//		result = ft_strjoin((*com)->scroll, temp);
-//		free(temp);
-//	}
-	else
-	{
-		if (!(*com)->scroll)
-			(*com)->scroll = ft_strnew(1);
-		result = ft_strjoin(zeros, (*com)->scroll);
-	}
-	ft_free_and_set(&(*com)->scroll, &result);
-	free(zeros);
-	if (*mod == 'c')
-		(*com)->len = width;
-	else if (*mod == 'S')
-		(*com)->len = width;
-	else
-		(*com)->len = ft_strlen((*com)->scroll);
-	free((*com)->width);
-	(*com)->width = NULL;
-}
-
-/*
-** ****** space flag (one space)*********************************************
-*/
-
-void 			ft_mod_add_one_space(t_com **com)
-{
-	char 		*result;
 	char		*mod;
 
 	if (!(mod = (*com)->modifier))
@@ -133,7 +78,7 @@ void 			ft_mod_add_one_space(t_com **com)
 	{
 		if ((*com)->var.d < 0)
 			return ;
-		else if (ft_strchr_qt((*com)->flag,'+') > 0)
+		else if (ft_strchr_qt((*com)->flag, '+') > 0)
 			return ;
 		else if ((*com)->scroll && *(*com)->scroll == '+')
 			return ;
@@ -147,7 +92,7 @@ void 			ft_mod_add_one_space(t_com **com)
 }
 
 /*
-** ************* # flag ****************************************
+** # flag
 */
 
 static int		ft_add_0x_helper(char c)
@@ -178,14 +123,9 @@ void			ft_mod_add_0x(t_com **com)
 		return ;
 	if ((*com)->precision && ft_atoi((*com)->precision) > 0
 		&& (*(*com)->modifier == 'o' || *(*com)->modifier == 'O'))
-	{
-		beg = ft_strdup("");
-		result = ft_strjoin(beg, (*com)->scroll);
-	}
+		result = ft_strjoin("", (*com)->scroll);
 	else
-		result = ft_strjoin(beg, (*com)->scroll);
-	free(beg);
-	free((*com)->scroll);
-	(*com)->scroll = result;
+		result = ft_strjoin_and_free(beg, (*com)->scroll, 1, 0);
+	ft_free_and_set(&(*com)->scroll, &result);
 	(*com)->len = ft_strlen(result);
 }

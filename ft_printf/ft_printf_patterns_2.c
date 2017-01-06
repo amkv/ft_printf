@@ -12,45 +12,6 @@
 
 #include "../libftprintf.h"
 
-char		*ft_pat_precision(char **holder)
-{
-	char	*new_holder;
-	char	*precision;
-
-	if (!(*holder))
-		return (NULL);
-	precision = NULL;
-	if (**holder == '.')
-	{
-		if (ft_isdigit(*(*holder + 1)) == 1)
-			precision = ft_itoa(ft_atoi(*holder + 1));
-		else if (*(*holder + 1) == '*')
-			precision = ft_strdup("*");
-		if (precision == NULL || (precision && *precision == '0'))
-			precision = ft_strdup("!");
-		if (ft_isdigit(*(*holder + 1)) == 1)
-			new_holder = ft_strdel_begn(*holder, ft_strlen(precision) + 1);
-		else if (*(*holder + 1) == '*')
-			new_holder = ft_strdel_begn(*holder, 2);
-		else
-			new_holder = ft_strdup(*holder + 1);
-		ft_free_and_set(*&holder, &new_holder);
-	}
-	else if (**holder == '*')
-	{
-		precision = ft_strdup("*");
-		new_holder = ft_strdel_begn(*holder, 1);
-		ft_free_and_set(*&holder, &new_holder);
-	}
-	else if (ft_isdigit(**holder) == 1)
-	{
-		precision = ft_itoa(ft_atoi(*holder));
-		new_holder = ft_strdel_begn(*holder, ft_strlen(precision));
-		ft_free_and_set(*&holder, &new_holder);
-	}
-	return (precision);
-}
-
 char		*ft_pat_length(char **holder)
 {
 	char	*result;
@@ -90,7 +51,7 @@ char		*ft_pat_modifier(char **holder)
 	return (modifier);
 }
 
-void		ft_pat_ending(t_com **fresh, char **holder, size_t *argc)
+void		ft_pat_ending(t_com **fresh, char **holder)
 {
 	if ((*fresh)->modifier == NULL && *holder)
 	{
@@ -100,10 +61,7 @@ void		ft_pat_ending(t_com **fresh, char **holder, size_t *argc)
 		*holder = NULL;
 	}
 	else
-	{
 		(*fresh)->type = '%';
-		(*argc)++;
-	}
 }
 
 void		ft_pat_string(t_com **com, char **copy, char **holder)

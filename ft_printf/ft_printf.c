@@ -12,51 +12,49 @@
 
 #include "../libftprintf.h"
 
-static void			ft_print_result(t_com *com, int *characters)
+static void		ft_print_result_c(t_com *copy)
 {
-	t_com			*copy;
+	if (copy->flag && *copy->flag == '-')
+	{
+		ft_putchar(copy->var.c);
+		ft_putstrn(copy->scroll, ((copy->len) - 1));
+	}
+	else if (ft_atoi(copy->width) < 0)
+	{
+		ft_putchar(copy->var.c);
+		ft_putstr(copy->scroll);
+	}
+	else
+	{
+		ft_putstrn(copy->scroll, ((copy->len) - 1));
+		ft_putchar(copy->var.c);
+	}
+}
 
-	copy = com;
+static void		ft_print_result_sc(t_com *copy)
+{
+	if (ft_strchr_qt(copy->flag, '-') > 0)
+	{
+		ft_putwstr(copy->w_scroll);
+		ft_putstr(copy->scroll);
+	}
+	else
+	{
+		ft_putstr(copy->scroll);
+		ft_putwstr(copy->w_scroll);
+	}
+}
+
+static void		ft_print_result(t_com *copy, int *characters)
+{
+	char		*m;
+
 	while (copy != NULL)
 	{
-		if (copy->modifier && (*copy->modifier == 'c')
-			&& copy->type == '%')
-		{
-			if (copy->flag && *copy->flag == '-')
-			{
-				ft_putchar(copy->var.c);
-				ft_putstrn(copy->scroll, ((copy->len) - 1));
-			}
-			else if (ft_atoi(copy->width) < 0)
-			{
-				ft_putchar(copy->var.c);
-				ft_putstr(copy->scroll);
-			}
-//			else if (ft_isprint(copy->var.c))
-//			{
-//				ft_putchar('h');
-//				ft_putstr(copy->scroll);
-//			}
-			else
-			{
-				ft_putstrn(copy->scroll, ((copy->len) - 1));
-				ft_putchar(copy->var.c);
-			}
-		}
-		else if (copy->modifier &&
-				(*copy->modifier == 'S' || *copy->modifier == 'C'))
-		{
-			if (ft_strchr_qt(copy->flag, '-') > 0)
-			{
-				ft_putwstr(copy->w_scroll);
-				ft_putstr(copy->scroll);
-			}
-			else
-			{
-				ft_putstr(copy->scroll);
-				ft_putwstr(copy->w_scroll);
-			}
-		}
+		if ((m = copy->modifier) && *m == 'c' && copy->type == '%')
+			ft_print_result_c(*&copy);
+		else if (m && (*m == 'S' || *m == 'C'))
+			ft_print_result_sc(*&copy);
 		else
 			ft_putstr(copy->scroll);
 		*characters += copy->len;
@@ -64,12 +62,8 @@ static void			ft_print_result(t_com *com, int *characters)
 	}
 }
 
-static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
+static void		ft_pre_printing(t_com *copy, va_list ap)
 {
-	t_com			*copy;
-
-	copy = com;
-	argc = 0; // перегрузка значения
 	while (copy != NULL)
 	{
 		if (copy->type == '%')
@@ -96,22 +90,20 @@ static void			ft_pre_printing(t_com *com, va_list ap, size_t argc)
 	}
 }
 
-int					ft_printf(const char *restrict format, ...)
+int				ft_printf(const char *restrict format, ...)
 {
-	va_list			ap;
-	t_com			*com;
-	size_t			argc;
-	int				characters;
+	va_list		ap;
+	t_com		*com;
+	t_com		*copy;
+	int			characters;
 
-	argc = 0; // удалить
 	characters = 0;
 	va_start(ap, format);
-	ft_parser(format, &com, &argc);
-//	printf("аргументов: %zu\n", argc);
-//	ft_tcom_print(com, 0);
-	ft_pre_printing(*&com, ap, argc);
-//	ft_tcom_print(com, 1);
-	ft_print_result(*&com, &characters);
+	ft_parser(format, &com);
+	copy = com;
+	ft_pre_printing(*&copy, ap);
+	copy = com;
+	ft_print_result(*&copy, &characters);
 	ft_tcom_free_all(com);
 	va_end(ap);
 	return (characters);

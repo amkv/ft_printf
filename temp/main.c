@@ -12,6 +12,7 @@
 
 #include "../libftprintf.h"
 #include <locale.h>
+#include <stdio.h>
 
 static void		ft_p(int mr, int or)
 {
@@ -22,15 +23,6 @@ static void		ft_p(int mr, int or)
 	printf("\n-----------------");
 }
 
-/*
-** 	or = printf("%S", 100); MEMORY
-** 	mr = ft_printf("%10m33", str); // создает два листа
-** 	or = printf("%e\n", -16123123123.1);
-** 	or = printf("%e\n", -0.1345231231);
-** 	or = printf("%e\n", 0.1345231231);
-** 	mr = ft_printf("%.10x", 42);
-*/
-
 int				main(void)
 {
 	int			mr;
@@ -40,21 +32,10 @@ int				main(void)
 	str = "hello";
 	mr = 0;
 	or = 0;
-
 	setlocale(LC_ALL, "en_GB");
-
-	mr = ft_printf("%s, test", str);
+	mr = ft_printf("");
 	printf("\n");
-	or = printf("%s, test", str);
-
+	or = printf("");
 	ft_p(mr, or);
 	return (0);
 }
-
-/*
-*/
-
-
-
-
-

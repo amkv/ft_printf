@@ -6,7 +6,7 @@
 #    By: akalmyko <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/22 14:50:24 by akalmyko          #+#    #+#              #
-#    Updated: 2017/01/04 19:51:18 by akalmyko         ###   ########.fr        #
+#    Updated: 2017/01/06 14:55:41 by akalmyko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,7 +97,6 @@ PC += $(P)ft_printf_is.c
 PC += $(P)ft_printf_lists.c
 PC += $(P)ft_printf_parser.c
 PC += $(P)ft_printf_switch.c
-PC += $(P)ft_printf_do.c
 PC += $(P)ft_printf_do_psc.c
 PC += $(P)ft_printf_do_d_1.c
 PC += $(P)ft_printf_do_d_2.c
@@ -105,21 +104,23 @@ PC += $(P)ft_printf_do_oux_1.c
 PC += $(P)ft_printf_do_oux_2.c
 PC += $(P)ft_printf_patterns_1.c
 PC += $(P)ft_printf_patterns_2.c
-PC += $(P)ft_printf_pre_print.c
+PC += $(P)ft_printf_patterns_3.c
 PC += $(P)ft_printf_wide_char.c
 PC += $(P)ft_printf_precision_1.c
+PC += $(P)ft_printf_precision_2.c
+PC += $(P)ft_printf_precision_3.c
+PC += $(P)ft_printf_precision_4.c
 PC += $(P)ft_printf_width_1.c
-PC += $(P)ft_printf_flags.c
+PC += $(P)ft_printf_width_2.c
+PC += $(P)ft_printf_flags_1.c
+PC += $(P)ft_printf_flags_2.c
 
 EC = $(E)ft_memnncpy.c
-EC += $(E)ft_strnncpy.c
 EC += $(E)ft_itoa_base.c
 EC += $(E)ft_strdel_begn.c
-EC += $(E)ft_numlen.c
-EC += $(E)ft_pow.c
-EC += $(E)ft_ftoa.c
 EC += $(E)ft_strdupn.c
 EC += $(E)ft_itoa_base_uintmax.c
+EC += $(E)ft_wcharlen.c
 
 OF += ft_atoi.o
 OF += ft_bzero.o
@@ -198,7 +199,6 @@ OF += ft_printf_is.o
 OF += ft_printf_lists.o
 OF += ft_printf_parser.o
 OF += ft_printf_switch.o
-OF += ft_printf_do.o
 OF += ft_printf_do_psc.o
 OF += ft_printf_do_d_1.o
 OF += ft_printf_do_d_2.o
@@ -207,22 +207,23 @@ OF += ft_printf_do_oux_2.o
 OF += ft_strdel_begn.o
 OF += ft_printf_patterns_1.o
 OF += ft_printf_patterns_2.o
-OF += ft_printf_pre_print.o
+OF += ft_printf_patterns_3.o
 OF += ft_printf_wide_char.o
 OF += ft_printf_precision_1.o
+OF += ft_printf_precision_2.o
+OF += ft_printf_precision_3.o
+OF += ft_printf_precision_4.o
 OF += ft_printf_width_1.o
-OF += ft_printf_flags.o
-
+OF += ft_printf_width_2.o
+OF += ft_printf_flags_1.o
+OF += ft_printf_flags_2.o
 
 OF += ft_memnncpy.o
-OF += ft_strnncpy.o
 OF += ft_itoa_base.o
-OF += ft_numlen.o
-OF += ft_pow.o
-OF += ft_ftoa.o
 OF += ft_strdel_begn.o
 OF += ft_strdupn.o
 OF += ft_itoa_base_uintmax.o
+OF += ft_wcharlen.o
 
 all: $(NAME)
 
