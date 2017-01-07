@@ -108,10 +108,6 @@ char			*ft_skipchr(char *s, char c);
 char			*ft_skiptochr(char *s, char c);
 
 /*
-** New fuctions
-*/
-
-/*
 ** Big functions
 */
 int				get_next_line(const int fd, char **line);

@@ -31,7 +31,7 @@ static int		ft_check_modifier(char *modifier)
 static void		ft_set_result(char **result, char **spaces, t_com **com)
 {
 	char		*temp;
-	char 		*temp2;
+	char		*temp2;
 
 	if ((*(*com)->modifier == 'd' || *(*com)->modifier == 'i')
 		&& (*com)->var.d < 0)
@@ -57,6 +57,28 @@ static void		ft_set_result(char **result, char **spaces, t_com **com)
 		*result = ft_strjoin(*spaces, (*com)->scroll);
 }
 
+static void		ft_mod_processing(t_com **com, char **spaces,
+									size_t precision, size_t len)
+{
+	if (*(*com)->modifier == 'p')
+	{
+		if ((*com)->prec_flag == 1)
+			*spaces = ft_strnew_char_filled(
+			(size_t)ft_atoi((*com)->precision)
+			- ft_strlen((*com)->scroll), ' ');
+		else if ((*com)->width
+				&& ((size_t)ft_atoi((*com)->precision)) > (*com)->len)
+			*spaces = ft_strnew_char_filled(
+					(size_t)ft_atoi((*com)->precision) - (*com)->len + 2, '0');
+		else
+			*spaces = ft_strnew_char_filled(precision - 1, '0');
+	}
+	else if ((*com)->width_flag > 0 && (*com)->width_flag < 0)
+		*spaces = ft_strnew_char_filled(precision - len, ' ');
+	else
+		*spaces = ft_strnew_char_filled(precision - len, '0');
+}
+
 void			ft_mod_extend_word(t_com **com, size_t precision, size_t len)
 {
 	char		*result;
@@ -65,21 +87,7 @@ void			ft_mod_extend_word(t_com **com, size_t precision, size_t len)
 	if (ft_check_modifier((*com)->modifier) == -1)
 		return ;
 	else if (ft_check_modifier((*com)->modifier) == 1)
-	{
-		if (*(*com)->modifier == 'p')
-		{
-			if ((*com)->prec_flag == 1)
-				spaces = ft_strnew_char_filled((size_t)ft_atoi((*com)->precision) - ft_strlen((*com)->scroll), ' ');
-			else if ((*com)->width && ((size_t)ft_atoi((*com)->precision)) > (*com)->len)
-				spaces = ft_strnew_char_filled((size_t)ft_atoi((*com)->precision) - (*com)->len + 2, '0');
-			else
-				spaces = ft_strnew_char_filled(precision - 1, '0');
-		}
-		else if ((*com)->width_flag > 0 && (*com)->width_flag < 0)
-			spaces = ft_strnew_char_filled(precision - len, ' ');
-		else
-			spaces = ft_strnew_char_filled(precision - len, '0');
-	}
+		ft_mod_processing(*&com, &spaces, precision, len);
 	else
 		spaces = ft_strnew_char_filled(precision - len, ' ');
 	if (*(*com)->modifier == 'd' || *(*com)->modifier == 'i'

@@ -42,32 +42,28 @@ static void		ft_pre_print_null_precision_helper(t_com **com)
 
 void			ft_pre_print_null_precision(t_com **com)
 {
+	char		*mod;
+
 	if ((*com)->precision && *(*com)->precision == '!' &&
 		(((*com)->scroll && *(*com)->scroll == '0') ||
-		 ((*com)->modifier &&
-		  (*(*com)->modifier == 's' || *(*com)->modifier == 'S'))
-		))
+		((*com)->modifier &&
+		(*(*com)->modifier == 's' || *(*com)->modifier == 'S'))))
 	{
-		if (!(*(*com)->modifier))
+		if (!(mod = (*com)->modifier))
 			return ;
-		else if (*(*com)->modifier == 's' || *(*com)->modifier == 'i')
+		if (*mod == 's' || *mod == 'S' || *mod == 'i'
+			|| *mod == 'd' || *mod == 'D' || *mod == 'u' || *mod == 'U')
 			ft_pre_print_null_precision_helper(*&com);
-		else if (*(*com)->modifier == 'S')
+		else if ((*mod == 'x' || *mod == 'X')
+				&& ft_strchr_qt((*com)->flag, '#') > 0)
 			ft_pre_print_null_precision_helper(*&com);
-		else if ((*(*com)->modifier == 'x' || *(*com)->modifier == 'X')
-				 && ft_strchr_qt((*com)->flag, '#') > 0)
+		else if (*mod == 'x' || *mod == 'X')
 			ft_pre_print_null_precision_helper(*&com);
-		else if (*(*com)->modifier == 'x' || *(*com)->modifier == 'X')
+		else if ((*mod == 'o' || *mod == 'O')
+				&& ft_strchr_qt((*com)->flag, '#') == 0)
 			ft_pre_print_null_precision_helper(*&com);
-		else if ((*(*com)->modifier == 'o' || *(*com)->modifier == 'O')
-				 && ft_strchr_qt((*com)->flag, '#') == 0)
-			ft_pre_print_null_precision_helper(*&com);
-		else if ((*(*com)->modifier == 'd' || *(*com)->modifier == 'D'))
-			ft_pre_print_null_precision_helper(*&com);
-		else if ((*(*com)->modifier == 'u' || *(*com)->modifier == 'U'))
-			ft_pre_print_null_precision_helper(*&com);
-		else if ((*(*com)->modifier == 'p' || *(*com)->modifier == 'P')
-				 && (*com)->len == 3)
+		else if ((*mod == 'p' || *(*com)->modifier == 'P')
+				&& (*com)->len == 3)
 			ft_pre_print_null_precision_helper(*&com);
 	}
 }

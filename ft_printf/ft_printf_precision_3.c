@@ -13,7 +13,7 @@
 #include "../libftprintf.h"
 
 /*
-** ***** cut *********  PRECISION  ****************************************
+** cut PRECISION
 */
 
 static unsigned char	*ft_strdupn_wchar(const unsigned char *s1, size_t n)
@@ -39,12 +39,12 @@ static unsigned char	*ft_strdupn_wchar(const unsigned char *s1, size_t n)
 		return (NULL);
 }
 
-static void		ft_mod_cut_wchar_word(t_com **com, size_t precision)
+static void				ft_mod_cut_wchar_word(t_com **com, size_t precision)
 {
 	unsigned char	*result;
 	wchar_t			*copy;
-	size_t 			len;
-	size_t 			temp;
+	size_t			len;
+	size_t			temp;
 
 	copy = (*com)->var.ws;
 	len = 0;
@@ -68,7 +68,7 @@ static void		ft_mod_cut_wchar_word(t_com **com, size_t precision)
 	(*com)->len = len;
 }
 
-void			ft_mod_cut_word(t_com **com, size_t precision)
+void					ft_mod_cut_word(t_com **com, size_t precision)
 {
 	char		*result;
 
