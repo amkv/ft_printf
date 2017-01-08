@@ -1,21 +1,12 @@
 # ft_printf
 my implementation of printf function on C language
 
-1. flags 
-```
-+ - # 'space' 0
-```
+1. flags ___+ - # 'space' 0___
 2. width
 3. precision
-4. length
-```
-h hh l ll j z
-```
-5. modifiers
-```
-d D i c C s S u U x X o O p
-```
-6. (* 'star') arguments
+4. length ___h hh l ll j z___
+5. modifiers ___d D i c C s S u U x X o O p___
+6. ___(* 'star')___ arguments
 
 how to check?
 compile, launch and test :)
