@@ -15,9 +15,3 @@ make re
 gcc -Wall -Wextra -Werror temp/main.c libftprintf.a
 ./a.out
 ```
-
-or launch run.sh script
-```
-chmod 755 run.sh
-sh run.sh
-```
