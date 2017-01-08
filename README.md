@@ -18,6 +18,6 @@ gcc -Wall -Wextra -Werror temp/main.c libftprintf.a
 
 or launch run.sh script
 ```
-chmode 755 run.sh
+chmod 755 run.sh
 sh run.sh
 ```
