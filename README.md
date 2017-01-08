@@ -3,11 +3,11 @@ my implementation of printf function on C language
 
 # in progress
 
-how to check status?
+how to check?
 compile, launch and test :)
 ```
 make re
-gcc temp/main.c libftprintf.a
+gcc -Wall -Wextra -Werror temp/main.c libftprintf.a
 ./a.out
 ```
 
