@@ -1,11 +1,20 @@
 # ft_printf
 my implementation of printf function on C language
 
-flags + - # 'space' 0,
-width, 
+flags 
+```
++ - # 'space' 0
+```
+width,
 precision, 
-length h hh l ll j z, 
-modifiers d D i c C s S u U x X o O p, 
+length
+```
+h hh l ll j z
+```
+modifiers
+```
+d D i c C s S u U x X o O p
+```
 * (star) arguments
 
 # in progress
