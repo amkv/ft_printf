@@ -1,5 +1,5 @@
 # ft_printf
-my implementation of printf function on C language
+my implementation of standart ___printf___ function on C language
 
 1. flags ___+ - # 'space' 'zero'___
 2. width
