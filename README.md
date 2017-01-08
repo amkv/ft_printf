@@ -15,9 +15,7 @@ modifiers
 ```
 d D i c C s S u U x X o O p
 ```
-* (star) arguments
-
-# in progress
+(* 'star') arguments
 
 how to check?
 compile, launch and test :)
