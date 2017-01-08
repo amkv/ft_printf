@@ -1,7 +1,7 @@
 # ft_printf
 my implementation of printf function on C language
 
-1. flags ___+ - # 'space' 0___
+1. flags ___+ - # 'space' 'zero'___
 2. width
 3. precision
 4. length ___h hh l ll j z___
